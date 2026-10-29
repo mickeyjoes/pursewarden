@@ -1,0 +1,103 @@
+{
+  "accounts": {
+    "agent": "agent.owner.test.near",
+    "agent2": "agent2.owner.test.near",
+    "owner": "owner.test.near",
+    "recipients": [
+      "alice.test.near",
+      "missing.test.near"
+    ],
+    "root": "test.near",
+    "stranger": "bob.test.near",
+    "vault": "vault.owner.test.near",
+    "vault2": "vault2.owner.test.near"
+  },
+  "artifact": {
+    "bytes": 154714,
+    "code_hash_b58": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau",
+    "path": "/home/mickey/Dev/Hackathons/NEAR/near-agent-vault-contract/artifacts/near_agent_vault.wasm",
+    "sha256_hex": "5b05246bb41e11857f56845aca62edf92888e2ebbd210443f29577c22c216b26"
+  },
+  "chain_id": "test-chain-4U2k3",
+  "end": {
+    "hash": "7Z5s2vCfH2axrQsdywGQ79gJqCQXHMZp5N4idJ8Ls5qF",
+    "height": 7962
+  },
+  "genesis_hash": "kSN1GRyg2fN1TG7tPXKRpJGRfCnyHuME2ZqVP5NzCp5",
+  "h0": {
+    "hash": "4yLGk3C1ffvxQkESZc43WY5KCNvqTV73NhcKVW1cuP6T",
+    "height": 7501
+  },
+  "metrics": {
+    "elapsed_secs": 58.457306226,
+    "rpc_calls": 1367,
+    "rpc_response_bytes": 2340656,
+    "transactions": 74
+  },
+  "node_version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  },
+  "protocol_version": 86,
+  "q_vault1": {
+    "hash": "FyjkrDZXRCMnoKHbuHN4qi4366Fm6B4hgLQckuH3hAQU",
+    "height": 7908
+  },
+  "rpc_url": "http://127.0.0.1:3130",
+  "run_id": "g1-20261029a",
+  "shard_layout": {
+    "V2": {
+      "boundary_accounts": [],
+      "id_to_index_map": {
+        "0": 0
+      },
+      "index_to_id_map": {
+        "0": 0
+      },
+      "shard_ids": [
+        0
+      ],
+      "shards_parent_map": null,
+      "shards_split_map": null,
+      "version": 0
+    }
+  },
+  "vault1": {
+    "budget": "5000000000000000000000000",
+    "creation_block": "6Z3rtCTqjj7wP8mXLwzZ8nGeEbqbSUWYyhjKQSMTH7xz",
+    "creation_height": 7531,
+    "creation_tx": "HowLK1P5AkMTLd2XniF29Mo2AvAp1WteAXRnTgWsDDVQ",
+    "expires_at_ns": "1793396439698529554",
+    "funding": "7571390000000000000000000",
+    "k": 2,
+    "max_per_request": "2000000000000000000000000",
+    "payment1": {
+      "admission_receipt": "7bMRmqF2LQUf1nZ7QgDMQYG9bSX6aUjUxyQArEqPk556",
+      "callback_receipt": "2c39RzrpFpsTypE5KS3nM9ahJ4NBrW5kJG89CszQYrkn",
+      "transfer_receipt": "3ts7Sxsgg3e67bcBVqhAruwo6nqZeDJPqDhnuZQkeZAj",
+      "tx": "45bGCF8dtnaDhkL48CwZ1GZMBeZ1cxyr6i7hdwXzzENS"
+    },
+    "payment2": {
+      "admission_receipt": "2tR2JwUWYLrW59bm6soKrDVq36kBgnQErdAsdFGFK61Z",
+      "callback_receipt": "5pwHQKPYnrXJQdTFGqJtgp9ZhzxchG1RcKDm1VPCE31W",
+      "refund_receipts": [
+        "AV2qULRXpBMJxceXubJWhw66trdandPJvyqj8zzcdoeL"
+      ],
+      "transfer_receipt": "9WSb4SpC5VcVgvBdEvx8RF7TczpwjeJs1z9nP9F9fnb6",
+      "tx": "GsWjon2UCLHTGpFagSBXfViwZXY7sy1FeWGJPUsNXowZ"
+    },
+    "policy_hash_b58": "4uykmePuXrCjgcHkDwVunSeEQyvpqDjdxcL7QutuUTao",
+    "policy_hash_hex": "3a256f7f7c34ba873856071c1ceaf0f33a63fb2a3d730b4f7ec08ed87cf40428",
+    "reserve_total": "1571390000000000000000000",
+    "storage_bound_bytes": 156139
+  },
+  "vault2": {
+    "budget": "5000000000000000000000000",
+    "creation_tx": "9ssBg1YpMTtGXHFFcgUYWEyVGo5ck6r4M9PrjLF8qvmL",
+    "k": 4,
+    "max_per_request": "3000000000000000000000000",
+    "policy_hash_b58": "9edEviPcxSjpiC6B3HcidV8WT5hjUAfjJrk7mzJ5zSzt"
+  }
+}

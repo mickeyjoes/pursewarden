@@ -1,0 +1,422 @@
+{
+  "final_execution_status": "FINAL",
+  "receipts": [
+    {
+      "predecessor_id": "owner.test.near",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            "CreateAccount",
+            {
+              "Transfer": {
+                "deposit": "5000000000000000000000000"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:HrfrGnf11C73KxFYZsmYYsNMcbAgLxxXsxAPNUJmQjka"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:4788QkPBbGZsYCQgwAaGSPYKgmqVgU1GJnK449AzhYhp"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:6GWFFnfMCenH7hxLVTf9tvP4oC72iCmo96cHz5anrUaR"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:BMrhpCqqtyYLbJupvKdjvMZcDNtx9MdU1xuSeXc2Kt26"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:2kU5zHFMy9DuHAgDMsrFNiBAr3SCvTaSJeYzWsesdNJE"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:DQTfLEJBUgwHqeU5s7Wg4eGhNSgYPbWvjzHSz3rBM4HR"
+              }
+            },
+            {
+              "AddKey": {
+                "access_key": {
+                  "nonce": 0,
+                  "permission": {
+                    "FunctionCall": {
+                      "allowance": "250000000000000000000000",
+                      "method_names": [
+                        "request_payment"
+                      ],
+                      "receiver_id": "vault.owner.test.near"
+                    }
+                  }
+                },
+                "public_key": "ed25519:GeEXhajsbcYRNGwva2GdNiDao5fJMoGFwgKSgStnbFty"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "owner.test.near",
+          "signer_public_key": "ed25519:6jtPiXkd5rPXacWftL215kUHYKEkzu7avXGhxb5t4Ckm"
+        }
+      },
+      "receipt_id": "GR1ww4YnNfuJ4kCfG6keCAeHBUvsEcckbstiJtW8uwnj",
+      "receiver_id": "agent.owner.test.near"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "1137053004381200000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "owner.test.near",
+          "signer_public_key": "ed25519:6jtPiXkd5rPXacWftL215kUHYKEkzu7avXGhxb5t4Ckm"
+        }
+      },
+      "receipt_id": "2MxGCzq7dYB8DZrYZN3FMnasH8ZMQrip3wFpMN8wKAvd",
+      "receiver_id": "owner.test.near"
+    }
+  ],
+  "receipts_outcome": [
+    {
+      "block_hash": "CdHFSUrd1UsMu5iXWwoQDPXVhnmCGafNERUu2P4TSNp9",
+      "id": "GR1ww4YnNfuJ4kCfG6keCAeHBUvsEcckbstiJtW8uwnj",
+      "outcome": {
+        "executor_id": "agent.owner.test.near",
+        "gas_burnt": 8241170004868,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [
+          "2MxGCzq7dYB8DZrYZN3FMnasH8ZMQrip3wFpMN8wKAvd"
+        ],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "7104117000486800000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "3dffRg5Ys8p335Qq1iyd8kkAiGMqQ2aHYrQQih8gGj87",
+      "id": "2MxGCzq7dYB8DZrYZN3FMnasH8ZMQrip3wFpMN8wKAvd",
+      "outcome": {
+        "executor_id": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    }
+  ],
+  "status": {
+    "SuccessValue": ""
+  },
+  "transaction": {
+    "actions": [
+      "CreateAccount",
+      {
+        "Transfer": {
+          "deposit": "5000000000000000000000000"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:HrfrGnf11C73KxFYZsmYYsNMcbAgLxxXsxAPNUJmQjka"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:4788QkPBbGZsYCQgwAaGSPYKgmqVgU1GJnK449AzhYhp"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:6GWFFnfMCenH7hxLVTf9tvP4oC72iCmo96cHz5anrUaR"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:BMrhpCqqtyYLbJupvKdjvMZcDNtx9MdU1xuSeXc2Kt26"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:2kU5zHFMy9DuHAgDMsrFNiBAr3SCvTaSJeYzWsesdNJE"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:DQTfLEJBUgwHqeU5s7Wg4eGhNSgYPbWvjzHSz3rBM4HR"
+        }
+      },
+      {
+        "AddKey": {
+          "access_key": {
+            "nonce": 0,
+            "permission": {
+              "FunctionCall": {
+                "allowance": "250000000000000000000000",
+                "method_names": [
+                  "request_payment"
+                ],
+                "receiver_id": "vault.owner.test.near"
+              }
+            }
+          },
+          "public_key": "ed25519:GeEXhajsbcYRNGwva2GdNiDao5fJMoGFwgKSgStnbFty"
+        }
+      }
+    ],
+    "hash": "DTPcHggpnVDQ6gbrofZqnas49ocGfEYWHynwHsbwzYyR",
+    "nonce": 7506000001,
+    "priority_fee": 0,
+    "public_key": "ed25519:6jtPiXkd5rPXacWftL215kUHYKEkzu7avXGhxb5t4Ckm",
+    "receiver_id": "agent.owner.test.near",
+    "signature": "ed25519:3uBZLVrG283E44tuKdAm8AdwHjLAsxEHhCnXKULPHvuwUQGPEQehxcWsnU7HFqpm7zFRCSB2QMuD2BztBAv8t6RY",
+    "signer_id": "owner.test.near"
+  },
+  "transaction_outcome": {
+    "block_hash": "4xYyS4aCBXQiiPrVUXYxdUBPAgpd9b2h7VF6nsrEDCGH",
+    "id": "DTPcHggpnVDQ6gbrofZqnas49ocGfEYWHynwHsbwzYyR",
+    "outcome": {
+      "executor_id": "owner.test.near",
+      "gas_burnt": 1547027078020,
+      "logs": [],
+      "metadata": {
+        "gas_profile": null,
+        "version": 1
+      },
+      "receipt_ids": [
+        "GR1ww4YnNfuJ4kCfG6keCAeHBUvsEcckbstiJtW8uwnj"
+      ],
+      "status": {
+        "SuccessReceiptId": "GR1ww4YnNfuJ4kCfG6keCAeHBUvsEcckbstiJtW8uwnj"
+      },
+      "tokens_burnt": "154702707802000000000"
+    },
+    "proof": []
+  }
+}

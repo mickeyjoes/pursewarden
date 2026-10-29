@@ -1,0 +1,651 @@
+{
+  "final_execution_status": "FINAL",
+  "receipts": [
+    {
+      "predecessor_id": "agent.owner.test.near",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args": "eyJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwicG9saWN5X2hhc2giOiI0dXlrbWVQdVhyQ2pnY0hrRHdWdW5TZUVReXZwcURqZHhjTDdRdXR1VVRhbyIsInJlY2lwaWVudCI6ImFsaWNlLnRlc3QubmVhciIsInJlcXVlc3RfaWQiOiIxIn0=",
+                "deposit": "0",
+                "gas": 100000000000000,
+                "method_name": "request_payment"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "7bMRmqF2LQUf1nZ7QgDMQYG9bSX6aUjUxyQArEqPk556",
+      "receiver_id": "vault.owner.test.near"
+    },
+    {
+      "predecessor_id": "vault.owner.test.near",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "1000000000000000000000000"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [
+            {
+              "data_id": "A9xuQJTxszGwFzxJx9ShcRMim1ynsZoWjVy5SmDcDi5K",
+              "receiver_id": "vault.owner.test.near"
+            }
+          ],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "3ts7Sxsgg3e67bcBVqhAruwo6nqZeDJPqDhnuZQkeZAj",
+      "receiver_id": "alice.test.near"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "200864306250000000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "9rS2KPVCF3jdD9VLfP67PcwrqTCb4GbxJJBcG8vwrPAk",
+      "receiver_id": "agent.owner.test.near"
+    },
+    {
+      "predecessor_id": "vault.owner.test.near",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args": "eyJyZXF1ZXN0X2lkIjoiMSJ9",
+                "deposit": "0",
+                "gas": 20000000000000,
+                "method_name": "on_payment_result"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [
+            "A9xuQJTxszGwFzxJx9ShcRMim1ynsZoWjVy5SmDcDi5K"
+          ],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "2c39RzrpFpsTypE5KS3nM9ahJ4NBrW5kJG89CszQYrkn",
+      "receiver_id": "vault.owner.test.near"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "20713994782232700000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "Cy5A8L9hAA31UFfPci8x86kXwgV6xMvnCcowXmq68zcB",
+      "receiver_id": "agent.owner.test.near"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "79517062854141800000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "agent.owner.test.near",
+          "signer_public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW"
+        }
+      },
+      "receipt_id": "539UBBAf58htqoqWj4Jg67u5XEEvZqMfKP9aJdFbLKNV",
+      "receiver_id": "agent.owner.test.near"
+    }
+  ],
+  "receipts_outcome": [
+    {
+      "block_hash": "8MKfAxfyck8SG9W9AhBMYGhCxfAahGKrBWQ46dpohrQ8",
+      "id": "7bMRmqF2LQUf1nZ7QgDMQYG9bSX6aUjUxyQArEqPk556",
+      "outcome": {
+        "executor_id": "vault.owner.test.near",
+        "gas_burnt": 2600363110422,
+        "logs": [
+          "EVENT_JSON:{\"standard\":\"near-agent-vault-lab\",\"version\":\"1.0.0\",\"event\":\"admission\",\"data\":{\"seq\":\"2\",\"vault\":\"vault.owner.test.near\",\"policy_hash\":\"4uykmePuXrCjgcHkDwVunSeEQyvpqDjdxcL7QutuUTao\",\"request_id\":\"1\",\"recipient\":\"alice.test.near\",\"amount\":\"1000000000000000000000000\",\"request_digest_hex\":\"f17a6a6e78791c23385776592db117341df8a72e0f1ce92ccf56b5a7431cddf4\",\"charged_before\":\"0\",\"charged_after\":\"1000000000000000000000000\",\"cb_succeeded_amount_before\":\"0\",\"cb_failed_amount_before\":\"0\",\"accepted_count\":1}}"
+        ],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau"
+            }
+          ],
+          "gas_profile": [
+            {
+              "cost": "FUNCTION_CALL_BASE",
+              "cost_category": "ACTION_COST",
+              "gas_used": "200000000000"
+            },
+            {
+              "cost": "FUNCTION_CALL_BYTE",
+              "cost_category": "ACTION_COST",
+              "gas_used": "78257690"
+            },
+            {
+              "cost": "NEW_ACTION_RECEIPT",
+              "cost_category": "ACTION_COST",
+              "gas_used": "289092464624"
+            },
+            {
+              "cost": "TRANSFER",
+              "cost_category": "ACTION_COST",
+              "gas_used": "115123062500"
+            },
+            {
+              "cost": "BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "6089666553"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "35445963"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BYTES",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "168529186630"
+            },
+            {
+              "cost": "LOG_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3543313050"
+            },
+            {
+              "cost": "LOG_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "6797377365"
+            },
+            {
+              "cost": "READ_CACHED_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "15960000000"
+            },
+            {
+              "cost": "READ_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "44367674400"
+            },
+            {
+              "cost": "READ_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "5348475531"
+            },
+            {
+              "cost": "READ_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "10068660744"
+            },
+            {
+              "cost": "READ_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "48689628"
+            },
+            {
+              "cost": "SHA256_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "4540970250"
+            },
+            {
+              "cost": "SHA256_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3786424107"
+            },
+            {
+              "cost": "STORAGE_READ_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "112713691498"
+            },
+            {
+              "cost": "STORAGE_READ_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "433335462"
+            },
+            {
+              "cost": "STORAGE_READ_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1655246180"
+            },
+            {
+              "cost": "STORAGE_WRITE_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "192590208000"
+            },
+            {
+              "cost": "STORAGE_WRITE_EVICTED_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "9474605565"
+            },
+            {
+              "cost": "STORAGE_WRITE_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1339174473"
+            },
+            {
+              "cost": "STORAGE_WRITE_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "10205099331"
+            },
+            {
+              "cost": "TOUCHING_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "6840000000"
+            },
+            {
+              "cost": "UTF8_DECODING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "9335337183"
+            },
+            {
+              "cost": "UTF8_DECODING_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "160660843929"
+            },
+            {
+              "cost": "WASM_INSTRUCTION",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "298258923072"
+            },
+            {
+              "cost": "WRITE_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "16822769166"
+            },
+            {
+              "cost": "WRITE_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1432704072"
+            },
+            {
+              "cost": "WRITE_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "14327612430"
+            },
+            {
+              "cost": "WRITE_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2444405652"
+            }
+          ],
+          "version": 4
+        },
+        "receipt_ids": [
+          "3ts7Sxsgg3e67bcBVqhAruwo6nqZeDJPqDhnuZQkeZAj",
+          "2c39RzrpFpsTypE5KS3nM9ahJ4NBrW5kJG89CszQYrkn",
+          "539UBBAf58htqoqWj4Jg67u5XEEvZqMfKP9aJdFbLKNV"
+        ],
+        "status": {
+          "SuccessValue": "eyJkZWNpc2lvbiI6IkFkbWl0dGVkIiwic2VxIjoiMiIsInJlcXVlc3RfaWQiOiIxIiwicmVjaXBpZW50IjoiYWxpY2UudGVzdC5uZWFyIiwiYW1vdW50IjoiMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInJlcXVlc3RfZGlnZXN0X2hleCI6ImYxN2E2YTZlNzg3OTFjMjMzODU3NzY1OTJkYjExNzM0MWRmOGE3MmUwZjFjZTkyY2NmNTZiNWE3NDMxY2RkZjQiLCJjaGFyZ2VkX2JlZm9yZSI6IjAiLCJjaGFyZ2VkX2FmdGVyIjoiMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCJ9"
+        },
+        "tokens_burnt": "260036311042200000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "BLH65ueuzzV43mzyBcWBZee2dMBkaKXXB9jMkN15zb3N",
+      "id": "3ts7Sxsgg3e67bcBVqhAruwo6nqZeDJPqDhnuZQkeZAj",
+      "outcome": {
+        "executor_id": "alice.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [
+          "9rS2KPVCF3jdD9VLfP67PcwrqTCb4GbxJJBcG8vwrPAk"
+        ],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "22318256250000000000"
+      },
+      "proof": [
+        {
+          "direction": "Right",
+          "hash": "Aioj8BZwPFSBZK4M2PfzSiYRzz5nzphtBULj9ccqsXDi"
+        }
+      ]
+    },
+    {
+      "block_hash": "GeHf8yGoUyR4YcNWYe3pfo6s87k73jpuSEWZmoL2FsoA",
+      "id": "9rS2KPVCF3jdD9VLfP67PcwrqTCb4GbxJJBcG8vwrPAk",
+      "outcome": {
+        "executor_id": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": [
+        {
+          "direction": "Right",
+          "hash": "HJ8ReiCxtyxwDAgMYYoTH4NUvVzpgd76XycoKjFvyi5q"
+        }
+      ]
+    },
+    {
+      "block_hash": "GeHf8yGoUyR4YcNWYe3pfo6s87k73jpuSEWZmoL2FsoA",
+      "id": "2c39RzrpFpsTypE5KS3nM9ahJ4NBrW5kJG89CszQYrkn",
+      "outcome": {
+        "executor_id": "vault.owner.test.near",
+        "gas_burnt": 1741429754573,
+        "logs": [
+          "EVENT_JSON:{\"standard\":\"near-agent-vault-lab\",\"version\":\"1.0.0\",\"event\":\"callback\",\"data\":{\"seq\":\"3\",\"vault\":\"vault.owner.test.near\",\"policy_hash\":\"4uykmePuXrCjgcHkDwVunSeEQyvpqDjdxcL7QutuUTao\",\"request_id\":\"1\",\"amount\":\"1000000000000000000000000\",\"callback_status\":\"CbSucceeded\",\"charged\":\"1000000000000000000000000\",\"cb_succeeded_amount\":\"1000000000000000000000000\",\"cb_failed_amount\":\"0\"}}"
+        ],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau"
+            }
+          ],
+          "gas_profile": [
+            {
+              "cost": "BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "6089666553"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "35445963"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BYTES",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "168529186630"
+            },
+            {
+              "cost": "LOG_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3543313050"
+            },
+            {
+              "cost": "LOG_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "5173926072"
+            },
+            {
+              "cost": "READ_CACHED_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "13680000000"
+            },
+            {
+              "cost": "READ_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "18269042400"
+            },
+            {
+              "cost": "READ_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2816787753"
+            },
+            {
+              "cost": "READ_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "15102991116"
+            },
+            {
+              "cost": "READ_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "37552122"
+            },
+            {
+              "cost": "STORAGE_READ_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "112713691498"
+            },
+            {
+              "cost": "STORAGE_READ_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "433335462"
+            },
+            {
+              "cost": "STORAGE_READ_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1801132284"
+            },
+            {
+              "cost": "STORAGE_WRITE_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "128393472000"
+            },
+            {
+              "cost": "STORAGE_WRITE_EVICTED_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "10309655547"
+            },
+            {
+              "cost": "STORAGE_WRITE_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "986760138"
+            },
+            {
+              "cost": "STORAGE_WRITE_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "9956951019"
+            },
+            {
+              "cost": "TOUCHING_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "13680000000"
+            },
+            {
+              "cost": "UTF8_DECODING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3111779061"
+            },
+            {
+              "cost": "UTF8_DECODING_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "114299547768"
+            },
+            {
+              "cost": "WASM_INSTRUCTION",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "178095409272"
+            },
+            {
+              "cost": "WRITE_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "19626564027"
+            },
+            {
+              "cost": "WRITE_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1081337484"
+            },
+            {
+              "cost": "WRITE_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "22924179888"
+            },
+            {
+              "cost": "WRITE_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2600269776"
+            }
+          ],
+          "version": 4
+        },
+        "receipt_ids": [
+          "Cy5A8L9hAA31UFfPci8x86kXwgV6xMvnCcowXmq68zcB"
+        ],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "174142975457300000000"
+      },
+      "proof": [
+        {
+          "direction": "Left",
+          "hash": "H4SZboppX2jHvJbHTLixovPosrzEaXxiqYb7x5nhp5u8"
+        }
+      ]
+    },
+    {
+      "block_hash": "Bt62c3LkUZyTi6cEKSn8ftnn3DrEm4MrVYpFkj8qxGEr",
+      "id": "Cy5A8L9hAA31UFfPci8x86kXwgV6xMvnCcowXmq68zcB",
+      "outcome": {
+        "executor_id": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "BLH65ueuzzV43mzyBcWBZee2dMBkaKXXB9jMkN15zb3N",
+      "id": "539UBBAf58htqoqWj4Jg67u5XEEvZqMfKP9aJdFbLKNV",
+      "outcome": {
+        "executor_id": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": [
+        {
+          "direction": "Left",
+          "hash": "FaCfKirWsNPUM4jn1d6mJeFLnjmGFGSVWWncVwMb5Ra8"
+        }
+      ]
+    }
+  ],
+  "status": {
+    "SuccessValue": "eyJkZWNpc2lvbiI6IkFkbWl0dGVkIiwic2VxIjoiMiIsInJlcXVlc3RfaWQiOiIxIiwicmVjaXBpZW50IjoiYWxpY2UudGVzdC5uZWFyIiwiYW1vdW50IjoiMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsInJlcXVlc3RfZGlnZXN0X2hleCI6ImYxN2E2YTZlNzg3OTFjMjMzODU3NzY1OTJkYjExNzM0MWRmOGE3MmUwZjFjZTkyY2NmNTZiNWE3NDMxY2RkZjQiLCJjaGFyZ2VkX2JlZm9yZSI6IjAiLCJjaGFyZ2VkX2FmdGVyIjoiMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCJ9"
+  },
+  "transaction": {
+    "actions": [
+      {
+        "FunctionCall": {
+          "args": "eyJhbW91bnQiOiIxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwicG9saWN5X2hhc2giOiI0dXlrbWVQdVhyQ2pnY0hrRHdWdW5TZUVReXZwcURqZHhjTDdRdXR1VVRhbyIsInJlY2lwaWVudCI6ImFsaWNlLnRlc3QubmVhciIsInJlcXVlc3RfaWQiOiIxIn0=",
+          "deposit": "0",
+          "gas": 100000000000000,
+          "method_name": "request_payment"
+        }
+      }
+    ],
+    "hash": "45bGCF8dtnaDhkL48CwZ1GZMBeZ1cxyr6i7hdwXzzENS",
+    "nonce": 7524000004,
+    "priority_fee": 0,
+    "public_key": "ed25519:BCrKA5Y8CwdET8wV7iXY7hAWaUdrCaCfsh451nMz89RW",
+    "receiver_id": "vault.owner.test.near",
+    "signature": "ed25519:2pMkpZKDsPfw61ws67HDs2DRKz9QmvQg7uqJDmWoPH5ktuieXHtvYxbhMFMfhnLfqcZBiRV2Rq5rapYrbJJtXdKh",
+    "signer_id": "agent.owner.test.near"
+  },
+  "transaction_outcome": {
+    "block_hash": "9dHLM9pEigTy1YCQoJcxrCMhR2DeaXAqKMyQ5SQoZC8L",
+    "id": "45bGCF8dtnaDhkL48CwZ1GZMBeZ1cxyr6i7hdwXzzENS",
+    "outcome": {
+      "executor_id": "agent.owner.test.near",
+      "gas_burnt": 315736578115,
+      "logs": [],
+      "metadata": {
+        "gas_profile": null,
+        "version": 1
+      },
+      "receipt_ids": [
+        "7bMRmqF2LQUf1nZ7QgDMQYG9bSX6aUjUxyQArEqPk556"
+      ],
+      "status": {
+        "SuccessReceiptId": "7bMRmqF2LQUf1nZ7QgDMQYG9bSX6aUjUxyQArEqPk556"
+      },
+      "tokens_burnt": "31573657811500000000"
+    },
+    "proof": []
+  }
+}

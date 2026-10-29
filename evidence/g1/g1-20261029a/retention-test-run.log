@@ -1,0 +1,19 @@
+   Compiling g1-sandbox-tests v0.1.0 (/home/mickey/Dev/Hackathons/NEAR/near-agent-vault-contract/tests/sandbox)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.59s
+     Running tests/retention.rs (target/debug/deps/retention-04bdfb74a084236f)
+
+running 1 test
+waiting for final height 9962 (run end 7962 + 2000)
+test g1_retention has been running for over 60 seconds
+[PASS] retention.same_chain
+[PASS] retention.all_tx_outcomes_identical_after_gap
+[PASS] retention.creation_block_served
+[PASS] retention.creation_tx_in_old_chunk
+[PASS] retention.historical_state_at_creation_block
+[PASS] retention.refund_receipt_body_and_root
+[PASS] retention.state_changes_at_refund_block
+test g1_retention ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 236.56s
+
+exit=0

@@ -1,0 +1,35 @@
+{
+  "chain_id": "test-chain-4U2k3",
+  "genesis_hash": "kSN1GRyg2fN1TG7tPXKRpJGRfCnyHuME2ZqVP5NzCp5",
+  "latest_protocol_version": 86,
+  "node_key": "ed25519:CTWPitjLzLzhqrdtokzVjwRwwo52qmLvQSdKZNKvgrN2",
+  "node_public_key": "ed25519:7GNqsXfh1pZJ6aRVZSUiR8gzsKNLRNcPHKs4oWDQupnK",
+  "protocol_version": 86,
+  "rpc_addr": "0.0.0.0:3030",
+  "sync_info": {
+    "earliest_block_hash": "kSN1GRyg2fN1TG7tPXKRpJGRfCnyHuME2ZqVP5NzCp5",
+    "earliest_block_height": 0,
+    "earliest_block_time": "2026-10-29T21:24:44.733656689Z",
+    "epoch_id": "11111111111111111111111111111111",
+    "epoch_start_height": 1,
+    "latest_block_hash": "7qNoDGT4Dda1N8u3p5WV388sfbKf9VavruLKuiqF5ybB",
+    "latest_block_height": 7503,
+    "latest_block_time": "2026-10-29T21:40:36.788631976Z",
+    "latest_state_root": "FT38hY8qu6hXA1pLGWxmwqb3x2YvoFRaoYKTdejqM6on",
+    "syncing": false
+  },
+  "uptime_sec": 952,
+  "validator_account_id": "test.near",
+  "validator_public_key": "ed25519:CTWPitjLzLzhqrdtokzVjwRwwo52qmLvQSdKZNKvgrN2",
+  "validators": [
+    {
+      "account_id": "test.near"
+    }
+  ],
+  "version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  }
+}

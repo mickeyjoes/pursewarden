@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-10-29T21:46:27.870796+00:00",
+  "chain_id": "test-chain-4U2k3",
+  "genesis_hash": "kSN1GRyg2fN1TG7tPXKRpJGRfCnyHuME2ZqVP5NzCp5",
+  "head_height": 10249,
+  "same_chain": true,
+  "tx_identical": {
+    "create_vault": true,
+    "payment_1_success": true,
+    "payment_2_to_missing": true,
+    "owner_freeze": true
+  },
+  "result": "PASS"
+}
