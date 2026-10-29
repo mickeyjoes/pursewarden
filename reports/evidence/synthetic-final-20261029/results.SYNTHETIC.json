@@ -1,0 +1,483 @@
+{
+  "warning": "SYNTHETIC: no NEAR node, contract deployment or chain transactions",
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+  "cases": {
+    "complete_synthetic_oracle": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "INCONCLUSIVE",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "PASS",
+      "issues": [],
+      "recovery": {
+        "root_ids": [
+          "2GeKHj8zQnQLgBNYGXxRD193H8yhfburwG8nsh2MohAi",
+          "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+          "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+          "B7vQ4i4XgmpXwAPdBXcGaJKWUSuCFGEJFcimEwGbDhmS"
+        ],
+        "payments": [
+          {
+            "request_id": "1",
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "admission_receipt": "BpRLdVL16tiwgfQaTh9CFopfH2jnoWKuja2G3f2nJQ8G",
+            "transfer_receipt": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "recipient.test.near",
+            "amount": "1000000000000000000000000",
+            "class": "S",
+            "execution_block": "2u4qpwBvAD3iyP716mhsf7eXFGaAhDQLEZdKftjg4DWq",
+            "callback_receipt": "Bgg9vYCt65f2MSC55RU3S6pDZ1zpgKPJzEvHmTNgXxgi",
+            "callback_outcome": "SuccessValue"
+          },
+          {
+            "request_id": "2",
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "admission_receipt": "B692Hd4wcyp4QraLTcMeMxRncy7gZXfyxBAu3EjHLJ9L",
+            "transfer_receipt": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "missing.test.near",
+            "amount": "2000000000000000000000000",
+            "class": "F",
+            "execution_block": "FCMCCh663sAnjUqVaGFPMTPUuqjgR2LwPFx9DctqchXH",
+            "callback_receipt": "EfG3D195tRJQvzQsGR8bDSRW2YQpeuu29umMMGR362Pn",
+            "callback_outcome": "SuccessValue",
+            "principal_refund_receipt": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE"
+          }
+        ],
+        "principal_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "balance_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "gas_refunds": [
+          {
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "receipt_id": "GJNAHtk4NMvNzYNgrsjkFngx9rrFGkzbj9xRwZfysteD",
+            "parent_id": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          },
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "GgipyTTLXh2fPaec9YV14qXpruTz8ktfydadok8Xgpsq",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "ledger": {
+          "C": "3000000000000000000000000",
+          "S": "1000000000000000000000000",
+          "F": "2000000000000000000000000",
+          "U": "0",
+          "headroom": "2000000000000000000000000"
+        },
+        "attribution": {
+          "vault": "vault.owner.test.near",
+          "chain_id": "synthetic-g1",
+          "genesis_block_hash": "DSHyCWFqnNDsAoB8wFVsDL9dabbyCCeL6ghGy4yNBY47",
+          "wasm_sha256": "93a44bbb96c751218e4c00d479e4c14358122a389acca16205b1e4d0dc5f9476",
+          "h0_hash": "5ss8ouUuyB92XZKvcJsJRD1dqN1JWRWvKyV248GS7Pmm",
+          "q_hash": "8pAYpQXPynQ1UNgYxUAb34mqeX6Bre76JR2qPxapnBYC"
+        }
+      },
+      "limitations": [
+        "No independent runtime G1 run or fresh-instance rerun has qualified this implementation.",
+        "Runner/admin isolation and empty H0 receipt frontier require reviewer demonstration.",
+        "Binary file hash is recorded, but RPC process-to-binary correspondence is not authenticated.",
+        "State/event sequence, raw storage decoding, reserve/gas and WASM capability gates remain outside this adapter.",
+        "No native-pending witness; simultaneous RPC sends cannot establish one.",
+        "Trusted-node observations, not consensus inclusion proofs or public-network completeness."
+      ],
+      "metrics": {
+        "rpc_count": 83,
+        "response_bytes": 33190,
+        "elapsed_seconds": 0.0795
+      }
+    },
+    "whole_root_omission_rehashed": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "PASS",
+      "issues": [
+        {
+          "code": "OMITTED_ROOT",
+          "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+          "recovered_receipts": [
+            "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "B692Hd4wcyp4QraLTcMeMxRncy7gZXfyxBAu3EjHLJ9L",
+            "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "EfG3D195tRJQvzQsGR8bDSRW2YQpeuu29umMMGR362Pn",
+            "GgipyTTLXh2fPaec9YV14qXpruTz8ktfydadok8Xgpsq"
+          ]
+        },
+        {
+          "code": "TAMPERED_CAPTURE_FIELD",
+          "field": "root_blocks"
+        },
+        {
+          "code": "TAMPERED_CAPTURE_FIELD",
+          "field": "queries"
+        },
+        {
+          "code": "TAMPERED_CAPTURE_FIELD",
+          "field": "chunks"
+        }
+      ],
+      "recovery": {
+        "root_ids": [
+          "2GeKHj8zQnQLgBNYGXxRD193H8yhfburwG8nsh2MohAi",
+          "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+          "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+          "B7vQ4i4XgmpXwAPdBXcGaJKWUSuCFGEJFcimEwGbDhmS"
+        ],
+        "payments": [
+          {
+            "request_id": "1",
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "admission_receipt": "BpRLdVL16tiwgfQaTh9CFopfH2jnoWKuja2G3f2nJQ8G",
+            "transfer_receipt": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "recipient.test.near",
+            "amount": "1000000000000000000000000",
+            "class": "S",
+            "execution_block": "2u4qpwBvAD3iyP716mhsf7eXFGaAhDQLEZdKftjg4DWq",
+            "callback_receipt": "Bgg9vYCt65f2MSC55RU3S6pDZ1zpgKPJzEvHmTNgXxgi",
+            "callback_outcome": "SuccessValue"
+          },
+          {
+            "request_id": "2",
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "admission_receipt": "B692Hd4wcyp4QraLTcMeMxRncy7gZXfyxBAu3EjHLJ9L",
+            "transfer_receipt": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "missing.test.near",
+            "amount": "2000000000000000000000000",
+            "class": "F",
+            "execution_block": "FCMCCh663sAnjUqVaGFPMTPUuqjgR2LwPFx9DctqchXH",
+            "callback_receipt": "EfG3D195tRJQvzQsGR8bDSRW2YQpeuu29umMMGR362Pn",
+            "callback_outcome": "SuccessValue",
+            "principal_refund_receipt": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE"
+          }
+        ],
+        "principal_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "balance_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "gas_refunds": [
+          {
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "receipt_id": "GJNAHtk4NMvNzYNgrsjkFngx9rrFGkzbj9xRwZfysteD",
+            "parent_id": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          },
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "GgipyTTLXh2fPaec9YV14qXpruTz8ktfydadok8Xgpsq",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "ledger": {
+          "C": "3000000000000000000000000",
+          "S": "1000000000000000000000000",
+          "F": "2000000000000000000000000",
+          "U": "0",
+          "headroom": "2000000000000000000000000"
+        },
+        "attribution": {
+          "vault": "vault.owner.test.near",
+          "chain_id": "synthetic-g1",
+          "genesis_block_hash": "DSHyCWFqnNDsAoB8wFVsDL9dabbyCCeL6ghGy4yNBY47",
+          "wasm_sha256": "93a44bbb96c751218e4c00d479e4c14358122a389acca16205b1e4d0dc5f9476",
+          "h0_hash": "5ss8ouUuyB92XZKvcJsJRD1dqN1JWRWvKyV248GS7Pmm",
+          "q_hash": "8pAYpQXPynQ1UNgYxUAb34mqeX6Bre76JR2qPxapnBYC"
+        }
+      },
+      "limitations": [
+        "No independent runtime G1 run or fresh-instance rerun has qualified this implementation.",
+        "Runner/admin isolation and empty H0 receipt frontier require reviewer demonstration.",
+        "Binary file hash is recorded, but RPC process-to-binary correspondence is not authenticated.",
+        "State/event sequence, raw storage decoding, reserve/gas and WASM capability gates remain outside this adapter.",
+        "No native-pending witness; simultaneous RPC sends cannot establish one.",
+        "Trusted-node observations, not consensus inclusion proofs or public-network completeness."
+      ],
+      "metrics": {
+        "rpc_count": 83,
+        "response_bytes": 33190,
+        "elapsed_seconds": 0.0759
+      }
+    },
+    "wrong_chain": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "WRONG_CHAIN",
+          "detail": "mainnet"
+        }
+      ],
+      "recovery": null
+    },
+    "wrong_genesis": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "WRONG_GENESIS",
+          "detail": "block hash"
+        }
+      ],
+      "recovery": null
+    },
+    "wrong_contract": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "WRONG_CONTRACT",
+          "detail": "compiled WASM mismatch"
+        }
+      ],
+      "recovery": null
+    },
+    "pruned_block": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "INCONCLUSIVE",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "RPC_UNAVAILABLE",
+          "detail": {
+            "method": "block",
+            "params": {
+              "block_id": "7hVj9ckwkeZgrhXwpnBWbkinnStAqqUMwHa6jKDCvgDB"
+            }
+          }
+        }
+      ],
+      "recovery": null
+    },
+    "missing_outcome": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "INCONCLUSIVE",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "MISSING_OUTCOME",
+          "detail": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ"
+        }
+      ],
+      "recovery": null
+    },
+    "fake_refund": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "issues": [
+        {
+          "code": "REFUND_PRINCIPAL_LINKAGE",
+          "detail": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE"
+        }
+      ],
+      "recovery": null
+    },
+    "tampered_bundle_outcome": {
+      "schema": "near-g1-result/v1",
+      "mode": "SYNTHETIC",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "chain_evidence_checks": "PASS",
+      "issues": [
+        {
+          "code": "TAMPERED_GRAPH",
+          "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1"
+        }
+      ],
+      "recovery": {
+        "root_ids": [
+          "2GeKHj8zQnQLgBNYGXxRD193H8yhfburwG8nsh2MohAi",
+          "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+          "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+          "B7vQ4i4XgmpXwAPdBXcGaJKWUSuCFGEJFcimEwGbDhmS"
+        ],
+        "payments": [
+          {
+            "request_id": "1",
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "admission_receipt": "BpRLdVL16tiwgfQaTh9CFopfH2jnoWKuja2G3f2nJQ8G",
+            "transfer_receipt": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "recipient.test.near",
+            "amount": "1000000000000000000000000",
+            "class": "S",
+            "execution_block": "2u4qpwBvAD3iyP716mhsf7eXFGaAhDQLEZdKftjg4DWq",
+            "callback_receipt": "Bgg9vYCt65f2MSC55RU3S6pDZ1zpgKPJzEvHmTNgXxgi",
+            "callback_outcome": "SuccessValue"
+          },
+          {
+            "request_id": "2",
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "admission_receipt": "B692Hd4wcyp4QraLTcMeMxRncy7gZXfyxBAu3EjHLJ9L",
+            "transfer_receipt": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "missing.test.near",
+            "amount": "2000000000000000000000000",
+            "class": "F",
+            "execution_block": "FCMCCh663sAnjUqVaGFPMTPUuqjgR2LwPFx9DctqchXH",
+            "callback_receipt": "EfG3D195tRJQvzQsGR8bDSRW2YQpeuu29umMMGR362Pn",
+            "callback_outcome": "SuccessValue",
+            "principal_refund_receipt": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE"
+          }
+        ],
+        "principal_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "balance_refunds": [
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "D7CebJF5oRZijZdbBvsG6AFmvxLsrF7m4VRfs4ww7LBE",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "vault.owner.test.near",
+            "amount": "2000000000000000000000000",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "gas_refunds": [
+          {
+            "tx_hash": "8G8WFWSnyVdJcXB8CdULxc8oLcZ6ZvtNYMcgCdFqFJZt",
+            "receipt_id": "GJNAHtk4NMvNzYNgrsjkFngx9rrFGkzbj9xRwZfysteD",
+            "parent_id": "A32DpgzN2XsXLEEGoVQGRVjFgFNWo935fPLDPopGtwpj",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          },
+          {
+            "tx_hash": "7S4ToRX57Shkc4jYRM618fnHJGrJSeudKvJkKAU5wNZ1",
+            "receipt_id": "GgipyTTLXh2fPaec9YV14qXpruTz8ktfydadok8Xgpsq",
+            "parent_id": "3PgVL6UrJtnrrmM93w7zTdcsi6B6KnaB2bNu9nxpjwHZ",
+            "recipient": "agent.owner.test.near",
+            "amount": "123",
+            "outcome": "SuccessValue"
+          }
+        ],
+        "ledger": {
+          "C": "3000000000000000000000000",
+          "S": "1000000000000000000000000",
+          "F": "2000000000000000000000000",
+          "U": "0",
+          "headroom": "2000000000000000000000000"
+        },
+        "attribution": {
+          "vault": "vault.owner.test.near",
+          "chain_id": "synthetic-g1",
+          "genesis_block_hash": "DSHyCWFqnNDsAoB8wFVsDL9dabbyCCeL6ghGy4yNBY47",
+          "wasm_sha256": "93a44bbb96c751218e4c00d479e4c14358122a389acca16205b1e4d0dc5f9476",
+          "h0_hash": "5ss8ouUuyB92XZKvcJsJRD1dqN1JWRWvKyV248GS7Pmm",
+          "q_hash": "8pAYpQXPynQ1UNgYxUAb34mqeX6Bre76JR2qPxapnBYC"
+        }
+      },
+      "limitations": [
+        "No independent runtime G1 run or fresh-instance rerun has qualified this implementation.",
+        "Runner/admin isolation and empty H0 receipt frontier require reviewer demonstration.",
+        "Binary file hash is recorded, but RPC process-to-binary correspondence is not authenticated.",
+        "State/event sequence, raw storage decoding, reserve/gas and WASM capability gates remain outside this adapter.",
+        "No native-pending witness; simultaneous RPC sends cannot establish one.",
+        "Trusted-node observations, not consensus inclusion proofs or public-network completeness."
+      ]
+    }
+  }
+}
