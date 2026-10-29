@@ -1,0 +1,46 @@
+[
+  {
+    "accepted_count": 0,
+    "amount": "7571415012673286300000000",
+    "block_hash": "EpwG195WtotyqQssWL7jS4U4kqMf1agTY3H96sjjHCwk",
+    "block_height": 59,
+    "charged": "0",
+    "label": "after_init",
+    "seq": "0",
+    "storage_usage": 155154,
+    "vault": "vault.owner.test.near"
+  },
+  {
+    "accepted_count": 0,
+    "amount": "7571638976421159500000000",
+    "block_hash": "CrKzMVaGEtJKbZgh1xDFqpAL9GxdoNuSoR96wJqFknwh",
+    "block_height": 323,
+    "charged": "0",
+    "label": "after_failed_calls",
+    "seq": "0",
+    "storage_usage": 155154,
+    "vault": "vault.owner.test.near"
+  },
+  {
+    "accepted_count": 0,
+    "amount": "7571663488957264100000000",
+    "block_hash": "ErFLX6fnrVnZTPoKoxCa4srif2S3LmjerEHmfKpiEnQw",
+    "block_height": 329,
+    "charged": "0",
+    "label": "before_payment_1",
+    "seq": "1",
+    "storage_usage": 155154,
+    "vault": "vault.owner.test.near"
+  },
+  {
+    "accepted_count": 2,
+    "amount": "6571818630876586000000000",
+    "block_hash": "F8hMtrq188xFwiGcQq2LD42eGvCQmKNt7apysQymefoA",
+    "block_height": 345,
+    "charged": "3000000000000000000000000",
+    "label": "after_payment_2_settled",
+    "seq": "5",
+    "storage_usage": 155410,
+    "vault": "vault.owner.test.near"
+  }
+]

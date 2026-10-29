@@ -1,0 +1,195 @@
+{
+  "checks": [
+    {
+      "detail": {
+        "chain_id": "test-chain-7a95k",
+        "genesis_hash": "4xiJKVfqth6x8sAkUraZjANZADv9UFwbNYm6A7ow8LiR"
+      },
+      "id": "retention.same_chain",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "mismatched": [],
+        "transactions": 74
+      },
+      "id": "retention.all_tx_outcomes_identical_after_gap",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "block": "FdjJyUekFaLoUVCyLVFdNCSt3RDbiF69nyTowzrHUULD",
+        "ok": true
+      },
+      "id": "retention.creation_block_served",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "chunk_txs": 1,
+        "height": 46,
+        "inclusion_block": "BiVnjugVsVXVQtzGqNVYGmUdcasqtzVJAR2r62RkcSNW"
+      },
+      "id": "retention.creation_tx_in_old_chunk",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "account": {
+          "amount": "7573895015248720800000000",
+          "block_hash": "FdjJyUekFaLoUVCyLVFdNCSt3RDbiF69nyTowzrHUULD",
+          "block_height": 47,
+          "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+          "locked": "0",
+          "storage_paid_at": 0,
+          "storage_usage": 155402
+        },
+        "keys": {
+          "block_hash": "FdjJyUekFaLoUVCyLVFdNCSt3RDbiF69nyTowzrHUULD",
+          "block_height": 47,
+          "keys": []
+        },
+        "mandate": {
+          "accepted_count": 0,
+          "account_balance": "7573895015248720800000000",
+          "agent": "agent.owner.test.near",
+          "allowed_recipients": [
+            "alice.test.near",
+            "missing.test.near"
+          ],
+          "asset": "NativeNear",
+          "block_height": "47",
+          "block_timestamp_ns": "1793309621248182873",
+          "budget": "5000000000000000000000000",
+          "callback_gas": "20000000000000",
+          "callback_unconfirmed": "0",
+          "cb_failed_amount": "0",
+          "cb_succeeded_amount": "0",
+          "chain_id": "test-chain-7a95k",
+          "charged": "0",
+          "contract_version": "g1-0.1.0",
+          "expired": false,
+          "expires_at_ns": "1793396020618256641",
+          "frozen": false,
+          "headroom": "5000000000000000000000000",
+          "max_accepted_requests": 2,
+          "max_per_request": "2000000000000000000000000",
+          "owner": "owner.test.near",
+          "policy_hash": "A3sSVNcvch9pYj1KC4yxrb6YUyEausgpnucotufTeiB6",
+          "policy_hash_hex": "8675604472633dc14cc0ed51f916f4a73bbb1cb9e3fff5e7257845060a574eb5",
+          "reserve_margin": "10000000000000000000000",
+          "reserve_total": "1573870000000000000000000",
+          "seq": "0",
+          "storage_bound_bytes": "156387",
+          "storage_usage": "155402",
+          "vault": "vault.owner.test.near"
+        }
+      },
+      "id": "retention.historical_state_at_creation_block",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "body": {
+          "predecessor_id": "system",
+          "priority": 0,
+          "receipt": {
+            "Action": {
+              "actions": [
+                {
+                  "Transfer": {
+                    "deposit": "2000000000000000000000000"
+                  }
+                }
+              ],
+              "gas_price": "0",
+              "input_data_ids": [],
+              "is_promise_yield": false,
+              "output_data_receivers": [],
+              "signer_id": "system",
+              "signer_public_key": "ed25519:11111111111111111111111111111111"
+            }
+          },
+          "receipt_id": "6TJqxfudaPNQUhfQqu6NN1S7XHQmB6gKHEnfA3ePWxes",
+          "receiver_id": "vault.owner.test.near"
+        },
+        "receipt": "6TJqxfudaPNQUhfQqu6NN1S7XHQmB6gKHEnfA3ePWxes",
+        "receipt_to_tx": {
+          "Ok": {
+            "sender_account_id": "agent.owner.test.near",
+            "transaction_hash": "82VdSQbhVKdfvXCrXv9kCAFEjDU3xvMFUBS7HqobVMg9"
+          }
+        }
+      },
+      "id": "retention.refund_receipt_body_and_root",
+      "result": "PASS"
+    },
+    {
+      "detail": {
+        "changes": {
+          "block_hash": "DxSxc1v5cekFew5ZRBv3DSVxnMcCN72ea2NJCxHmEsox",
+          "changes": [
+            {
+              "cause": {
+                "receipt_hash": "6TJqxfudaPNQUhfQqu6NN1S7XHQmB6gKHEnfA3ePWxes",
+                "type": "receipt_processing"
+              },
+              "change": {
+                "account_id": "vault.owner.test.near",
+                "amount": "6574273162847001900000000",
+                "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+                "locked": "0",
+                "storage_paid_at": 0,
+                "storage_usage": 155658
+              },
+              "type": "account_update"
+            },
+            {
+              "cause": {
+                "receipt_hash": "FUGfCnQBncSqQzjeaQ2EPuXDTREmbHXPDFaU9yNeckTm",
+                "type": "receipt_processing"
+              },
+              "change": {
+                "account_id": "vault.owner.test.near",
+                "amount": "6574273162847001900000000",
+                "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+                "locked": "0",
+                "storage_paid_at": 0,
+                "storage_usage": 155658
+              },
+              "type": "account_update"
+            },
+            {
+              "cause": {
+                "receipt_hash": "FUGfCnQBncSqQzjeaQ2EPuXDTREmbHXPDFaU9yNeckTm",
+                "type": "action_receipt_gas_reward"
+              },
+              "change": {
+                "account_id": "vault.owner.test.near",
+                "amount": "6574298879990123600000000",
+                "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+                "locked": "0",
+                "storage_paid_at": 0,
+                "storage_usage": 155658
+              },
+              "type": "account_update"
+            }
+          ]
+        },
+        "refund_block": "DxSxc1v5cekFew5ZRBv3DSVxnMcCN72ea2NJCxHmEsox"
+      },
+      "id": "retention.state_changes_at_refund_block",
+      "result": "PASS"
+    }
+  ],
+  "failed": 0,
+  "fast_forward_used": false,
+  "gap_blocks": 50,
+  "head_at_check": {
+    "hash": "5uRAZ9ZLoFvYnacmmT322rGXf6W5KWn9YGM6sryX5Gxp",
+    "height": 960
+  },
+  "rpc_calls": 85,
+  "run_end_height": 478,
+  "total": 7
+}

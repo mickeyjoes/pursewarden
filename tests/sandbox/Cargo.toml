@@ -1,0 +1,24 @@
+[package]
+name = "g1-sandbox-tests"
+description = "G1 local-sandbox harness: raw JSON-RPC, sign-once transactions, FINAL receipt evidence."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+publish = false
+
+# Deliberately not near-workspaces: its `transact()` retries up to 4 times on any error and
+# re-signs with a fresh nonce (rpc/client.rs `send_batch_tx_and_retry`), which can create an
+# extra root transaction; and it settles on broadcast_tx_commit (EXECUTED_OPTIMISTIC, no
+# refunds). Phase0_A §2.4 requires raw calls with no hidden helpers. The transaction/crypto
+# types are the same near-primitives/near-crypto versions near-workspaces 0.23.0 uses.
+[dependencies]
+near-primitives = "=0.37.4"
+near-crypto = "=0.37.4"
+anyhow = "1"
+base64 = "0.22"
+borsh = "1"
+bs58 = "0.5"
+serde_json = "1"
+sha2 = "0.10"
+reqwest = { version = "0.12", default-features = false, features = ["json"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }

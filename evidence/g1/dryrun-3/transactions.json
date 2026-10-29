@@ -1,0 +1,3569 @@
+[
+  {
+    "evidence_file": "txs/setup_owner.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "CoTdek3wMgofQmpYmBTfRUKRXgTegy3PoLju65ZbD4gA",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "setup_owner",
+    "nonce": 1,
+    "receipts": [
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "AddKey"
+        ],
+        "block_hash": "6LPR2G3aoaYGcD1FBwqEsNUexEjHefMx8pst2HpGNjP8",
+        "executor": "owner.test.near",
+        "gas_burnt": 7524947687500,
+        "predecessor": "test.near",
+        "receipt_id": "CoTdek3wMgofQmpYmBTfRUKRXgTegy3PoLju65ZbD4gA",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "FgreW6nXQ7Bhfre9tzNharEHakMkVVn6t7YaLcmy34n5",
+        "executor": "test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Hiwx6koBXqW5wcsS4fedmgMBhm2mgXvFXvMZEQ9NsY4Z",
+        "receiver": "test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "owner.test.near",
+    "sender": "test.near",
+    "tx_block_hash": "vEkM6mEraEHP3o8h5wBtPGwHYCFxof54447ibbYQ8jq",
+    "tx_hash": "6HmUmwzkjC2YMXUSAUnaKyrJmUQABhT56udjykP7A6fE"
+  },
+  {
+    "evidence_file": "txs/setup_alice_keyless_recipient.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "69z7twnYF5j7qBZQeN3853SVQNB6RYt2A7hZREo1bJJw",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "setup_alice_keyless_recipient",
+    "nonce": 2,
+    "receipts": [
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer"
+        ],
+        "block_hash": "2kQJXEEf3vx7EUTd9stYBpDyzBRobbnqyKoVyF6deW7j",
+        "executor": "alice.test.near",
+        "gas_burnt": 7423182562500,
+        "predecessor": "test.near",
+        "receipt_id": "69z7twnYF5j7qBZQeN3853SVQNB6RYt2A7hZREo1bJJw",
+        "receiver": "alice.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "2orGCZt5EegpGEnEi1FPhsH8qBSgKtqW1UwktrScAxKW",
+        "executor": "test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HxhSxdZwzQpLZSibTNZsba4SgvWvrBC86FyV4tXtpH87",
+        "receiver": "test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "alice.test.near",
+    "sender": "test.near",
+    "tx_block_hash": "4Fzp8tNhvqNHLncN1YvCvMJ2GrN15zB6tkJK6KMx3oHt",
+    "tx_hash": "TTx2AvFeoLmpLGYSrA1V87DQV6Gnvcztj2L7RZjqiRx"
+  },
+  {
+    "evidence_file": "txs/setup_bob_stranger.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "HnWpyd3d2DFsJm6xEz7e4NehmTPuAtK6X2wgZV6qqa2b",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "setup_bob_stranger",
+    "nonce": 3,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "EWn8APUp5KtPiBR6dk7PT3Jj3XDoffmZezf4oUkD5zpj",
+        "executor": "test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "5rivEWc47XinsSxcePFaXDNc8Mb2mXHfUvrhK7ZWoGR4",
+        "receiver": "test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "AddKey"
+        ],
+        "block_hash": "87QTGjLm6MsxWZEAaRkWPpaXPpYWWUGwd8DxaoPxPaJe",
+        "executor": "bob.test.near",
+        "gas_burnt": 7524947687500,
+        "predecessor": "test.near",
+        "receipt_id": "HnWpyd3d2DFsJm6xEz7e4NehmTPuAtK6X2wgZV6qqa2b",
+        "receiver": "bob.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "bob.test.near",
+    "sender": "test.near",
+    "tx_block_hash": "5FkcAwHVhPDVC7gN27eK8sEwyDGrYY6SoE1Lz2vd5qt7",
+    "tx_hash": "3CZjRU1ksoZV19f6vMAFVnEKQ3ES952YVCj47br1UVms"
+  },
+  {
+    "evidence_file": "txs/create_agent.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2zr2v841AVE2pebPBnQnCVY4AMLSFidogwrsYW3vp78M",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "create_agent",
+    "nonce": 33000001,
+    "receipts": [
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "AddKey",
+          "AddKey",
+          "AddKey",
+          "AddKey",
+          "AddKey",
+          "AddKey",
+          "AddKey",
+          "AddKey"
+        ],
+        "block_hash": "2EfrLhf8VWzg5fjXuyXxkfaoEpH89AMvaP66BLyVSR81",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 8241170004868,
+        "predecessor": "owner.test.near",
+        "receipt_id": "2zr2v841AVE2pebPBnQnCVY4AMLSFidogwrsYW3vp78M",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "6sFieR7wpyudQmQLcWNiQ2xZqcnFg42uLmDpk99iBBpd",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "8S5kFLcbzM9mVnnDtocTavsqmiwL5DoaaUYv1EG3dVhe",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "agent.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "DKbAAhhh8undzNacbx8j41wYQaAK4GV9vvMLUuWJyQ1M",
+    "tx_hash": "HP2TDxnrGY2iLDta9anda7PAfeUXQztFjYnZBtqRyo1B"
+  },
+  {
+    "evidence_file": "txs/create_vault.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "create_vault",
+    "nonce": 33000002,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "EpwG195WtotyqQssWL7jS4U4kqMf1agTY3H96sjjHCwk",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "E6mUqofLKXWUi8DZhiyF2qabxDiMKu6jS66SN723MhTf",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "DeployContract",
+          "FunctionCall"
+        ],
+        "block_hash": "8VhAMS68NbAQuc3ZLz1Cwgr3JHasC4GAAJiExQ7dCozp",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 19212592586491,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "3hc2YPqQjM7jdvttpGP2rkfMvn2P4uKpGzRJqWzbr7VP",
+    "tx_hash": "2pQc7pDWPNiur1A4Hxso8uVmPypMnqxeJzCmg9ybk1JJ"
+  },
+  {
+    "evidence_file": "txs/owner_request_payment.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EJU1onJbBVyUS6q4CjZLuP74PBQfhSY9bTGQ6ZJAxa42",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_request_payment",
+    "nonce": 33000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "6M31Dwp5N8PaVFPdJGSFjHtxrVuQAmKSf5mNo3BYC7Lo",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1239510033136,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EJU1onJbBVyUS6q4CjZLuP74PBQfhSY9bTGQ6ZJAxa42",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "DVBMEhgS5gKS7aRLYZ48qs7HNjPKaEcErLrp3seQKTFw",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "G4sSEh2PTQuwM6eg52t1rcn9Zd1VR6YQxbfvTr6kLPd3",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "8f1ZHE365NBm2tVR3NW12eYYDUkNCcPaqvpfnR3C5DK8",
+    "tx_hash": "2QpqnTdtNEYZdCDjDEryJAQvax6tp5tp43B4nwxJEGWa"
+  },
+  {
+    "evidence_file": "txs/stranger_request_payment.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2Pagx8vPsP4eUh3riBLopVZzCcZZyjRYb8ePYanLDLD9",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "stranger_request_payment",
+    "nonce": 45000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "3SRuZPmSg1PRSnWXs4toNCddjhdGSnzS6J2SLXpedasi",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1239384890524,
+        "predecessor": "bob.test.near",
+        "receipt_id": "2Pagx8vPsP4eUh3riBLopVZzCcZZyjRYb8ePYanLDLD9",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "BX17CbZ5p4JnrvihCijEkbFVEPEgLTHihm6X3KTVJSeF",
+        "executor": "bob.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Frb85CAPDNVJg6tQnrWsSW7dEB5SyLJ7ypp66jh6F6vm",
+        "receiver": "bob.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "bob.test.near",
+    "tx_block_hash": "vrUwneNhgx9Jrr9qzfeKTnxGitSx66jFDwmNrB1WcMs",
+    "tx_hash": "8R2ZdaWq7MgqwJVN7CCujPnmjKY2hLUQJTddGCCGw9qY"
+  },
+  {
+    "evidence_file": "txs/stranger_freeze.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "84bGcDyCx5jav8Fhs47GNPJ7Z8VV7LQdELTcRukxhXke",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "stranger_freeze",
+    "nonce": 45000002,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "9S68Ei5LrpkMdp4uMGQR8LgaoWycqTpbN7Pu2dFu7ktG",
+        "executor": "bob.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "3sLKYXJpt9JcoKqnea3hFrc17S886kcNeNuKxuCnnb9Z",
+        "receiver": "bob.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9RWT6bZNivZZAJogaxEuKnQLCUmtv25PvDPTfjcEzeH7",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1169819707964,
+        "predecessor": "bob.test.near",
+        "receipt_id": "84bGcDyCx5jav8Fhs47GNPJ7Z8VV7LQdELTcRukxhXke",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "bob.test.near",
+    "tx_block_hash": "CAsNJT88QvnvWrfXpts1nT82EPTzhmkVqEngs1yba2D5",
+    "tx_hash": "CZqsRbXG7wNguV2n9qgb1XtsdtVwpyfSHt9UzMcXSeix"
+  },
+  {
+    "evidence_file": "txs/owner_calls_private_callback.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GTvphpeGvwmk1vuRW2nzqcj4Ebv8SHKbxfdpfQzKhbAZ",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_private_callback",
+    "nonce": 33000004,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Cn1fvKYsdWtzAEX62S6J7CvGQ7PAhRb6L7Wbq7V6AhWW",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "D75xcCznvsSrWE5YFuNmCiH7e6So9sNxSv638Dej22q",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2TcG8fyu9SdRF8ZSpudhmHsJksRAuxSHeJjvfV9jcfA4",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1096380118963,
+        "predecessor": "owner.test.near",
+        "receipt_id": "GTvphpeGvwmk1vuRW2nzqcj4Ebv8SHKbxfdpfQzKhbAZ",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "DpXepAxaAzu8jMJPuxD9qh1M263KiSZNvhuRxhZVsvZ8",
+    "tx_hash": "3vEpEzuxi2cTF9aA4ako5pZ13YCwJaWVcfo8ZXKaJyS7"
+  },
+  {
+    "evidence_file": "txs/owner_freeze_with_deposit.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "78h8a9uaB9jh2rXb7JgBXe9Vg3XnTipMFXFvs7YTM5Er",
+    "graph_closure": {
+      "bodies": 3,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 3,
+      "referenced": 3
+    },
+    "label": "owner_freeze_with_deposit",
+    "nonce": 33000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "39vRSSqRuFjQ1w4vr7iaULr3PbFqNdqGC9uqf6Li6VnJ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1076547920509,
+        "predecessor": "owner.test.near",
+        "receipt_id": "78h8a9uaB9jh2rXb7JgBXe9Vg3XnTipMFXFvs7YTM5Er",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4cv1AsiiFEXENWZaf4BigTREkJCoWniqAQ31g3EWwQMJ",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "AxrxLnrodAzNzqrPiU8mxP1DzJfFhfitdmQP71B4MrAF",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4cv1AsiiFEXENWZaf4BigTREkJCoWniqAQ31g3EWwQMJ",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HQP3ZEJLPt11qPQqHEU7PoyppPKVeFazAg6V6GtgLBhT",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "F9Y7WeQ8uPqCH93bHdrvqsLgCjoWHq4XjdL6QwKSNQ7w",
+    "tx_hash": "9aB9BL8mQiXSRiMunWb4N7s9T7A6rquVM2rjbTYY32Ds"
+  },
+  {
+    "evidence_file": "txs/owner_request_with_deposit.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "24bV9YDfZNEfBuTgMMbXFSH2bGs4vH2vTSw7zK9oqXCX",
+    "graph_closure": {
+      "bodies": 3,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 3,
+      "referenced": 3
+    },
+    "label": "owner_request_with_deposit",
+    "nonce": 33000006,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "AtkENNqJEYo3DPCFZ8sRw2PN5pAwj2zWYtva1yVKY4a6",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1079566090683,
+        "predecessor": "owner.test.near",
+        "receipt_id": "24bV9YDfZNEfBuTgMMbXFSH2bGs4vH2vTSw7zK9oqXCX",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "35hEokVm2DzPC4PmNfFHYUdG7zSPYhsP2mdN27gpZPu4",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BwmZ2tP7oa6ZqvQsvqb6raVPoJUnLb7xtUwF4dnZtFXm",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "35hEokVm2DzPC4PmNfFHYUdG7zSPYhsP2mdN27gpZPu4",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "uz1gEU66C1MmP2E2ai6vdyJvaRJc42x2YVqePMuUL4L",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "FUwT2i4EtHVzfDNXR9iV3k3MsTUtxtpTsariPav3hMEH",
+    "tx_hash": "HwnRpdPFtjtP3bQDs6PdgAutNkh3E1orKjmzxzXKR5FS"
+  },
+  {
+    "evidence_file": "txs/owner_reinitialize.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "9T5nzhQp34KyMBnCeCpVdv3Z9iuZzHQcXBZ9kkj7YT7f",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_reinitialize",
+    "nonce": 33000007,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "8mTtHcJuEr7RvSHwZZ9HhRjaGrDRth9JjxD9Xyvyc6Df",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1178546313335,
+        "predecessor": "owner.test.near",
+        "receipt_id": "9T5nzhQp34KyMBnCeCpVdv3Z9iuZzHQcXBZ9kkj7YT7f",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AMEP1M66U2RiCwRJXfLJrTpgCQeDSM4sdMQt6gpy3YsH",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "DnYhgQAnjezsEptG4eeYFsiWhugemc9ntBkxYLq5d4D1",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "tqyzU8x8qP9X4kZsZBQSvnRGRHqPVLM4jdndua8oUqe",
+    "tx_hash": "2Mxgg7Hah6BogVWCDJJvFSMxDYiN3rQojYimitVpxTk6"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_withdraw.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "6kfKpQC4n6x8J9D7zwhhfuvEzmC281dJBpP3PBXwu8We",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_withdraw",
+    "nonce": 33000008,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Cj4gLyMJAvrQo2mjU5EEYYgfV6k6aHaE1jEDYmpDGZ5T",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6FpCWFm1XLkJFM7mftv2uMBFKc3BHGwxrx2qrXaou5x8",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9mqJCFmhovPKFx8HooZFQDw9w75U92xnyqEWMNfyEBXQ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888081859340,
+        "predecessor": "owner.test.near",
+        "receipt_id": "6kfKpQC4n6x8J9D7zwhhfuvEzmC281dJBpP3PBXwu8We",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "5SH7eoGvFW8UXqgTK4Q61GXcQYU2UjpzNaaTVQtvxS8z",
+    "tx_hash": "2wKt9Zgx6DRD9VKh4PcLPgH2TbYYhEtAiMm5WEbBcadC"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_transfer.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EXWMAFzj2wNcuqumqwdxdFAnPxwWwxjgQRQ7ZtJAypRv",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_transfer",
+    "nonce": 33000009,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "3U2RhxckPATDB2CUpUNZDRD2HNuYVzQz5Bg6tKWdgpHr",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "646DKgtHQxkDDV2mVCLPH22ScUvDpBF3fbZAUk3MBN4p",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "J2RtXhmZ6MuVahfbkQEQV9pWYsDiQcKtajdqLM4uVxsz",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888081859340,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EXWMAFzj2wNcuqumqwdxdFAnPxwWwxjgQRQ7ZtJAypRv",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "EQmMmSx8hsS92yaNxjAZNwT7qp7RZyHQ7Rpq3BtwAae2",
+    "tx_hash": "383R2YiAaHhDQhufMNCuKLFdEA8rYueLEYHxeRsQJzoP"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_sweep.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "23XsWRSqtoU7nA4wQypCfz2VkKR2Z8ebTb3XTNDzwvFQ",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_sweep",
+    "nonce": 33000010,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "5XgvAtAUm9ms22hwVi9rC1FAsTyBRXsaQXsC45YyMbjJ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888075151538,
+        "predecessor": "owner.test.near",
+        "receipt_id": "23XsWRSqtoU7nA4wQypCfz2VkKR2Z8ebTb3XTNDzwvFQ",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "HkjKb1J5uw2HnjmaL9QfZWGq6EBkLTAskACUqSAV2riw",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HJyCwfd1Kugb9TujRoWfQ58mPNw8LwXJkJskZvrVvuwj",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "HSHuGAuAiTuWSec23EPvzrLGp8XaoXuKw4EzboCU1qWz",
+    "tx_hash": "ALfqgsUhi2vemVDRYAY8cLnH52QRjsQQC8n9Lawy5Pa2"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_upgrade.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2M8roae1a14A2r8ktfLD3WiRPGX9w8vq5bTjukRX1KyP",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_upgrade",
+    "nonce": 33000011,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2Q7nVdQoNrUZ221RREEwcYRaT1TjfiUXsqFZxZRQpbbN",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888079623406,
+        "predecessor": "owner.test.near",
+        "receipt_id": "2M8roae1a14A2r8ktfLD3WiRPGX9w8vq5bTjukRX1KyP",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "6e2Q7nPTnDLWzr8S6dAgrFMZrKz47k1D7e57Mk3P4QNe",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "E7N7PqXCq3SSwup9FbKfPFnhqGrsidjD8WRd8RjkEgCe",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "9PrdoPSozhRaiuJ1BzbSjFVcp3GUQrMSxBWMsvAkJQ4D",
+    "tx_hash": "GjQT9LLq63Gzi9EGWBofbbK6BYYfuwyPVu3Ep34DneC4"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_migrate.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "Eu5sVxgoXS3SBhbwMx48RPq1rK15F5s3rftuYpuP8Sac",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_migrate",
+    "nonce": 33000012,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "3GSyUTPam5HV8RnPPEink1mkp1FfQ3EMuea8zGy2Wcew",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BB1d2aPt191iKern58EbQKB9TBPP3qFWSKRP2VPFEfjo",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "5B7NjDcHBiYNx5Q9Uuh7Wp5SVyp1TZByFUN7RdarxJjf",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888079623406,
+        "predecessor": "owner.test.near",
+        "receipt_id": "Eu5sVxgoXS3SBhbwMx48RPq1rK15F5s3rftuYpuP8Sac",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "GrLRMRMy2RuZiJmwiLneeLf3ieuDm6ueBYeS5bwKtu9h",
+    "tx_hash": "7XEY9K9sZpQCpfeLVdWUxKZVLEVoFKJY5p6KCaGdq5Er"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_add_key.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "DojiHKnRiRFUCKduvM4tWHuqAAvbzDPbZDbt97xJ7NUK",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_add_key",
+    "nonce": 33000013,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "8TniTUpqLU4tYhAMvjdGCg2X14NRiHbYjm969Su7F3AN",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888079623406,
+        "predecessor": "owner.test.near",
+        "receipt_id": "DojiHKnRiRFUCKduvM4tWHuqAAvbzDPbZDbt97xJ7NUK",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "9MwqX9cV3RFXgbKZnuU3WAnozN3w6ua4iL5YSrcPUECR",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HwRvs17gMpASpmsNdRwKhdeCAnpB314CcP7KjMUrRura",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "5zBDRt9h1MQ7GDUdjm2Nh4moUszyLUrhSRL7R4NELSUK",
+    "tx_hash": "6peXxJx3qWat9Mx74w4s25FKAnxwhrFEArrxRCukdgZL"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_delete_key.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "9Ues3A4GkQNdocG9rSFaRxNyyaRLYDQzPFPAfybMJ332",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_delete_key",
+    "nonce": 33000014,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Ekxnszuef3yL6fhiwjpwHKDmN7574wJGvMEKkmxFhyhY",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "73zrP8fJqZinEgMpLWFqvBsCGX4q8PcttZ9j9p5n3yju",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9B2vb1QBUrHF2f8XN4rnWNimyMdVPxswffx9bvg7Wfi1",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888086331208,
+        "predecessor": "owner.test.near",
+        "receipt_id": "9Ues3A4GkQNdocG9rSFaRxNyyaRLYDQzPFPAfybMJ332",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "AU2JHXSZ477YVvDbDNaLHpGme3iZSd4PFX79HMquH7PH",
+    "tx_hash": "8yRsUvcZL6FS4Gn9qzVY6EjoETTVTPrFNg5yK7jz5f5g"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_delete_account.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_delete_account",
+    "nonce": 33000015,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "8WoiZQHvgK6LsS8QeGxCgbME3oPgmpb9uaGCc7GH2jjz",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888095274944,
+        "predecessor": "owner.test.near",
+        "receipt_id": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "G4ikzJCZpEJsDq1nFvAJBJo9MWRXc1HDjAkstvkpM6dM",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Bg29HqF6XHqvCiVoVp91XpSnv6sm7eMFjWL8irzKf15L",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "3PAWzEhWti3UJZgdN8EqA3kXzF5R8z4wMh6nba7LHjNG",
+    "tx_hash": "2pa1foEzBDH2niAWr7qRZMgXWEVX54T3uAXKWNK7kioc"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_deploy.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GfA6LCBmERZJhG8QF6dfbmFiCwU1Hvo5BaEAwgqFMhYf",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_deploy",
+    "nonce": 33000016,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "BDoQycM8W8aYarBZ8HWLcNyhPHwWmhtUDBm4LyBZt4ae",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "8z1E4UTo9dCVUFWqJLukR6L6FfSRfNygBV9KJ41x52nA",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "4qJj9MPCSDNsFHyYXenNkYQXuDKqHUh24DWjxNeoV5aV",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888077387472,
+        "predecessor": "owner.test.near",
+        "receipt_id": "GfA6LCBmERZJhG8QF6dfbmFiCwU1Hvo5BaEAwgqFMhYf",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "CVJwsrcXPb2LgkbQ9k2kwneEUshEn58hqETdj4HFVvmW",
+    "tx_hash": "HKKskkNAV8UEywuYT5Z8EcQEZc2mbEbSRq1UmPchkuxb"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_stake.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "25dXqEedvhCgRUiVHVmYuGgbWtiQnTjZ2CmreGk7jbsj",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_stake",
+    "nonce": 33000017,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "BZjkKavRZ3ZPqArMmvAXw9jXrvyGKyv691nKp3CQacT6",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888075151538,
+        "predecessor": "owner.test.near",
+        "receipt_id": "25dXqEedvhCgRUiVHVmYuGgbWtiQnTjZ2CmreGk7jbsj",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "8MnuB64QWioSv2dTUowq5kTNtfvVsif4KFhMuSbP9UbX",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "7m21o6enXkSd7aqnG71UC2h9E91nbZrhBRPDuDTQHbyZ",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "4BK3kjmJSxTnVSG9sdJQhBE6LH4UhjEnPY3CqbbjT1pS",
+    "tx_hash": "J4EWUQmriQ3g2pJtQXBcjryTgq1Hjtscm69ZPt24uTZX"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_set_policy.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EFkh6GSKbE6DNfKyKtHP5D9oLXGEZTgP5VrTkVQgeJu",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_set_policy",
+    "nonce": 33000018,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "8J3tRrYZB6J9oze98EcqNL9HwFJtZ9ot9rG1XVzLWcZ4",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "EA8usRhxRbSWrqKEnckmrdktA3DaSGEQU1GqpvbeZ2NR",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "5XTkBX7s5RGD9biChPtTDA7fFZQPQKXBK4dWek6RUbjn",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888086331208,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EFkh6GSKbE6DNfKyKtHP5D9oLXGEZTgP5VrTkVQgeJu",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "JsHd7XZj7BPQq3ZVJ8UosgMUSG5hs2XA1p9gwLLcyB9",
+    "tx_hash": "5FNSYcTGy6m4YoXk6fPKzkyFUc4Hd3UzbjbN9RtuFK4b"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_unfreeze.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GC5ciGFmQ5pAZGLGzN4dTsRANs2HvrLySgkAEXb314d8",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_unfreeze",
+    "nonce": 33000019,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "7kvD4aFGRHRsb4BosSc8P5MGz3kU7uaVtHuxR8UWAqwt",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "4wCnv688drEJJedeKK9S8K7URoQ98Fx474Cw8HiTY6Wc",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "AHLq8qM7mteSndX5eC4YPdRDbB1ewntnw4ogbjFugqaz",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888081859340,
+        "predecessor": "owner.test.near",
+        "receipt_id": "GC5ciGFmQ5pAZGLGzN4dTsRANs2HvrLySgkAEXb314d8",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "2FathyrepPFyNT1pRdEon4LvNVKrSv9pqje8z5p3Qdhx",
+    "tx_hash": "9FmHQoGZh78KpsHkdtaD9Fox5XhSGpKSdcPM71K9aeD5"
+  },
+  {
+    "evidence_file": "txs/owner_calls_nonexistent_reset_budget.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "8StynZygzdoPft8gpaDKDXPcP8MuuTms5Y6q7nRw53RU",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_calls_nonexistent_reset_budget",
+    "nonce": 33000020,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "5khYaz7xtow7fB5ywJrinv4ztg7Xp8tBx6ixjAERVUJX",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6p45Nnn1mbabBiv7fLmeybaM6zP8uJkqMtAigbTNqgni",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "H7Jx7g5pcQqCyaVXpMo137fpcFRvdtpctUzQRNDcx6mH",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 888090803076,
+        "predecessor": "owner.test.near",
+        "receipt_id": "8StynZygzdoPft8gpaDKDXPcP8MuuTms5Y6q7nRw53RU",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "J26BVaZ23KnFrNqAgNVmapCdhYPbt6WzCC7tSNaf6CmA",
+    "tx_hash": "8xS2S7NdTQtfwf9L12QFx5rcVEvVtALNcgePXXY3odRb"
+  },
+  {
+    "evidence_file": "txs/malformed_id_plus_sign.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GwnDJrZ1pu5p2zT22u51qQc5ZSmrDgSbnxVPKoZpYaZw",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_plus_sign",
+    "nonce": 51000009,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Euvco5TXAx7s1JdAatAYFMhJunsGwBHbapQYSSxPsFvd",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "EprroNy8dkyfu5SmTN1PyKe8TLdpVWpuAweDUnd9EGFX",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "AMQio8o4qPSXSMdF55UMHfF8iGbBZZRcEwcpMhUg6Jam",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112614380113,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "GwnDJrZ1pu5p2zT22u51qQc5ZSmrDgSbnxVPKoZpYaZw",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "AgEyw6fHxTa9CuVgmrLTxoiQ7cDkZjqsrtcon8AHwuta",
+    "tx_hash": "C6SZY4CFLJgTyxPvqjAYU4rEkyXFo18hXJ95HxtWYkJb"
+  },
+  {
+    "evidence_file": "txs/malformed_id_leading_zero.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "9LZjgUT9Q7aBYkSP4HqGjFxRFfCD2uQ96UvCkgmrEXA1",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_leading_zero",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "CJEMkPP589dkKoaZmfZ9XuK1TVEDfe1dkvqY6GpQacz5",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1114295307845,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "9LZjgUT9Q7aBYkSP4HqGjFxRFfCD2uQ96UvCkgmrEXA1",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "7cjDLjkEe3DibRshngTNUuHQFUqYwdmtEj4DpE8wbCdQ",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "9Q1fgxYSFe7hgwmAWby5MUX2sjN5K7xQNXGxCY8pT2X1",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "2i6aaUJsokN2u8mcfV3PUfsr2e9svzXTWMRBr48xaA1h",
+    "tx_hash": "2X4qy8WUN1RcJYAzqaMFRbGsu5mScpVENsHZbx8zRy3F"
+  },
+  {
+    "evidence_file": "txs/malformed_id_leading_space.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "6nfvCtZZdp9czdBuN2mqbzm1D5He9ZUGaHw7bsvR76dK",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_leading_space",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2Jp7he6MBmYiLRFEjCGvDu7rGSCm4wCkLqKmmTJr5wDs",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112614380113,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "6nfvCtZZdp9czdBuN2mqbzm1D5He9ZUGaHw7bsvR76dK",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "yt1RKC8LcAYR2aG9VscQPcT2GW1KVYv9jcpcJAmLDWy",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "DUaqWUAGcSc1B3s3nPp3xDgrECQ7ojydXsmvmRfaXCF5",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "FcBvALoAUGk9ZFr6KJSqdQgsb8X4Eh7XeK7dxCyR5WX9",
+    "tx_hash": "92MHQs4kTYH58pE4t2Azs8vZaF4qeSNzHkLaWaVYQiez"
+  },
+  {
+    "evidence_file": "txs/malformed_id_trailing_space.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "76mPPhuYCBYc6ZeRTy5fNxUdduNDxeM6vbvZf4AYx3QS",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_trailing_space",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "8mtWEPmxVbfjva52qiaZmAb6jnvx6ExyiQmPj2JBx5JP",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112630835233,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "76mPPhuYCBYc6ZeRTy5fNxUdduNDxeM6vbvZf4AYx3QS",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "GvVsAPF3Put595js9AeWK539xsTuMMTAkXT493i4DFXQ",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Dj25c1VHzfr34w5R5yzz5jiSAonx6cyNPrQMDdm8SB87",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "GAbSc8RYxSkeyVecYUf5EQDqs7kdqYboJL5z1sEZK7tW",
+    "tx_hash": "9AxHVPUx4x8eyGsN5z64TQjqkDmDY5V6D6Qw3YmvdCXj"
+  },
+  {
+    "evidence_file": "txs/malformed_id_json_number.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "123BvvQPFWeqashNUtauncF7xWvAEGJByEMqWqX12FWB",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_json_number",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "4mzWNoWVRTL636y85wzyQ8ya34CaNrezUgjRtSjDZR5C",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1127004526085,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "123BvvQPFWeqashNUtauncF7xWvAEGJByEMqWqX12FWB",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "2cDWAcNJ7Chvqehsw8kR4w3VPnHWpMAMa8dHbwtkpX1S",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "3XisMtc6WFHPNWLws4UAATGBhtJkvE6L7yfXzvVtHaGy",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "3ozqAAs4gQ9pzV6P5cKCs44Nyt3W1A25wP1cenfCfG91",
+    "tx_hash": "6yua7zGarzWAbMVBtHLLd5y2ur5JJ523GvYvzkEZpmAf"
+  },
+  {
+    "evidence_file": "txs/malformed_id_decimal_point.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "FeD7dBJ7RpcQcUbRwyBGq268W2CqkUL7JpsVToRZvDcf",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_decimal_point",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "FB73cCidhx7rUxSnL29sRVwiwvw8UD6DDDtaxsmAFzpb",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Az3GZC7EBLELBwb2RyYyEYDVZJyH3uWPQWV6om1tzPFU",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "C6jg763n6DHvHdhfZu7zLbFTxeSTNt73v98Q4hqVYM2C",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112691018153,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "FeD7dBJ7RpcQcUbRwyBGq268W2CqkUL7JpsVToRZvDcf",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "5zNJ44JFjWz4MJ5kQuhDMQNoppnDRe9kq5Nqv3JTt116",
+    "tx_hash": "7QgPMeZzRsieUdG9GPJBFocgmWMY7CYMi6YXJvWQG5pz"
+  },
+  {
+    "evidence_file": "txs/malformed_id_exponent.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "963Vfb2XHg1GLRJYt9fF4a6qaRH2X3XGH4UjHQofLENW",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_exponent",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9iEbCBy39Kw23uffDr6WZc8L91GHMaG1iRkysZVthgj5",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112691018153,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "963Vfb2XHg1GLRJYt9fF4a6qaRH2X3XGH4UjHQofLENW",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "GRH27iDBSFVaQh4hYD76SbXq5pwPLsJ8Xz7GKm5BdeBJ",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "SXyBr3r8Cia6QhR78ENPtacCAXhARJ56KGjEZHumEfN",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "BnZ37gna3Sa74kXpghtfGwv1oTTcAwQSEdzP3N1gfPvY",
+    "tx_hash": "CQ13tFGK2EqRgyVNqjHAHiFNsLddfL2tmqMLMcMhVccm"
+  },
+  {
+    "evidence_file": "txs/malformed_id_negative.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "CaGdW32aqQrFiCiHTMNcmqE9AvhDdY8RKHWgXUJk1gaL",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_negative",
+    "nonce": 51000001,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "7WasMfHeqmFknQqamow7LMngJ7kyqfx567rxthWcYtsa",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "2UXp92LJyZYGpybWywU5Nkv8VgZuwoKwaWyDTMe8icR5",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "3hwmUmBSSGz8Ahy7TRnuKfMYUuEZYzbwP2BXKFTmPt5z",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112614380113,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "CaGdW32aqQrFiCiHTMNcmqE9AvhDdY8RKHWgXUJk1gaL",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "6bbrhCjy1TWyTJb45BJ6k8xRZZc6cSkrBHdqrijUkeQG",
+    "tx_hash": "75NgBxFSdJbM7KwfHhgY3Fo1EtkKRnubZQdUwnsUtMMd"
+  },
+  {
+    "evidence_file": "txs/malformed_id_empty.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "DKhuTAWSzgmnKm3nLMLYTYFmFv4wWcmMpqjFeNtAWvA3",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_empty",
+    "nonce": 51000010,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "G7KSUJgt3NV41BPCAJ8wjNn9mzh936BB489fv6JLBTxb",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "4fGi4EhyuVGAuy8WbDKtL8aktMwkaSqtW8jycTs5YaF1",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "5jGJvFwjgLK8uRhFemMfYHfrVgoW9KEg1SCUbYBKxUKT",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1111522302213,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "DKhuTAWSzgmnKm3nLMLYTYFmFv4wWcmMpqjFeNtAWvA3",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "9eutivdvfVE6kLSD42jCCQB5T7nHKK4T5fso5NobV8ZY",
+    "tx_hash": "A9nRCjjC6ekjkfR9nHWGzmXKCALq4Lr8EF6CwYTqzj4h"
+  },
+  {
+    "evidence_file": "txs/malformed_id_hex.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "HNP4H4uVhxVo82Gzs2bm2ns5dDeAFeNJqVGR6jgRCXEy",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_hex",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "E8Zhk6jR8Khq6njN2Ke6KhSnc68vQnFCgU9xxUuqmE8h",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "GHzCWccDEJ77TBg18LaBuXEK74r2Xce3TES1aXkoanw",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "3ew4cekBdL6vqrieVW5sckpoTs4ETjcUkS79csSJSRnC",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1112691018153,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "HNP4H4uVhxVo82Gzs2bm2ns5dDeAFeNJqVGR6jgRCXEy",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "6h6UGttQo162aWuAjifSvrzg1P1i2n7hnYG5cEEDkDom",
+    "tx_hash": "EQdoRqahCTxGetprz9UaKRYmyWCFbQjvTw8geF1GwRr2"
+  },
+  {
+    "evidence_file": "txs/malformed_id_u64_overflow.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "tPdEgfqv9G3xbUGXF9hf9LFXKJRUNTzLCLm2tUq9K6R",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_id_u64_overflow",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "EZfEADGRM92nGehsfTuauxE2auNPJQFUWKFV5KKGU4QW",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HEx8ZddqcrEzHoMs6T2ou5oSvPv2s1ADpkDpF2p5AVto",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7rBRmxeiW3Xhkmvq3Bq8moDwELiBfPQQcPWLo67s3GLa",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1117010088329,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "tPdEgfqv9G3xbUGXF9hf9LFXKJRUNTzLCLm2tUq9K6R",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "EECstGncqeuXjCRNkfcEuANQ34iFcxzRJpChBe8g2Lt7",
+    "tx_hash": "JEDdWeW6AjaY1sDRSWP15FNLPTa7iQzYaFQ8Up6GhdqA"
+  },
+  {
+    "evidence_file": "txs/malformed_amount_plus_sign.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EWj7oEh47FzewMpXFAkut62SPFXuPtfYd1RfFNp52WH3",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_amount_plus_sign",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "FGgv7gNbMwfvRYapnyJnBLCpH2ZaeFcEQ9iTH7H4uoQp",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1118220198605,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "EWj7oEh47FzewMpXFAkut62SPFXuPtfYd1RfFNp52WH3",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4yvV1EYja7bpYzVQkwBA7sTVSFqCeYeDXf5gsSadF6Bs",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HQppzU8H7bwQpWEdZEXotErYgm2pmYdmgGVmMNcxaBoH",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "CrxyZbMUVowgv8VpjukhfysfsvaeAmL8b5C8vgLdbqHD",
+    "tx_hash": "3Mngbe3UYUGk7Yb3eWfzHV7FAv3ckEf3Pzg7r5kVZbLA"
+  },
+  {
+    "evidence_file": "txs/malformed_amount_leading_zero.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "93LZ7RQ4v6SZnR7Y1h66wnjwAYegrccRZwmWRzzYoYSa",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_amount_leading_zero",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "5fAVt8uT2dNyr87wmkdT8tKm4mH8R4P1eUZ9Txyre7VW",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1119901126337,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "93LZ7RQ4v6SZnR7Y1h66wnjwAYegrccRZwmWRzzYoYSa",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4kbYDRDQV2irkCrDkviSprpBNwpPus8SFjnstYcThHUC",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "H7ygsdSenM44CfKMq2GJ2RsDvFKhkiXTqKfDPBoGw4Dr",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "3i1KrQWosFmA3kG5WjVyF7YzHUj4zTtCDtv3drL7egz4",
+    "tx_hash": "7XK3mdEqmReMUdoe76dS9uA3BtsMt2R8vhmQWLD9rgND"
+  },
+  {
+    "evidence_file": "txs/malformed_amount_json_number.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "8YzvFSmukahjybzZZbg4MwWWhWovmCbmdZUbd5JFmTFa",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_amount_json_number",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "3iHoD4AwQVsgksdBMk3cbQ5sj4zAT3NkHkNWrwHtZSHm",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1132531360001,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "8YzvFSmukahjybzZZbg4MwWWhWovmCbmdZUbd5JFmTFa",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "DtCmMRHp68mokLRvPZbRV4i58qp79BgCL3Yc4JDGH7Fv",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "GH3QZP6jCShEibj8YWr96TsYSDFEvofm5zeW1ziBbqfc",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "DYV4eNx23inQpeFhbRB3QLpaeY2hYWsRSfThELWNZkin",
+    "tx_hash": "ENEem9oSF82q5BLU4wPeg6uZwfNrdctzaPVWiUgjro2G"
+  },
+  {
+    "evidence_file": "txs/malformed_amount_exponent.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2rYSaEYC7oZGfSg5AVuxKVF2gFUrVvHeQxRCGah7rRmq",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_amount_exponent",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "4FrUg4LLNpM6mBTfAkF7DrzYzXfc1BMR8jxWPUimLwSC",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1118287085305,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "2rYSaEYC7oZGfSg5AVuxKVF2gFUrVvHeQxRCGah7rRmq",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "JD35Vy2DAW94Pvcy8JGrS3j5KbPndfMkrCicN1MD8YCK",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "DTMkVUUbff5txaFXhPUkaBqLXjKvg4wxTVZN18RsfePF",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "DWTiecMvGdir8xNqGGCrZCBm6MXdyZqfoowKnjuWU7SW",
+    "tx_hash": "DnQgBkgZZm2afkNSqrqw3KhSuSfLC6UsqfMEtChQ2Qo6"
+  },
+  {
+    "evidence_file": "txs/malformed_amount_u128_overflow.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "3i3awg13b1QxF9E6QUSUTVp9ePp88wrtKt78ZbRxenUA",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_amount_u128_overflow",
+    "nonce": 51000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "4uPUJNmXxE5tnARrRBfj2HGuCLiytDC7efGjjzNvBfoD",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1126650546885,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "3i3awg13b1QxF9E6QUSUTVp9ePp88wrtKt78ZbRxenUA",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "BrFK25buDMvrUjAVwN79CdZnFEKLqHnws9mVx7u2PF1L",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "m8CfuTct92MU9y4Y3E6cQBYvvnB3QmohEbAWR2bDbXN",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "FKdnqietS7xiBiG8YqBKNVP93Zj5dWCunbGqdXvgGh4X",
+    "tx_hash": "7onRGP4fCVzUvd2WKesKfUeGNnLsucrLhHhBB1vvZGJG"
+  },
+  {
+    "evidence_file": "txs/malformed_policy_hash_hex_encoding.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "7hWhc9Uu3RVzK52vyWvDxHE29XzUL13dCC3o1UE7xVit",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_policy_hash_hex_encoding",
+    "nonce": 51000011,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2WnNL9cTXV85gH1eT9wnrpu1ZskLyAB9KzvNoLddpLWw",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1125777522813,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "7hWhc9Uu3RVzK52vyWvDxHE29XzUL13dCC3o1UE7xVit",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4cR9KTQzF7oRc26yRe7tRsZWCc5x9Bc8Gz55o2evr1UC",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BW7DotsJ2aUtxi9ZTDBytgwgwGxUMJoHUfKoRDRcQXio",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "DpH7zvuQbQRZqhQsD1DET8PBU2w3c75cvmV2bwyRYCjf",
+    "tx_hash": "6TxBG9W91j4ZnGc5dSXLUenDMN43e1FMfZJpd6hBvcGg"
+  },
+  {
+    "evidence_file": "txs/malformed_policy_hash_45_chars.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "CgmgnXSh9i54WAf7fe9vi2NoaUvrVryjS2tPntEHttPq",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_policy_hash_45_chars",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7Dh2e4ckMDcuqiiLzVzr1NeqEYKmsRPrRpwypCuJmeW3",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1125586798781,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "CgmgnXSh9i54WAf7fe9vi2NoaUvrVryjS2tPntEHttPq",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "76qkTVHhGZKdfmsbP7szycHzS3JUamBDbCKkZ1346s5n",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "ETNLG9oABetVjUhMjqpb1jYHw2i5srp5GTeYYxhdZMTi",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "F4aCFH71rHWBr5JDG18c5VB8sdXhqTAgQRtb1jskoQD4",
+    "tx_hash": "4UsP4FVaQTEhunX7qvd6PiRDyrVsXfdRovxjWRnNAamo"
+  },
+  {
+    "evidence_file": "txs/malformed_policy_hash_not_base58.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "3F5D1eZGs9g4GYPekasSsboDNVno2pUNMf6wTbnuK35G",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_policy_hash_not_base58",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "7adawJWpv4cKDa3HJmfKrZEpS7HBdSJGhsbiR3vUimHf",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "2r3VGKBCoV2dMRGgAPS6rVLSsrjn8ZXdF39zbHrncxdW",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "3857azMpouEChNmwSCgFtfqdJdskpsTRyhuMdsuofjjM",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1127267777101,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "3F5D1eZGs9g4GYPekasSsboDNVno2pUNMf6wTbnuK35G",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "5tfj1NRo6RRBQbZETku8kh78ibhRxBpvgRVbmFxJbPRU",
+    "tx_hash": "5ZDbfXVq39aUk3Jt2tFtYf2wdRHoPVWp8ATzerj3JLVT"
+  },
+  {
+    "evidence_file": "txs/malformed_duplicate_request_id_key.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "9Qm5yNLgLhJd6pYcjSCTGK3YCPTrmsPi98KRGK7qgepy",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_duplicate_request_id_key",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7EivihXPDqYZ9CuLffZyAuVojrzduJh6a9rzYtdJXSbm",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1114069327329,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "9Qm5yNLgLhJd6pYcjSCTGK3YCPTrmsPi98KRGK7qgepy",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "FsWRedL7rB1jgEc2qTyNP9ihXzLaZyfR2UPumxEdU4EJ",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "GLw5mZdcf35vyLWT5Vzdw4rVKtiaL83JCkdDhtX81UyU",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "DR3ThazQapVYr28sZedxkHgqXHYZPk3dUjAtjDXktwkg",
+    "tx_hash": "2VuLsTVpBAFotFJETQgsXWYthTegEzjgXGiCwi4NgWty"
+  },
+  {
+    "evidence_file": "txs/malformed_unknown_field.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "21XtfmPvumQisrcoUrccHuN9sST5vXtH3ii91qEkZJxP",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_unknown_field",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "Heks5oPKoHm2wq7kAjiSTzs9MXYTdurUCopcbzcyNu9y",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1194321376485,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "21XtfmPvumQisrcoUrccHuN9sST5vXtH3ii91qEkZJxP",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "8ygDh8biMdDhmDizYv4M99YPimHCZaCgALJsaqXVR6fb",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BSw8KkYgmkL9d3ewZbbcPpuymQdBHXUTdW9oVcgQbDWZ",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "39h7DQ3MHrUpvScnmmDv1Fx4nhvfxfqkqGWcaLhNkFPC",
+    "tx_hash": "iBNwiLoNpaSiYBoCVSiaTtrRjDRr7cvwiLSqaWPUx6E"
+  },
+  {
+    "evidence_file": "txs/malformed_missing_policy_hash.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "DWsxmaFk8X5gJ1ECGyfD3JUMeJzYNXcUso4r1w344cMk",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_missing_policy_hash",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "AqZvoj6k9NjpgkfA2UYx4oiuT6yzsQ7pmemn7G4qt9Ac",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1122030679953,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "DWsxmaFk8X5gJ1ECGyfD3JUMeJzYNXcUso4r1w344cMk",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "746JF8hzb5wX3TCAiNoiTBVq1wS6ueZJGmvpmj1N1ip9",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "H3dcaR2dudPaYPfdfACXHRKqcaCmhiwdJgSCAsxgoy6y",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "FZ2S3jKgAnPrz3CXeteFoef8AzPFGXqwuWJ9zazNXWxj",
+    "tx_hash": "GuxHYqcLzux6VKz5TM7DVqaCfAxbB6qUQYxphh88YBx5"
+  },
+  {
+    "evidence_file": "txs/malformed_invalid_account_id.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "3BmoYt9DjihohdaFZxbx1oWesNHsG2gq9ekX3L62tSzj",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_invalid_account_id",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "6nJCCUheBg5QPJGxrmuUEY6Qmcd7Ckv8pge6ARW3aWrJ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1140298348441,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "3BmoYt9DjihohdaFZxbx1oWesNHsG2gq9ekX3L62tSzj",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "3A1AkPRLzoBR1DYqnDLVUQZrR36jRH2Rq4cg6B5ndch7",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "AB6wguxa62rhUsbEJC43Y6jmH2t2W7ogCjp9qoNHqhy2",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "AUwMjPTPzrym2rKveXeLogor3x73suonhVm3qmAwcxWn",
+    "tx_hash": "A7kHoy2p3ojWLQZoGqE5Yds4PgbDWy5PAaXNMKM7FNez"
+  },
+  {
+    "evidence_file": "txs/malformed_not_json.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "FDEn8wwrsY5nq1Ge1nFxJH7aBG4dZtsPwfobWbiVFPok",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "malformed_not_json",
+    "nonce": 51000003,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "CrKzMVaGEtJKbZgh1xDFqpAL9GxdoNuSoR96wJqFknwh",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BsaoCHn6i46FHsT5ra5qRGWZ6vrdWa5ngzDGfZzDzfsa",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "F5bQ1xFNC2CFyWBynqKhYMJ6FfvqDk49KKWvjoPTF14i",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1102182898941,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "FDEn8wwrsY5nq1Ge1nFxJH7aBG4dZtsPwfobWbiVFPok",
+        "receiver": "vault.owner.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "6pzoio5zhA1895QabDTZQKnEYRz1BtCLTiyNbJCqGbHT",
+    "tx_hash": "HYV3dgAqcz8RT1T5XAsn9Uohkndf6SAX5rNRaiBQo7aJ"
+  },
+  {
+    "evidence_file": "txs/deny_id1_zero_amount.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "BNBP1DMLyA2knAurMVth1ajx81QfPcZ5pSmKSBXm8iMj",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_id1_zero_amount",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "ErFLX6fnrVnZTPoKoxCa4srif2S3LmjerEHmfKpiEnQw",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "AEr6GQYhXKfsbPTWpANFsBoeFbQyMEdyG1kWdKtgu7yJ",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "CdokiDbh2zZezi2RLxP3Khe2K466WbDvNGvpu53pUkwV",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1705450359781,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "BNBP1DMLyA2knAurMVth1ajx81QfPcZ5pSmKSBXm8iMj",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "BchaD4sWxMKdNSbPxaHfEfatXgEMw347XbhFZbTmwZZ4",
+    "tx_hash": "AaQr2WViN8QiGrQEcdUo6XJtVD5v4WH1EqxogoipUBAn"
+  },
+  {
+    "evidence_file": "txs/payment_1_success.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GJ1ddkwXqZxBJtdgXnMvy9gyXZcGiyP9F5J46CyNvhNG",
+    "graph_closure": {
+      "bodies": 6,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 6,
+      "referenced": 6
+    },
+    "label": "payment_1_success",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "N9ynpFotwThNE1uQtHE5384X3cme4maGfWbHh7aYADX",
+        "executor": "alice.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "vault.owner.test.near",
+        "receipt_id": "3Zb9h81UMe9J5G35cj89me2NR47Ec1snxUvmgQLBdpnN",
+        "receiver": "alice.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "N9ynpFotwThNE1uQtHE5384X3cme4maGfWbHh7aYADX",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6PEYEDrNUfHFx8nb8gYWzbShU8mjVDhnhNgYub5ebCGq",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Gxq3dU5p3VfbqdoWjfFUbfo7i9UDXGKgpsv6WDGuXeK",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "9pny3krGWZ42rG8p2PMd5kFroke7R5sGNYc7C714F5ap",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "FAGQcBVgsVsd8V2b9axzWuwhenbXfrP6Yc5ZkcrZyRBy",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BCf8EAJDvaYz493GfkMSSo7uNroavkvvqspAdrueXDk4",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "Gxq3dU5p3VfbqdoWjfFUbfo7i9UDXGKgpsv6WDGuXeK",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1741660126253,
+        "predecessor": "vault.owner.test.near",
+        "receipt_id": "GCjNMZtVBvf9wHujU89FhgNBmvWDJaTYQha9FBnGZWc4",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "EojtjbNq8V73HesjVaru45AGX5xdaTXFnrcf5g6SxzKD",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 2601029542782,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "GJ1ddkwXqZxBJtdgXnMvy9gyXZcGiyP9F5J46CyNvhNG",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "KRUCSAE7UdUQMK3RmhjpJ2thSGFxeFdZeGfuta5jBoB",
+    "tx_hash": "DSsrg75HgR88LUKH6HvaUpiqZhPuhFBP6UwB1QWsuE4K"
+  },
+  {
+    "evidence_file": "txs/payment_2_to_missing.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "7QGku2AAi1Z3anQs1cNHUabbw5fHvBAHLRqLEGzo4xTh",
+    "graph_closure": {
+      "bodies": 7,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 7,
+      "referenced": 7
+    },
+    "label": "payment_2_to_missing",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "G2G96x2yeiNgATHVSjzhWUzd1SppLVSoZHThdCRBSUx",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6CwcYBQughnmcZPBpEZ3rRLWZWhRZk8MKm2WTPPGJ4sn",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "6tmH21zcbQB2CYsw8ACTt4xfnFhgRSTqtSsm2jnrNJP",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6neyxeJwX5uQTDRJFpU2KDsYRqbgyghCJxLk6kvUGbHY",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "JCnAuTmFZH835PqPUDgamHWc6ChSgrHjkgdB27khwUEZ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 2636628734438,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "7QGku2AAi1Z3anQs1cNHUabbw5fHvBAHLRqLEGzo4xTh",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "G2G96x2yeiNgATHVSjzhWUzd1SppLVSoZHThdCRBSUx",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "8kgsLHQ9YeKmk8Rr4XhktzEH6BQrdDMJCWVUyth4APrf",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "F8hMtrq188xFwiGcQq2LD42eGvCQmKNt7apysQymefoA",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "9hPmXPuJayAhyYuhduUW7kMoPTof3pGk1U8d6wHYvR6Z",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "G2G96x2yeiNgATHVSjzhWUzd1SppLVSoZHThdCRBSUx",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1745197865261,
+        "predecessor": "vault.owner.test.near",
+        "receipt_id": "AewJqCuP9N95fcNFWvw3zLFHcoQ2xxHTSh77NPNC42x1",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "6tmH21zcbQB2CYsw8ACTt4xfnFhgRSTqtSsm2jnrNJP",
+        "executor": "missing.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "vault.owner.test.near",
+        "receipt_id": "CfoRnRxJGzELRNg7Z9j1bRT396ZWeZPgfZ1L4SPsgDMH",
+        "receiver": "missing.test.near",
+        "status": "Failure"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "3viikviqZDHMAqB8rBWGpk3eSkNFZS3s3TWE9Kzrnesv",
+    "tx_hash": "2prFusWivQza1j73AmEDuwaewtkHPts1cV9eK7Cqn7GQ"
+  },
+  {
+    "evidence_file": "txs/deny_replay_id1_same_terms.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2LDGkcQQsRNNw3oqAUybBN4vL8fU1Hfm1QX5UbGRq4KC",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_replay_id1_same_terms",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7Rfr5rdZKpi5AVzLLRzUE2jPbEcG6NQgm3LDLrFUXvxE",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1772106658292,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "2LDGkcQQsRNNw3oqAUybBN4vL8fU1Hfm1QX5UbGRq4KC",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "7vnqiAx2ydw3os22XXEXiu9HDFkqSTpS58RSRE2T3uNv",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HjHuWKrpk3K2R6CR67w4wuJgFS988KLAUv3C3YQVmTii",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "HxqCfMq1FBpTKuPkt2x4Vsu7DXNeMdH7XaPmwb87v2xj",
+    "tx_hash": "9wyg4mcGrm4WgWmcNzsGDJ33LzgrMNpyCo3poZj8MY51"
+  },
+  {
+    "evidence_file": "txs/deny_replay_id2_failed_transfer_same_terms.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2V4J5qE9phvRsjRT3MbXokcQLB2otnRSBz3zWcMexm8h",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_replay_id2_failed_transfer_same_terms",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7fNsGWxjHhroVN4Fc9MzSnSLw2P5fLPmMv5yEJVdPLuc",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1772877293440,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "2V4J5qE9phvRsjRT3MbXokcQLB2otnRSBz3zWcMexm8h",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "DhveGLcE7bvGRTqVcqN8ssMKV5zH3fd9zQEwZ1v2hEZa",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "EuHuL4wvHmLVPtiP4YWpHReYEa22r5aaS7RGtR9riBJ2",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "6P6NY5peRHAooxDZ5uhk7nab7fzMn8vMx1cuW6PGzyh6",
+    "tx_hash": "6DSqBCNoaUP3BY9J1qLEk3ZMu7YFvLGMb4o7AmWmE7uy"
+  },
+  {
+    "evidence_file": "txs/deny_replay_id1_different_terms.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "C9VS4XqVQ4yoL9FDqP5veYpFhkW8tT6eNiq2Hwzn6A4H",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_replay_id1_different_terms",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "A2nsuEvQEoFU5nbPn6PjeeBCSedndP2nkHyfLQafpdX7",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "2c5yLSiWaQQCnTiK59D6Q4Bv3dkyBUrUTuhqXstiVmQ5",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "22Z4JehSRmD1wGrC1rRaynyzBF91zwUK3DkJ8t7udV8W",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1772867155024,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "C9VS4XqVQ4yoL9FDqP5veYpFhkW8tT6eNiq2Hwzn6A4H",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "89QHfgcY8h7TxEnzTcqs96PUm5euhjTCfzRhPMoLYdT7",
+    "tx_hash": "6XH2yh7VF63KRei2RJRAAhvjo7UbMZtAKzgpvWGaSkk1"
+  },
+  {
+    "evidence_file": "txs/deny_replay_id1_json_escape_alias.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "6WcxXiqRz9GyiT13RfK3tqfKrQbRP8UHdsn3RTzgTTEo",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_replay_id1_json_escape_alias",
+    "nonce": 51000004,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "bBVgABvSoubchvEJWD2sS4yVGnS15PzqdWYAtgL15Dg",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1772258868152,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "6WcxXiqRz9GyiT13RfK3tqfKrQbRP8UHdsn3RTzgTTEo",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "6NusjmGy8FxDtWTxRe8N4zrKyBckLkEUMaJdH4QfZdEC",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "DV6rFBYRLKweb3kaFBpAnbX7BQ9BbhM32JNB1WnURwSH",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "26AAvvBirVUK4vd3pP9AkHwSkehgGiimWEr6Ae4nsgVr",
+    "tx_hash": "6W4xDGxXnFtqW6uRBaKocz5CNLqcViRhihkk6B8NuNth"
+  },
+  {
+    "evidence_file": "txs/deny_policy_mismatch_tv1_hash.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "Eec7QQCUyoEyKzpDCHb9hLnW4x2e8rU231hWjBjRteMJ",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_policy_mismatch_tv1_hash",
+    "nonce": 51000012,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "FFwjsJ6eAQBwHkj78XQzNhgxyPsg4Ay1Y6PMSrQ5az2B",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1696300518092,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "Eec7QQCUyoEyKzpDCHb9hLnW4x2e8rU231hWjBjRteMJ",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "FoXafg96wjVuh8TKDmefvqYhig7o9LmyzViv22wpfFBz",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "G5hy6zBkhmzghwQmnY93iGSB7WDFSmJALEUvrjWdZiRz",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "68zHLTEt2zK2tQ5KcXcbHrVFvLPXaMXU1cEUG6wVNdya",
+    "tx_hash": "At2mYC1RvCvSZewB9Yu9hxeLbuy98uiroGapHk2kQAng"
+  },
+  {
+    "evidence_file": "txs/deny_recipient_not_allowed_bob.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "9oRUxSK3iARUiQV5v8DXy8wFrWYLPn2QWn4hVBBniJzt",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_recipient_not_allowed_bob",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "HXTqkewfL34513qtdkLcf7NuZccDypWTgUHGLL1Nvd51",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1758018125237,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "9oRUxSK3iARUiQV5v8DXy8wFrWYLPn2QWn4hVBBniJzt",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "E7VuuXFJAEJrgnfTmon7N3uK98fRbHsaWRtNbRB97yvW",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "BYSvK64gywH9a59f56j1THPoLURz7Pf6tyvrNZqKEkCF",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "J2Qc8tG5Npmk2phLqcT9nj6M3BCXErcEWHSTqSLLYtcg",
+    "tx_hash": "7HtwW5VVDJQYsUaLFJ3zDh9SvnHsfkMc8yNYXVSaPPMY"
+  },
+  {
+    "evidence_file": "txs/deny_recipient_not_allowed_owner.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "4DUvvqUiTcZDc5z6wbyC1ZRb9E6fnPzcDXAysiKBwuaf",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_recipient_not_allowed_owner",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2ZBgLeHJEmmPGiyCBvSzaGDixRXE5iWoFyWM4cTcBzg1",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1759022423089,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "4DUvvqUiTcZDc5z6wbyC1ZRb9E6fnPzcDXAysiKBwuaf",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "BaBCpAvdWCuCop7hNopVeR5QJmsvbSc17km3xKgJvH28",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "C3TrBAfV98hKPAerJre61DN9o5FL9Hg8LY89T4DtH2EB",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "74zYz36B9jk8UyB5756ccWDm9wNjfmzWmAw1WAT5CVxt",
+    "tx_hash": "HYki8qGyaxGd2LiCU6ihBawgpS5a1orsYUPeLokuTcyz"
+  },
+  {
+    "evidence_file": "txs/deny_recipient_not_allowed_vault_itself.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "6FeXjAbaVe3rE1eHffKovQPuokm21UAR3K3xprKQKBKM",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_recipient_not_allowed_vault_itself",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "3gqRCwTBASxnCMQS5G8pWPTerk8qu1R7gYZFN6vfwhp5",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "5ew3Ksd3NJ9Gu5x2zBpSKyiQFZbVKBGgP95HyVbe6kMR",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "7KeWgGezZqn4VpjgtCGPVDVM7SyQxJgkjKt9NX9zKkyg",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1761594319429,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "6FeXjAbaVe3rE1eHffKovQPuokm21UAR3K3xprKQKBKM",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "8A83bxfTG4JbvgQJ53SjYtmiy3t7kxJbg4ZC8EuJj19q",
+    "tx_hash": "5MARUMddQJB7fSgDJkEEE33EDg7qzuNPP9T9y3Kztggz"
+  },
+  {
+    "evidence_file": "txs/deny_zero_amount.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "AjdsvX81Wjgj9qPMfrBHSeCW6GJPxyFi2AQEqEapN15J",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_zero_amount",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "CH6RAVM2b8HuP7n5K3Gp4f5g6KotYoeAq2CKM3tkQUR8",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1739719820065,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "AjdsvX81Wjgj9qPMfrBHSeCW6GJPxyFi2AQEqEapN15J",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "GSiKbs36SFvceLXtwwTH2S8uPfBD5gaDof15Bupwi35J",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "dvkQA6ECgApXY65WfVVuE4BEQbJVgSwbgL26MSR3C2S",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "AeyndaDeJ81A9skt6dF5FZtwee81WCbbe2TEWmc3qvsZ",
+    "tx_hash": "FNtYGLP4w5iyJi4o7ArnDqpzVtMQvfum2xvUebHP4Cfr"
+  },
+  {
+    "evidence_file": "txs/deny_above_max_per_request.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "CyQiSSKvGf1EjZhQRaBzSaork5YwmQQo2kU5YaWDW8u5",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_above_max_per_request",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "H7caBEZnXvkmfrPh7oZARAAMq9GFcNYU5HDuXTBPjj7k",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "5E38nTzAE9vUvrcTDjioRSe8NxaLtnZFpsNZfYLF9dLf",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "4RsHQYLvTgm14Br8kUYDrSemP7tmvWWthUujARkdLYds",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1758838391089,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "CyQiSSKvGf1EjZhQRaBzSaork5YwmQQo2kU5YaWDW8u5",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "9sdtRX1eYg1369Xotj3vTVxmSYgXsh2hPSQGdsVnKYE",
+    "tx_hash": "Hp4bQ5CH34a3LN8BpXCeBu9brYkskhQiUzoYLoKd24cq"
+  },
+  {
+    "evidence_file": "txs/deny_record_quota_exhausted_within_budget.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "D1auBrpgBz9m34ueyB6Bcg89jMy8nRFyZS5YDH6R1eDt",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_record_quota_exhausted_within_budget",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "2CTeAwmy7CpDeagBuDYwzzGxRBwqi8Y2gbDDjPGKy1gV",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1759678717033,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "D1auBrpgBz9m34ueyB6Bcg89jMy8nRFyZS5YDH6R1eDt",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "HYzjk7Y36ovismDDBinLKSHiyQWv5KXRDw51mK2W7ybB",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HhBxqgm8j2Q13oBUWpKwaV8hMWugsYC4FVAKzjwXwquo",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "6aYvhTHcdQjpL4VK5Qe7nWm3YLdPzvkdXFEbBKjoQxXZ",
+    "tx_hash": "4APpb2bnXWHtnjH3wLu9ik3CL2BWshTeFtLDVP8ahmaz"
+  },
+  {
+    "evidence_file": "txs/owner_freeze.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EvRnavqp3oUMPe4vTQo93cvu6xvbbFHFpTCF9rD5EpGM",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_freeze",
+    "nonce": 33000021,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9nzQSGKc1mxKPmC2NJE6URJt4tFz58wJVRn6mA73gj2r",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1458198278993,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EvRnavqp3oUMPe4vTQo93cvu6xvbbFHFpTCF9rD5EpGM",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "4miizVmVSK3gHyt54xbPkmnRw2EwNWjQ5bZ3a9oxTxf7",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HkvMPweozkx1PUt6V9vbc7kb4QpCEdfyPbVkiGJin8q8",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "J524N2npMvGaq6jg4sAXTR2jH8TERCA9Py1G4YM6eykQ",
+    "tx_hash": "281MQGRAk4wXtnZzoQNEM9EW9jtihNj9W6xHHzPaseZF"
+  },
+  {
+    "evidence_file": "txs/owner_freeze_again_noop.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "BNStow8DUsE7C7GygPW3vCA9Q8znAbt6E6DpqScGTa1w",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "owner_freeze_again_noop",
+    "nonce": 33000022,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "EN9Sjqq9QVke6NUKLLdVgpUr2cFy5PjJP3k7ZF1JJenw",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1273702605854,
+        "predecessor": "owner.test.near",
+        "receipt_id": "BNStow8DUsE7C7GygPW3vCA9Q8znAbt6E6DpqScGTa1w",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "GqYvfj2UcGxG7t6UUsVhFXuzLZT7Y2VoNmnnmAgsPiAU",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "E3QD5nvnghX77vrR6JMhQ8eYboVXLoudhioWVJWpfRNs",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "8caFpJS9V987zwW96gqnjix4iajK7YiFZLiLCqCvyZYF",
+    "tx_hash": "J1cVRSAMgT9S5M5dSwK5JLURa57zHL4GQ6iCBBs4QHJf"
+  },
+  {
+    "evidence_file": "txs/deny_frozen_new_id.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "8wc4qjFRwDXWpJeax9VzGUEWX3RPSd8Bq3tvDRdWTVew",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_frozen_new_id",
+    "nonce": 51000005,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "6zoe5Rf7EA9ogFPoB9oF7rLpBWL2hNxEr62LoMihQH6A",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1693627861088,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "8wc4qjFRwDXWpJeax9VzGUEWX3RPSd8Bq3tvDRdWTVew",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AjrsmfvJ14MppDNSwvCzjKYkB6okaoj9tXZkfZMffQ5S",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "FQqJvm6i1Hdcot8T8tAaAJztHMSSgFoX6ePdG3wTjPb5",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "9En9ok1RyyHkLEYieFxQevjeWqx92CiXYkJKfSRNsNRq",
+    "tx_hash": "CZbCddeYp7a1FborCnnSUZdFXiv4mszGAafKr8d8pnzU"
+  },
+  {
+    "evidence_file": "txs/deny_frozen_replay_id1.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "26jxRZP4XHTWvkE4cJUNpd6Kd5Ynizq5rn3wmpRBgwoZ",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "deny_frozen_replay_id1",
+    "nonce": 51000006,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "GPsvfMGF4GEhoAkAmNkW96RXpTWNFM24aeRAsusjQSoJ",
+        "executor": "vault.owner.test.near",
+        "gas_burnt": 1693627861088,
+        "predecessor": "agent.owner.test.near",
+        "receipt_id": "26jxRZP4XHTWvkE4cJUNpd6Kd5Ynizq5rn3wmpRBgwoZ",
+        "receiver": "vault.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC",
+        "executor": "agent.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "NCt2faZy3m7aqtpetzqxy5YeQXiC5uELZyencrrdJU3",
+        "receiver": "agent.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault.owner.test.near",
+    "sender": "agent.owner.test.near",
+    "tx_block_hash": "5ZCbeRvBjLdqhgSRndUKvVHBLX525tuh1M3E4Kky5g4G",
+    "tx_hash": "7jFhQtsJxtCHwajJzVpsXZfroaDBriQJRwNjAnnmKSMb"
+  },
+  {
+    "evidence_file": "txs/create_agent2.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "4izroq5PyzrkM7P2RFHAWa4Bm6sxfCeP2qQy5mhv915p",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "create_agent2",
+    "nonce": 33000023,
+    "receipts": [
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "AddKey",
+          "AddKey"
+        ],
+        "block_hash": "4wisw4As87m8wYeKh9q1AVWpdjZMHSPzRtQ43jbVQAaT",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 7627679423092,
+        "predecessor": "owner.test.near",
+        "receipt_id": "4izroq5PyzrkM7P2RFHAWa4Bm6sxfCeP2qQy5mhv915p",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "44pN3ThBQHs943BGV4a3BVEfjBh7TAXC2j3YvNgAvCtQ",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "5FE6wpHzDN5zq5GdKVFgYm52NVNEcGKi5JHs1iFk2us5",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "agent2.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "AWJQMBrtbkaLgDUgdSPZ7RizASR69mcKntYv9btHwB29",
+    "tx_hash": "4zQ7pcTgRVNWWpY6jPMFjuB8EgPSTgHLUKaRuFLb2HhL"
+  },
+  {
+    "evidence_file": "txs/create_vault2.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "EjNn2iZPDv3c7iPnK2iukAfrVH7SP7auKZ9Sa4bb1bj1",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "create_vault2",
+    "nonce": 33000024,
+    "receipts": [
+      {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "DeployContract",
+          "FunctionCall"
+        ],
+        "block_hash": "5cb6HFbFEUgJnUJtdAnwNGKwnGL3fQ5mtr5tHy6gTdqt",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 19215826836683,
+        "predecessor": "owner.test.near",
+        "receipt_id": "EjNn2iZPDv3c7iPnK2iukAfrVH7SP7auKZ9Sa4bb1bj1",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Di5oCfqKfSwbVRgasiLawb92Jv183aTQDWFFqaBWJDNa",
+        "executor": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "H8X2QBWAUuQoeGUwkv9JhFQqD7RhCxUxu78mk8LaLknw",
+        "receiver": "owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "owner.test.near",
+    "tx_block_hash": "7Dq1Qz4PV5UfN3kYY1SgbGxKACA45KJBvN5KvN3ap9ZD",
+    "tx_hash": "79oWi5gGfCkG7TrvS7tEk9fe3sdsq4MJNggCFQEuujpB"
+  },
+  {
+    "evidence_file": "txs/probe2_id1_1near_alice.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "2tzKr3ojZVWnpMGMeezJuQXuR9vrhZigxpqByAhSoraZ",
+    "graph_closure": {
+      "bodies": 6,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 6,
+      "referenced": 6
+    },
+    "label": "probe2_id1_1near_alice",
+    "nonce": 445000001,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "GHQ51SRA97m24KWkP4ixAQgTGPs9kEEoWHx1KhsJALSE",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 2615815068745,
+        "predecessor": "agent2.owner.test.near",
+        "receipt_id": "2tzKr3ojZVWnpMGMeezJuQXuR9vrhZigxpqByAhSoraZ",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "CB8ZafzZkwPEJXGQwMyJAhHfwZzB7Wq8kNVLVCNt1eaC",
+        "executor": "alice.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "4MiRtKR7ijEddo8hpfin6Wh3bN9NcHERV44G6GWR7odZ",
+        "receiver": "alice.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "9vw26tLSd2xkPv7QDJvTi4h8nhpNeufirsHHDaL5TEVG",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "4ynyg3wtVsoQnSKsQtqNVAnjidLFYL6FgA4pcx4XL35Z",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "9vw26tLSd2xkPv7QDJvTi4h8nhpNeufirsHHDaL5TEVG",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 1751458781334,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "9CnvVhhbQc157zaxhWzmFY7hYeKNZo3L3EBDLroZZhaP",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "2W4jeAVpz2av2dDcFbUukQ6DkRMQXS3N3qKCRvCT4fdC",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "CZ2wuoRvA2a1H2h9f38nZaY3CGNiADXGEhvtENk1e4rF",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "CB8ZafzZkwPEJXGQwMyJAhHfwZzB7Wq8kNVLVCNt1eaC",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "GCKdenDwNkJ1iCG1Fpnrmdn12kmvRCEV92opaovt8YzJ",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "agent2.owner.test.near",
+    "tx_block_hash": "CRx6gZMNyHNDnfYLUTDZcoe6dgDE7ehbfLNpkvzSGgeY",
+    "tx_hash": "HijYqKoYcv9yFXroTFFx3m6Wojc483FtQbyGTb55bnV7"
+  },
+  {
+    "evidence_file": "txs/probe2_id2_2near_missing.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "GyaTK2eW5VwJaYY3uU64kE7r1Ub9DXcBnQFus9TYq8Ta",
+    "graph_closure": {
+      "bodies": 7,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 7,
+      "referenced": 7
+    },
+    "label": "probe2_id2_2near_missing",
+    "nonce": 445000001,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "5bQG6M5mMMK7oQBPUSS4S1oyZjaiqY5fwJWNkS4JnYbP",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "6gjw21oCdRpbi6H1bHyjqSDfjbL4KGEfBBhFZqcdVaAK",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "85vzm8n7jYUr1MY7ucLJtYeoQNsbMohfznLJ5UYJySHp",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "B48U5c9fRFeLoNgdbmyCDpMWD7w3dHrPyLEHqMJXk7EU",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "5bQG6M5mMMK7oQBPUSS4S1oyZjaiqY5fwJWNkS4JnYbP",
+        "executor": "missing.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "GXvcQcU6JSuAZ4iHtGzjKb6QAXNenrAMxuXugXuVFDfR",
+        "receiver": "missing.test.near",
+        "status": "Failure"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "EmcKSAHRokVh8z7W6ttRQfA9PzQzDEcX4JQ5Xjxx1gpq",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 2650882760025,
+        "predecessor": "agent2.owner.test.near",
+        "receipt_id": "GyaTK2eW5VwJaYY3uU64kE7r1Ub9DXcBnQFus9TYq8Ta",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "AuZoCnzFxCZRStnLzspBeFGNwU3swgynGBWcXpikUWca",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 1754996520342,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "HAezbFReyKRQvLYAxW2W5mphoCqtWozBqZ1xe24nHVLW",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AuZoCnzFxCZRStnLzspBeFGNwU3swgynGBWcXpikUWca",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "HUkqFFhPZuVfyjrpUH7VJb6qno6xJRqV8fZrkrVkV2Xu",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AuZoCnzFxCZRStnLzspBeFGNwU3swgynGBWcXpikUWca",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "J2tUXmWJyjj4J32pQGSKrT96RvwLH56VAQ1wLMmBXc8z",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "agent2.owner.test.near",
+    "tx_block_hash": "C6iSnFYQkg1FkdRxL97gdJMfzzzdhJTgsg4Y5bpVuKas",
+    "tx_hash": "9hCFquBfQdExLZmotUR3KxQjXzNJdqtyiVCzicM52pre"
+  },
+  {
+    "evidence_file": "txs/probe2_id3_3near_after_refund.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "HHBLiYSUpyNhcCGGiTTiwJGm6Z5h9M4znnjXZj2o7VEo",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "probe2_id3_3near_after_refund",
+    "nonce": 445000002,
+    "receipts": [
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Dz3idgqryBkMoy8ZgYcWiWzs2cyHyXFnzj4D7ru5YZP8",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "GKpTKn7eRPL4o1DhAtF6PQ3X3ZzNA9T1QSm9f6DEDkSF",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "HhtLiW8SfmNpo9sR2zCg8wVRvaB9NKV3kYkey8qSxNZa",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 1761698920688,
+        "predecessor": "agent2.owner.test.near",
+        "receipt_id": "HHBLiYSUpyNhcCGGiTTiwJGm6Z5h9M4znnjXZj2o7VEo",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "agent2.owner.test.near",
+    "tx_block_hash": "FHY2JE1CpgxCBriG5JEa4nbVoJU3u67boTwnwzqhVo5M",
+    "tx_hash": "GYgjgZUcF6eR3k83t8hD6JBViX7od58kuko5uboACLbA"
+  },
+  {
+    "evidence_file": "txs/probe2_id4_2near_remaining.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "4xmVc26VuSe9f15mNm54jAdq9oTCrqQJx5PZKNZyuJ7L",
+    "graph_closure": {
+      "bodies": 6,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 6,
+      "referenced": 6
+    },
+    "label": "probe2_id4_2near_remaining",
+    "nonce": 445000002,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "EoRyzqehaaPZwQPkS7dqUeX2DZ8cUpebFoHuTv4BsPgP",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 2662707552913,
+        "predecessor": "agent2.owner.test.near",
+        "receipt_id": "4xmVc26VuSe9f15mNm54jAdq9oTCrqQJx5PZKNZyuJ7L",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "H7qx44ikGGJDF48GZ36fgqwqsUcc9TPVtsg9SJD3i8ZJ",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 1764973142598,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "AMd3yn216ZZcy6EsWXhhyJMZ7bHPrYKLTiGMqbDzNyBq",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "Esmmn3prAFbQMuLrrPL456SYUBw4naAYaaA5MnjYn4qx",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "AaDFCcRnTU9QTUGKrxCKrRfAzWhm99xAGoJAgBHG4TNS",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AUWEvrkdUtk5MmJvHJJzFRLKppU3JGVAJMFcJd1YAQdY",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "DZqAVJ6D5e7jSm82VpjxHPiHkzwaTGWbzHiCiHeWCzxZ",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "H7qx44ikGGJDF48GZ36fgqwqsUcc9TPVtsg9SJD3i8ZJ",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "Gxm5r56jzsZgoWXuci6QSdF8iut54ZRJnRVns4CYREcw",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "AUWEvrkdUtk5MmJvHJJzFRLKppU3JGVAJMFcJd1YAQdY",
+        "executor": "alice.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "vault2.owner.test.near",
+        "receipt_id": "N21k46xQMimq5Ugtv9vmnxTTnBb3X1otMbENUHgamW4",
+        "receiver": "alice.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "agent2.owner.test.near",
+    "tx_block_hash": "4piELripkpBBUSrmWNdUy7bAEbJczkBWhMDqQWfmem8U",
+    "tx_hash": "EA5a89bddc2FM7MGANFDrtgmKeLwaXWBJzoGxbwpeQWg"
+  },
+  {
+    "evidence_file": "txs/probe2_id5_1yocto_over.json",
+    "final_execution_status": "FINAL",
+    "first_receipt_id": "5GS1soxwjXYEF2w99JH7UqkzLkKV8GyjDyFUyMbUBKob",
+    "graph_closure": {
+      "bodies": 2,
+      "missing_bodies": [],
+      "missing_outcomes": [],
+      "outcomes": 2,
+      "referenced": 2
+    },
+    "label": "probe2_id5_1yocto_over",
+    "nonce": 445000003,
+    "receipts": [
+      {
+        "actions": [
+          "FunctionCall"
+        ],
+        "block_hash": "6Tijev26aJkKPDBLxjwbV2ESGmYDFmJTH7Qynu8pEZP5",
+        "executor": "vault2.owner.test.near",
+        "gas_burnt": 1745626537892,
+        "predecessor": "agent2.owner.test.near",
+        "receipt_id": "5GS1soxwjXYEF2w99JH7UqkzLkKV8GyjDyFUyMbUBKob",
+        "receiver": "vault2.owner.test.near",
+        "status": "SuccessValue"
+      },
+      {
+        "actions": [
+          "Transfer"
+        ],
+        "block_hash": "G4FpwKLkTG6byVuTzfSsRhV34YJSMqjyCPRKjYy4z8iJ",
+        "executor": "agent2.owner.test.near",
+        "gas_burnt": 223182562500,
+        "predecessor": "system",
+        "receipt_id": "FaxrHezRYfG8g1BAGKeWrpHKBCnwN3Uownw6PYagxBsU",
+        "receiver": "agent2.owner.test.near",
+        "status": "SuccessValue"
+      }
+    ],
+    "receiver": "vault2.owner.test.near",
+    "sender": "agent2.owner.test.near",
+    "tx_block_hash": "7aLFdQfa81oF2HobzETiGYHGBXZM6bHHP7bkoDMsHjEB",
+    "tx_hash": "DGmWqQumcpx1SYewzT9mvmQjUMHPsp5HqKxHezvwm8ZN"
+  }
+]

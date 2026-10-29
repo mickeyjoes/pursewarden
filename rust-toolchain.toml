@@ -1,0 +1,7 @@
+# Pinned per Phase0_E prebuild decision §3.2 / Phase0_A preflight §2.1.
+# nearcore 2.13.4 itself pins channel 1.93.0; highest MSRV among pins is 1.93.
+[toolchain]
+channel = "1.93.0"
+components = ["rustfmt", "clippy"]
+targets = ["wasm32-unknown-unknown"]
+profile = "minimal"

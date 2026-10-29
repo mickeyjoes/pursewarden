@@ -1,0 +1,12 @@
+[workspace]
+# resolver 3 = MSRV-aware dependency resolution (prefers versions compatible with rust-version 1.93).
+resolver = "3"
+members = ["contracts/vault", "tests/sandbox"]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true

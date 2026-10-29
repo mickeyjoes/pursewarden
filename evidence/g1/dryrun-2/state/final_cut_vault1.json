@@ -1,0 +1,281 @@
+{
+  "agent_access_keys": {
+    "block_hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "block_height": 424,
+    "keys": [
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "249160550696144600000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:2Rz1SAbbPuza4Mg2L9R3axXeMbHzHMeJjKpRwoYDtwp6"
+      },
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "248873815316313800000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:3iKnpCvHeBhdkmj4c8sYqfD4drqZsCYJaH8C2HtF3eiz"
+      },
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "249151748782871200000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:AYgvx38TCs3WFgnn2BXAEDR48kZBJPBcvRCSE3GWUNBi"
+      },
+      {
+        "access_key": {
+          "nonce": 40000006,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "248960899448785000000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:Aps5dBX9r2z6odzktBw2fqxjP13GoXBgXi53tAosGeUb"
+      },
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "249146928937654600000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:FNTZQnB7YhBh5ZM5etjDkutyp4pDkKdcWgxvCu84XfJW"
+      },
+      {
+        "access_key": {
+          "nonce": 40000012,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "249368889685804100000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:G2USt8utKycEaBw87rAdpukLyWp9S4hSdDeDnGrSm8Qi"
+      },
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "248870865463908500000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:G6Cb4g7z5gQMUvmm3PuusxpWsSUWLc7JE59G1rptWXb4"
+      },
+      {
+        "access_key": {
+          "nonce": 40000005,
+          "permission": {
+            "FunctionCall": {
+              "allowance": "249152548853522200000000",
+              "method_names": [
+                "request_payment"
+              ],
+              "receiver_id": "vault.owner.test.near"
+            }
+          }
+        },
+        "public_key": "ed25519:GtoNrERFhDZunFze4rDZuBVMPs8LRQApHtYGs5yUiUx5"
+      }
+    ]
+  },
+  "block_hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+  "block_height": 424,
+  "get_admissions": [
+    {
+      "admission_seq": "2",
+      "amount": "1000000000000000000000000",
+      "callback_status": "CbSucceeded",
+      "recipient": "alice.test.near",
+      "recipient_index": 0,
+      "request_digest_hex": "53ac70a1085f22e77a9d13e95785825125d02bf2a8143bc6865f37fe349b3f23",
+      "request_id": "1"
+    },
+    {
+      "admission_seq": "4",
+      "amount": "2000000000000000000000000",
+      "callback_status": "CbFailed",
+      "recipient": "missing.test.near",
+      "recipient_index": 1,
+      "request_digest_hex": "4ad5b3316b11b58db020cb424d3a39d2d60db3b2754365a395a8e9185eb7eeaa",
+      "request_id": "2"
+    }
+  ],
+  "get_admissions_query_block": {
+    "hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "height": 424
+  },
+  "get_mandate": {
+    "accepted_count": 2,
+    "account_balance": "6574662406057848000000000",
+    "agent": "agent.owner.test.near",
+    "allowed_recipients": [
+      "alice.test.near",
+      "missing.test.near"
+    ],
+    "asset": "NativeNear",
+    "block_height": "424",
+    "block_timestamp_ns": "1793309669090400077",
+    "budget": "5000000000000000000000000",
+    "callback_gas": "20000000000000",
+    "callback_unconfirmed": "0",
+    "cb_failed_amount": "2000000000000000000000000",
+    "cb_succeeded_amount": "1000000000000000000000000",
+    "chain_id": "test-chain-7a95k",
+    "charged": "3000000000000000000000000",
+    "contract_version": "g1-0.1.0",
+    "expired": false,
+    "expires_at_ns": "1793396020618256641",
+    "frozen": true,
+    "headroom": "2000000000000000000000000",
+    "max_accepted_requests": 2,
+    "max_per_request": "2000000000000000000000000",
+    "owner": "owner.test.near",
+    "policy_hash": "A3sSVNcvch9pYj1KC4yxrb6YUyEausgpnucotufTeiB6",
+    "policy_hash_hex": "8675604472633dc14cc0ed51f916f4a73bbb1cb9e3fff5e7257845060a574eb5",
+    "reserve_margin": "10000000000000000000000",
+    "reserve_total": "1573870000000000000000000",
+    "seq": "19",
+    "storage_bound_bytes": "156387",
+    "storage_usage": "155658",
+    "vault": "vault.owner.test.near"
+  },
+  "get_mandate_query_block": {
+    "hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "height": 424
+  },
+  "missing_recipient": {
+    "error": {
+      "cause": {
+        "info": {
+          "block_hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+          "block_height": 424,
+          "requested_account_id": "missing.test.near"
+        },
+        "name": "UNKNOWN_ACCOUNT"
+      },
+      "code": -32000,
+      "data": "account missing.test.near does not exist while viewing",
+      "message": "Server error",
+      "name": "HANDLER_ERROR"
+    },
+    "id": "367",
+    "jsonrpc": "2.0"
+  },
+  "raw_state_decoded": {
+    "STATE": {
+      "accepted_count": 2,
+      "agent": "agent.owner.test.near",
+      "allowed_recipients": [
+        "alice.test.near",
+        "missing.test.near"
+      ],
+      "asset": 0,
+      "budget": "5000000000000000000000000",
+      "cb_failed_amount": "2000000000000000000000000",
+      "cb_succeeded_amount": "1000000000000000000000000",
+      "chain_id": "test-chain-7a95k",
+      "charged": "3000000000000000000000000",
+      "expires_at_ns": "1793396020618256641",
+      "frozen": true,
+      "max_accepted_requests": 2,
+      "max_per_request": "2000000000000000000000000",
+      "owner": "owner.test.near",
+      "policy_hash": "A3sSVNcvch9pYj1KC4yxrb6YUyEausgpnucotufTeiB6",
+      "reserve_total": "1573870000000000000000000",
+      "seq": "19",
+      "storage_bound_bytes": "156387",
+      "vault": "vault.owner.test.near"
+    },
+    "index": [
+      {
+        "position": 0,
+        "request_id": "1"
+      },
+      {
+        "position": 1,
+        "request_id": "2"
+      }
+    ],
+    "records": [
+      {
+        "admission_seq": "2",
+        "amount": "1000000000000000000000000",
+        "callback_status": "CbSucceeded",
+        "recipient_index": 0,
+        "request_id": "1"
+      },
+      {
+        "admission_seq": "4",
+        "amount": "2000000000000000000000000",
+        "callback_status": "CbFailed",
+        "recipient_index": 1,
+        "request_id": "2"
+      }
+    ]
+  },
+  "raw_state_query_block": {
+    "hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "height": 424
+  },
+  "vault_access_keys": {
+    "block_hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "block_height": 424,
+    "keys": []
+  },
+  "vault_account": {
+    "amount": "6574662406057848000000000",
+    "block_hash": "BodaxsW2cnbjwXiXiGm5ir5VWetKLc3FG9y3vdNquv3E",
+    "block_height": 424,
+    "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+    "locked": "0",
+    "storage_paid_at": 0,
+    "storage_usage": 155658
+  }
+}

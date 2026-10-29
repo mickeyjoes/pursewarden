@@ -1,0 +1,165 @@
+{
+  "final_execution_status": "FINAL",
+  "receipts": [
+    {
+      "predecessor_id": "owner.test.near",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args": "e30=",
+                "deposit": "0",
+                "gas": 30000000000000,
+                "method_name": "delete_account"
+              }
+            }
+          ],
+          "gas_price": "1000000000",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "owner.test.near",
+          "signer_public_key": "ed25519:CqFRuPKPWWuw75eJJAwB1V6VD42VSYC6KR3PYdAeUUQ3"
+        }
+      },
+      "receipt_id": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2",
+      "receiver_id": "vault.owner.test.near"
+    },
+    {
+      "predecessor_id": "system",
+      "priority": 0,
+      "receipt": {
+        "Action": {
+          "actions": [
+            {
+              "Transfer": {
+                "deposit": "30799285747449600000000"
+              }
+            }
+          ],
+          "gas_price": "0",
+          "input_data_ids": [],
+          "is_promise_yield": false,
+          "output_data_receivers": [],
+          "signer_id": "owner.test.near",
+          "signer_public_key": "ed25519:CqFRuPKPWWuw75eJJAwB1V6VD42VSYC6KR3PYdAeUUQ3"
+        }
+      },
+      "receipt_id": "Bg29HqF6XHqvCiVoVp91XpSnv6sm7eMFjWL8irzKf15L",
+      "receiver_id": "owner.test.near"
+    }
+  ],
+  "receipts_outcome": [
+    {
+      "block_hash": "8WoiZQHvgK6LsS8QeGxCgbME3oPgmpb9uaGCc7GH2jjz",
+      "id": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2",
+      "outcome": {
+        "executor_id": "vault.owner.test.near",
+        "gas_burnt": 888095274944,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau"
+            }
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [
+          "Bg29HqF6XHqvCiVoVp91XpSnv6sm7eMFjWL8irzKf15L"
+        ],
+        "status": {
+          "Failure": {
+            "ActionError": {
+              "index": 0,
+              "kind": {
+                "FunctionCallError": {
+                  "MethodResolveError": "MethodNotFound"
+                }
+              }
+            }
+          }
+        },
+        "tokens_burnt": "88809527494400000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "G4ikzJCZpEJsDq1nFvAJBJo9MWRXc1HDjAkstvkpM6dM",
+      "id": "Bg29HqF6XHqvCiVoVp91XpSnv6sm7eMFjWL8irzKf15L",
+      "outcome": {
+        "executor_id": "owner.test.near",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            null
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    }
+  ],
+  "status": {
+    "Failure": {
+      "ActionError": {
+        "index": 0,
+        "kind": {
+          "FunctionCallError": {
+            "MethodResolveError": "MethodNotFound"
+          }
+        }
+      }
+    }
+  },
+  "transaction": {
+    "actions": [
+      {
+        "FunctionCall": {
+          "args": "e30=",
+          "deposit": "0",
+          "gas": 30000000000000,
+          "method_name": "delete_account"
+        }
+      }
+    ],
+    "hash": "2pa1foEzBDH2niAWr7qRZMgXWEVX54T3uAXKWNK7kioc",
+    "nonce": 33000015,
+    "priority_fee": 0,
+    "public_key": "ed25519:CqFRuPKPWWuw75eJJAwB1V6VD42VSYC6KR3PYdAeUUQ3",
+    "receiver_id": "vault.owner.test.near",
+    "signature": "ed25519:1NsNMDpQ1A54htSwvwBYskXFdJNcsve77SnAX27yYUnNPSMSF3ncqgd7wzCkRK2yHbDeog4gR4rEXZZvxVZDHKU",
+    "signer_id": "owner.test.near"
+  },
+  "transaction_outcome": {
+    "block_hash": "3PAWzEhWti3UJZgdN8EqA3kXzF5R8z4wMh6nba7LHjNG",
+    "id": "2pa1foEzBDH2niAWr7qRZMgXWEVX54T3uAXKWNK7kioc",
+    "outcome": {
+      "executor_id": "owner.test.near",
+      "gas_burnt": 308822439440,
+      "logs": [],
+      "metadata": {
+        "gas_profile": null,
+        "version": 1
+      },
+      "receipt_ids": [
+        "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2"
+      ],
+      "status": {
+        "SuccessReceiptId": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2"
+      },
+      "tokens_burnt": "30882243944000000000"
+    },
+    "proof": []
+  }
+}

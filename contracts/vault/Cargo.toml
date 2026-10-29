@@ -1,0 +1,19 @@
+[package]
+name = "near-agent-vault"
+description = "G1 fixed-mandate native-NEAR agent vault (SPEC-V1.1). Experimental; no withdrawal, no upgrade."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+publish = false
+license = "UNLICENSED"
+repository = "https://github.com/mickeyjoes/near-agent-vault-lab"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { version = "=5.29.1" }
+
+[dev-dependencies]
+# Test builds only (resolver 3 does not unify dev-dependency features into the wasm build).
+near-sdk = { version = "=5.29.1", features = ["unit-testing"] }

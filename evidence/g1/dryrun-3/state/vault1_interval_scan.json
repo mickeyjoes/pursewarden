@@ -1,0 +1,208 @@
+{
+  "access_key_changes": [],
+  "blocks_scanned": 378,
+  "charged_series": [
+    {
+      "cause": {
+        "receipt_hash": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+        "type": "receipt_processing"
+      },
+      "charged": "0",
+      "height": 58,
+      "seq": "0"
+    },
+    {
+      "cause": {
+        "receipt_hash": "BNBP1DMLyA2knAurMVth1ajx81QfPcZ5pSmKSBXm8iMj",
+        "type": "receipt_processing"
+      },
+      "charged": "0",
+      "height": 328,
+      "seq": "1"
+    },
+    {
+      "cause": {
+        "receipt_hash": "GJ1ddkwXqZxBJtdgXnMvy9gyXZcGiyP9F5J46CyNvhNG",
+        "type": "receipt_processing"
+      },
+      "charged": "1000000000000000000000000",
+      "height": 334,
+      "seq": "2"
+    },
+    {
+      "cause": {
+        "receipt_hash": "GCjNMZtVBvf9wHujU89FhgNBmvWDJaTYQha9FBnGZWc4",
+        "type": "receipt_processing"
+      },
+      "charged": "1000000000000000000000000",
+      "height": 336,
+      "seq": "3"
+    },
+    {
+      "cause": {
+        "receipt_hash": "7QGku2AAi1Z3anQs1cNHUabbw5fHvBAHLRqLEGzo4xTh",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 342,
+      "seq": "4"
+    },
+    {
+      "cause": {
+        "receipt_hash": "AewJqCuP9N95fcNFWvw3zLFHcoQ2xxHTSh77NPNC42x1",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 344,
+      "seq": "5"
+    },
+    {
+      "cause": {
+        "receipt_hash": "2LDGkcQQsRNNw3oqAUybBN4vL8fU1Hfm1QX5UbGRq4KC",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 350,
+      "seq": "6"
+    },
+    {
+      "cause": {
+        "receipt_hash": "2V4J5qE9phvRsjRT3MbXokcQLB2otnRSBz3zWcMexm8h",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 356,
+      "seq": "7"
+    },
+    {
+      "cause": {
+        "receipt_hash": "C9VS4XqVQ4yoL9FDqP5veYpFhkW8tT6eNiq2Hwzn6A4H",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 362,
+      "seq": "8"
+    },
+    {
+      "cause": {
+        "receipt_hash": "6WcxXiqRz9GyiT13RfK3tqfKrQbRP8UHdsn3RTzgTTEo",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 368,
+      "seq": "9"
+    },
+    {
+      "cause": {
+        "receipt_hash": "Eec7QQCUyoEyKzpDCHb9hLnW4x2e8rU231hWjBjRteMJ",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 374,
+      "seq": "10"
+    },
+    {
+      "cause": {
+        "receipt_hash": "9oRUxSK3iARUiQV5v8DXy8wFrWYLPn2QWn4hVBBniJzt",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 380,
+      "seq": "11"
+    },
+    {
+      "cause": {
+        "receipt_hash": "4DUvvqUiTcZDc5z6wbyC1ZRb9E6fnPzcDXAysiKBwuaf",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 386,
+      "seq": "12"
+    },
+    {
+      "cause": {
+        "receipt_hash": "6FeXjAbaVe3rE1eHffKovQPuokm21UAR3K3xprKQKBKM",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 392,
+      "seq": "13"
+    },
+    {
+      "cause": {
+        "receipt_hash": "AjdsvX81Wjgj9qPMfrBHSeCW6GJPxyFi2AQEqEapN15J",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 398,
+      "seq": "14"
+    },
+    {
+      "cause": {
+        "receipt_hash": "CyQiSSKvGf1EjZhQRaBzSaork5YwmQQo2kU5YaWDW8u5",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 404,
+      "seq": "15"
+    },
+    {
+      "cause": {
+        "receipt_hash": "D1auBrpgBz9m34ueyB6Bcg89jMy8nRFyZS5YDH6R1eDt",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 410,
+      "seq": "16"
+    },
+    {
+      "cause": {
+        "receipt_hash": "EvRnavqp3oUMPe4vTQo93cvu6xvbbFHFpTCF9rD5EpGM",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 416,
+      "seq": "17"
+    },
+    {
+      "cause": {
+        "receipt_hash": "BNStow8DUsE7C7GygPW3vCA9Q8znAbt6E6DpqScGTa1w",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 422,
+      "seq": "17"
+    },
+    {
+      "cause": {
+        "receipt_hash": "8wc4qjFRwDXWpJeax9VzGUEWX3RPSd8Bq3tvDRdWTVew",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 428,
+      "seq": "18"
+    },
+    {
+      "cause": {
+        "receipt_hash": "26jxRZP4XHTWvkE4cJUNpd6Kd5Ynizq5rn3wmpRBgwoZ",
+        "type": "receipt_processing"
+      },
+      "charged": "3000000000000000000000000",
+      "height": 434,
+      "seq": "19"
+    }
+  ],
+  "code_changes": [
+    {
+      "cause": {
+        "receipt_hash": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+        "type": "receipt_processing"
+      },
+      "height": 58
+    }
+  ],
+  "from_height": 58,
+  "migration_changes": [],
+  "missing_heights": 0,
+  "to_height": 435
+}

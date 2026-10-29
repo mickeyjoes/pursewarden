@@ -1,0 +1,507 @@
+{
+  "checks": [
+    {
+      "critical": true,
+      "detail": {
+        "at_start": "Evzc5WCNFDrpWVNF2X5XTLyMKKrJENVR9BpnhqRco5WS",
+        "chain_id": "test-chain-CP0EB",
+        "genesis_hash": "Evzc5WCNFDrpWVNF2X5XTLyMKKrJENVR9BpnhqRco5WS"
+      },
+      "id": "node.identity_stable",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "protocol_version": 86,
+        "version": {
+          "build": "2.13.4",
+          "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+          "rustc_version": "1.93.0",
+          "version": "2.13.4"
+        }
+      },
+      "id": "node.version_2_13_4_pv86",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "archive": false,
+        "epoch_length": 100000,
+        "gc": {
+          "gc_blocks_limit": 2,
+          "gc_fork_clean_step": 100,
+          "gc_num_epochs_to_keep": 5,
+          "gc_step_period": {
+            "nanos": 500000000,
+            "secs": 0
+          }
+        },
+        "save_receipt_to_tx": true,
+        "save_state_changes": true,
+        "save_tx_outcomes": true
+      },
+      "id": "node.retention_config",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "contract_assumes": {
+          "account_bytes": 100,
+          "byte_cost": "10000000000000000000",
+          "extra_bytes_record": 40
+        },
+        "num_bytes_account": 100,
+        "num_extra_bytes_record": 40,
+        "storage_amount_per_byte": "10000000000000000000"
+      },
+      "id": "runtime.storage_params_match_contract_constants",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {
+              "block_hash": "C7okAJ4fT2sUKLnkGyPcidE1SFEkbSU4rpeoeb7hJq4R",
+              "block_height": 1,
+              "requested_account_id": "missing.test.near"
+            },
+            "name": "UNKNOWN_ACCOUNT"
+          },
+          "code": -32000,
+          "data": "account missing.test.near does not exist while viewing",
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "id": "6",
+        "jsonrpc": "2.0"
+      },
+      "id": "setup.missing_recipient_absent_before",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "DeployContract",
+          "FunctionCall"
+        ],
+        "deploy_code_hash_b64": "dx+8CRj3UsxvmuNjUdYaVSDqXnj2Fw+ERxGE3TQVcyw=",
+        "receipt": "28vvzz7e9DZidKkb4Uoc2DrChYtwvVW46TjQUTMHMkgV",
+        "status": {
+          "SuccessValue": "IkVKV2ZEaUQ4d1RCYVlXaW93TnVkQU1wNjR2dXBFSnVOdW1aa1BEeDh1WlhSIg=="
+        },
+        "tx": "8h9zsUdfcNw8F5u6Muuo9NCEChHg5kWxKhbFrHq1wWdB"
+      },
+      "id": "construction.single_batch_create_transfer_deploy_init",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "contract_returned": "EJWfDiD8wTBaYWiowNudAMp64vupEJuNumZkPDx8uZXR",
+        "independent": "EJWfDiD8wTBaYWiowNudAMp64vupEJuNumZkPDx8uZXR",
+        "independent_hex": "c5a456db0481d92f85d39e087d0567a85e0fc6cd97fe63aa4d848689ba895954",
+        "observed_chain_id": "test-chain-CP0EB"
+      },
+      "id": "construction.policy_hash_matches_independent_encoding",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "block_hash": "6emcpxe9BhJoLcUjvEdcdirYvkpMwz1LoLAs26JLFMp9",
+        "block_height": 30,
+        "keys": []
+      },
+      "id": "construction.vault_zero_keys_at_creation_block",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+        "expected": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu",
+        "view_code_hash": "921amWuoVLygUQgZT2MJjXW2J8kdmsMWt2m3Vkm88zFu"
+      },
+      "id": "construction.deployed_code_is_artifact",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "accepted_count": 0,
+        "account_balance": "7573895019395411000000000",
+        "agent": "agent.owner.test.near",
+        "allowed_recipients": [
+          "alice.test.near",
+          "missing.test.near"
+        ],
+        "asset": "NativeNear",
+        "block_height": "31",
+        "block_timestamp_ns": "1793309594610880117",
+        "budget": "5000000000000000000000000",
+        "callback_gas": "20000000000000",
+        "callback_unconfirmed": "0",
+        "cb_failed_amount": "0",
+        "cb_succeeded_amount": "0",
+        "chain_id": "test-chain-CP0EB",
+        "charged": "0",
+        "contract_version": "g1-0.1.0",
+        "expired": false,
+        "expires_at_ns": "1793395993858058039",
+        "frozen": false,
+        "headroom": "5000000000000000000000000",
+        "max_accepted_requests": 2,
+        "max_per_request": "2000000000000000000000000",
+        "owner": "owner.test.near",
+        "policy_hash": "EJWfDiD8wTBaYWiowNudAMp64vupEJuNumZkPDx8uZXR",
+        "policy_hash_hex": "c5a456db0481d92f85d39e087d0567a85e0fc6cd97fe63aa4d848689ba895954",
+        "reserve_margin": "10000000000000000000000",
+        "reserve_total": "1573870000000000000000000",
+        "seq": "0",
+        "storage_bound_bytes": "156387",
+        "storage_usage": "155402",
+        "vault": "vault.owner.test.near"
+      },
+      "id": "construction.mandate_initialized_as_specified",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_bytes": 154962,
+        "predicted": 156387,
+        "predicted_reserve": "1573870000000000000000000",
+        "reserve_total": "1573870000000000000000000",
+        "storage_bound_bytes": "156387"
+      },
+      "id": "storage.reserve_matches_declared_bound",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "bound_with_zero_admissions": 156131,
+        "storage_usage_after_init": 155402
+      },
+      "id": "storage.post_init_usage_within_zero_admission_bound",
+      "result": "PASS"
+    },
+    {
+      "critical": false,
+      "detail": [
+        {
+          "data": {
+            "agent": "agent.owner.test.near",
+            "allowed_recipients": [
+              "alice.test.near",
+              "missing.test.near"
+            ],
+            "budget": "5000000000000000000000000",
+            "chain_id": "test-chain-CP0EB",
+            "expires_at_ns": "1793395993858058039",
+            "max_accepted_requests": 2,
+            "max_per_request": "2000000000000000000000000",
+            "owner": "owner.test.near",
+            "policy_hash": "EJWfDiD8wTBaYWiowNudAMp64vupEJuNumZkPDx8uZXR",
+            "reserve_total": "1573870000000000000000000",
+            "seq": "0",
+            "storage_base_bytes": "155062",
+            "storage_bound_bytes": "156387",
+            "vault": "vault.owner.test.near"
+          },
+          "event": "init",
+          "standard": "near-agent-vault-lab",
+          "version": "1.0.0"
+        }
+      ],
+      "id": "events.init_seq0",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_hash": "11111111111111111111111111111111",
+        "keys": [
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:2G4wqCnbumqMNdqZv2f1cHk9YyTKxY7b1176C4hG1euZ"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:2ZURGBZaF2kWwQX9RG6YC1MdndmiJf5Egha8K8XQBKDj"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:3pvLhEJYTNpPrSwn7KrDskTpCuHNyh9cZ2r6zUpPeypd"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:3rTBJt73WusVJ2U3y6oa33ihqzGERPxMfyrScyevnw3K"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:5dprP5F3Fwpu16MHhvmJfhaPwDsfdVfWawUFPaYfPjDX"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:9JTNXzUG5izqnXRMWWEaNXnMpVMTjzMUXKcsakHd5H5D"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:Cpc2qgo9p2gaCYPxxJ2BThqVuarZJAcrxkApcnUMfhRf"
+          },
+          {
+            "access_key": {
+              "nonce": 23000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:EsRpbT4VyRm1zMCSGqAcYCMFoxVpZHGvjWNcWfoCypVx"
+          }
+        ]
+      },
+      "id": "construction.agent_code_free_eight_fc_keys_only",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "MethodNameMismatch": {
+                    "method_name": "freeze"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "MethodNameMismatch",
+        "tx_hash_never_included": "CHj5WjTm9gqWCxyxzA65xdrx3SWxheKaTs5GKLQcZyEj"
+      },
+      "id": "authority.validation_rejects.agentkey_calls_freeze",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "MethodNameMismatch": {
+                    "method_name": "get_mandate"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "MethodNameMismatch",
+        "tx_hash_never_included": "28qyLEqNk964rjtBbjcW793MuK5J8aC1zmkNds5To5V9"
+      },
+      "id": "authority.validation_rejects.agentkey_calls_get_mandate",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": "DepositWithFunctionCall"
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "DepositWithFunctionCall",
+        "tx_hash_never_included": "DMuwNHv766G2Gb5wQv7rvQ5caDZsZxPb7CqmWwPvNQZr"
+      },
+      "id": "authority.validation_rejects.agentkey_request_with_1yocto_deposit",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "ReceiverMismatch": {
+                    "ak_receiver": "vault.owner.test.near",
+                    "tx_receiver": "alice.test.near"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "ReceiverMismatch",
+        "tx_hash_never_included": "7ijib6eRwbYMNjHb2K8ChbCjP7cFmgFyG1b8rFueSXxm"
+      },
+      "id": "authority.validation_rejects.agentkey_other_receiver",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "NotEnoughAllowance": {
+                    "account_id": "agent.owner.test.near",
+                    "allowance": "250000000000000000000000",
+                    "cost": "1000245500818750000000000",
+                    "public_key": "ed25519:9JTNXzUG5izqnXRMWWEaNXnMpVMTjzMUXKcsakHd5H5D"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "RequiresFullAccess",
+        "tx_hash_never_included": "8hEGvpmaVCu3bLwAbAeMhgwAZjx1JMMebH1pgRM6tWuA"
+      },
+      "id": "authority.validation_rejects.agentkey_plain_transfer",
+      "result": "FAIL"
+    }
+  ],
+  "failed": 1,
+  "passed": 18,
+  "total": 19
+}

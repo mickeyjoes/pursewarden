@@ -1,0 +1,13 @@
+[
+  {
+    "accepted_count": 0,
+    "amount": "7573895019395411000000000",
+    "block_hash": "9EAdPgv9dND6t6FkSvyS5tcjZr2imUAbAiLmdugYKMUS",
+    "block_height": 31,
+    "charged": "0",
+    "label": "after_init",
+    "seq": "0",
+    "storage_usage": 155402,
+    "vault": "vault.owner.test.near"
+  }
+]

@@ -1,0 +1,5 @@
+2026-10-29T21:24:44.733281Z  INFO neard: version="2.13.4" build="2.13.4" commit="44f7ae6cd7ef08bab604e20a473bf77e35d4c993" latest_protocol=86
+2026-10-29T21:24:44.733461Z  INFO near: using key for account public_key=ed25519:7GNqsXfh1pZJ6aRVZSUiR8gzsKNLRNcPHKs4oWDQupnK account_id=node
+2026-10-29T21:24:44.733520Z  INFO near: using key for account public_key=ed25519:CTWPitjLzLzhqrdtokzVjwRwwo52qmLvQSdKZNKvgrN2 account_id=test.near
+2026-10-29T21:24:44.733677Z  INFO config: validating genesis config and records, this could take a few minutes
+2026-10-29T21:24:44.733812Z  INFO near: generated node key, validator key, genesis file dir=/home/mickey/Dev/Hackathons/NEAR/near-agent-vault-contract/.sandbox/g1-20261029a

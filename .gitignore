@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+**/node_modules/
+**/target/
+**/*.key
+# Local sandbox node homes (contain validator/node private keys). Never commit.
+.sandbox/
+# Locally generated agent/owner key material.
+**/keys/

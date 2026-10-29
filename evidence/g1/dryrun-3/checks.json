@@ -1,0 +1,2911 @@
+{
+  "checks": [
+    {
+      "critical": true,
+      "detail": {
+        "at_start": "87kditEPVKHApDhMwpWf9zccY6NTAVwmxY11chtpHsxd",
+        "chain_id": "test-chain-W41mX",
+        "genesis_hash": "87kditEPVKHApDhMwpWf9zccY6NTAVwmxY11chtpHsxd"
+      },
+      "id": "node.identity_stable",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "protocol_version": 86,
+        "version": {
+          "build": "2.13.4",
+          "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+          "rustc_version": "1.93.0",
+          "version": "2.13.4"
+        }
+      },
+      "id": "node.version_2_13_4_pv86",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "archive": false,
+        "epoch_length": 100000,
+        "gc": {
+          "gc_blocks_limit": 2,
+          "gc_fork_clean_step": 100,
+          "gc_num_epochs_to_keep": 5,
+          "gc_step_period": {
+            "nanos": 500000000,
+            "secs": 0
+          }
+        },
+        "save_receipt_to_tx": true,
+        "save_state_changes": true,
+        "save_tx_outcomes": true
+      },
+      "id": "node.retention_config",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "contract_assumes": {
+          "account_bytes": 100,
+          "byte_cost": "10000000000000000000",
+          "extra_bytes_record": 40
+        },
+        "num_bytes_account": 100,
+        "num_extra_bytes_record": 40,
+        "storage_amount_per_byte": "10000000000000000000"
+      },
+      "id": "runtime.storage_params_match_contract_constants",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "exports": [
+          "__data_end:global",
+          "__heap_base:global",
+          "contract_source_metadata:func",
+          "freeze:func",
+          "get_admissions:func",
+          "get_mandate:func",
+          "get_request:func",
+          "memory:memory",
+          "new:func",
+          "on_payment_result:func",
+          "request_payment:func"
+        ],
+        "imports": [
+          "env.account_balance",
+          "env.attached_deposit",
+          "env.block_index",
+          "env.block_timestamp",
+          "env.chain_id",
+          "env.current_account_id",
+          "env.input",
+          "env.log_utf8",
+          "env.panic_utf8",
+          "env.predecessor_account_id",
+          "env.promise_batch_action_function_call",
+          "env.promise_batch_action_transfer",
+          "env.promise_batch_create",
+          "env.promise_batch_then",
+          "env.promise_result",
+          "env.promise_results_count",
+          "env.read_register",
+          "env.register_len",
+          "env.sha256",
+          "env.storage_has_key",
+          "env.storage_read",
+          "env.storage_usage",
+          "env.storage_write",
+          "env.value_return"
+        ],
+        "inspect_verdict": "PASS",
+        "recorded": "5b05246bb41e11857f56845aca62edf92888e2ebbd210443f29577c22c216b26  near_agent_vault.wasm",
+        "sha256_hex": "5b05246bb41e11857f56845aca62edf92888e2ebbd210443f29577c22c216b26"
+      },
+      "id": "artifact.hash_matches_recorded_and_capability_gate_passed",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {
+              "block_hash": "7cd9JoBY3qZkHTUCpP41gD3eJgcRNC919xcCoBapLwh8",
+              "block_height": 28,
+              "requested_account_id": "missing.test.near"
+            },
+            "name": "UNKNOWN_ACCOUNT"
+          },
+          "code": -32000,
+          "data": "account missing.test.near does not exist while viewing",
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "id": "6",
+        "jsonrpc": "2.0"
+      },
+      "id": "setup.missing_recipient_absent_before",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "actions": [
+          "CreateAccount",
+          "Transfer",
+          "DeployContract",
+          "FunctionCall"
+        ],
+        "deploy_code_hash_b64": "WwUka7QeEYV/VoRaymLt+SiI4uu9IQRD8pV3wiwhayY=",
+        "receipt": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+        "status": {
+          "SuccessValue": "IkZmRVYydHh5U1lXYWszVVpYbUVMZ1pqUGMyOHZGZnhXcU1pcHhjNDZOcDdVIg=="
+        },
+        "tx": "2pQc7pDWPNiur1A4Hxso8uVmPypMnqxeJzCmg9ybk1JJ"
+      },
+      "id": "construction.single_batch_create_transfer_deploy_init",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "contract_returned": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+        "independent": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+        "independent_hex": "d9ceeef057796b8ea3890ee3f4e1478f3ab141f0fde80949fba8276c53dae7cb",
+        "observed_chain_id": "test-chain-W41mX"
+      },
+      "id": "construction.policy_hash_matches_independent_encoding",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "block_hash": "8VhAMS68NbAQuc3ZLz1Cwgr3JHasC4GAAJiExQ7dCozp",
+        "block_height": 58,
+        "keys": []
+      },
+      "id": "construction.vault_zero_keys_at_creation_block",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_hash": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau",
+        "expected": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau",
+        "view_code_hash": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau"
+      },
+      "id": "construction.deployed_code_is_artifact",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "accepted_count": 0,
+        "account_balance": "7571415012673286300000000",
+        "agent": "agent.owner.test.near",
+        "allowed_recipients": [
+          "alice.test.near",
+          "missing.test.near"
+        ],
+        "asset": "NativeNear",
+        "block_height": "59",
+        "block_timestamp_ns": "1793309940806918914",
+        "budget": "5000000000000000000000000",
+        "callback_gas": "20000000000000",
+        "callback_unconfirmed": "0",
+        "cb_failed_amount": "0",
+        "cb_succeeded_amount": "0",
+        "chain_id": "test-chain-W41mX",
+        "charged": "0",
+        "contract_version": "g1-0.1.0",
+        "expired": false,
+        "expires_at_ns": "1793396340044593607",
+        "frozen": false,
+        "headroom": "5000000000000000000000000",
+        "max_accepted_requests": 2,
+        "max_per_request": "2000000000000000000000000",
+        "owner": "owner.test.near",
+        "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+        "policy_hash_hex": "d9ceeef057796b8ea3890ee3f4e1478f3ab141f0fde80949fba8276c53dae7cb",
+        "reserve_margin": "10000000000000000000000",
+        "reserve_total": "1571390000000000000000000",
+        "seq": "0",
+        "storage_bound_bytes": "156139",
+        "storage_usage": "155154",
+        "vault": "vault.owner.test.near"
+      },
+      "id": "construction.mandate_initialized_as_specified",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_bytes": 154714,
+        "predicted": 156139,
+        "predicted_reserve": "1571390000000000000000000",
+        "reserve_total": "1571390000000000000000000",
+        "storage_bound_bytes": "156139"
+      },
+      "id": "storage.reserve_matches_declared_bound",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "bound_with_zero_admissions": 155883,
+        "storage_usage_after_init": 155154
+      },
+      "id": "storage.post_init_usage_within_zero_admission_bound",
+      "result": "PASS"
+    },
+    {
+      "critical": false,
+      "detail": [
+        {
+          "data": {
+            "agent": "agent.owner.test.near",
+            "allowed_recipients": [
+              "alice.test.near",
+              "missing.test.near"
+            ],
+            "budget": "5000000000000000000000000",
+            "chain_id": "test-chain-W41mX",
+            "expires_at_ns": "1793396340044593607",
+            "max_accepted_requests": 2,
+            "max_per_request": "2000000000000000000000000",
+            "owner": "owner.test.near",
+            "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+            "reserve_total": "1571390000000000000000000",
+            "seq": "0",
+            "storage_base_bytes": "154814",
+            "storage_bound_bytes": "156139",
+            "vault": "vault.owner.test.near"
+          },
+          "event": "init",
+          "standard": "near-agent-vault-lab",
+          "version": "1.0.0"
+        }
+      ],
+      "id": "events.init_seq0",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_hash": "11111111111111111111111111111111",
+        "keys": [
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:HRjrniXZszx24zKKDwjJQc2MhckmYAjee7Uv6XztQV1"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:2L4mrbGfDEV7CjoUYRqKv7nwVoDYKxaj2vBLbaDvyqrs"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:4etsjXCaSFrF5V5BKGTTCfsmXM3QUxp33szknLpESUQ2"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:6wFVAbAq68AVdmEJew1xzZiuYc8fipYbw5g5xgmYVYJt"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:7AMYWxKfCpW8ccR5mHVWwBrWZrQkzqCr7EWUhQ2jeb3G"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:8xtAwZcuCdeBWMiRNrfa1zLa1DtwUiLaHdgZc5SKqpgf"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:Cbaiz3LMboUF8BCB33xxg8cFmXv1KKpMqVepdoXPHWb2"
+          },
+          {
+            "access_key": {
+              "nonce": 51000000,
+              "permission": {
+                "FunctionCall": {
+                  "allowance": "250000000000000000000000",
+                  "method_names": [
+                    "request_payment"
+                  ],
+                  "receiver_id": "vault.owner.test.near"
+                }
+              }
+            },
+            "public_key": "ed25519:G84bqRTFyCf2Fr6NooRXBf3ghRVxY3CmcD7W5GLFMiCW"
+          }
+        ]
+      },
+      "id": "construction.agent_code_free_eight_fc_keys_only",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "MethodNameMismatch": {
+                    "method_name": "freeze"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "MethodNameMismatch",
+        "tx_hash_never_included": "12xKJWus6mnP2JZsctw1Nw5Nh2gSmb1R8ePi2qDL4Noa"
+      },
+      "id": "authority.validation_rejects.agentkey_calls_freeze",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "MethodNameMismatch": {
+                    "method_name": "get_mandate"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "MethodNameMismatch",
+        "tx_hash_never_included": "BmRYwfCJPS8KGGypbKAijDd5NpNkkvubU7goeXJAvBKG"
+      },
+      "id": "authority.validation_rejects.agentkey_calls_get_mandate",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": "DepositWithFunctionCall"
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "DepositWithFunctionCall",
+        "tx_hash_never_included": "HR778YSd3d9K7EmTnUxhHPe8NhJ8hgJEQNanSBkqbhAU"
+      },
+      "id": "authority.validation_rejects.agentkey_request_with_1yocto_deposit",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "ReceiverMismatch": {
+                    "ak_receiver": "vault.owner.test.near",
+                    "tx_receiver": "alice.test.near"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "ReceiverMismatch",
+        "tx_hash_never_included": "69A38GB4vBMsdZtAMgLrXUiTqLxhWTvtKVaWLdx4EmVD"
+      },
+      "id": "authority.validation_rejects.agentkey_other_receiver",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": {
+                  "NotEnoughAllowance": {
+                    "account_id": "agent.owner.test.near",
+                    "allowance": "250000000000000000000000",
+                    "cost": "1000245500818750000000000",
+                    "public_key": "ed25519:7AMYWxKfCpW8ccR5mHVWwBrWZrQkzqCr7EWUhQ2jeb3G"
+                  }
+                }
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "NotEnoughAllowance",
+        "tx_hash_never_included": "8T4ctWki7CSQUgm8PdSduCdMtSVk5HayEAoSXLXVEZxV"
+      },
+      "id": "authority.validation_rejects.agentkey_plain_transfer_1near",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": "RequiresFullAccess"
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "RequiresFullAccess",
+        "tx_hash_never_included": "Bv7xVW9rZaQ1jCVMi9DBVeu7jjW7f7qSHufMFXoBCWFS"
+      },
+      "id": "authority.validation_rejects.agentkey_plain_transfer_1yocto",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": "RequiresFullAccess"
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "RequiresFullAccess",
+        "tx_hash_never_included": "JDcYnp9dpZG5BZVjj5XnMGyVXZkUADqg3YNBSTrm8p8u"
+      },
+      "id": "authority.validation_rejects.agentkey_two_actions",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {},
+            "name": "INVALID_TRANSACTION"
+          },
+          "code": -32000,
+          "data": {
+            "TxExecutionError": {
+              "InvalidTxError": {
+                "InvalidAccessKeyError": "RequiresFullAccess"
+              }
+            }
+          },
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "expected": "RequiresFullAccess",
+        "tx_hash_never_included": "9t2mz77qWaEmkAbzxZheVc1WE7v7fYptXtuSzKMYu6GK"
+      },
+      "id": "authority.validation_rejects.agentkey_add_full_access_key",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "after": 51000000,
+        "agent_key0_nonce_before": 51000000,
+        "seq": "0"
+      },
+      "id": "authority.validation_rejections_leave_no_trace",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Unauthorized",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Unauthorized"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571425545255563100000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "6M31Dwp5N8PaVFPdJGSFjHtxrVuQAmKSf5mNo3BYC7Lo",
+          "data_changes_from_receipt": [],
+          "receipt_id": "EJU1onJbBVyUS6q4CjZLuP74PBQfhSY9bTGQ6ZJAxa42"
+        },
+        "tx": "2QpqnTdtNEYZdCDjDEryJAQvax6tp5tp43B4nwxJEGWa"
+      },
+      "id": "failure_no_effect.owner_request_payment",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Unauthorized",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Unauthorized"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571436074083561500000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "3SRuZPmSg1PRSnWXs4toNCddjhdGSnzS6J2SLXpedasi",
+          "data_changes_from_receipt": [],
+          "receipt_id": "2Pagx8vPsP4eUh3riBLopVZzCcZZyjRYb8ePYanLDLD9"
+        },
+        "tx": "8R2ZdaWq7MgqwJVN7CCujPnmjKY2hLUQJTddGCCGw9qY"
+      },
+      "id": "failure_no_effect.stranger_request_payment",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Unauthorized",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Unauthorized"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571444526353176200000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "9RWT6bZNivZZAJogaxEuKnQLCUmtv25PvDPTfjcEzeH7",
+          "data_changes_from_receipt": [],
+          "receipt_id": "84bGcDyCx5jav8Fhs47GNPJ7Z8VV7LQdELTcRukxhXke"
+        },
+        "tx": "CZqsRbXG7wNguV2n9qgb1XtsdtVwpyfSHt9UzMcXSeix"
+      },
+      "id": "failure_no_effect.stranger_freeze",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Method on_payment_result is private",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Method on_payment_result is private"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571450773624014300000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "2TcG8fyu9SdRF8ZSpudhmHsJksRAuxSHeJjvfV9jcfA4",
+          "data_changes_from_receipt": [],
+          "receipt_id": "GTvphpeGvwmk1vuRW2nzqcj4Ebv8SHKbxfdpfQzKhbAZ"
+        },
+        "tx": "3vEpEzuxi2cTF9aA4ako5pZ13YCwJaWVcfo8ZXKaJyS7"
+      },
+      "id": "failure_no_effect.owner_calls_private_callback",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Method freeze doesn't accept deposit",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Method freeze doesn't accept deposit"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571456427740005400000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "39vRSSqRuFjQ1w4vr7iaULr3PbFqNdqGC9uqf6Li6VnJ",
+          "data_changes_from_receipt": [],
+          "receipt_id": "78h8a9uaB9jh2rXb7JgBXe9Vg3XnTipMFXFvs7YTM5Er"
+        },
+        "tx": "9aB9BL8mQiXSRiMunWb4N7s9T7A6rquVM2rjbTYY32Ds"
+      },
+      "id": "failure_no_effect.owner_freeze_with_deposit",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Method request_payment doesn't accept deposit",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Method request_payment doesn't accept deposit"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571462162004008600000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "AtkENNqJEYo3DPCFZ8sRw2PN5pAwj2zWYtva1yVKY4a6",
+          "data_changes_from_receipt": [],
+          "receipt_id": "24bV9YDfZNEfBuTgMMbXFSH2bGs4vH2vTSw7zK9oqXCX"
+        },
+        "tx": "HwnRpdPFtjtP3bQDs6PdgAutNkh3E1orKjmzxzXKR5FS"
+      },
+      "id": "failure_no_effect.owner_request_with_deposit",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "The contract has already been initialized",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: The contract has already been initialized"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571470860107215700000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "8mTtHcJuEr7RvSHwZZ9HhRjaGrDRth9JjxD9Xyvyc6Df",
+          "data_changes_from_receipt": [],
+          "receipt_id": "9T5nzhQp34KyMBnCeCpVdv3Z9iuZzHQcXBZ9kkj7YT7f"
+        },
+        "tx": "2Mxgg7Hah6BogVWCDJJvFSMxDYiN3rQojYimitVpxTk6"
+      },
+      "id": "failure_no_effect.owner_reinitialize",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "9mqJCFmhovPKFx8HooZFQDw9w75U92xnyqEWMNfyEBXQ",
+          "data_changes_from_receipt": [],
+          "receipt_id": "6kfKpQC4n6x8J9D7zwhhfuvEzmC281dJBpP3PBXwu8We"
+        },
+        "tx": "2wKt9Zgx6DRD9VKh4PcLPgH2TbYYhEtAiMm5WEbBcadC"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_withdraw",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "J2RtXhmZ6MuVahfbkQEQV9pWYsDiQcKtajdqLM4uVxsz",
+          "data_changes_from_receipt": [],
+          "receipt_id": "EXWMAFzj2wNcuqumqwdxdFAnPxwWwxjgQRQ7ZtJAypRv"
+        },
+        "tx": "383R2YiAaHhDQhufMNCuKLFdEA8rYueLEYHxeRsQJzoP"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_transfer",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "5XgvAtAUm9ms22hwVi9rC1FAsTyBRXsaQXsC45YyMbjJ",
+          "data_changes_from_receipt": [],
+          "receipt_id": "23XsWRSqtoU7nA4wQypCfz2VkKR2Z8ebTb3XTNDzwvFQ"
+        },
+        "tx": "ALfqgsUhi2vemVDRYAY8cLnH52QRjsQQC8n9Lawy5Pa2"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_sweep",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "2Q7nVdQoNrUZ221RREEwcYRaT1TjfiUXsqFZxZRQpbbN",
+          "data_changes_from_receipt": [],
+          "receipt_id": "2M8roae1a14A2r8ktfLD3WiRPGX9w8vq5bTjukRX1KyP"
+        },
+        "tx": "GjQT9LLq63Gzi9EGWBofbbK6BYYfuwyPVu3Ep34DneC4"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_upgrade",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "5B7NjDcHBiYNx5Q9Uuh7Wp5SVyp1TZByFUN7RdarxJjf",
+          "data_changes_from_receipt": [],
+          "receipt_id": "Eu5sVxgoXS3SBhbwMx48RPq1rK15F5s3rftuYpuP8Sac"
+        },
+        "tx": "7XEY9K9sZpQCpfeLVdWUxKZVLEVoFKJY5p6KCaGdq5Er"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_migrate",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "8TniTUpqLU4tYhAMvjdGCg2X14NRiHbYjm969Su7F3AN",
+          "data_changes_from_receipt": [],
+          "receipt_id": "DojiHKnRiRFUCKduvM4tWHuqAAvbzDPbZDbt97xJ7NUK"
+        },
+        "tx": "6peXxJx3qWat9Mx74w4s25FKAnxwhrFEArrxRCukdgZL"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_add_key",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "9B2vb1QBUrHF2f8XN4rnWNimyMdVPxswffx9bvg7Wfi1",
+          "data_changes_from_receipt": [],
+          "receipt_id": "9Ues3A4GkQNdocG9rSFaRxNyyaRLYDQzPFPAfybMJ332"
+        },
+        "tx": "8yRsUvcZL6FS4Gn9qzVY6EjoETTVTPrFNg5yK7jz5f5g"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_delete_key",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "8WoiZQHvgK6LsS8QeGxCgbME3oPgmpb9uaGCc7GH2jjz",
+          "data_changes_from_receipt": [],
+          "receipt_id": "8tDxkb1fvpSJFnSYNaZxJ2WwS2ijVTbDerkd77yBKvn2"
+        },
+        "tx": "2pa1foEzBDH2niAWr7qRZMgXWEVX54T3uAXKWNK7kioc"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_delete_account",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "4qJj9MPCSDNsFHyYXenNkYQXuDKqHUh24DWjxNeoV5aV",
+          "data_changes_from_receipt": [],
+          "receipt_id": "GfA6LCBmERZJhG8QF6dfbmFiCwU1Hvo5BaEAwgqFMhYf"
+        },
+        "tx": "HKKskkNAV8UEywuYT5Z8EcQEZc2mbEbSRq1UmPchkuxb"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_deploy",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "BZjkKavRZ3ZPqArMmvAXw9jXrvyGKyv691nKp3CQacT6",
+          "data_changes_from_receipt": [],
+          "receipt_id": "25dXqEedvhCgRUiVHVmYuGgbWtiQnTjZ2CmreGk7jbsj"
+        },
+        "tx": "J4EWUQmriQ3g2pJtQXBcjryTgq1Hjtscm69ZPt24uTZX"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_stake",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "5XTkBX7s5RGD9biChPtTDA7fFZQPQKXBK4dWek6RUbjn",
+          "data_changes_from_receipt": [],
+          "receipt_id": "EFkh6GSKbE6DNfKyKtHP5D9oLXGEZTgP5VrTkVQgeJu"
+        },
+        "tx": "5FNSYcTGy6m4YoXk6fPKzkyFUc4Hd3UzbjbN9RtuFK4b"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_set_policy",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "AHLq8qM7mteSndX5eC4YPdRDbB1ewntnw4ogbjFugqaz",
+          "data_changes_from_receipt": [],
+          "receipt_id": "GC5ciGFmQ5pAZGLGzN4dTsRANs2HvrLySgkAEXb314d8"
+        },
+        "tx": "9FmHQoGZh78KpsHkdtaD9Fox5XhSGpKSdcPM71K9aeD5"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_unfreeze",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "MethodNotFound",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "MethodResolveError": "MethodNotFound"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [],
+          "block_hash": "H7Jx7g5pcQqCyaVXpMo137fpcFRvdtpctUzQRNDcx6mH",
+          "data_changes_from_receipt": [],
+          "receipt_id": "8StynZygzdoPft8gpaDKDXPcP8MuuTms5Y6q7nRw53RU"
+        },
+        "tx": "8xS2S7NdTQtfwf9L12QFx5rcVEvVtALNcgePXXY3odRb"
+      },
+      "id": "failure_no_effect.owner_calls_nonexistent_reset_budget",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 18`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571477585886979800000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "AMQio8o4qPSXSMdF55UMHfF8iGbBZZRcEwcpMhUg6Jam",
+          "data_changes_from_receipt": [],
+          "receipt_id": "GwnDJrZ1pu5p2zT22u51qQc5ZSmrDgSbnxVPKoZpYaZw"
+        },
+        "tx": "C6SZY4CFLJgTyxPvqjAYU4rEkyXFo18hXJ95HxtWYkJb"
+      },
+      "id": "failure_no_effect.malformed_id_plus_sign",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: LeadingZero at line 1 column 18`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571484362094575900000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "CJEMkPP589dkKoaZmfZ9XuK1TVEDfe1dkvqY6GpQacz5",
+          "data_changes_from_receipt": [],
+          "receipt_id": "9LZjgUT9Q7aBYkSP4HqGjFxRFfCD2uQ96UvCkgmrEXA1"
+        },
+        "tx": "2X4qy8WUN1RcJYAzqaMFRbGsu5mScpVENsHZbx8zRy3F"
+      },
+      "id": "failure_no_effect.malformed_id_leading_zero",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 18`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571491087874340000000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "2Jp7he6MBmYiLRFEjCGvDu7rGSCm4wCkLqKmmTJr5wDs",
+          "data_changes_from_receipt": [],
+          "receipt_id": "6nfvCtZZdp9czdBuN2mqbzm1D5He9ZUGaHw7bsvR76dK"
+        },
+        "tx": "92MHQs4kTYH58pE4t2Azs8vZaF4qeSNzHkLaWaVYQiez"
+      },
+      "id": "failure_no_effect.malformed_id_leading_space",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 18`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571497814147757700000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "8mtWEPmxVbfjva52qiaZmAb6jnvx6ExyiQmPj2JBx5JP",
+          "data_changes_from_receipt": [],
+          "receipt_id": "76mPPhuYCBYc6ZeRTy5fNxUdduNDxeM6vbvZf4AYx3QS"
+        },
+        "tx": "9AxHVPUx4x8eyGsN5z64TQjqkDmDY5V6D6Qw3YmvdCXj"
+      },
+      "id": "failure_no_effect.malformed_id_trailing_space",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid type: integer `7`, expected a canonical decimal string (u64) at line 1 column 15`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571504971833135000000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "4mzWNoWVRTL636y85wzyQ8ya34CaNrezUgjRtSjDZR5C",
+          "data_changes_from_receipt": [],
+          "receipt_id": "123BvvQPFWeqashNUtauncF7xWvAEGJByEMqWqX12FWB"
+        },
+        "tx": "6yua7zGarzWAbMVBtHLLd5y2ur5JJ523GvYvzkEZpmAf"
+      },
+      "id": "failure_no_effect.malformed_id_json_number",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 19`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571511699844962300000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "C6jg763n6DHvHdhfZu7zLbFTxeSTNt73v98Q4hqVYM2C",
+          "data_changes_from_receipt": [],
+          "receipt_id": "FeD7dBJ7RpcQcUbRwyBGq268W2CqkUL7JpsVToRZvDcf"
+        },
+        "tx": "7QgPMeZzRsieUdG9GPJBFocgmWMY7CYMi6YXJvWQG5pz"
+      },
+      "id": "failure_no_effect.malformed_id_decimal_point",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 19`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571518427856789600000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "9iEbCBy39Kw23uffDr6WZc8L91GHMaG1iRkysZVthgj5",
+          "data_changes_from_receipt": [],
+          "receipt_id": "963Vfb2XHg1GLRJYt9fF4a6qaRH2X3XGH4UjHQofLENW"
+        },
+        "tx": "CQ13tFGK2EqRgyVNqjHAHiFNsLddfL2tmqMLMcMhVccm"
+      },
+      "id": "failure_no_effect.malformed_id_exponent",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 18`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571525153636553700000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "3hwmUmBSSGz8Ahy7TRnuKfMYUuEZYzbwP2BXKFTmPt5z",
+          "data_changes_from_receipt": [],
+          "receipt_id": "CaGdW32aqQrFiCiHTMNcmqE9AvhDdY8RKHWgXUJk1gaL"
+        },
+        "tx": "75NgBxFSdJbM7KwfHhgY3Fo1EtkKRnubZQdUwnsUtMMd"
+      },
+      "id": "failure_no_effect.malformed_id_negative",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: Empty at line 1 column 16`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571531846788136800000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "5jGJvFwjgLK8uRhFemMfYHfrVgoW9KEg1SCUbYBKxUKT",
+          "data_changes_from_receipt": [],
+          "receipt_id": "DKhuTAWSzgmnKm3nLMLYTYFmFv4wWcmMpqjFeNtAWvA3"
+        },
+        "tx": "A9nRCjjC6ekjkfR9nHWGzmXKCALq4Lr8EF6CwYTqzj4h"
+      },
+      "id": "failure_no_effect.malformed_id_empty",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: NonDigit at line 1 column 19`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571538574799964100000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "3ew4cekBdL6vqrieVW5sckpoTs4ETjcUkS79csSJSRnC",
+          "data_changes_from_receipt": [],
+          "receipt_id": "HNP4H4uVhxVo82Gzs2bm2ns5dDeAFeNJqVGR6jgRCXEy"
+        },
+        "tx": "EQdoRqahCTxGetprz9UaKRYmyWCFbQjvTw8geF1GwRr2"
+      },
+      "id": "failure_no_effect.malformed_id_hex",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u64: Overflow at line 1 column 36`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571545431243570300000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "7rBRmxeiW3Xhkmvq3Bq8moDwELiBfPQQcPWLo67s3GLa",
+          "data_changes_from_receipt": [],
+          "receipt_id": "tPdEgfqv9G3xbUGXF9hf9LFXKJRUNTzLCLm2tUq9K6R"
+        },
+        "tx": "JEDdWeW6AjaY1sDRSWP15FNLPTa7iQzYaFQ8Up6GhdqA"
+      },
+      "id": "failure_no_effect.malformed_id_u64_overflow",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u128: NonDigit at line 1 column 61`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571552326807761600000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "FGgv7gNbMwfvRYapnyJnBLCpH2ZaeFcEQ9iTH7H4uoQp",
+          "data_changes_from_receipt": [],
+          "receipt_id": "EWj7oEh47FzewMpXFAkut62SPFXuPtfYd1RfFNp52WH3"
+        },
+        "tx": "3Mngbe3UYUGk7Yb3eWfzHV7FAv3ckEf3Pzg7r5kVZbLA"
+      },
+      "id": "failure_no_effect.malformed_amount_plus_sign",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u128: LeadingZero at line 1 column 61`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571559272799784900000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "5fAVt8uT2dNyr87wmkdT8tKm4mH8R4P1eUZ9Txyre7VW",
+          "data_changes_from_receipt": [],
+          "receipt_id": "93LZ7RQ4v6SZnR7Y1h66wnjwAYegrccRZwmWRzzYoYSa"
+        },
+        "tx": "7XK3mdEqmReMUdoe76dS9uA3BtsMt2R8vhmQWLD9rgND"
+      },
+      "id": "failure_no_effect.malformed_amount_leading_zero",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid type: integer `1`, expected a canonical decimal string (u128) at line 1 column 58`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571566597900052200000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "3iHoD4AwQVsgksdBMk3cbQ5sj4zAT3NkHkNWrwHtZSHm",
+          "data_changes_from_receipt": [],
+          "receipt_id": "8YzvFSmukahjybzZZbg4MwWWhWovmCbmdZUbd5JFmTFa"
+        },
+        "tx": "ENEem9oSF82q5BLU4wPeg6uZwfNrdctzaPVWiUgjro2G"
+      },
+      "id": "failure_no_effect.malformed_amount_json_number",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u128: NonDigit at line 1 column 63`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571573495336688500000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "4FrUg4LLNpM6mBTfAkF7DrzYzXfc1BMR8jxWPUimLwSC",
+          "data_changes_from_receipt": [],
+          "receipt_id": "2rYSaEYC7oZGfSg5AVuxKVF2gFUrVvHeQxRCGah7rRmq"
+        },
+        "tx": "DnQgBkgZZm2afkNSqrqw3KhSuSfLC6UsqfMEtChQ2Qo6"
+      },
+      "id": "failure_no_effect.malformed_amount_exponent",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `non-canonical u128: Overflow at line 1 column 98`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571580641329441500000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "4uPUJNmXxE5tnARrRBfj2HGuCLiytDC7efGjjzNvBfoD",
+          "data_changes_from_receipt": [],
+          "receipt_id": "3i3awg13b1QxF9E6QUSUTVp9ePp88wrtKt78ZbRxenUA"
+        },
+        "tx": "7onRGP4fCVzUvd2WKesKfUeGNnLsucrLhHhBB1vvZGJG"
+      },
+      "id": "failure_no_effect.malformed_amount_u128_overflow",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid policy hash: TooLong at line 1 column 165`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571587760729004200000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "2WnNL9cTXV85gH1eT9wnrpu1ZskLyAB9KzvNoLddpLWw",
+          "data_changes_from_receipt": [],
+          "receipt_id": "7hWhc9Uu3RVzK52vyWvDxHE29XzUL13dCC3o1UE7xVit"
+        },
+        "tx": "6TxBG9W91j4ZnGc5dSXLUenDMN43e1FMfZJpd6hBvcGg"
+      },
+      "id": "failure_no_effect.malformed_policy_hash_hex_encoding",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid policy hash: TooLong at line 1 column 146`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571594875681328300000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "7Dh2e4ckMDcuqiiLzVzr1NeqEYKmsRPrRpwypCuJmeW3",
+          "data_changes_from_receipt": [],
+          "receipt_id": "CgmgnXSh9i54WAf7fe9vi2NoaUvrVryjS2tPntEHttPq"
+        },
+        "tx": "4UsP4FVaQTEhunX7qvd6PiRDyrVsXfdRovxjWRnNAamo"
+      },
+      "id": "failure_no_effect.malformed_policy_hash_45_chars",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid policy hash: NotBase58 at line 1 column 133`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571602041935016300000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "3857azMpouEChNmwSCgFtfqdJdskpsTRyhuMdsuofjjM",
+          "data_changes_from_receipt": [],
+          "receipt_id": "3F5D1eZGs9g4GYPekasSsboDNVno2pUNMf6wTbnuK35G"
+        },
+        "tx": "5ZDbfXVq39aUk3Jt2tFtYf2wdRHoPVWp8ATzerj3JLVT"
+      },
+      "id": "failure_no_effect.malformed_policy_hash_not_base58",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `duplicate field `request_id` at line 1 column 30`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571608810289948600000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "7EivihXPDqYZ9CuLffZyAuVojrzduJh6a9rzYtdJXSbm",
+          "data_changes_from_receipt": [],
+          "receipt_id": "9Qm5yNLgLhJd6pYcjSCTGK3YCPTrmsPi98KRGK7qgepy"
+        },
+        "tx": "2VuLsTVpBAFotFJETQgsXWYthTegEzjgXGiCwi4NgWty"
+      },
+      "id": "failure_no_effect.malformed_duplicate_request_id_key",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `unknown field `deposit`, expected one of `request_id`, `recipient`, `amount`, `policy_hash` at line 1 column 155`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571617986407589600000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "Heks5oPKoHm2wq7kAjiSTzs9MXYTdurUCopcbzcyNu9y",
+          "data_changes_from_receipt": [],
+          "receipt_id": "21XtfmPvumQisrcoUrccHuN9sST5vXtH3ii91qEkZJxP"
+        },
+        "tx": "iBNwiLoNpaSiYBoCVSiaTtrRjDRr7cvwiLSqaWPUx6E"
+      },
+      "id": "failure_no_effect.malformed_unknown_field",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `missing field `policy_hash` at line 1 column 85`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571624998835186100000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "AqZvoj6k9NjpgkfA2UYx4oiuT6yzsQ7pmemn7G4qt9Ac",
+          "data_changes_from_receipt": [],
+          "receipt_id": "DWsxmaFk8X5gJ1ECGyfD3JUMeJzYNXcUso4r1w344cMk"
+        },
+        "tx": "GuxHYqcLzux6VKz5TM7DVqaCfAxbB6qUQYxphh88YBx5"
+      },
+      "id": "failure_no_effect.malformed_missing_policy_hash",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `invalid value: \"Alice.test.near\", the Account ID contains an invalid character 'A' at index 0 at line 1 column 47`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571632555201078100000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "6nJCCUheBg5QPJGxrmuUEY6Qmcd7Ckv8pge6ARW3aWrJ",
+          "data_changes_from_receipt": [],
+          "receipt_id": "3BmoYt9DjihohdaFZxbx1oWesNHsG2gq9ekX3L62tSzj"
+        },
+        "tx": "A7kHoy2p3ojWLQZoGqE5Yds4PgbDWy5PAaXNMKM7FNez"
+      },
+      "id": "failure_no_effect.malformed_invalid_account_id",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "expected": "Failed to deserialize input from JSON",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "FunctionCallError": {
+                "ExecutionError": "Smart contract panicked: Failed to deserialize input from JSON. Error: `expected value at line 1 column 1`"
+              }
+            }
+          }
+        },
+        "state_effects": {
+          "account_changes_from_receipt": [
+            {
+              "amount": "7571638976421159500000000",
+              "cause": "action_receipt_gas_reward"
+            }
+          ],
+          "block_hash": "F5bQ1xFNC2CFyWBynqKhYMJ6FfvqDk49KKWvjoPTF14i",
+          "data_changes_from_receipt": [],
+          "receipt_id": "FDEn8wwrsY5nq1Ge1nFxJH7aBG4dZtsPwfobWbiVFPok"
+        },
+        "tx": "HYV3dgAqcz8RT1T5XAsn9Uohkndf6SAX5rNRaiBQo7aJ"
+      },
+      "id": "failure_no_effect.malformed_not_json",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged": "0",
+        "seq": "0"
+      },
+      "id": "failure_no_effect.mandate_unchanged",
+      "result": "PASS"
+    },
+    {
+      "critical": false,
+      "detail": {
+        "balance_after_failures": "7571638976421159500000000",
+        "balance_after_init": "7571415012673286300000000",
+        "delta": "223963747873200000000",
+        "note": "gas rewards credit the vault for failed receipts; contract data unchanged (see failure_no_effect.*)"
+      },
+      "id": "accounting.failed_calls_change_balance_not_contract_state",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "decision": {
+          "amount": "0",
+          "charged": "0",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "ZeroAmount",
+          "recipient": "alice.test.near",
+          "request_id": "1",
+          "seq": "1",
+          "terms_match": null
+        },
+        "get_request_1": null
+      },
+      "id": "denial.zero_amount_not_retained",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged_after": "1000000000000000000000000",
+          "charged_before": "0",
+          "decision": "Admitted",
+          "recipient": "alice.test.near",
+          "request_digest_hex": "973334b9e9d7803e235dd80e4068f81e97956548f40480db85a854658463b60b",
+          "request_id": "1",
+          "seq": "2"
+        },
+        "independent_digest": "973334b9e9d7803e235dd80e4068f81e97956548f40480db85a854658463b60b"
+      },
+      "id": "payment1.admitted_with_independent_digest",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": [
+          {
+            "predecessor_id": "vault.owner.test.near",
+            "priority": 0,
+            "receipt": {
+              "Action": {
+                "actions": [
+                  {
+                    "Transfer": {
+                      "deposit": "1000000000000000000000000"
+                    }
+                  }
+                ],
+                "gas_price": "1000000000",
+                "input_data_ids": [],
+                "is_promise_yield": false,
+                "output_data_receivers": [
+                  {
+                    "data_id": "59tvp7Z5Vo6igubVhieDEJ2KF9t1qAsShZyrwrTDAqzc",
+                    "receiver_id": "vault.owner.test.near"
+                  }
+                ],
+                "signer_id": "agent.owner.test.near",
+                "signer_public_key": "ed25519:G84bqRTFyCf2Fr6NooRXBf3ghRVxY3CmcD7W5GLFMiCW"
+              }
+            },
+            "receipt_id": "3Zb9h81UMe9J5G35cj89me2NR47Ec1snxUvmgQLBdpnN",
+            "receiver_id": "alice.test.near"
+          },
+          {
+            "predecessor_id": "vault.owner.test.near",
+            "priority": 0,
+            "receipt": {
+              "Action": {
+                "actions": [
+                  {
+                    "FunctionCall": {
+                      "args": "eyJyZXF1ZXN0X2lkIjoiMSJ9",
+                      "deposit": "0",
+                      "gas": 20000000000000,
+                      "method_name": "on_payment_result"
+                    }
+                  }
+                ],
+                "gas_price": "1000000000",
+                "input_data_ids": [
+                  "59tvp7Z5Vo6igubVhieDEJ2KF9t1qAsShZyrwrTDAqzc"
+                ],
+                "is_promise_yield": false,
+                "output_data_receivers": [],
+                "signer_id": "agent.owner.test.near",
+                "signer_public_key": "ed25519:G84bqRTFyCf2Fr6NooRXBf3ghRVxY3CmcD7W5GLFMiCW"
+              }
+            },
+            "receipt_id": "GCjNMZtVBvf9wHujU89FhgNBmvWDJaTYQha9FBnGZWc4",
+            "receiver_id": "vault.owner.test.near"
+          }
+        ],
+        "callback_receipt": "GCjNMZtVBvf9wHujU89FhgNBmvWDJaTYQha9FBnGZWc4",
+        "transfer_receipt": "3Zb9h81UMe9J5G35cj89me2NR47Ec1snxUvmgQLBdpnN"
+      },
+      "id": "payment1.exactly_one_transfer_and_one_callback",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "callback_events": [
+          {
+            "data": {
+              "amount": "1000000000000000000000000",
+              "callback_status": "CbSucceeded",
+              "cb_failed_amount": "0",
+              "cb_succeeded_amount": "1000000000000000000000000",
+              "charged": "1000000000000000000000000",
+              "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+              "request_id": "1",
+              "seq": "3",
+              "vault": "vault.owner.test.near"
+            },
+            "event": "callback",
+            "standard": "near-agent-vault-lab",
+            "version": "1.0.0"
+          }
+        ],
+        "callback_status": {
+          "SuccessValue": ""
+        },
+        "transfer_block": "N9ynpFotwThNE1uQtHE5384X3cme4maGfWbHh7aYADX",
+        "transfer_status": {
+          "SuccessValue": ""
+        }
+      },
+      "id": "payment1.transfer_succeeded_callback_succeeded",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged_after": "3000000000000000000000000",
+          "charged_before": "1000000000000000000000000",
+          "decision": "Admitted",
+          "recipient": "missing.test.near",
+          "request_digest_hex": "34ae0a25a55282e3733539142efd1e823ce23b5f73d65756f279e2283514b230",
+          "request_id": "2",
+          "seq": "4"
+        },
+        "independent_digest": "34ae0a25a55282e3733539142efd1e823ce23b5f73d65756f279e2283514b230"
+      },
+      "id": "payment2.admitted_with_independent_digest",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": [
+          {
+            "predecessor_id": "vault.owner.test.near",
+            "priority": 0,
+            "receipt": {
+              "Action": {
+                "actions": [
+                  {
+                    "FunctionCall": {
+                      "args": "eyJyZXF1ZXN0X2lkIjoiMiJ9",
+                      "deposit": "0",
+                      "gas": 20000000000000,
+                      "method_name": "on_payment_result"
+                    }
+                  }
+                ],
+                "gas_price": "1000000000",
+                "input_data_ids": [
+                  "3qKrY9YvFUed42kPg4Aw2xDCz5E7EATnLPy3xfm7s2mC"
+                ],
+                "is_promise_yield": false,
+                "output_data_receivers": [],
+                "signer_id": "agent.owner.test.near",
+                "signer_public_key": "ed25519:6wFVAbAq68AVdmEJew1xzZiuYc8fipYbw5g5xgmYVYJt"
+              }
+            },
+            "receipt_id": "AewJqCuP9N95fcNFWvw3zLFHcoQ2xxHTSh77NPNC42x1",
+            "receiver_id": "vault.owner.test.near"
+          },
+          {
+            "predecessor_id": "vault.owner.test.near",
+            "priority": 0,
+            "receipt": {
+              "Action": {
+                "actions": [
+                  {
+                    "Transfer": {
+                      "deposit": "2000000000000000000000000"
+                    }
+                  }
+                ],
+                "gas_price": "1000000000",
+                "input_data_ids": [],
+                "is_promise_yield": false,
+                "output_data_receivers": [
+                  {
+                    "data_id": "3qKrY9YvFUed42kPg4Aw2xDCz5E7EATnLPy3xfm7s2mC",
+                    "receiver_id": "vault.owner.test.near"
+                  }
+                ],
+                "signer_id": "agent.owner.test.near",
+                "signer_public_key": "ed25519:6wFVAbAq68AVdmEJew1xzZiuYc8fipYbw5g5xgmYVYJt"
+              }
+            },
+            "receipt_id": "CfoRnRxJGzELRNg7Z9j1bRT396ZWeZPgfZ1L4SPsgDMH",
+            "receiver_id": "missing.test.near"
+          }
+        ]
+      },
+      "id": "payment2.exactly_one_transfer_and_one_callback",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "block": "6tmH21zcbQB2CYsw8ACTt4xfnFhgRSTqtSsm2jnrNJP",
+        "status": {
+          "Failure": {
+            "ActionError": {
+              "index": 0,
+              "kind": {
+                "AccountDoesNotExist": {
+                  "account_id": "missing.test.near"
+                }
+              }
+            }
+          }
+        },
+        "transfer_receipt": "CfoRnRxJGzELRNg7Z9j1bRT396ZWeZPgfZ1L4SPsgDMH"
+      },
+      "id": "payment2.transfer_failed_account_does_not_exist",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "refund_block": "G2G96x2yeiNgATHVSjzhWUzd1SppLVSoZHThdCRBSUx",
+        "refund_receipts": [
+          {
+            "predecessor_id": "system",
+            "priority": 0,
+            "receipt": {
+              "Action": {
+                "actions": [
+                  {
+                    "Transfer": {
+                      "deposit": "2000000000000000000000000"
+                    }
+                  }
+                ],
+                "gas_price": "0",
+                "input_data_ids": [],
+                "is_promise_yield": false,
+                "output_data_receivers": [],
+                "signer_id": "system",
+                "signer_public_key": "ed25519:11111111111111111111111111111111"
+              }
+            },
+            "receipt_id": "6CwcYBQughnmcZPBpEZ3rRLWZWhRZk8MKm2WTPPGJ4sn",
+            "receiver_id": "vault.owner.test.near"
+          }
+        ]
+      },
+      "id": "payment2.refund_exact_principal_to_vault_from_system",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "callback_receipt": "AewJqCuP9N95fcNFWvw3zLFHcoQ2xxHTSh77NPNC42x1",
+        "events": [
+          {
+            "data": {
+              "amount": "2000000000000000000000000",
+              "callback_status": "CbFailed",
+              "cb_failed_amount": "2000000000000000000000000",
+              "cb_succeeded_amount": "1000000000000000000000000",
+              "charged": "3000000000000000000000000",
+              "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+              "request_id": "2",
+              "seq": "5",
+              "vault": "vault.owner.test.near"
+            },
+            "event": "callback",
+            "standard": "near-agent-vault-lab",
+            "version": "1.0.0"
+          }
+        ],
+        "status": {
+          "SuccessValue": ""
+        }
+      },
+      "id": "payment2.callback_recorded_cb_failed",
+      "result": "PASS"
+    },
+    {
+      "critical": false,
+      "detail": {
+        "burnt_failure_path": 1745197865261,
+        "burnt_success_path": 1741660126253,
+        "callback_gas_prepaid": 20000000000000
+      },
+      "id": "gas.callback_prepaid_at_least_3x_burnt",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "accepted_count": 2,
+        "charged": "3000000000000000000000000"
+      },
+      "id": "ledger.C_equals_3_after_failed_transfer_and_refund",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "budget": "5000000000000000000000000",
+        "headroom": "2000000000000000000000000"
+      },
+      "id": "ledger.headroom_equals_2_on_5_mandate",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "F": "2000000000000000000000000",
+        "S": "1000000000000000000000000",
+        "U": "0",
+        "source": "transfer receipt outcomes in FINAL tx status, not balances"
+      },
+      "id": "ledger.native_outcomes_S1_F2_U0",
+      "result": "PASS"
+    },
+    {
+      "critical": false,
+      "detail": {
+        "cb_failed_amount": "2000000000000000000000000",
+        "cb_succeeded_amount": "1000000000000000000000000"
+      },
+      "id": "ledger.callback_counters_separate",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": [
+        {
+          "admission_seq": "2",
+          "amount": "1000000000000000000000000",
+          "callback_status": "CbSucceeded",
+          "recipient": "alice.test.near",
+          "recipient_index": 0,
+          "request_digest_hex": "973334b9e9d7803e235dd80e4068f81e97956548f40480db85a854658463b60b",
+          "request_id": "1"
+        },
+        {
+          "admission_seq": "4",
+          "amount": "2000000000000000000000000",
+          "callback_status": "CbFailed",
+          "recipient": "missing.test.near",
+          "recipient_index": 1,
+          "request_digest_hex": "34ae0a25a55282e3733539142efd1e823ce23b5f73d65756f279e2283514b230",
+          "request_id": "2"
+        }
+      ],
+      "id": "ledger.admissions_enumerate_both_records",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": "2",
+          "reason": "DuplicateRequest",
+          "recipient": "alice.test.near",
+          "request_id": "1",
+          "seq": "6",
+          "terms_match": true
+        },
+        "tx": "9wyg4mcGrm4WgWmcNzsGDJ33LzgrMNpyCo3poZj8MY51"
+      },
+      "id": "denial.replay_id1_same_terms",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": "4",
+          "reason": "DuplicateRequest",
+          "recipient": "missing.test.near",
+          "request_id": "2",
+          "seq": "7",
+          "terms_match": true
+        },
+        "tx": "6DSqBCNoaUP3BY9J1qLEk3ZMu7YFvLGMb4o7AmWmE7uy"
+      },
+      "id": "denial.replay_id2_failed_transfer_same_terms",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": "2",
+          "reason": "DuplicateRequest",
+          "recipient": "missing.test.near",
+          "request_id": "1",
+          "seq": "8",
+          "terms_match": false
+        },
+        "tx": "6XH2yh7VF63KRei2RJRAAhvjo7UbMZtAKzgpvWGaSkk1"
+      },
+      "id": "denial.replay_id1_different_terms",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": "2",
+          "reason": "DuplicateRequest",
+          "recipient": "alice.test.near",
+          "request_id": "1",
+          "seq": "9",
+          "terms_match": true
+        },
+        "tx": "6W4xDGxXnFtqW6uRBaKocz5CNLqcViRhihkk6B8NuNth"
+      },
+      "id": "denial.replay_id1_json_escape_alias",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "PolicyMismatch",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "10",
+          "terms_match": null
+        },
+        "tx": "At2mYC1RvCvSZewB9Yu9hxeLbuy98uiroGapHk2kQAng"
+      },
+      "id": "denial.policy_mismatch_tv1_hash",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "RecipientNotAllowed",
+          "recipient": "bob.test.near",
+          "request_id": "3",
+          "seq": "11",
+          "terms_match": null
+        },
+        "tx": "7HtwW5VVDJQYsUaLFJ3zDh9SvnHsfkMc8yNYXVSaPPMY"
+      },
+      "id": "denial.recipient_not_allowed_bob",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "RecipientNotAllowed",
+          "recipient": "owner.test.near",
+          "request_id": "3",
+          "seq": "12",
+          "terms_match": null
+        },
+        "tx": "HYki8qGyaxGd2LiCU6ihBawgpS5a1orsYUPeLokuTcyz"
+      },
+      "id": "denial.recipient_not_allowed_owner",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "RecipientNotAllowed",
+          "recipient": "vault.owner.test.near",
+          "request_id": "3",
+          "seq": "13",
+          "terms_match": null
+        },
+        "tx": "5MARUMddQJB7fSgDJkEEE33EDg7qzuNPP9T9y3Kztggz"
+      },
+      "id": "denial.recipient_not_allowed_vault_itself",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "0",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "ZeroAmount",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "14",
+          "terms_match": null
+        },
+        "tx": "FNtYGLP4w5iyJi4o7ArnDqpzVtMQvfum2xvUebHP4Cfr"
+      },
+      "id": "denial.zero_amount",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000001",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "AboveMaxPerRequest",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "15",
+          "terms_match": null
+        },
+        "tx": "Hp4bQ5CH34a3LN8BpXCeBu9brYkskhQiUzoYLoKd24cq"
+      },
+      "id": "denial.above_max_per_request",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "application_receipts": 0,
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "RecordQuotaExhausted",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "16",
+          "terms_match": null
+        },
+        "tx": "4APpb2bnXWHtnjH3wLu9ik3CL2BWshTeFtLDVP8ahmaz"
+      },
+      "id": "denial.record_quota_exhausted_within_budget",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "get_request_3": null
+      },
+      "id": "denial.denied_ids_not_retained",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "events": [
+          {
+            "data": {
+              "accepted_count": 2,
+              "charged": "3000000000000000000000000",
+              "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+              "seq": "17",
+              "vault": "vault.owner.test.near"
+            },
+            "event": "freeze",
+            "standard": "near-agent-vault-lab",
+            "version": "1.0.0"
+          }
+        ],
+        "seq": "17"
+      },
+      "id": "freeze.owner_freezes_once",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "seq_after": "17",
+        "seq_before": "17"
+      },
+      "id": "freeze.idempotent_noop",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "Frozen",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "18",
+          "terms_match": null
+        }
+      },
+      "id": "denial.frozen_new_id",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "Frozen",
+          "recipient": "alice.test.near",
+          "request_id": "1",
+          "seq": "19",
+          "terms_match": null
+        }
+      },
+      "id": "denial.frozen_replay_id1",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "admissions": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC",
+        "mandate": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC",
+        "q": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC",
+        "state": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC"
+      },
+      "id": "cut.views_at_single_block",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "index": [
+          {
+            "position": 0,
+            "request_id": "1"
+          },
+          {
+            "position": 1,
+            "request_id": "2"
+          }
+        ],
+        "raw": {
+          "accepted_count": 2,
+          "agent": "agent.owner.test.near",
+          "allowed_recipients": [
+            "alice.test.near",
+            "missing.test.near"
+          ],
+          "asset": 0,
+          "budget": "5000000000000000000000000",
+          "cb_failed_amount": "2000000000000000000000000",
+          "cb_succeeded_amount": "1000000000000000000000000",
+          "chain_id": "test-chain-W41mX",
+          "charged": "3000000000000000000000000",
+          "expires_at_ns": "1793396340044593607",
+          "frozen": true,
+          "max_accepted_requests": 2,
+          "max_per_request": "2000000000000000000000000",
+          "owner": "owner.test.near",
+          "policy_hash": "FfEV2txySYWak3UZXmELgZjPc28vFfxWqMipxc46Np7U",
+          "reserve_total": "1571390000000000000000000",
+          "seq": "19",
+          "storage_bound_bytes": "156139",
+          "vault": "vault.owner.test.near"
+        },
+        "records": [
+          {
+            "admission_seq": "2",
+            "amount": "1000000000000000000000000",
+            "callback_status": "CbSucceeded",
+            "recipient_index": 0,
+            "request_id": "1"
+          },
+          {
+            "admission_seq": "4",
+            "amount": "2000000000000000000000000",
+            "callback_status": "CbFailed",
+            "recipient_index": 1,
+            "request_id": "2"
+          }
+        ],
+        "sum_admissions": "3000000000000000000000000"
+      },
+      "id": "cut.raw_state_matches_views",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_hash": "78Jec2oNSaHTZ4QRT4oxQHAFHNQNFfyHStBqHx3bVFau",
+        "keys": []
+      },
+      "id": "cut.vault_still_keyless",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "error": {
+          "cause": {
+            "info": {
+              "block_hash": "5azMVGqZPa5JQ5oQqfowurWfpXTspM4GfiCior3NbwbC",
+              "block_height": 435,
+              "requested_account_id": "missing.test.near"
+            },
+            "name": "UNKNOWN_ACCOUNT"
+          },
+          "code": -32000,
+          "data": "account missing.test.near does not exist while viewing",
+          "message": "Server error",
+          "name": "HANDLER_ERROR"
+        },
+        "id": "367",
+        "jsonrpc": "2.0"
+      },
+      "id": "cut.missing_recipient_still_absent",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "bound": 156139,
+        "note": "K=2 only; the K=64 bound is a G2 deliverable",
+        "per_admission": 128,
+        "usage_after_init": 155154,
+        "usage_at_q": 155410
+      },
+      "id": "storage.usage_within_bound_after_k_admissions",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "blocks_scanned": 378,
+        "final_charged": "3000000000000000000000000",
+        "points": 21
+      },
+      "id": "interval.C_never_decreases",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "code_changes": [
+          {
+            "cause": {
+              "receipt_hash": "EUzc1wmR7Z7FYfU1oPhvq55Xk7vtHHQER97ym3VD2wFj",
+              "type": "receipt_processing"
+            },
+            "height": 58
+          }
+        ],
+        "key_changes": 0,
+        "migrations": 0
+      },
+      "id": "interval.no_vault_key_changes_one_code_change_no_migration",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "keys": [],
+        "policy_hash": "8y3GSCCWmAEkokRgr7bcyUndVMuwxPCojsqNv4tosHth",
+        "storage_bound": 156395
+      },
+      "id": "probe2.created_keyless_with_independent_hash",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged_after": "1000000000000000000000000",
+        "decision": {
+          "amount": "1000000000000000000000000",
+          "charged_after": "1000000000000000000000000",
+          "charged_before": "0",
+          "decision": "Admitted",
+          "recipient": "alice.test.near",
+          "request_digest_hex": "624d00e5ee524e526008edea9fbfa4fb77a576b220dfe5a3e2d98fbef198e175",
+          "request_id": "1",
+          "seq": "1"
+        },
+        "headroom_after": "4000000000000000000000000",
+        "liquidity_needed": "2573950000000000000000000",
+        "vault_balance_before": "7573975109633714000000000"
+      },
+      "id": "probe2.probe2_id1_1near_alice",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged_after": "3000000000000000000000000",
+          "charged_before": "1000000000000000000000000",
+          "decision": "Admitted",
+          "recipient": "missing.test.near",
+          "request_digest_hex": "cb5fc954fd1c6955997fb86faf0740470bd4fa471aefcc872298ee7caced96a1",
+          "request_id": "2",
+          "seq": "3"
+        },
+        "headroom_after": "2000000000000000000000000",
+        "liquidity_needed": "3573950000000000000000000",
+        "vault_balance_before": "6574052831131924400000000"
+      },
+      "id": "probe2.probe2_id2_2near_missing",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged_after": "3000000000000000000000000",
+        "decision": {
+          "amount": "3000000000000000000000000",
+          "charged": "3000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "BudgetExceeded",
+          "recipient": "alice.test.near",
+          "request_id": "3",
+          "seq": "5",
+          "terms_match": null
+        },
+        "headroom_after": "2000000000000000000000000",
+        "liquidity_needed": "4573950000000000000000000",
+        "vault_balance_before": "6574131710658887300000000"
+      },
+      "id": "probe2.probe2_id3_3near_after_refund",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged_after": "5000000000000000000000000",
+        "decision": {
+          "amount": "2000000000000000000000000",
+          "charged_after": "5000000000000000000000000",
+          "charged_before": "3000000000000000000000000",
+          "decision": "Admitted",
+          "recipient": "alice.test.near",
+          "request_digest_hex": "2f32badb4e19d3fe53c624e84f048ea65c0d26f2ebdd1585d2c26c215c72a57b",
+          "request_id": "4",
+          "seq": "6"
+        },
+        "headroom_after": "0",
+        "liquidity_needed": "3573950000000000000000000",
+        "vault_balance_before": "6574157909041946700000000"
+      },
+      "id": "probe2.probe2_id4_2near_remaining",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "charged_after": "5000000000000000000000000",
+        "decision": {
+          "amount": "1",
+          "charged": "5000000000000000000000000",
+          "decision": "Denied",
+          "original_admission_seq": null,
+          "reason": "BudgetExceeded",
+          "recipient": "alice.test.near",
+          "request_id": "5",
+          "seq": "8",
+          "terms_match": null
+        },
+        "headroom_after": "0",
+        "liquidity_needed": "1573950000000000000000001",
+        "vault_balance_before": "4574237442745520000000000"
+      },
+      "id": "probe2.probe2_id5_1yocto_over",
+      "result": "PASS"
+    },
+    {
+      "critical": true,
+      "detail": {
+        "F": "2000000000000000000000000",
+        "S": "3000000000000000000000000",
+        "accepted_count": 3,
+        "charged": "5000000000000000000000000",
+        "headroom": "0"
+      },
+      "id": "probe2.refund_never_restores_authority",
+      "result": "PASS"
+    }
+  ],
+  "failed": 0,
+  "passed": 115,
+  "total": 115
+}
