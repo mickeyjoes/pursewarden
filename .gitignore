@@ -1,10 +1,24 @@
+# Environment files (deliberate exception for a documented example).
 .env
 .env.*
+.env*
 !.env.example
-**/node_modules/
-**/target/
+
+# Key material: never commit.
+*.key
 **/*.key
-# Local sandbox node homes (contain validator/node private keys). Never commit.
-.sandbox/
 # Locally generated agent/owner key material.
 **/keys/
+
+# Local sandbox node homes (contain validator/node private keys). Never commit.
+.sandbox/
+
+# Build outputs and dependencies.
+**/target/
+**/node_modules/
+**/dist/
+
+# Python bytecode and local verifier work directories.
+__pycache__/
+*.pyc
+.work/

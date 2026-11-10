@@ -1,0 +1,8 @@
+{
+  "baseline-rpc.jsonl": "ce0a16883ba2e7a36c8c9bec2c5b33f237263ff27200358b66926142c595f845",
+  "forged-root-omission.SYNTHETIC.json": "83b946d6bcde4f638827b89e9a28d945cee3e31fcba1a71a906e13ddf7fa3164",
+  "independent-capture.SYNTHETIC.json": "9866d78d92a54d77dc9f0666492aca8c05fbed635188d3da1b1b82603400f9cf",
+  "omission-rpc.jsonl": "89107c0f977b5c7140ef30cc7a322cf9a0ce1d47aeaa4156a0da7266276a482f",
+  "results.SYNTHETIC.json": "233683ea2cddda37a783442323ebac5a932310d0a32fb68c7a64b2cb3d4c219b",
+  "reviewer-descriptor.SYNTHETIC.json": "593fc163a533dbd5d5892c2c54a4cc10b201281f77494025d096796559edcb34"
+}

@@ -1,0 +1,45 @@
+test_gc_is_not_account_absence (tests.evidence.test_transport.TransportTests.test_gc_is_not_account_absence) ... ok
+test_missing_provenance_has_no_fallback (tests.evidence.test_transport.TransportTests.test_missing_provenance_has_no_fallback) ... ok
+test_preexisting_vault_is_rejected (tests.evidence.test_transport.TransportTests.test_preexisting_vault_is_rejected) ... ok
+test_protocol_shard_mismatch_is_rejected (tests.evidence.test_transport.TransportTests.test_protocol_shard_mismatch_is_rejected) ... ok
+test_read_only_rpc_and_raw_acquisition (tests.evidence.test_transport.TransportTests.test_read_only_rpc_and_raw_acquisition) ... ok
+test_rpc_method_cannot_be_supplied_by_bundle (tests.evidence.test_transport.TransportTests.test_rpc_method_cannot_be_supplied_by_bundle) ... ok
+test_sandbox_endpoint_must_be_loopback (tests.evidence.test_transport.TransportTests.test_sandbox_endpoint_must_be_loopback) ... ok
+test_state_change_without_root_linkage_stops (tests.evidence.test_transport.TransportTests.test_state_change_without_root_linkage_stops) ... ok
+test_unknown_state_cause_stops (tests.evidence.test_transport.TransportTests.test_unknown_state_cause_stops) ... ok
+test_bundle_outcome_tamper_detected_after_rehash (tests.evidence.test_verifier.EvidenceTests.test_bundle_outcome_tamper_detected_after_rehash) ... ok
+test_bundle_wrong_vault_and_code_cannot_override_reviewer (tests.evidence.test_verifier.EvidenceTests.test_bundle_wrong_vault_and_code_cannot_override_reviewer) ... ok
+test_callback_failure_does_not_change_native_success (tests.evidence.test_verifier.EvidenceTests.test_callback_failure_does_not_change_native_success) ... ok
+test_callback_without_native_dependency_is_rejected (tests.evidence.test_verifier.EvidenceTests.test_callback_without_native_dependency_is_rejected) ... ok
+test_canonical_numbers_and_duplicate_json (tests.evidence.test_verifier.EvidenceTests.test_canonical_numbers_and_duplicate_json) ... ok
+test_carried_chunks_and_skipped_height_are_not_false_missing_history (tests.evidence.test_verifier.EvidenceTests.test_carried_chunks_and_skipped_height_are_not_false_missing_history) ... ok
+test_child_not_final_at_q (tests.evidence.test_verifier.EvidenceTests.test_child_not_final_at_q) ... ok
+test_complete_synthetic_chain_reconciles_but_is_not_runtime_g1 (tests.evidence.test_verifier.EvidenceTests.test_complete_synthetic_chain_reconciles_but_is_not_runtime_g1) ... ok
+test_duplicate_outcome (tests.evidence.test_verifier.EvidenceTests.test_duplicate_outcome) ... ok
+test_entire_root_and_descendants_removed_rehashed_recovers_from_node (tests.evidence.test_verifier.EvidenceTests.test_entire_root_and_descendants_removed_rehashed_recovers_from_node) ... ok
+test_fake_refund_amount (tests.evidence.test_verifier.EvidenceTests.test_fake_refund_amount) ... ok
+test_final_label_does_not_replace_missing_body (tests.evidence.test_verifier.EvidenceTests.test_final_label_does_not_replace_missing_body) ... ok
+test_gas_refund_cannot_stand_in_for_principal (tests.evidence.test_verifier.EvidenceTests.test_gas_refund_cannot_stand_in_for_principal) ... ok
+test_missing_chunk (tests.evidence.test_verifier.EvidenceTests.test_missing_chunk) ... ok
+test_missing_outcome (tests.evidence.test_verifier.EvidenceTests.test_missing_outcome) ... ok
+test_missing_refund_body (tests.evidence.test_verifier.EvidenceTests.test_missing_refund_body) ... ok
+test_missing_shard (tests.evidence.test_verifier.EvidenceTests.test_missing_shard) ... ok
+test_nonfinal_graph (tests.evidence.test_verifier.EvidenceTests.test_nonfinal_graph) ... ok
+test_pruned_produced_block (tests.evidence.test_verifier.EvidenceTests.test_pruned_produced_block) ... ok
+test_public_modes_have_no_sandbox_completeness (tests.evidence.test_verifier.EvidenceTests.test_public_modes_have_no_sandbox_completeness) ... ok
+test_query_cut_is_explicit (tests.evidence.test_verifier.EvidenceTests.test_query_cut_is_explicit) ... ok
+test_same_chain_id_different_genesis (tests.evidence.test_verifier.EvidenceTests.test_same_chain_id_different_genesis) ... ok
+test_tampered_native_success_with_failure_refund_is_inconsistent (tests.evidence.test_verifier.EvidenceTests.test_tampered_native_success_with_failure_refund_is_inconsistent) ... ok
+test_tampered_transaction_identifier (tests.evidence.test_verifier.EvidenceTests.test_tampered_transaction_identifier) ... ok
+test_unknown_history_cannot_be_empty (tests.evidence.test_verifier.EvidenceTests.test_unknown_history_cannot_be_empty) ... ok
+test_vault_transient_key_is_detected (tests.evidence.test_verifier.EvidenceTests.test_vault_transient_key_is_detected) ... ok
+test_wrong_chain (tests.evidence.test_verifier.EvidenceTests.test_wrong_chain) ... ok
+test_wrong_contract (tests.evidence.test_verifier.EvidenceTests.test_wrong_contract) ... ok
+test_wrong_genesis_configuration (tests.evidence.test_verifier.EvidenceTests.test_wrong_genesis_configuration) ... ok
+test_wrong_node_version (tests.evidence.test_verifier.EvidenceTests.test_wrong_node_version) ... ok
+test_wrong_vault_is_not_silently_replaced_by_bundle (tests.evidence.test_verifier.EvidenceTests.test_wrong_vault_is_not_silently_replaced_by_bundle) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.806s
+
+OK

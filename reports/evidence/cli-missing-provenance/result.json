@@ -1,0 +1,20 @@
+{
+  "schema": "near-g1-result/v1",
+  "verdicts": {
+    "safety": "INCONCLUSIVE",
+    "settlement": "INCONCLUSIVE",
+    "evidence": "INCONCLUSIVE",
+    "scenario_coverage": "INCONCLUSIVE"
+  },
+  "issues": [
+    {
+      "code": "PROVENANCE_MISSING",
+      "detail": "wasm"
+    }
+  ],
+  "metrics": {
+    "rpc_count": 0,
+    "response_bytes": 0,
+    "elapsed_seconds": 0.0177
+  }
+}
