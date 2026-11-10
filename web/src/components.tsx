@@ -91,12 +91,19 @@ const KIND_LABEL: Record<string, string> = {
 };
 
 export function ReceiptTree({ item }: { item: TimelineItem }) {
-  const nodes = item.tree.receipts;
-  const depth = (r: Receipt): number => {
-    let d = 0; let p = r.parent;
-    while (p && p !== item.tx_hash && d < 8) { d++; p = nodes.find((n) => n.id === p)?.parent ?? null; }
-    return d;
-  };
+  // Depth-first order so every receipt sits directly under its parent (e.g. a principal refund
+  // under the failed transfer that caused it); siblings by block height.
+  const kids = new Map<string, Receipt[]>();
+  for (const r of item.tree.receipts) {
+    const k = r.parent ?? item.tx_hash;
+    kids.set(k, [...(kids.get(k) ?? []), r].sort((a, b) => a.block_height - b.block_height));
+  }
+  const ordered: { r: Receipt; d: number }[] = [];
+  const walk = (id: string, d: number) => { for (const r of kids.get(id) ?? []) { ordered.push({ r, d }); walk(r.id, d + 1); } };
+  walk(item.tx_hash, 0);
+  const nodes = ordered.map((x) => x.r);
+  const depthOf = new Map(ordered.map((x) => [x.r.id, x.d]));
+  const depth = (r: Receipt) => depthOf.get(r.id) ?? 0;
   return (
     <ol className="tree" aria-label="Receipt tree">
       <li style={{ ["--depth" as string]: 0 }}>
