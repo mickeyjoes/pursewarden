@@ -1,0 +1,3 @@
+Superseded by g2i-20261110T155212Z-c and g2i-20261110T155234Z-d (identical results).
+This run used the first fixture build d2eef2fd..., which embedded builder home paths (see commit 7d66b4c).
+Its chain evidence is unaffected; it is retained, replay-tested, and excluded from the web bundle.

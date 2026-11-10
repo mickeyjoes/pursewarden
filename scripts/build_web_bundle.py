@@ -278,7 +278,8 @@ def main():
                       "the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",
               "runs": [build_run(root / n) for n in names],
               "g2_runs": [build_g2(p) for p in sorted((REPO / "evidence/g2-independent").glob("g2i-*"), reverse=True)
-                          if "-dev-" not in p.name and (p / "run-summary.json").exists()]}
+                          if "-dev-" not in p.name and (p / "run-summary.json").exists()
+                          and not (p / "SUPERSEDED").exists()]}
     out = REPO / "web/public/bundle.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(bundle, indent=1, sort_keys=False) + "\n"

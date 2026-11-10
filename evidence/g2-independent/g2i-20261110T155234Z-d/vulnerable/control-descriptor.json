@@ -1,0 +1,26 @@
+{
+  "network": "sandbox",
+  "chain_id": "test-chain-PkbbB",
+  "genesis_block_hash": "9HJJv8UGNuoSzbAfqkr5wr8MavJbvAuDt4de3W3DPqTN",
+  "genesis_rpc_sha256": "fa73d220adf0dc4806b0b6b26442c7a900eda91d8a9639a4eb99368a88dcc074",
+  "node_version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  },
+  "protocol_config_sha256": "9a849f70c4900ec778d182fe43eb2b30f4da96c2adac7af81941795ddcaed9da",
+  "h0_hash": "DhJ7TtYR1P3yVymGkNxTuiN6incP4yVefSFTBnbji9hG",
+  "h0_height": 15,
+  "q_hash": "3fQ6M9UHrBsJA8PTKt2ja7AARB5azoQckC1bhxWxKqpQ",
+  "q_height": 141,
+  "max_blocks": 10000,
+  "max_roots": 1000,
+  "shard_ids": [
+    0
+  ],
+  "schema": "near-g2-control/v1",
+  "vault": "vulnerable.owner.test.near",
+  "budget": "5000000000000000000000000",
+  "wasm_sha256": "07360b1f38bee8753ea4c21ee10fbce529980d96dc4fde65789af1b10f69c4a6"
+}

@@ -1,0 +1,1190 @@
+{
+  "schema": "near-g1-result/v1",
+  "mode": "LIVE",
+  "verdicts": {
+    "safety": "PASS",
+    "settlement": "PASS",
+    "evidence": "PASS",
+    "scenario_coverage": "PASS"
+  },
+  "chain_evidence_checks": "PASS",
+  "issues": [],
+  "recovery": {
+    "root_ids": [
+      "3Qe91vNFKkabnVowJqhqBZb7ygnic42i98gkpHvWNQut",
+      "3dX3fX5BMuxjUX4UmafAMEXxhXpzDCqJat9W3LL2wNHB",
+      "48gwSjsXJocXHqfXj2mgJ4YbLS227RXRF8FJ88y3ywFf",
+      "4cYvkKbNj2GTe2ZuL5uYNLwxXFeYBjtP8GjV8BgjzUgv",
+      "555bZKMBWB1TsG8J5Y1JneXEXTqxmoGJPHv7FxhpvqR5",
+      "5ZKciMwQ1dkgmN5rJxfchcRL4ZcHP4FmJsiRMScHDTM5",
+      "5ir7KMfd3pdoLP7Z2vox4vPFfrjZU4kE3YvNPHSA5bbe",
+      "5ujKSrKTmVskA72iw5AKc6kCy1xEqGbLhTXCXDBM1BdU",
+      "64pvHjNo6HDLDWZYSG5EiVXy1Vh1rxK7VTRojeqcW8WN",
+      "6NmYG34jt2zTtrPZvMiDmCP52pVXyi9fxQieGutesett",
+      "7AnXBYHjgwSGCy5P9mFfwANfGiLyP611cDtEDd1iEJsr",
+      "7BeuftuDwFK92KySQ8WL9fx7G6bznPf4vtEw3BZBe1tG",
+      "7rnFgAKqw7gnYnAWCxxfPvYEinwDLdhwgTG5AnRYZJkb",
+      "85varx3F3a37EHAB3gffY3T5bFhwGwWFjLwdMcRWNoxF",
+      "8Dme4WrWWj5jzvAo4toCDmSrv9UJyJBVyn8ZsSAKd2xj",
+      "8V7wmY8EyYhHrMHAbNy2AzgzAikSuw3r6taH33rbjvL9",
+      "8cAW1aoBCrkSfhAyEvcNaNcbxwqas2mzGEH4u4meovTL",
+      "8teXHkVeaZS9t8VP9iVvrAcj4sFyL6nwfJBWReZhYDh2",
+      "98Xr69GY4VW95pcbrNJTERKkVoiVAUMfWyHsVuiXJr8J",
+      "9U8aiESYDCvTcENP2N9kmG3QaT13B2yfvXp99DasALe2",
+      "AysUJFsPGvWT3AJET3ghDkgaXREqCCa6bZhnJrWwbvQ4",
+      "Bb6h2HefNcKzevk3zbHRHyWGuhpxaNapfWrWDFxBzRLx",
+      "BiREvRf2KhnAjYxcZShNs4ctoZuJmf5P3RfJ3j8At1HP",
+      "Bw4x5bSo52mpVHMhkskyjaJ7HjfAU1cwBstYnrokxCay",
+      "C5J9S8wBcz5bwkAzWfqXGtmgVf2NB6pVFHSYbbiQvNsp",
+      "CW9baiqaYeuGKcX3LXhqt9yRhAEQ7Wsy7LGW4V8cYCLr",
+      "CXbd9rpzHUANag8QfJfeC1CeUCp3ZKB2AyEtHrbP9ebm",
+      "DQpM9ZQRep3xNnREQU1bJtYtFcBMeD8K58onvcBAFvLA",
+      "FHUawrok1BG5UydY3YXtyU3qaF6XoVfHNdHGfQyWBLdu",
+      "FHuLtizxhQyG59a9a5WVCrWZT9d4R1yYWkSSE7qgRANH",
+      "FnNfB35oNCJMUoZaUAmM7uZEV6QHaWf8bBgkLdCdvb7z",
+      "GGcFN3Cym3mr9rqKRs4zcLribP76H2Stn4eGtaUhxRUM",
+      "GuEV5CZxR8t6MkhG3hDLxfRx1a9atuneXs46sn5J98zC",
+      "H1B4S43vPTHTATRSmu7XBjQ3SnHQPhUwEfJnMWGBwDxW",
+      "uSdeyWfofLzJyvdFPfDp3qU8caLu1RGk6vnG1c2pdUn"
+    ],
+    "payments": [
+      {
+        "request_id": "3",
+        "tx_hash": "555bZKMBWB1TsG8J5Y1JneXEXTqxmoGJPHv7FxhpvqR5",
+        "admission_receipt": "5fFEZfWfn55ousddiXHc7KDSckZsdMFdCyMPLNDjb3E",
+        "transfer_receipt": "ExE3HBdV2AZZUer6MDexLg2Ysfu8WbL1emQHU7HNtWo",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "AJx1WwfmNiaQVaefwngGdpz5BsjvjtPPGEGCtJGCWcx4",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "6",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "14"
+      },
+      {
+        "request_id": "4",
+        "tx_hash": "7AnXBYHjgwSGCy5P9mFfwANfGiLyP611cDtEDd1iEJsr",
+        "admission_receipt": "5ZMgEoRiDbUCPkpJJfmaghDGV1KyFB4hpQ1gxLh1w1kj",
+        "transfer_receipt": "5ThLiuQVDuSASJdFN82RC4sWNKcp25VXkTt12GjUTGN4",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "AaXvuxVuzpY21gZ6vyfo42bjochay75pf5Vsh96cAqzx",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "9",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "17"
+      },
+      {
+        "request_id": "5",
+        "tx_hash": "8V7wmY8EyYhHrMHAbNy2AzgzAikSuw3r6taH33rbjvL9",
+        "admission_receipt": "EF3aVYvonsc22thAmNXA5WqvAGFxxywqa3mjVR1srTMN",
+        "transfer_receipt": "2FUT4vfmJvUJCYcbTeJikSN49MF6rjW2YWjXMmBR1SSF",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "K914vKSza4hAqZy2MSFTyvrCobq47fG5hVNn4NBqqaA",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "4",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "12"
+      },
+      {
+        "request_id": "6",
+        "tx_hash": "8cAW1aoBCrkSfhAyEvcNaNcbxwqas2mzGEH4u4meovTL",
+        "admission_receipt": "AcZxa6CwysJA2mYA5WdDaLgqx8hjcRzFSfBWZAR9TFBD",
+        "transfer_receipt": "FRd3xy3YByedHaxE2HJjehYErMBYd7HySXCoc9dAbMMz",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "52nH8rYXp3mG3pQRMV7gFNuAnxZv55wnCtVq2Ury9RRx",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "10",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "18"
+      },
+      {
+        "request_id": "9",
+        "tx_hash": "8teXHkVeaZS9t8VP9iVvrAcj4sFyL6nwfJBWReZhYDh2",
+        "admission_receipt": "FXM2YbW8EuQkJrvdHQ3tj6gaYEy4TNyjszCyVn5o1xJg",
+        "transfer_receipt": "EGhzjtCLzVv1ktnPVZX6xQWW53bowVCk39btDQc8L94B",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "5eCnkhaJVtauyA5Uycrk63uoJjs168pcUoDqUbqETw3B",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "7",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "15"
+      },
+      {
+        "request_id": "2",
+        "tx_hash": "Bb6h2HefNcKzevk3zbHRHyWGuhpxaNapfWrWDFxBzRLx",
+        "admission_receipt": "2RQof4gjKQAV6uzQJioAe1uUbRCmaz9smZF4XLo5KJoB",
+        "transfer_receipt": "Ea8XeJGtpUa1FrZaCGhvBR5KddNucVZvRL7zJyDXNBTK",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "yciWbg6vNP7iZgT2qbmhRVc2oJ65r18ph3yjnramtRS",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "5",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "13"
+      },
+      {
+        "request_id": "7",
+        "tx_hash": "CW9baiqaYeuGKcX3LXhqt9yRhAEQ7Wsy7LGW4V8cYCLr",
+        "admission_receipt": "8QZQxV2WfFVXjBnvAcjmCdKH5U6fJWZwXFEiudDRrw2Q",
+        "transfer_receipt": "BTVjeUvBGsggQzGmVciYjdEeBpHm6EoBXZMPQuvXej5j",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "ChmuDdjzzqPrbr6pamW752CUc65nGRetwCHWWahUgRHE",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "3",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "11"
+      },
+      {
+        "request_id": "8",
+        "tx_hash": "CXbd9rpzHUANag8QfJfeC1CeUCp3ZKB2AyEtHrbP9ebm",
+        "admission_receipt": "5VuzvyPzVG7LR6SSAyajzxYNhUnwGwmJ5gc3KVtk3Kxf",
+        "transfer_receipt": "FpMYb7m4EK1HyArY64ML2Jr8zvFPVxxkPVWfdjM53W4o",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "Ca8znKPopCRdMjExMUQUBUt2ZQi1KtxAL4hwSKQzrHbd",
+        "execution_block": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ",
+        "callback_receipt": "AVHeeDpBhVXcWdnMg7jCzbkAgyWLZQdtRNXcrdqA37sJ",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "8",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "16"
+      },
+      {
+        "request_id": "1",
+        "tx_hash": "FHUawrok1BG5UydY3YXtyU3qaF6XoVfHNdHGfQyWBLdu",
+        "admission_receipt": "H7HCpwMD7Z3GRH2XnZvzj6Lii3pjpgvHxDZjRv6JwhAr",
+        "transfer_receipt": "GWYF7p8n52pdkSSAivc6HRT43hQ54E4j9Fpkr9ELCk7Q",
+        "recipient": "alice.test.near",
+        "amount": "1000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "AXnyaP8mpnoyqPK3WEv8Bi1onMLeaxLk6JyPNYbMpKGw",
+        "execution_block": "ELcTgReVzMspXX2sK81ePxyvVPQpqNg3v4nuAbJTVgwi",
+        "callback_receipt": "BoKVZoVt943kTRkEWB4YYdxxoVYV6afEyJekjnuCK33k",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "1",
+        "callback_observation": "CbSucceeded",
+        "callback_seq": "2"
+      }
+    ],
+    "denials": [],
+    "failed_calls": [],
+    "other_vault_calls": [],
+    "pending_witness": [],
+    "freeze": [
+      {
+        "tx_hash": "5ZKciMwQ1dkgmN5rJxfchcRL4ZcHP4FmJsiRMScHDTM5",
+        "receipt_id": "HYaY3NhYRygV32ZpeddXH3QqFfrJNUhtkwgmjvuHLaHQ",
+        "events": [
+          {
+            "event": "freeze",
+            "seq": 19,
+            "data": {
+              "seq": "19",
+              "vault": "generous.owner.test.near",
+              "policy_hash": "4gCSb4i6qxQbGnwgk4AWvACC5TX21C72MGm76rHUbgXJ",
+              "charged": "17000000000000000000000000",
+              "accepted_count": 9
+            },
+            "receipt_id": "HYaY3NhYRygV32ZpeddXH3QqFfrJNUhtkwgmjvuHLaHQ",
+            "block_hash": "4iN77GfNRFQiHEp77DCU8nKbuo3W9R3p9Sdm8wjV7j6o"
+          }
+        ]
+      }
+    ],
+    "principal_refunds": [],
+    "balance_refunds": [],
+    "gas_refunds": [
+      {
+        "tx_hash": "3Qe91vNFKkabnVowJqhqBZb7ygnic42i98gkpHvWNQut",
+        "receipt_id": "FUjKM6oJCg4nNdMNBDcRu5oZVv3LmDhLHbwQJ57auuVT",
+        "parent_id": "H8PcpqnDZo3GRbSPSq51Zk7vbSgHZfeLH8Azi4qcD9HY",
+        "recipient": "agent.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "3DM1CuLZTpEbmamQ1A6wz3tjNUGoksATJ5sWsDXsGvNa"
+      },
+      {
+        "tx_hash": "3Qe91vNFKkabnVowJqhqBZb7ygnic42i98gkpHvWNQut",
+        "receipt_id": "7dNKS3jmLmYnvadR4M4iuz73xGfbTEDwuhkpRUexAztg",
+        "parent_id": "HBh9GGq8roLK5tvjUqcinKnNsBTTjax8Q6ocYReNhpHd",
+        "recipient": "agent.owner.test.near",
+        "amount": "20712572861152100000000",
+        "outcome": "SuccessValue",
+        "block_hash": "HPcpXd3gGLrv6mB5ckhTN91HpFYZzFScBvfLSxcEkQyU"
+      },
+      {
+        "tx_hash": "3Qe91vNFKkabnVowJqhqBZb7ygnic42i98gkpHvWNQut",
+        "receipt_id": "3idEpzDMmPee2cyaE9yCb2ibsDJEUoJsdvauipj9MpuK",
+        "parent_id": "BReaFK8LDocBVwUi9UbdNKdNiDoxXqpT83xZgDeza2HQ",
+        "recipient": "agent.owner.test.near",
+        "amount": "79512045177162700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "3dX3fX5BMuxjUX4UmafAMEXxhXpzDCqJat9W3LL2wNHB",
+        "receipt_id": "4nvruDCygD1gdk4gzHKzyLMAnJaxjEsLznF742pF3Tck",
+        "parent_id": "NzzoveysNgYgDiEYWxyBaXny2qC6AriHG3ErkXcKvHK",
+        "recipient": "owner.test.near",
+        "amount": "1229076591647600000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ao3JEUyhwTzMYkXRf8G5La14QX3Wy2dcuS6qKJZWF4dj"
+      },
+      {
+        "tx_hash": "48gwSjsXJocXHqfXj2mgJ4YbLS227RXRF8FJ88y3ywFf",
+        "receipt_id": "GsC4ofW1uYsP8unSen5BU5vVQ3fVprhvo7JQiX3uVF6T",
+        "parent_id": "FuBnrPXX2UHxTNEEQ6MufFrFfrPFwyerqg9LPFcUJkYv",
+        "recipient": "owner.test.near",
+        "amount": "106406398178909200000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNoEbaBmswPrR5JGCZUJjkGJaj9NPuh4e4KXJ3EZvyEJ"
+      },
+      {
+        "tx_hash": "4cYvkKbNj2GTe2ZuL5uYNLwxXFeYBjtP8GjV8BgjzUgv",
+        "receipt_id": "CDW2SJnUrkPXm5ayQxQVX8zV6xfuVQyKtnjLjkhFtkBt",
+        "parent_id": "D4qHTZc7X4jaWAWGFog7wJ6hLCFX4tdMcEExknBXcdNj",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "4cYvkKbNj2GTe2ZuL5uYNLwxXFeYBjtP8GjV8BgjzUgv",
+        "receipt_id": "9ykXo7LH9GaGc4AfyKo4K6J9mzf2178EMCQSwxdJME3c",
+        "parent_id": "EViZCx1YkxguoQQW7wJDZEpdEa4JbQQ87AvRPSihnpMP",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "4cYvkKbNj2GTe2ZuL5uYNLwxXFeYBjtP8GjV8BgjzUgv",
+        "receipt_id": "DCDZb7xhzefQpYU9z3Un7K7PbYiDPw4uETPkAS3h78XC",
+        "parent_id": "AkCR1eXmU21TfYn6k7p5vzNsFFu66Hf9Wbd8Af9529ug",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "555bZKMBWB1TsG8J5Y1JneXEXTqxmoGJPHv7FxhpvqR5",
+        "receipt_id": "9Jik9435BrrSTT89poF5WVioV9X4vwTvWyDoNXcUkd2Q",
+        "parent_id": "ExE3HBdV2AZZUer6MDexLg2Ysfu8WbL1emQHU7HNtWo",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "555bZKMBWB1TsG8J5Y1JneXEXTqxmoGJPHv7FxhpvqR5",
+        "receipt_id": "4dzGX9mGaR8en4g3hoaUFFaD2Feopxy6Ynz4GujLoRWj",
+        "parent_id": "AJx1WwfmNiaQVaefwngGdpz5BsjvjtPPGEGCtJGCWcx4",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714845102629000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "555bZKMBWB1TsG8J5Y1JneXEXTqxmoGJPHv7FxhpvqR5",
+        "receipt_id": "EiZmMkT4KmMuNMr8E36ar1NmzfyQt1C1iw91Hye1hRqp",
+        "parent_id": "5fFEZfWfn55ousddiXHc7KDSckZsdMFdCyMPLNDjb3E",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514742366334700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "5ZKciMwQ1dkgmN5rJxfchcRL4ZcHP4FmJsiRMScHDTM5",
+        "receipt_id": "2cHDh9u9Mrqq4RHZimTvPF6khWxRjxb6cqmQs7cbxFZx",
+        "parent_id": "HYaY3NhYRygV32ZpeddXH3QqFfrJNUhtkwgmjvuHLaHQ",
+        "recipient": "owner.test.near",
+        "amount": "30742293653202100000000",
+        "outcome": "SuccessValue",
+        "block_hash": "7aJcXeVUGyQW8pmzfcytHGjSHhS651NWWEmNG7fYQW37"
+      },
+      {
+        "tx_hash": "5ir7KMfd3pdoLP7Z2vox4vPFfrjZU4kE3YvNPHSA5bbe",
+        "receipt_id": "BFj9Qq4ZVTUk84ynEAgXnZDYRMps3oJ2DEURjN4JhbDe",
+        "parent_id": "kustKEyoE2dM5wDjEPv72G5o9K1yQTYE3F1qkNekhpd",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715446076620400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "5ujKSrKTmVskA72iw5AKc6kCy1xEqGbLhTXCXDBM1BdU",
+        "receipt_id": "BuGoBZzeHLDYCufbBLUkZxpekY7hu8di6qWrYCJ7Fujp",
+        "parent_id": "EdaK19X7EfCMUw3nJbJL2sXvw4x3f4q4L974fnmYC8pM",
+        "recipient": "owner.test.near",
+        "amount": "1229076591647600000000",
+        "outcome": "SuccessValue",
+        "block_hash": "mU71MQ431TYRnwwXHjccT3M19ndAaQ9rGCe72M64q49"
+      },
+      {
+        "tx_hash": "64pvHjNo6HDLDWZYSG5EiVXy1Vh1rxK7VTRojeqcW8WN",
+        "receipt_id": "AygKAePeu1Y3L7AeM2ExchsYg71fhoiUo7oB8en4TyS1",
+        "parent_id": "91zSyCMYm7nFAcMQFmTCPYo5yRn7vUTQ6ZkKCVwzYdhm",
+        "recipient": "owner.test.near",
+        "amount": "110157365405601700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "35T4Vpe2vMd5xbF7VBXxrQBnpikSo6DYX4rYmE2BTfte"
+      },
+      {
+        "tx_hash": "6NmYG34jt2zTtrPZvMiDmCP52pVXyi9fxQieGutesett",
+        "receipt_id": "Hp78h9Dno6MpAD9CKJduHddMDd5nphMBmpkzwZEYQf6w",
+        "parent_id": "2a3Byf1NZdWfoZ78tHfhmwZDAQ79Bzgg3BXG97C3YEbb",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "6NmYG34jt2zTtrPZvMiDmCP52pVXyi9fxQieGutesett",
+        "receipt_id": "BLDnwfFE4yM2tJLKyRHz1xqaCjo23jf77XV4uU772Kfb",
+        "parent_id": "GUaXESbkx2NwZkh648W6TeGEVo9qc4uQJaz8GsxmXefG",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "6NmYG34jt2zTtrPZvMiDmCP52pVXyi9fxQieGutesett",
+        "receipt_id": "HhnWSG5ougAtS4acuWV1qNbDog4j1kLKapLferbmQtCy",
+        "parent_id": "HTgPRnT8ufxmDhuDhY3MN2e6LxZ5kcYEct9PDXZsM5r2",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "7AnXBYHjgwSGCy5P9mFfwANfGiLyP611cDtEDd1iEJsr",
+        "receipt_id": "1UREC9J5VgBEitHTUTihAfzbvCWCkseJ9E9cHAWjAoY",
+        "parent_id": "5ThLiuQVDuSASJdFN82RC4sWNKcp25VXkTt12GjUTGN4",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "7AnXBYHjgwSGCy5P9mFfwANfGiLyP611cDtEDd1iEJsr",
+        "receipt_id": "H1wtYMoa2uiXvjbMuCpADQoXZAS3bvtzVtFqeerMuEhB",
+        "parent_id": "AaXvuxVuzpY21gZ6vyfo42bjochay75pf5Vsh96cAqzx",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714807909347500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "7AnXBYHjgwSGCy5P9mFfwANfGiLyP611cDtEDd1iEJsr",
+        "receipt_id": "FWM8gC9SA6Utcr1UNiSeXZS8G85vXfkaMBtbfPVv4QVi",
+        "parent_id": "5ZMgEoRiDbUCPkpJJfmaghDGV1KyFB4hpQ1gxLh1w1kj",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514652080794700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "7BeuftuDwFK92KySQ8WL9fx7G6bznPf4vtEw3BZBe1tG",
+        "receipt_id": "38TD9RwrT92MZEEMvgwsbEhwMU1LX7EVLFmR4oQ8QkEm",
+        "parent_id": "4RHXc5tUDJG1xsFxB5yRBZzDUtXbAQ6tg6oRoXecaeWy",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "7BeuftuDwFK92KySQ8WL9fx7G6bznPf4vtEw3BZBe1tG",
+        "receipt_id": "8TiwTEdU1BbWnrzudrdv8BYukoCw9eiyMt5j4TNNovyj",
+        "parent_id": "Fn7SEk44ReUZnbh9WNafE5YgQEqCwHPYdFiVxMtHQ6G7",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "7BeuftuDwFK92KySQ8WL9fx7G6bznPf4vtEw3BZBe1tG",
+        "receipt_id": "6XRv9p4zzjafZVq9xHEkfqRyJhYXuTEWsGiV9NJBdGHG",
+        "parent_id": "7ZQ5oh1LXKRKguZZ6bNNXxCb5wDf2voUVvMf6fzL8xrA",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "7rnFgAKqw7gnYnAWCxxfPvYEinwDLdhwgTG5AnRYZJkb",
+        "receipt_id": "5HLcraU5ak1cPqQGDcUm5Dfz6cnjBm47D8wqDR9DZaxH",
+        "parent_id": "3Y7GKW1khZqtWXyGxZbwqgQ9Eq8kFVsdQabcqSTVuJwa",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "7rnFgAKqw7gnYnAWCxxfPvYEinwDLdhwgTG5AnRYZJkb",
+        "receipt_id": "5hKJn2uZvhE6mEhojjk2MuNN2Yg9m5ga8q7kDfv9CKR7",
+        "parent_id": "GVgdaNQeDFinbFpJBXY4YWA815J8sNJ2zsVEWjrK2qLm",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "7rnFgAKqw7gnYnAWCxxfPvYEinwDLdhwgTG5AnRYZJkb",
+        "receipt_id": "GpRwa6zhTeTVwAQpPcN17i2ZzNcGPtdDJLAVdrjAwRXo",
+        "parent_id": "Hickv4F2AfHy7iPhEEzYWXJxGm93LnTsCYPFAxuB3F9h",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "85varx3F3a37EHAB3gffY3T5bFhwGwWFjLwdMcRWNoxF",
+        "receipt_id": "4qpvW8FccioGqL14VaKoiTPvEx3tsmMB7wKn1ed9hARw",
+        "parent_id": "93vozVKRVoNkZAFuGvb8o3YWXjzqqbfHANpgz6TGigL7",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "85varx3F3a37EHAB3gffY3T5bFhwGwWFjLwdMcRWNoxF",
+        "receipt_id": "7YtsTGohAYr75FjePDwnw5pAtXgKcq1LKcbnXQ82jYkp",
+        "parent_id": "UpmqUhU8SN14wQMNLEhZYXoxFN9boJ4i3mm1aCphLZU",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "85varx3F3a37EHAB3gffY3T5bFhwGwWFjLwdMcRWNoxF",
+        "receipt_id": "9PTmsd8HGDFzgCoKWy3VwJWtCRLcUmvhZ42EE55nrvT1",
+        "parent_id": "Cy3vRPZGD2dm5y2NLktixhVvACQbYf3EvAjragqnL8uA",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "8Dme4WrWWj5jzvAo4toCDmSrv9UJyJBVyn8ZsSAKd2xj",
+        "receipt_id": "FVKgD6Z5gwNWi1xdqDjPxvBxtezNtbCxBTwZGvRWDJXY",
+        "parent_id": "2irTi4W4cMGp9bTMF7WyuzT3KdyQZXKVBwAbiztM8yTS",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715491219390400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "8V7wmY8EyYhHrMHAbNy2AzgzAikSuw3r6taH33rbjvL9",
+        "receipt_id": "6oGuqucaF4U5JErzQnts3ud5F5rkmQfoHQaEzEC9jHfu",
+        "parent_id": "2FUT4vfmJvUJCYcbTeJikSN49MF6rjW2YWjXMmBR1SSF",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "8V7wmY8EyYhHrMHAbNy2AzgzAikSuw3r6taH33rbjvL9",
+        "receipt_id": "DVJzRzxX4smZhNMmoodJXy3oedqciUpD9avaRXQmDJ27",
+        "parent_id": "K914vKSza4hAqZy2MSFTyvrCobq47fG5hVNn4NBqqaA",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714845102629000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "8V7wmY8EyYhHrMHAbNy2AzgzAikSuw3r6taH33rbjvL9",
+        "receipt_id": "9yaorAFZTXFDgPrkSfH9kxeUpHCntKdUL3JEC2wQwrqL",
+        "parent_id": "EF3aVYvonsc22thAmNXA5WqvAGFxxywqa3mjVR1srTMN",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514742366334700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "8cAW1aoBCrkSfhAyEvcNaNcbxwqas2mzGEH4u4meovTL",
+        "receipt_id": "FSNubPU3zdCqYK7zHS58p4Ey7NU5h79fCRwDMZzHXrm6",
+        "parent_id": "FRd3xy3YByedHaxE2HJjehYErMBYd7HySXCoc9dAbMMz",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "8cAW1aoBCrkSfhAyEvcNaNcbxwqas2mzGEH4u4meovTL",
+        "receipt_id": "8DhACkq1iJAuNbN5qeSWiGQgJPMYqeABQr5nk9rM9Fzr",
+        "parent_id": "52nH8rYXp3mG3pQRMV7gFNuAnxZv55wnCtVq2Ury9RRx",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714807909347500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "8cAW1aoBCrkSfhAyEvcNaNcbxwqas2mzGEH4u4meovTL",
+        "receipt_id": "DSLrnuE7h12jSHvL5De5CVA6ZiLc5FEkc3LaUFEtVLxT",
+        "parent_id": "AcZxa6CwysJA2mYA5WdDaLgqx8hjcRzFSfBWZAR9TFBD",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514606938024700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "8teXHkVeaZS9t8VP9iVvrAcj4sFyL6nwfJBWReZhYDh2",
+        "receipt_id": "GzY2ULodEQ5sGuuqsAtNKoxjXqdHsU3hYBJi2weA2qut",
+        "parent_id": "EGhzjtCLzVv1ktnPVZX6xQWW53bowVCk39btDQc8L94B",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "8teXHkVeaZS9t8VP9iVvrAcj4sFyL6nwfJBWReZhYDh2",
+        "receipt_id": "6RjWUufUULUecVgryW6z8XtbAaokpDVKmtTRDuVLUvJf",
+        "parent_id": "5eCnkhaJVtauyA5Uycrk63uoJjs168pcUoDqUbqETw3B",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714807909347500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "8teXHkVeaZS9t8VP9iVvrAcj4sFyL6nwfJBWReZhYDh2",
+        "receipt_id": "3tKT5RReEcRaNomdJjN1SoRidVFNxaxYGwQH6VKvSLLr",
+        "parent_id": "FXM2YbW8EuQkJrvdHQ3tj6gaYEy4TNyjszCyVn5o1xJg",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514697223564700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "98Xr69GY4VW95pcbrNJTERKkVoiVAUMfWyHsVuiXJr8J",
+        "receipt_id": "jxZA31jKStBNPTHde73BU5Me5niSHsCtrwYAxkekFAB",
+        "parent_id": "AXGmedJmeCj5CZHgNbKduG7Gzfcb2oos7Vkg6ykTArpL",
+        "recipient": "agent.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "3DM1CuLZTpEbmamQ1A6wz3tjNUGoksATJ5sWsDXsGvNa"
+      },
+      {
+        "tx_hash": "98Xr69GY4VW95pcbrNJTERKkVoiVAUMfWyHsVuiXJr8J",
+        "receipt_id": "FbaR7JSdQdMfFUn5zsMjRgAEsBCwD1atzpd6EvAaWzgd",
+        "parent_id": "2pmLBtsQQq8axVbT3TDoxSe3vyX2W5hCeye9dVJXiJZ2",
+        "recipient": "agent.owner.test.near",
+        "amount": "20714624861152100000000",
+        "outcome": "SuccessValue",
+        "block_hash": "HPcpXd3gGLrv6mB5ckhTN91HpFYZzFScBvfLSxcEkQyU"
+      },
+      {
+        "tx_hash": "98Xr69GY4VW95pcbrNJTERKkVoiVAUMfWyHsVuiXJr8J",
+        "receipt_id": "3TMwJJ5swEa9sqC9jyDofHDVfT7Vw9snmZQNravG8EK7",
+        "parent_id": "J5cxio3o8cGN3gWkdG5AkmNh34EBgoe1gRad3ZazSbkN",
+        "recipient": "agent.owner.test.near",
+        "amount": "79514097177162700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "9U8aiESYDCvTcENP2N9kmG3QaT13B2yfvXp99DasALe2",
+        "receipt_id": "ENmgowGy3D215iFrXbzZu9VgZsQhwVY4qRvtSTzAZ6DC",
+        "parent_id": "HdB5vUu43SeKMfEwtubcXsfiV9m5G1j7kURMeqRT6ztf",
+        "recipient": "owner.test.near",
+        "amount": "110156754389834800000000",
+        "outcome": "SuccessValue",
+        "block_hash": "BhycUnspxBHXNGAtnSED6Faj3EjqqiN9fXjBD6txfFL6"
+      },
+      {
+        "tx_hash": "AysUJFsPGvWT3AJET3ghDkgaXREqCCa6bZhnJrWwbvQ4",
+        "receipt_id": "6HJkdFh7AZbpjaToXdPPRg4KjAV3evRYgcPjyQ7RndCX",
+        "parent_id": "BPtgngPAxXLgYRstmduvFpVGEXrJn5LJjudjTwopd7H4",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "AysUJFsPGvWT3AJET3ghDkgaXREqCCa6bZhnJrWwbvQ4",
+        "receipt_id": "42XMNBTAQXfTKnaY6tiBTaErHqFXPaxfXVWv345GAdV3",
+        "parent_id": "4tPoVY74XVZFTuChszY5vBVdCsGNHwdqsKz55jQuSevW",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "AysUJFsPGvWT3AJET3ghDkgaXREqCCa6bZhnJrWwbvQ4",
+        "receipt_id": "FbW9CRwduoGYX2cMsY5mrjajhTYnDnXAEjbdWzb1GHgb",
+        "parent_id": "R558avgGFEvULdpXJk9HMXjRy4n92kMGurLUwdvi7Rb",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "Bb6h2HefNcKzevk3zbHRHyWGuhpxaNapfWrWDFxBzRLx",
+        "receipt_id": "EMFscwjMvsg6niptrTUmjFmKJvoQYkc9NqdbdwZywYsn",
+        "parent_id": "Ea8XeJGtpUa1FrZaCGhvBR5KddNucVZvRL7zJyDXNBTK",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "Bb6h2HefNcKzevk3zbHRHyWGuhpxaNapfWrWDFxBzRLx",
+        "receipt_id": "DP3gVapXmFsMcQYmJJunNgVji4u7SCDdW5Peh9Xhm97f",
+        "parent_id": "yciWbg6vNP7iZgT2qbmhRVc2oJ65r18ph3yjnramtRS",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714845102629000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "Bb6h2HefNcKzevk3zbHRHyWGuhpxaNapfWrWDFxBzRLx",
+        "receipt_id": "JAEhZWviHE9cFZ5hHdRCK5iuz1QSdzGw9azRihmmJMvK",
+        "parent_id": "2RQof4gjKQAV6uzQJioAe1uUbRCmaz9smZF4XLo5KJoB",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514742366334700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "BiREvRf2KhnAjYxcZShNs4ctoZuJmf5P3RfJ3j8At1HP",
+        "receipt_id": "7hS4xiHFtPdMwE6KsprPsHLpToMxxDByvWVD7tXxFCWj",
+        "parent_id": "8k6jKP7rLm8VbeujdMxx9zEmqcZLJoXCa7Js169YqJ1i",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715491219390400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "Bw4x5bSo52mpVHMhkskyjaJ7HjfAU1cwBstYnrokxCay",
+        "receipt_id": "9fSLcDJDGT8AwuEZxmX7aQDdxx3a63YudBsBDFmh4bRh",
+        "parent_id": "8YLtsW3CUTMY5mfBRH6Wqgo3znr5riTQcmCLkPmZTmD8",
+        "recipient": "agent.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "A4yRZ8vByDsqUxhiR9vU3tfXaFbUB6MxxAbEWyrdcjuM"
+      },
+      {
+        "tx_hash": "Bw4x5bSo52mpVHMhkskyjaJ7HjfAU1cwBstYnrokxCay",
+        "receipt_id": "3KFnbjWQPSZzf1S3iuhGRT5QAWxXxBw1Jc5PmiJFKfnm",
+        "parent_id": "EGc615gJoa83An4q9RUS921anBK8jwzFdzRUP2rrdXxE",
+        "recipient": "agent.owner.test.near",
+        "amount": "20713066054433600000000",
+        "outcome": "SuccessValue",
+        "block_hash": "EcueyRjjGbZe6hBtUUpWvd1ecM92Mn1sZCa9Tg33xq13"
+      },
+      {
+        "tx_hash": "Bw4x5bSo52mpVHMhkskyjaJ7HjfAU1cwBstYnrokxCay",
+        "receipt_id": "2wx2NS2DiP1ykGBEyCgqaaXNf43gfpcvK8WMtPpeBANF",
+        "parent_id": "6UjqUQ5t7ZvTq2sQD8vNyRsEt5xBe6n462dbQVZRZTk2",
+        "recipient": "agent.owner.test.near",
+        "amount": "79515415241488300000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8NRY8Jz7KE9h66B9afdvzwHAN6L3Z7r588nMWLie4Y5X"
+      },
+      {
+        "tx_hash": "C5J9S8wBcz5bwkAzWfqXGtmgVf2NB6pVFHSYbbiQvNsp",
+        "receipt_id": "9VxLbKHn2vepD6v9EakK7J4PTwnSkYVZxNbCMjKfphis",
+        "parent_id": "53XW5eRUkFxNJutUqyKa1KhrrrTp5Cf329g36Z7MJ3iw",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "C5J9S8wBcz5bwkAzWfqXGtmgVf2NB6pVFHSYbbiQvNsp",
+        "receipt_id": "6bjVibe7oxFaVRdXDY7x1qgQZk6z1bxecQmDiqbidLB6",
+        "parent_id": "Aa8YjLjXthX3VM8te6XhZMosrkH2GTD8yjdmVsX8zcsY",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98562386371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "C5J9S8wBcz5bwkAzWfqXGtmgVf2NB6pVFHSYbbiQvNsp",
+        "receipt_id": "3Zw9hW7YnvHe6NihDKTxCQjyQ34PxsS6ySNMTE84PAeL",
+        "parent_id": "3SjpRVkfmKtuNm8Nv8cFu521jfibSNRd5QWFQfUy7gvc",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1783370746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "CW9baiqaYeuGKcX3LXhqt9yRhAEQ7Wsy7LGW4V8cYCLr",
+        "receipt_id": "AKKQJjYWT6QsXbxW1KCYLCrzX58inDSK3gETmJ36y45C",
+        "parent_id": "BTVjeUvBGsggQzGmVciYjdEeBpHm6EoBXZMPQuvXej5j",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "CW9baiqaYeuGKcX3LXhqt9yRhAEQ7Wsy7LGW4V8cYCLr",
+        "receipt_id": "C2FQRBPw8gX2uFfEfJZZwGNLoEx3CAsTMhseDabKFaWj",
+        "parent_id": "ChmuDdjzzqPrbr6pamW752CUc65nGRetwCHWWahUgRHE",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20713249102629000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "CW9baiqaYeuGKcX3LXhqt9yRhAEQ7Wsy7LGW4V8cYCLr",
+        "receipt_id": "AnMoEf8ChnwHNSda8j6E5TAUbCxb8QtSZFKuM3hzsBxd",
+        "parent_id": "8QZQxV2WfFVXjBnvAcjmCdKH5U6fJWZwXFEiudDRrw2Q",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79513146366334700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "CXbd9rpzHUANag8QfJfeC1CeUCp3ZKB2AyEtHrbP9ebm",
+        "receipt_id": "6hcYdDn9aypDs8isZC535CfSFEmHZqVdYgYFBD3YNdRb",
+        "parent_id": "FpMYb7m4EK1HyArY64ML2Jr8zvFPVxxkPVWfdjM53W4o",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "31akGcrk1LC2SvdpSpfpX8FcPfsGGv8KMdV7PRikARLu"
+      },
+      {
+        "tx_hash": "CXbd9rpzHUANag8QfJfeC1CeUCp3ZKB2AyEtHrbP9ebm",
+        "receipt_id": "Fg7WviD2BELRvukpZxkhmC9jK9NYEte4UByi61JNTcuu",
+        "parent_id": "AVHeeDpBhVXcWdnMg7jCzbkAgyWLZQdtRNXcrdqA37sJ",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20714807909347500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fwXjHvCdgNu9Q2ZkKg81qUdsU1w4DSUxsEVcD9iZ2h6"
+      },
+      {
+        "tx_hash": "CXbd9rpzHUANag8QfJfeC1CeUCp3ZKB2AyEtHrbP9ebm",
+        "receipt_id": "Au2XJyFqXeCnXY1otdF9Rsj4ubBjuEFyfkw7ERo8fCwh",
+        "parent_id": "5VuzvyPzVG7LR6SSAyajzxYNhUnwGwmJ5gc3KVtk3Kxf",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79514652080794700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "Ab3ppnj3gBwWSCXBK8LhbXuezU724RSvNXrCeXDwPeEQ"
+      },
+      {
+        "tx_hash": "DQpM9ZQRep3xNnREQU1bJtYtFcBMeD8K58onvcBAFvLA",
+        "receipt_id": "H6PbmHrVQiZQGxHWmJzfCeHc1gAb3jFE4w813TJwmrCX",
+        "parent_id": "468pQ7j5DCAHRSnciJvAczsXCTnMpiLnwX8t76VFZKj8",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715491219390400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "FHUawrok1BG5UydY3YXtyU3qaF6XoVfHNdHGfQyWBLdu",
+        "receipt_id": "Bg8QAqyYT1SLT6h3gaCVzmyV57a5HVxK2AscDoYoC9BL",
+        "parent_id": "GWYF7p8n52pdkSSAivc6HRT43hQ54E4j9Fpkr9ELCk7Q",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "CmDd64vCjjKRxWzkuGRGUsLrqvHqEExMpBMwMwWN6zTz"
+      },
+      {
+        "tx_hash": "FHUawrok1BG5UydY3YXtyU3qaF6XoVfHNdHGfQyWBLdu",
+        "receipt_id": "3Ri4U7aWVh5YmjVrxZaAQaKD9Pp6r1jNWFVVzTey6uzF",
+        "parent_id": "BoKVZoVt943kTRkEWB4YYdxxoVYV6afEyJekjnuCK33k",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "20713779489192000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "CBiagdtNyxFaDCdZS6oA4ey7yPkQ96AxdpHUwZeZhkJm"
+      },
+      {
+        "tx_hash": "FHUawrok1BG5UydY3YXtyU3qaF6XoVfHNdHGfQyWBLdu",
+        "receipt_id": "DfT2F1GZsUngUVGefaRVTvXis3gR9zGpAncJQbKkaqdV",
+        "parent_id": "H7HCpwMD7Z3GRH2XnZvzj6Lii3pjpgvHxDZjRv6JwhAr",
+        "recipient": "agent-gen.owner.test.near",
+        "amount": "79516516430660300000000",
+        "outcome": "SuccessValue",
+        "block_hash": "ELcTgReVzMspXX2sK81ePxyvVPQpqNg3v4nuAbJTVgwi"
+      },
+      {
+        "tx_hash": "FHuLtizxhQyG59a9a5WVCrWZT9d4R1yYWkSSE7qgRANH",
+        "receipt_id": "Dc8EJsHM8MtNJzXsQpvY9K5qcbDnSZ9Tj6MRt7Cw4ZpR",
+        "parent_id": "4e9m6bsNXpYLCCLrXAEJqCQFAZuCv5Bnu9Rp7Fq4rCn5",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715491219390400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "FnNfB35oNCJMUoZaUAmM7uZEV6QHaWf8bBgkLdCdvb7z",
+        "receipt_id": "2pEpQ3iegU2nxTv1zopXmQCphxwXJiqTd9TmssAtC9ec",
+        "parent_id": "HfjLMc8N7ooBZniF9ViaJxAZgFxK87VrdcLUTCjyAvP3",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "H4B3W3KcNHxniFSpVFUNoXDv2K21k2YRkfmyj6fgvKjN"
+      },
+      {
+        "tx_hash": "FnNfB35oNCJMUoZaUAmM7uZEV6QHaWf8bBgkLdCdvb7z",
+        "receipt_id": "76mkVq6carMX5dNN146KboNFiNncg6eJYvADqjzHorUT",
+        "parent_id": "De5bWVaVTUhq5i3Qa682gp6tGFKZccmeLrnCzjGSaPGo",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98571461677973000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "4MHcHGPLAYcfJ4KSdGLwNdgwmVHyy5o8R6von8EDivPj"
+      },
+      {
+        "tx_hash": "FnNfB35oNCJMUoZaUAmM7uZEV6QHaWf8bBgkLdCdvb7z",
+        "receipt_id": "DGCu2fCC9xsYCswdn2BSMHpxSyo9PUba6gdhBYAmoVVj",
+        "parent_id": "6dtt4x6AJnoTs2AuhQJzKhrhc4Vd5QeQrRqNbrb4wHfQ",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1775202970248000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AC5UvpVFPqrXusiyiAVQNpcrcyJcDz5nEqi9B8vzCTs4"
+      },
+      {
+        "tx_hash": "GGcFN3Cym3mr9rqKRs4zcLribP76H2Stn4eGtaUhxRUM",
+        "receipt_id": "88gbHuUj711pTdbiLr4Y7xR9CoFi3qu1zqLqpK5h8eeG",
+        "parent_id": "9S88H2RmiPLZFwzvk4tAFoA2anDFY7RHX9GGt736fyM",
+        "recipient": "owner.test.near",
+        "amount": "30742046235667200000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9xChfkr7w8M8b6mdxCuo3EjyLaJ9pzBcUuMSVjGxGv2m"
+      },
+      {
+        "tx_hash": "GuEV5CZxR8t6MkhG3hDLxfRx1a9atuneXs46sn5J98zC",
+        "receipt_id": "FrMyiZFaJgABagpqTthpnFfZc74agRUQ7itDboADoVS2",
+        "parent_id": "67UfTwWjYdMRFsb3m68B377QeqZ9JBZg7qpkgpnTBYYS",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DdZwVDiXRNKQirS1urETRtkRnhbeMuoL3DsVAFdSW95u"
+      },
+      {
+        "tx_hash": "GuEV5CZxR8t6MkhG3hDLxfRx1a9atuneXs46sn5J98zC",
+        "receipt_id": "Ab5WgRJzbjpMB38S4qj63M5k9FQobEkoHyV8Y8QPCvDu",
+        "parent_id": "FPHhaFF98ssnY5UxMh3U9UfpWLU8eYPMiZ4xVw8U7JZR",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "98579942371577000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DNxUnVycDpLek3Kv3sugCXv8EZg79GnrTrRqGVo35mZf"
+      },
+      {
+        "tx_hash": "GuEV5CZxR8t6MkhG3hDLxfRx1a9atuneXs46sn5J98zC",
+        "receipt_id": "62YZx9nHvc3T877dHzUotsEG75N1mzZxaK4Z3kXhRYKF",
+        "parent_id": "5dQoc7wQady2Rbik7t6TRZjYqgTATtt5QWinFKEi4AFj",
+        "recipient": "agent-vuln.owner.test.near",
+        "amount": "1769006746004400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AAZ3fSJVxiitSmd5J7a4pzRk7Noan4uarKLdbGDkfqtB"
+      },
+      {
+        "tx_hash": "H1B4S43vPTHTATRSmu7XBjQ3SnHQPhUwEfJnMWGBwDxW",
+        "receipt_id": "DqYbbt7AhEXPrdEeTKWWugvACNwH4RAxLf3mkquPxojH",
+        "parent_id": "9xT7ffcHktKGZLV5WKfCb4r5MM9bjiEU3xcQ6pRTZ8UW",
+        "recipient": "agent.owner.test.near",
+        "amount": "100715491219390400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8pTLPdJVytszWXbH7nXmz1nguhcvKtSXhkuwycB4c92e"
+      },
+      {
+        "tx_hash": "uSdeyWfofLzJyvdFPfDp3qU8caLu1RGk6vnG1c2pdUn",
+        "receipt_id": "8cbfR9tbUupf1EnuFaAMXKBKyMzhCKEU1kjDhG3ihVZb",
+        "parent_id": "HfhZV7W7R8r72et4WVfKqWott4DbLxBmpwB4af1dmtFX",
+        "recipient": "owner.test.near",
+        "amount": "1229076591647600000000",
+        "outcome": "SuccessValue",
+        "block_hash": "EhMBhQihQ1hG1CUH5tdBT5aPnPkvHtsZAktJR69sX2dZ"
+      }
+    ],
+    "events": [
+      {
+        "seq": 0,
+        "event": "init",
+        "receipt_id": "HdB5vUu43SeKMfEwtubcXsfiV9m5G1j7kURMeqRT6ztf",
+        "block_height": 38
+      },
+      {
+        "seq": 1,
+        "event": "admission",
+        "receipt_id": "H7HCpwMD7Z3GRH2XnZvzj6Lii3pjpgvHxDZjRv6JwhAr",
+        "block_height": 82
+      },
+      {
+        "seq": 2,
+        "event": "callback",
+        "receipt_id": "BoKVZoVt943kTRkEWB4YYdxxoVYV6afEyJekjnuCK33k",
+        "block_height": 84
+      },
+      {
+        "seq": 3,
+        "event": "admission",
+        "receipt_id": "8QZQxV2WfFVXjBnvAcjmCdKH5U6fJWZwXFEiudDRrw2Q",
+        "block_height": 90
+      },
+      {
+        "seq": 4,
+        "event": "admission",
+        "receipt_id": "EF3aVYvonsc22thAmNXA5WqvAGFxxywqa3mjVR1srTMN",
+        "block_height": 90
+      },
+      {
+        "seq": 5,
+        "event": "admission",
+        "receipt_id": "2RQof4gjKQAV6uzQJioAe1uUbRCmaz9smZF4XLo5KJoB",
+        "block_height": 90
+      },
+      {
+        "seq": 6,
+        "event": "admission",
+        "receipt_id": "5fFEZfWfn55ousddiXHc7KDSckZsdMFdCyMPLNDjb3E",
+        "block_height": 90
+      },
+      {
+        "seq": 7,
+        "event": "admission",
+        "receipt_id": "FXM2YbW8EuQkJrvdHQ3tj6gaYEy4TNyjszCyVn5o1xJg",
+        "block_height": 90
+      },
+      {
+        "seq": 8,
+        "event": "admission",
+        "receipt_id": "5VuzvyPzVG7LR6SSAyajzxYNhUnwGwmJ5gc3KVtk3Kxf",
+        "block_height": 90
+      },
+      {
+        "seq": 9,
+        "event": "admission",
+        "receipt_id": "5ZMgEoRiDbUCPkpJJfmaghDGV1KyFB4hpQ1gxLh1w1kj",
+        "block_height": 90
+      },
+      {
+        "seq": 10,
+        "event": "admission",
+        "receipt_id": "AcZxa6CwysJA2mYA5WdDaLgqx8hjcRzFSfBWZAR9TFBD",
+        "block_height": 90
+      },
+      {
+        "seq": 11,
+        "event": "callback",
+        "receipt_id": "ChmuDdjzzqPrbr6pamW752CUc65nGRetwCHWWahUgRHE",
+        "block_height": 92
+      },
+      {
+        "seq": 12,
+        "event": "callback",
+        "receipt_id": "K914vKSza4hAqZy2MSFTyvrCobq47fG5hVNn4NBqqaA",
+        "block_height": 92
+      },
+      {
+        "seq": 13,
+        "event": "callback",
+        "receipt_id": "yciWbg6vNP7iZgT2qbmhRVc2oJ65r18ph3yjnramtRS",
+        "block_height": 92
+      },
+      {
+        "seq": 14,
+        "event": "callback",
+        "receipt_id": "AJx1WwfmNiaQVaefwngGdpz5BsjvjtPPGEGCtJGCWcx4",
+        "block_height": 92
+      },
+      {
+        "seq": 15,
+        "event": "callback",
+        "receipt_id": "5eCnkhaJVtauyA5Uycrk63uoJjs168pcUoDqUbqETw3B",
+        "block_height": 92
+      },
+      {
+        "seq": 16,
+        "event": "callback",
+        "receipt_id": "AVHeeDpBhVXcWdnMg7jCzbkAgyWLZQdtRNXcrdqA37sJ",
+        "block_height": 92
+      },
+      {
+        "seq": 17,
+        "event": "callback",
+        "receipt_id": "AaXvuxVuzpY21gZ6vyfo42bjochay75pf5Vsh96cAqzx",
+        "block_height": 92
+      },
+      {
+        "seq": 18,
+        "event": "callback",
+        "receipt_id": "52nH8rYXp3mG3pQRMV7gFNuAnxZv55wnCtVq2Ury9RRx",
+        "block_height": 92
+      },
+      {
+        "seq": 19,
+        "event": "freeze",
+        "receipt_id": "HYaY3NhYRygV32ZpeddXH3QqFfrJNUhtkwgmjvuHLaHQ",
+        "block_height": 120
+      }
+    ],
+    "state_history": {
+      "state_writes": 20,
+      "charged_series": [
+        "0",
+        "1000000000000000000000000",
+        "1000000000000000000000000",
+        "3000000000000000000000000",
+        "5000000000000000000000000",
+        "7000000000000000000000000",
+        "9000000000000000000000000",
+        "11000000000000000000000000",
+        "13000000000000000000000000",
+        "15000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000",
+        "17000000000000000000000000"
+      ],
+      "seq_series": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "records_written": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "index_written": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "code_change_representation": [
+        "wasm-bytes"
+      ]
+    },
+    "ledger": {
+      "C": "17000000000000000000000000",
+      "S": "17000000000000000000000000",
+      "F": "0",
+      "U": "0",
+      "headroom": "83000000000000000000000000",
+      "accepted_count": 9
+    },
+    "callback_observation": {
+      "cb_succeeded_amount": "17000000000000000000000000",
+      "cb_failed_amount": "0",
+      "callback_unconfirmed": "0"
+    },
+    "attribution": {
+      "vault": "generous.owner.test.near",
+      "chain_id": "test-chain-hzS0c",
+      "genesis_block_hash": "7uHNLF7Me9bUWinup1SyQnRs8askqAD8pzuMfDuAJGHr",
+      "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+      "policy_hash": "4gCSb4i6qxQbGnwgk4AWvACC5TX21C72MGm76rHUbgXJ",
+      "h0": {
+        "hash": "BWXdmkXKKzGEMhtR15C8wvH3FM82Ft2GzSGW78VHLDq9",
+        "height": 15
+      },
+      "q": {
+        "hash": "4M7G6fCHDxLc32qSXcRNFsM6QKeQUf6w388NN7ErXL78",
+        "height": 141
+      }
+    }
+  },
+  "limitations": [
+    "Trusted-node observations from the reviewer-selected endpoint, not consensus/light-client inclusion proofs.",
+    "Binary file hash is recorded; RPC process-to-binary correspondence is not cryptographically authenticated.",
+    "Runner isolation, ingress closure and retention are run-level properties recorded by the run tooling, not by this verifier.",
+    "Bounded adapter: one epoch, unchanged shard layout, sandbox network only (public networks are inspection-only).",
+    "No native-pending witness; simultaneous RPC sends cannot establish one."
+  ],
+  "local_provenance": {
+    "wasm": {
+      "sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+      "bytes": 154346
+    },
+    "node_binary": {
+      "sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+      "bytes": 93742440
+    },
+    "node_config": {
+      "sha256": "53b8465ff20856fce153607c77e47d193b435ffb28d06cf102dbdc0ba929e65a",
+      "bytes": 7670
+    },
+    "genesis_file": {
+      "sha256": "7e5a014c5f7206dba6f4b3eab43f16cd7173f63aceced04a1bd80e590d4c6e70",
+      "bytes": 3041
+    }
+  },
+  "capture_sha256": "fc521a4d31b33c06173c322098c8b9966e847fa10a916f2233db8776eebdcd75",
+  "metrics": {
+    "rpc_count": 809,
+    "response_bytes": 1549604,
+    "elapsed_seconds": 0.6198
+  }
+}

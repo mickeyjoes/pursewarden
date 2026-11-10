@@ -6,11 +6,11 @@
 | Branch | `feat/g2-concurrency`, from G1 release `d948613`. The G1 baseline is unchanged: its tests and replay digests are identical. |
 | Network | **Local sandbox only** (nearcore 2.13.4, one fresh chain per run). No public network and no real funds. |
 | Protected artifact | `c7c77263…dd768`, the same as G1 |
-| Teaching fixture | `artifacts/fixtures/vulnerable_settled_only.wasm`, SHA-256 `d2eef2fd1b429fbd6216ab1f736e76c4c0e871de2c2b12f01ae23801fd6cf3d4`. Source: `fixtures/vulnerable-settled-only/` (stand-alone workspace and lockfile). |
+| Teaching fixture | `artifacts/fixtures/vulnerable_settled_only.wasm`, SHA-256 `07360b1f38bee8753ea4c21ee10fbce529980d96dc4fde65789af1b10f69c4a6`, built by `scripts/build-fixture.sh` with no builder paths. Source: `fixtures/vulnerable-settled-only/` (stand-alone workspace and lockfile). |
 
 ## Verdict
 
-**G2: PASS on local-sandbox evidence (two clean fresh-node runs).**
+**G2: PASS on local-sandbox evidence.** Two clean fresh-node evidence runs (C and D) are current. Runs A and B, and an uncommitted clean-clone run, gave identical results.
 
 After a settled 1 NEAR payment, eight 2 NEAR requests were pre-signed with eight separately authorized agent keys and submitted concurrently. The protected vault admitted **exactly two** and denied **six as `BudgetExceeded`**, ending at **C = 5 NEAR = B**.
 
@@ -25,10 +25,12 @@ Two sandbox controls run in the same window:
 
 ## Runs
 
-| | Run A | Run B |
+Runs C and D are the current evidence: commit `7d66b4c` (clean tree), fixture `07360b1f`, chains `test-chain-hzS0c` / `test-chain-PkbbB`. Same outcome: protected 2 of 8 burst admitted with 6/6 witnesses, generous 8/8, fixture 8 admissions in block #106 with 17 NEAR delivered. The detailed table below is for runs A and B, which were identical except for the fixture build (superseded; see `ATTEMPTS.md`).
+
+| | Run A (superseded) | Run B (superseded) |
 | --- | --- | --- |
 | Run ID | `g2i-20261110T154252Z-a` | `g2i-20261110T154313Z-b` |
-| Code | `acd6ba6` (clean tree) | `acd6ba6` (clean tree) |
+| Code | `acd6ba6` (clean tree), fixture `d2eef2fd` | `acd6ba6` (clean tree), fixture `d2eef2fd` |
 | Chain | `test-chain-OPkoc` | `test-chain-G0vKO` |
 | Window H0 → Q | #14 → #140 | #15 → #141 |
 | Runner isolation probe | PASS (socket directory read-only) | PASS |

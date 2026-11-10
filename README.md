@@ -157,7 +157,7 @@ Three fresh sandbox chains were used: `test-chain-d8AyA` (run C, after the revie
 
 Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. "Headroom" means unused budget: with K = 2 slots used and the vault frozen, nothing more is spendable. The vault has zero keys from creation to Q, and its code was deployed exactly once. Details: [`docs/G1_INDEPENDENT_RESULT.md`](docs/G1_INDEPENDENT_RESULT.md).
 
-**Concurrency (G2).** Two more fresh chains, `test-chain-OPkoc` and `test-chain-G0vKO`, ran the same workload in each run. After one settled 1 NEAR payment, eight 2 NEAR requests were pre-signed with eight different agent keys and submitted at once. The results:
+**Concurrency (G2).** The current evidence runs used two more fresh chains, `test-chain-hzS0c` and `test-chain-PkbbB`, with the same workload in each run. After one settled 1 NEAR payment, eight 2 NEAR requests were pre-signed with eight different agent keys and submitted at once. The results:
 
 | Target | Budget | Burst admitted | Result |
 | --- | --- | --- | --- |

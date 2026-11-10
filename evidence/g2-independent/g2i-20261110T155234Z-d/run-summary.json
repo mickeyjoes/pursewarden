@@ -1,0 +1,302 @@
+{
+  "schema": "g2-independent/run/v1",
+  "run_id": "g2i-20261110T155234Z-d",
+  "network": "SANDBOX (local)",
+  "repo_commit": "7d66b4c2c3db06529783b7ea00ea9707774dfc7a",
+  "repo_dirty": false,
+  "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "fixture_wasm_sha256": "07360b1f38bee8753ea4c21ee10fbce529980d96dc4fde65789af1b10f69c4a6",
+  "actor_sha256": "8568be1517db979073545c206191db4606b64614a70af6ebcfb16005045ceb27",
+  "node_binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+  "node": {
+    "chain_id": "test-chain-PkbbB",
+    "genesis_block_hash": "9HJJv8UGNuoSzbAfqkr5wr8MavJbvAuDt4de3W3DPqTN",
+    "version": {
+      "build": "2.13.4",
+      "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+      "rustc_version": "1.93.0",
+      "version": "2.13.4"
+    },
+    "protocol_version": 86
+  },
+  "isolation": {
+    "checks": "PASS",
+    "socket_dir_writable": false,
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused"
+  },
+  "results": {
+    "protected": {
+      "verdicts": {
+        "safety": "PASS",
+        "settlement": "PASS",
+        "evidence": "PASS",
+        "scenario_coverage": "PASS"
+      },
+      "issues": [],
+      "ledger": {
+        "C": "5000000000000000000000000",
+        "S": "5000000000000000000000000",
+        "F": "0",
+        "U": "0",
+        "headroom": "0",
+        "accepted_count": 3
+      },
+      "admitted": [
+        "1",
+        "8",
+        "5"
+      ],
+      "denied": [
+        [
+          "4",
+          "BudgetExceeded"
+        ],
+        [
+          "6",
+          "BudgetExceeded"
+        ],
+        [
+          "3",
+          "BudgetExceeded"
+        ],
+        [
+          "7",
+          "BudgetExceeded"
+        ],
+        [
+          "9",
+          "BudgetExceeded"
+        ],
+        [
+          "2",
+          "BudgetExceeded"
+        ]
+      ],
+      "pending_witness": [
+        {
+          "request_id": "4",
+          "denial_seq": "7",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        },
+        {
+          "request_id": "6",
+          "denial_seq": "6",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        },
+        {
+          "request_id": "3",
+          "denial_seq": "8",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        },
+        {
+          "request_id": "7",
+          "denial_seq": "9",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        },
+        {
+          "request_id": "9",
+          "denial_seq": "10",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        },
+        {
+          "request_id": "2",
+          "denial_seq": "5",
+          "denial_height": 74,
+          "amount": "2000000000000000000000000",
+          "charged_at_decision": "5000000000000000000000000",
+          "pending_admitted_transfers": [
+            {
+              "request_id": "8",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "4",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            },
+            {
+              "request_id": "5",
+              "amount": "2000000000000000000000000",
+              "admission_seq": "3",
+              "admission_height": 74,
+              "transfer_execution_height": 75
+            }
+          ],
+          "settled_before_denial": "1000000000000000000000000",
+          "settled_only_check_would_admit": true,
+          "witness": true
+        }
+      ]
+    },
+    "generous": {
+      "verdicts": {
+        "safety": "PASS",
+        "settlement": "PASS",
+        "evidence": "PASS",
+        "scenario_coverage": "PASS"
+      },
+      "issues": [],
+      "ledger": {
+        "C": "17000000000000000000000000",
+        "S": "17000000000000000000000000",
+        "F": "0",
+        "U": "0",
+        "headroom": "83000000000000000000000000",
+        "accepted_count": 9
+      },
+      "admitted": [
+        "5",
+        "8",
+        "7",
+        "9",
+        "6",
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "denied": [],
+      "pending_witness": []
+    },
+    "vulnerable": {
+      "label": "CONTROL (vulnerable teaching fixture)",
+      "admissions": 9,
+      "denials": 0,
+      "delivered_principal": "17000000000000000000000000",
+      "overspend": "12000000000000000000000000",
+      "budget_exceeded_on_chain": true,
+      "admissions_per_block": {
+        "98": 1,
+        "106": 8
+      },
+      "stale_settled_seen": [
+        "0",
+        "1000000000000000000000000"
+      ],
+      "issues": []
+    }
+  },
+  "elapsed_seconds": 21.6,
+  "log": [
+    "2026-11-10T15:52:34Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-g2/scripts/sandbox-setup/start-node.sh g2i-20261110T155234Z-d",
+    "2026-11-10T15:52:36Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-g2/target/debug/g2_actor reviewer-prepare --rpc http://127.0.0.1:3300 --node-home ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node --reviewer-dir ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/reviewer/prepare.json",
+    "2026-11-10T15:52:38Z H0 15 DhJ7TtYR1P3yVymGkNxTuiN6incP4yVefSFTBnbji9hG",
+    "2026-11-10T15:52:38Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-g2/target/debug/g2_actor reviewer-construct --rpc http://127.0.0.1:3300 --reviewer-dir ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer --runner-dir ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/runner --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-g2/artifacts/near_agent_vault.wasm --fixture-wasm ~/Dev/Hackathons/NEAR/near-agent-vault-g2/artifacts/fixtures/vulnerable_settled_only.wasm --out ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/reviewer/construct.json",
+    "2026-11-10T15:52:42Z filter proxy submit pid 1321040",
+    "2026-11-10T15:52:42Z $ bwrap --unshare-all --die-with-parent --new-session --clearenv --setenv HOME /tmp --setenv PATH /usr/bin:/bin --ro-bind /usr /usr --symlink usr/lib /lib --symlink usr/lib64 /lib64 --symlink usr/bin /bin --proc /proc --dev /dev --tmpfs /tmp --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/target/debug/g2_actor /runner-bin/g1_actor --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/scripts/g1-independent /runner-scripts --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/packages /runner-pkg/packages --ro-bind ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/sock-probe /sock --ro-bind ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/runner /runner --bind ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/probe-out /probe --chdir /tmp /bin/sh -ec python3 -I /runner-scripts/sandbox_bridge.py /sock/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; python3 -I /runner-scripts/isolation_probe.py /probe/isolation.json 3300 ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer ~ ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/owner.key.json ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node/validator_key.json ~/Dev/Hackathons/NEAR/near-agent-vault-g2 ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d || echo 'isolation probe reported FAIL'",
+    "2026-11-10T15:52:43Z filter proxy closed (runner ingress closed)",
+    "2026-11-10T15:52:43Z filter proxy submit pid 1321086",
+    "2026-11-10T15:52:43Z $ bwrap --unshare-all --die-with-parent --new-session --clearenv --setenv HOME /tmp --setenv PATH /usr/bin:/bin --ro-bind /usr /usr --symlink usr/lib /lib --symlink usr/lib64 /lib64 --symlink usr/bin /bin --proc /proc --dev /dev --tmpfs /tmp --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/target/debug/g2_actor /runner-bin/g1_actor --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/scripts/g1-independent /runner-scripts --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-g2/packages /runner-pkg/packages --ro-bind ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/sock-submit /sock --bind ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/runner /runner --chdir /tmp /bin/sh -ec python3 -I /runner-scripts/sandbox_bridge.py /sock/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; /runner-bin/g1_actor runner-burst --rpc http://127.0.0.1:3030 --runner-dir /runner --out /runner/out/runner-log.json",
+    "2026-11-10T15:52:50Z filter proxy closed (runner ingress closed)",
+    "2026-11-10T15:52:50Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-g2/target/debug/g2_actor reviewer-freeze --rpc http://127.0.0.1:3300 --reviewer-dir ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/reviewer/freeze.json",
+    "2026-11-10T15:52:54Z Q 141 3fQ6M9UHrBsJA8PTKt2ja7AARB5azoQckC1bhxWxKqpQ",
+    "2026-11-10T15:52:54Z $ /usr/bin/python3 -E -s -m packages.verifier --network sandbox --rpc http://127.0.0.1:3300 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/protected/reviewer-descriptor.json --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-g2/artifacts/near_agent_vault.wasm --node-binary ~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox --node-config ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node/config.json --genesis-file ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node/genesis.json --out ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/independent-protected",
+    "2026-11-10T15:52:55Z protected: verdicts {'safety': 'PASS', 'settlement': 'PASS', 'evidence': 'PASS', 'scenario_coverage': 'PASS'} ledger {'C': '5000000000000000000000000', 'S': '5000000000000000000000000', 'F': '0', 'U': '0', 'headroom': '0', 'accepted_count': 3}",
+    "2026-11-10T15:52:55Z $ /usr/bin/python3 -E -s -m packages.verifier --network sandbox --rpc http://127.0.0.1:3300 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/generous/reviewer-descriptor.json --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-g2/artifacts/near_agent_vault.wasm --node-binary ~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox --node-config ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node/config.json --genesis-file ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/reviewer/node/genesis.json --out ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/independent-generous",
+    "2026-11-10T15:52:55Z generous: verdicts {'safety': 'PASS', 'settlement': 'PASS', 'evidence': 'PASS', 'scenario_coverage': 'PASS'} ledger {'C': '17000000000000000000000000', 'S': '17000000000000000000000000', 'F': '0', 'U': '0', 'headroom': '83000000000000000000000000', 'accepted_count': 9}",
+    "2026-11-10T15:52:55Z $ /usr/bin/python3 -E -s -m packages.verifier control --network sandbox --rpc http://127.0.0.1:3300 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-g2/evidence/g2-independent/g2i-20261110T155234Z-d/vulnerable/control-descriptor.json --out ~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T155234Z-d/control-vulnerable"
+  ]
+}
