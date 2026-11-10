@@ -1,0 +1,20 @@
+[
+  {
+    "run_id": "g2i-20261110T155212Z-c",
+    "same_block_ambiguous_denials": [],
+    "witnesses": 6,
+    "chain_evidence_checks": "PASS"
+  },
+  {
+    "run_id": "g2i-20261110T155234Z-d",
+    "same_block_ambiguous_denials": [],
+    "witnesses": 6,
+    "chain_evidence_checks": "PASS"
+  },
+  {
+    "run_id": "review-g2-1794329140",
+    "same_block_ambiguous_denials": [],
+    "witnesses": 6,
+    "chain_evidence_checks": "PASS"
+  }
+]

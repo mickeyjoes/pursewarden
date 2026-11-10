@@ -1,0 +1,28 @@
+{
+  "kind": "synthetic helper counterexample, not an executed chain trace",
+  "production_output": {
+    "request_id": "4",
+    "denial_seq": "5",
+    "denial_height": 10,
+    "amount": "2000000000000000000000000",
+    "charged_at_decision": "5000000000000000000000000",
+    "pending_admitted_transfers": [
+      {
+        "request_id": "3",
+        "amount": "1000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 10,
+        "transfer_execution_height": 11
+      }
+    ],
+    "settled_before_denial": "2000000000000000000000000",
+    "settled_only_check_would_admit": true,
+    "witness": true
+  },
+  "same_block_successful_principal": "2000000000000000000000000",
+  "settled_lower_bound": "2000000000000000000000000",
+  "settled_upper_bound": "4000000000000000000000000",
+  "would_admit_if_same_block_successes_precede_denial": false,
+  "production_claims_unconditional_admission": true,
+  "conservative_witness": false
+}

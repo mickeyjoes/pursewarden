@@ -1,0 +1,23 @@
+{
+  "g1_bundle_runs_canonical_bytes_identical": true,
+  "replay_digests": {
+    "g1i-20261110T144905Z-c": {
+      "current": "0b57994688b72caf9bfd8dd1e7662504df71dd098732b713364a8d3d47eebc28",
+      "baseline": "0b57994688b72caf9bfd8dd1e7662504df71dd098732b713364a8d3d47eebc28",
+      "matches": true,
+      "live_mode_digest_matches_acquisition": true
+    },
+    "g1i-20261110T135407Z-b": {
+      "current": "d8951135bacbcb58d13adff3be08d55e724e47752da514244a43695a1086d247",
+      "baseline": "d8951135bacbcb58d13adff3be08d55e724e47752da514244a43695a1086d247",
+      "matches": true,
+      "live_mode_digest_matches_acquisition": true
+    },
+    "g1i-20261110T135044Z-a": {
+      "current": "2520c12d897e6f50e71617f45386a99926b3580fe724f0f1899aef5122d3a29e",
+      "baseline": "2520c12d897e6f50e71617f45386a99926b3580fe724f0f1899aef5122d3a29e",
+      "matches": true,
+      "live_mode_digest_matches_acquisition": true
+    }
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "run_id": "g2i-20261110T155212Z-c",
+    "captured_initialization": {
+      "agent": "agent-vuln.owner.test.near",
+      "allowed_recipients": [
+        "alice.test.near"
+      ],
+      "budget": "5000000000000000000000000",
+      "max_per_request": "2000000000000000000000000"
+    },
+    "budget_matches_reviewer_descriptor": true,
+    "successful_transfer_receipts": 9,
+    "delivered_principal": "17000000000000000000000000",
+    "overspend": "12000000000000000000000000",
+    "issues": []
+  },
+  {
+    "run_id": "g2i-20261110T155234Z-d",
+    "captured_initialization": {
+      "agent": "agent-vuln.owner.test.near",
+      "allowed_recipients": [
+        "alice.test.near"
+      ],
+      "budget": "5000000000000000000000000",
+      "max_per_request": "2000000000000000000000000"
+    },
+    "budget_matches_reviewer_descriptor": true,
+    "successful_transfer_receipts": 9,
+    "delivered_principal": "17000000000000000000000000",
+    "overspend": "12000000000000000000000000",
+    "issues": []
+  },
+  {
+    "run_id": "review-g2-1794329140",
+    "captured_initialization": {
+      "agent": "agent-vuln.owner.test.near",
+      "allowed_recipients": [
+        "alice.test.near"
+      ],
+      "budget": "5000000000000000000000000",
+      "max_per_request": "2000000000000000000000000"
+    },
+    "budget_matches_reviewer_descriptor": true,
+    "successful_transfer_receipts": 9,
+    "delivered_principal": "17000000000000000000000000",
+    "overspend": "12000000000000000000000000",
+    "issues": []
+  }
+]

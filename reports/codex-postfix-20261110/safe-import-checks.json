@@ -1,0 +1,5 @@
+{
+  "proc_self_fd_symlink_rejected": true,
+  "replacement_after_fstat_keeps_original_inode": true,
+  "intermediate_replacement_keeps_open_directory": true
+}

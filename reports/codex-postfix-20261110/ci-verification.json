@@ -1,0 +1,163 @@
+{
+  "run_id": 42850602121,
+  "head_sha": "53a98c0879c0224d7e9a2bdc4841d513b9a99abb",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/mickeyjoes/near-agent-vault-lab/actions/runs/42850602121",
+  "jobs": [
+    {
+      "id": 129949901105,
+      "name": "Evidence regressions (Python stdlib)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "68 evidence tests (synthetic, runner boundary, G1/G2 replay of recorded RPC)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        }
+      ]
+    },
+    {
+      "id": 129949901124,
+      "name": "Web bundle reproducibility and build",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Bundle regenerated from committed raw RPC equals the committed bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        }
+      ]
+    },
+    {
+      "id": 129949902002,
+      "name": "Contract tests and cross-machine artifact reproducibility",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Rust 1.93.0 (pinned by rust-toolchain.toml)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Contract unit tests (SPEC vectors, canonical parsing, storage bound)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Harness encoder test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install cargo-near 0.22.0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Rebuild the protected WASM on a different machine and compare bytes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    }
+  ],
+  "contract_log_excerpt": "2026-11-10T16:02:45.8693431Z Ubuntu\n2026-11-10T16:02:45.8697013Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.114/images/ubuntu/Ubuntu2404-Readme.md\n2026-11-10T16:05:05.2189356Z ##[group]Run cargo +1.93.0 install cargo-near --version =0.22.0 --locked --no-default-features --root \"$HOME/.local/share/near-agent-vault-lab/cargo-near-0.22.0\"\n2026-11-10T16:05:05.2191382Z \u001b[36;1mcargo +1.93.0 install cargo-near --version =0.22.0 --locked --no-default-features --root \"$HOME/.local/share/near-agent-vault-lab/cargo-near-0.22.0\"\u001b[0m\n2026-11-10T16:21:43.2184156Z    Installed package `cargo-near v0.22.0` (executable `cargo-near`)\n2026-11-10T16:22:04.0096039Z      - SHA-256 checksum hex : c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768\n2026-11-10T16:22:04.0861884Z c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768  near_agent_vault.wasm\n2026-11-10T16:22:04.1110460Z capability gate: PASS\n2026-11-10T16:22:04.1122317Z c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768  artifacts/near_agent_vault.wasm\n"
+}
