@@ -11,10 +11,10 @@ Nothing in this file has been sent, posted or published. The rules were re-check
 
 ## 1. Owner checklist, in order
 
-1. Read `reports/FINAL_RELEASE_READINESS_2026-11-10.md` (research folder), and optionally run the focused review in `docs/CODEX_POSTFIX_REVIEW_HANDOFF.md`.
+1. Follow `docs/RELEASE_CHECKLIST.md`. Engineering items are verified; the owner items remain.
 2. Confirm the license. The MIT `LICENSE` file is a proposal ("The near-agent-vault-lab contributors"). Edit the copyright line if you want your name or organisation.
 3. Approve pushing `feat/g2-concurrency` and fast-forwarding `master` (commands in the readiness report). Then make the repository public.
-4. Hosted demo (recommended): Settings → Pages → Source: **GitHub Actions**, then Actions → `pages` → Run workflow. The URL will be `https://mickeyjoes.github.io/near-agent-vault-lab/`. Keep it up until at least 2026-11-18, ideally 2026-11-25.
+4. Hosted demo (recommended): Settings → Pages → Source: **GitHub Actions**, then Actions → `pages` → Run workflow. The URL will be `https://mickeyjoes.github.io/near-agent-vault-lab/`. Keep it up until at least 2026-11-18, ideally 2026-11-25. The custom domain `pursewarden.com` is unregistered; see `docs/DEPLOY.md`.
 5. Record the demo video (§4) and publish the X post (§5) yourself.
 6. Create the `hackathon-submission` tag on the final commit, push it, then fill in the payload (§6) and submit once.
 
@@ -33,18 +33,17 @@ Draft, 1,445 characters:
 
 ## 4. Demo video (2:00) and recording instructions
 
-Record from the hosted Pages URL or the local build (`cd web && npm ci && npm run build && npx vite preview --port 4173`). Use a 1440×900 window, dark theme and 100 % zoom. Keep the REPLAY · SANDBOX chips in frame and leave the cursor still while narrating.
+Record from the hosted site (`https://mickeyjoes.github.io/near-agent-vault-lab/`) or a local preview (`cd web && npm ci && npm run build && npx vite preview --port 4173`). Use a 1440×900 window, dark theme and 100 % zoom. Keep the REPLAY · SANDBOX chips visible. The guided tour is the spine of the video: use the → key to advance.
 
 | Time | Screen | Voice-over |
 | --- | --- | --- |
-| 0:00–0:12 | Overview hero | "AI agents need to pay for things. Give one a wallet key and it can spend everything. Pursewarden gives it a NEAR vault with a fixed budget. The agent only holds a key that can *ask*." |
-| 0:12–0:35 | Attack Lab: mandate, authority bar, "Spendable now" | "Five NEAR budget, two per payment. The vault has zero keys. A 1 NEAR payment goes through. A 2 NEAR payment to an account that doesn't exist fails, and NEAR refunds it, but the vault still counts it. Charged is three. Refunds never restore authority." |
-| 0:35–0:55 | Trace rows, then open `pay_2_missing_2near` | "Then the agent turns hostile: a replay, a cap overrun, a payment to an attacker, reuse of the refund, malformed input, and four attempts to use its key for something else. All are stopped, on chain with a recorded reason, or by NEAR before inclusion." |
-| 0:55–1:30 | Burst (G2): three cards, then block #74 → #75, then the witness callout | "Now eight 2 NEAR requests at once, from eight different keys. The vault admits exactly two and denies six, all in the same block, while the two admitted transfers haven't even executed yet. Our deliberately broken control counts only settled spend. Under the same burst it lets all eight through: 17 NEAR out of a 5 NEAR budget." |
-| 1:30–1:50 | Verifier: forged vs independent lists, recovered callout, mutation table | "Don't trust the operator's report. In this test the orchestrator plays a dishonest operator: its bundle hides the failed payment and recomputes every checksum. The verifier was never told that transaction exists. It scans every block, finds it, and fails the bundle. Eighteen test tamperings of real data, all rejected." |
-| 1:50–2:00 | Reproduce page, then a terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 70 tests … OK` | "Local sandbox prototype, not audited. Every number here replays committed raw chain data. Clone it and check." |
+| 0:00–0:12 | Overview hero and proof strip | "AI agents need to pay for things. Give one a wallet key and it can spend everything. Pursewarden gives it a NEAR vault with a fixed budget. The agent's only key can *ask*, and the vault has no keys at all." |
+| 0:12–0:45 | Tour step 1: the 5 vs 17 NEAR bars | "A compromised agent fires eight 2 NEAR payment requests at once, from eight different keys, against a 5 NEAR budget. Our vault admits exactly two and stops at 5. A deliberately broken contract we wrote as a control counts only completed payments. It lets all eight through: 17 NEAR out of a 5 NEAR budget." |
+| 0:45–1:15 | Tour step 2: block #74 → #75 | "Here's why. All six denials happened in this block, while the two approved transfers hadn't even landed yet; they landed in the next block. Only 1 NEAR had actually settled. A balance-based check says yes. Pursewarden charges the budget the moment it approves, so it says no. The verifier proves this from receipts, and it refuses to count cases it can't order." |
+| 1:15–1:45 | Tour step 3: hidden vs recovered lists | "Don't trust the operator's report either. In this test, the operator hands over evidence with one failed payment removed and every checksum recomputed. The verifier was never told that transaction existed. It scans every block on its own node, finds it, and fails the bundle." |
+| 1:45–2:00 | Reproduce page, then a terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 70 tests … OK` | "All of this is local-sandbox evidence that you can replay from committed raw chain data, with one command. Experimental, not audited. Built at NEAR HACKATHON." |
 
-Optional B-roll (speed it up 4×): `python3 scripts/g2-independent/run_g2.py demo --rpc-port 3290 --net-port 24827` shows a fresh chain, isolation PASS and the three results in about 25 s.
+Optional B-roll, sped up: `python3 scripts/g2-independent/run_g2.py demo` (a fresh chain in about 25 s), or the Attack Lab trace with a receipt tree open.
 
 ## 5. X post draft (you publish it)
 

@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { AlertTriangle, ArrowRight, Ban, Check, EyeOff, FileSearch, KeyRound, Lock, ShieldOff, Wallet, X } from "lucide-react";
+import { AlertTriangle, ArrowRight, Ban, Check, EyeOff, FileSearch, KeyRound, Lock, Server, ShieldOff, Wallet, X } from "lucide-react";
 import { AuthorityBar, DecisionLabel, Drawer, VerdictChip } from "./components";
 import { near, REPO_URL, short, REASON_TEXT, type Bundle, type G2Target, type Run, type TimelineItem } from "./data";
 
@@ -404,7 +404,13 @@ export function Docs({ bundle }: { bundle: Bundle }) {
       ].map(([t, c]) => (
         <div key={t} className="cmd" style={{ marginTop: 22 }}><h3 style={{ fontSize: 15 }}>{t}</h3><pre>{c}</pre></div>
       ))}
-      <div className="callout warn" style={{ marginTop: 28 }}>
+      <div className="callout" style={{ marginTop: 28 }}>
+        <Server aria-hidden />
+        <div><strong>Where things ran.</strong> All evidence on this site comes from a fresh local NEAR sandbox (nearcore 2.13.4).
+          The testnet smoke plan was rehearsed unchanged on a local sandbox with testnet's own protocol (nearcore 2.14.0-rc.5). It has
+          <strong> not</strong> been broadcast to testnet: it needs owner approval (<code>docs/TESTNET_SMOKE_PLAN.md</code>). Nothing runs on mainnet.</div>
+      </div>
+      <div className="callout warn" style={{ marginTop: 12 }}>
         <AlertTriangle aria-hidden />
         <div>Trust statement: chain data was read by the reviewer from a single-validator local sandbox node it started itself. The verifier
           checks consistency, completeness within the window, and the vault's invariants. A file digest proves that a file is unchanged,

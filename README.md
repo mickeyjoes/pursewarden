@@ -1,6 +1,23 @@
 # Pursewarden: fixed-budget NEAR vaults for AI agents
 
-> **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All evidence comes from a **local NEAR sandbox**. Nothing here is deployed to testnet or mainnet. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
+> **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. Nothing here is deployed to testnet or mainnet: a testnet smoke is prepared and rehearsed, but not broadcast. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
+
+## Start here (judges)
+
+| If you have… | Do | See |
+| --- | --- | --- |
+| 30 seconds | Open the hosted Attack Lab tour: `https://mickeyjoes.github.io/near-agent-vault-lab/#/tour/1` (once Pages is enabled), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
+| 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 70 tests … OK`, including replays of the real recorded chain data |
+| 5 minutes | `python3 scripts/g2-independent/run_g2.py my-g2` (after `cargo build … --bin g2_actor`; step 6) | A fresh local chain reproduces the concurrency result end to end |
+
+**Where things ran**
+
+| Network | Status |
+| --- | --- |
+| Local sandbox (nearcore 2.13.4, protocol 86) | **All adversarial evidence**: G1 (3 committed evidence runs plus the independent reviewer's run), G2 concurrency (2 current evidence runs, 2 superseded, plus the reviewer's run), omission recovery, 18 tamperings, runner isolation. Every committed run has its raw RPC capture for replay. |
+| Local sandbox on testnet's protocol (nearcore 2.14.0-rc.5, protocol 88) | The testnet smoke plan, rehearsed unchanged: **PASS** (`evidence/testnet-rehearsal/`) |
+| NEAR testnet | **Prepared, not broadcast.** It needs owner approval and a funded testnet account ([plan](docs/TESTNET_SMOKE_PLAN.md)) |
+| NEAR mainnet | None. Tooling refuses `chain_id: mainnet`. |
 
 ## What it is
 
@@ -80,13 +97,13 @@ Then open `$R/compare-forged.json`. **See:** `"evidence": "FAIL"` and an `OMITTE
 cd web && npm ci && npm run build && npx vite preview --port 4173
 ```
 
-Then open `http://127.0.0.1:4173/#/lab`. **See:**
+Then open `http://127.0.0.1:4173/#/tour/1` for the three-step guided tour (← → to move), or `#/lab` for the full trace. In the Lab, **see:**
 - The mandate: B = 5, M = 2, K = 2, vault with **0 keys**.
 - The authority bar: 1 NEAR settled, 2 NEAR failed but charged, 2 NEAR headroom.
 - The attack trace: two admissions, then four denials (DuplicateRequest, AboveMaxPerRequest, RecipientNotAllowed, RecordQuotaExhausted), one malformed-input receipt failure, the owner freeze, and four key abuses rejected before reaching the chain.
 - Clicking a row opens its receipt tree.
 
-`#/verify` shows the forged bundle next to the independent capture. Every page is labelled **REPLAY · SANDBOX**.
+`#/burst` shows the concurrency comparison block by block. `#/verify` shows the forged bundle next to the independent capture. Every page is labelled **REPLAY · SANDBOX**. Hosting: [`docs/DEPLOY.md`](docs/DEPLOY.md).
 
 `web/public/bundle.json` is regenerated from the committed raw RPC by `python3 scripts/build_web_bundle.py`.
 
@@ -180,6 +197,20 @@ The six denials all executed in one block, while the two admitted transfers were
 
 Residual vault funds have **no** withdrawal path by design, so this is a research vault, not a product wallet.
 
+### Security limitations (read before relying on anything here)
+
+- **Not audited.** No formal verification. The capability gate proves which host functions are absent; it does not prove that all logic is correct.
+- **Trust model of the verifier.** It trusts the reviewer's own node. There are no light-client or consensus proofs. "Independent" means it gathers its own evidence and does not trust the runner's report. It is not an external audit: one team wrote the vault, the runner and the verifier.
+- **Runner isolation** uses Linux namespaces (bubblewrap) on the same host and UID. That is not separate machines. An independent review found one isolation flaw (the reviewer followed runner-planted symlinks), which is fixed with regressions. The later evidence uses the fix.
+- **G2 scope:** single shard, single validator, requests to one vault. "Concurrent" means pre-signed and submitted in parallel. The vulnerable target is our own teaching fixture. The pending-transfer witness reports same-block settlement as ambiguous and never counts it (review finding W1, fixed).
+- **Not executed:** late-failure atomicity (FAULT builds), forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry, multi-shard, testnet broadcast, any mainnet use.
+- **Product gaps:** no withdrawal or recovery path, NEAR native token only, a fixed one-shot budget (no recurring budgets), and no defence against an agent wasting its budget on allowlisted payees.
+
+## Related NEAR infrastructure (not integrated)
+
+- **NEAR Intents.** The **1Click Swap API** ("REST API for cross-chain swaps powered by NEAR Intents") and **Agent Skills** (a `near-intents` skill package that teaches AI agents to build swap apps on 1Click; [docs](https://docs.near-intents.org/integration/devkit/skills)) are agent-facing infrastructure for cross-chain payments. Pursewarden does **not** use or integrate them. A mandate-bounded vault paying through Intents is a natural future direction, but it has not been built or tested here. The hackathon FAQ (Q-007) notes there is no Intents testnet.
+- **Function-call access keys** (used): the agent's only capability.
+
 ## Repository map
 
 | Path | What |
@@ -193,12 +224,15 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 | `scripts/g1-independent/` | Run orchestrator, filter proxy, sandbox bridge, isolation probe, safe import, retention comparison |
 | `scripts/g2-independent/`, `fixtures/vulnerable-settled-only/` | G2 concurrency orchestrator. Deliberately vulnerable teaching fixture (sandbox only, own lockfile). |
 | `scripts/sandbox-setup/` | Pinned nearcore 2.13.4 sandbox start/stop |
+| `scripts/testnet/`, `tests/sandbox/src/bin/smoke_actor.rs` | Owner-gated testnet smoke: allowlisted HTTPS forwarder, plan/run actor, PV88 rehearsal |
+| `evidence/testnet-rehearsal/` | The testnet plan rehearsed on a local protocol-88 sandbox (sandbox evidence, not testnet) |
 | `evidence/g1-independent/` | Three G1 evidence runs (A, B, and C after the review fix), the review runs, and retained development attempts |
 | `evidence/g2-independent/` | Two G2 evidence runs and one development attempt |
 | `.github/workflows/` | `ci` (evidence tests, web reproducibility, contract tests, cross-machine WASM rebuild); `pages` (manual Attack Lab deployment) |
 | `evidence/g1/` | Agent A's original Oct 29 runner evidence. Its node history has since been pruned. |
 | `web/` | Attack Lab (Vite, React) |
-| `docs/` | Gate results, interface, review handoff, submission notes |
+| `docs/` | Gate results (`G1_INDEPENDENT_RESULT.md`, `G2_RESULT.md`), `DEPLOY.md`, `TESTNET_SMOKE_PLAN.md`, review handoffs, `SUBMISSION.md`, `RELEASE_CHECKLIST.md` |
+| `reports/` | Independent Codex review reports and their reproductions |
 
 ## Timeline, provenance and disclosures
 
