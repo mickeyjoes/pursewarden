@@ -20,7 +20,7 @@ An AI agent that can pay for things needs spending authority. A wallet key gives
 
    **Nothing ever decreases C.** A transfer that fails and is refunded stays charged, so authority cannot be recycled. The vault has no withdraw, upgrade, key or policy-change code path. The owner can only freeze it, irreversibly.
 2. **A restricted agent.** The agent account holds only NEAR **function-call access keys**, limited to `request_payment` on the vault with zero deposit. It cannot transfer, deploy, add keys or call anything else.
-3. **An independent verifier (Python, stdlib only).** It rebuilds what happened from a reviewer-chosen node, scanning every block and chunk in a window. It does not use the agent's or runner's own report. It reconciles:
+3. **An independent verifier (Python, stdlib only).** "Independent" here means it gathers its own evidence and does not trust the runner's report. It is **not** an external audit: one team wrote the verifier, the runner and the contract, and in the recorded runs both roles shared one machine, separated by Linux namespaces. It rebuilds what happened from a reviewer-chosen node, scanning every block and chunk in a window. It reconciles:
    - receipts;
    - native transfer outcomes and refunds;
    - raw contract storage;
@@ -132,7 +132,7 @@ Two fresh sandbox chains were used: `test-chain-oJOg4` and `test-chain-6J4eY`. B
 | 4 | 2 NEAR + 1 yocto | Denied `AboveMaxPerRequest` | No transfer |
 | 5 | 1 NEAR → `attacker.test.near` | Denied `RecipientNotAllowed` | No transfer |
 | 6 | 2 NEAR → alice (C + 2 = 5 ≤ B, but K = 2 is used up) | Denied `RecordQuotaExhausted` | No transfer. The refund did not restore authority. |
-| 7 | amount `"1e24"` | Receipt failure (`MalformedInput`) | No state change (checked against per-block history) |
+| 7 | amount `"1e24"` | Receipt failure (`MalformedInput`) | No vault data committed, checked against per-block history (gas and nonce are still spent) |
 | 8–11 | Agent key calls `freeze`, transfers, attaches a deposit, calls another receiver | Rejected by NEAR before inclusion | No chain trace |
 | 12 | Owner `freeze` | Frozen | No further admissions |
 
@@ -144,7 +144,7 @@ Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. The vault h
 | --- | --- | --- |
 | C ≤ B, and C never decreases, including after refunds | The NEAR runtime executes receipts as specified | Prompt-injection defence: an agent can still waste its budget on allowlisted payees |
 | A failed transfer is charged (F) even though its principal is refunded | The owner sets an honest mandate and allowlist | Testnet or mainnet enforcement, or custody safety |
-| Replay, cap, allowlist, quota and malformed requests have no transfer or state effect | The reviewer's node reports the chain truthfully (no light-client or consensus proofs) | Audit or formal verification |
+| Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed-input failures commit no vault data. | The reviewer's node reports the chain truthfully (no light-client or consensus proofs) | Audit or formal verification |
 | The vault stays keyless, with code deployed once | The deployed bytes are the reviewed source (checked by hash and rebuild) | Late-failure atomicity under FAULT builds, forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry (not run) |
 | The independent collector recovers a root that a runner omitted, without being given its hash | Runner isolation is by Linux namespaces on one host | Concurrency comparisons against other designs (G2, not run) |
 
@@ -175,7 +175,7 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
   - All code was written on or after 2026-10-29, so all of it falls inside the window in which "code written since the announcement counts".
   - Research and specification documents from 2026-10-20 onward are not part of this repository.
   - The `integration/g1-recovery` history shows each step: contract (`c9da90c`), evidence collector (`90506c0`), integration and repair (`e1e5257` onward).
-- **AI-generated code.** Most of the code, tests and documentation were written by AI coding agents (Claude Code with Claude Opus, and OpenAI Codex) under the owner's direction, with separate agents for contract, evidence, review and recovery. An independent AI review is planned before submission.
+- **AI-generated code.** Most of the code, tests and documentation were written by AI coding agents (Claude Code with Claude Opus, and OpenAI Codex) under the owner's direction, with separate agents for contract, evidence, review and recovery. An independent AI review (OpenAI Codex, 2026-11-10, `reports/G1_CODEX_REVIEW_2026-11-10.md`) found one flaw in the run tooling: the reviewer followed runner-planted symlinks when importing runner output. It also found inaccurate wording about denials. Both are fixed; see `docs/G1_INDEPENDENT_RESULT.md`.
 - **Libraries.**
   - Contract: `near-sdk` 5.29.1 is its only direct dependency (with its transitive `borsh` and `serde_json`). It is built with `cargo-near` 0.22.0 and `wasm-opt`.
   - Harness: `near-primitives`/`near-crypto` 0.37.4, `reqwest`, `tokio`, `anyhow`, `borsh`, `bs58`, `sha2`, `base64`.

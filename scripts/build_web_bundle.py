@@ -151,8 +151,23 @@ def build_run(run_dir):
                  or (a["result"].get("validation_rejected") or {}).get("cause"),
                  "source": "runner log + filter-proxy log (no on-chain trace by construction)"}
                 for a in runner["attempts"] if "validation_rejected" in a["result"]]
-    for o in offchain:
+    # Corroborate against the reviewer's own filter-proxy record of node responses (runs made
+    # after the C1 fix log submission response bodies; older runs stay runner-reported only).
+    observed = []
+    proxy_log = run_dir / "runner/proxy-submit.jsonl"
+    if proxy_log.exists():
+        for line in proxy_log.read_text().splitlines():
+            e = json.loads(line)
+            if e.get("method") == "send_tx" and "response" in e:
+                try:
+                    observed.append(canonical(json.loads(e["response"]).get("error")))
+                except ValueError:
+                    pass
+    for o, a in zip(offchain, [a for a in runner["attempts"] if "validation_rejected" in a["result"]]):
         assert o["tx_hash"] not in capture["graphs"], "a validation-rejected attempt appeared on chain"
+        o["observed_by_reviewer_proxy"] = canonical(a["result"]["validation_rejected"]) in observed
+        if o["observed_by_reviewer_proxy"]:
+            o["source"] = "node error recorded by the reviewer's filter proxy (and the runner log); no on-chain trace"
     code = decode64(capture["queries"]["vault/view_code"]["code_base64"])
     cmp_forged = read(run_dir / "compare-forged.json")
     omitted = [i for i in cmp_forged["issues"] if i["code"] == "OMITTED_ROOT"]

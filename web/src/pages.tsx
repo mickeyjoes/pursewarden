@@ -36,7 +36,7 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <div className="stat"><span className="v">{near(run.policy.budget)} N</span><span className="l">fixed budget B</span></div>
             <div className="stat"><span className="v">{near(run.ledger.C)} N</span><span className="l">charged C (never decreases)</span></div>
             <div className="stat"><span className="v">{run.ledger.accepted_count}</span><span className="l">payments admitted</span></div>
-            <div className="stat"><span className="v">{denials + failedCalls + run.offchain_rejections.length}</span><span className="l">attacks stopped</span></div>
+            <div className="stat"><span className="v">{denials + failedCalls + run.offchain_rejections.length}</span><span className="l">rejected probes: {denials} denied on chain · {failedCalls} receipt failure · {run.offchain_rejections.length} refused before inclusion</span></div>
           </div>
           <div style={{ marginTop: 20 }}><AuthorityBar run={run} /></div>
           <p className="subtle" style={{ fontSize: 12.5, marginTop: 14 }}>
@@ -76,7 +76,7 @@ export function Landing({ bundle }: { bundle: Bundle }) {
           <div className="card"><h3><Check aria-hidden style={{ color: "var(--allow)" }} /> Claimed (tested in sandbox)</h3><ul>
             <li>Admitted principal C never exceeds B, and nothing decreases C.</li>
             <li>A failed transfer is charged (F) even though its principal is refunded.</li>
-            <li>Replay, cap, allowlist, quota and malformed requests are denied with no effect.</li>
+            <li>Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed input commits no vault data.</li>
             <li>The vault has zero access keys from creation to cut; its code is deployed once.</li>
             <li>An independent collector recovers an omitted transaction root from its own node.</li></ul></div>
           <div className="card"><h3><AlertTriangle aria-hidden style={{ color: "var(--pending)" }} /> Assumed</h3><ul>
@@ -88,7 +88,8 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <li>Prompt-injection defence: an agent can still waste its budget on allowlisted payees.</li>
             <li>Testnet or mainnet enforcement, or production custody.</li>
             <li>Audit, formal verification, recurring budgets, tokens other than NEAR.</li>
-            <li>Concurrency comparisons against other designs (not run).</li></ul></div>
+            <li>Concurrency comparisons against other designs (not run).</li>
+            <li>Organisational independence: one team wrote the vault, runner and verifier.</li></ul></div>
         </div>
       </section>
     </>
@@ -202,8 +203,9 @@ export function Lab({ bundle }: { bundle: Bundle }) {
       <section className="section" style={{ paddingTop: 28 }} aria-labelledby="offchain">
         <h2 id="offchain" style={{ fontSize: 20, marginBottom: 6 }}>Stopped before reaching the chain</h2>
         <p className="muted" style={{ marginBottom: 14, fontSize: 14 }}>
-          NEAR rejected these key abuses when the agent submitted them, so they leave no chain trace. The node's errors are shown as
-          recorded by the runner and the reviewer's filter proxy. The verifier also confirmed that none of these transactions is on chain.
+          NEAR rejected these key abuses when the agent submitted them, so they leave no chain trace. The verifier confirmed that none of
+          these transactions is on chain. "Reviewer-observed" means the reviewer's filter proxy recorded the node's error itself. Runs made
+          before that logging existed show the error as runner-reported.
         </p>
         <div className="grid2">
           {run.offchain_rejections.map((o) => (
@@ -211,7 +213,9 @@ export function Lab({ bundle }: { bundle: Bundle }) {
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6 }}>
                 <ShieldOff size={16} style={{ color: "var(--deny)" }} aria-hidden />
                 <strong>{o.label.replaceAll("_", " ")}</strong>
-                <span className="chip untrusted" style={{ marginLeft: "auto" }}>runner-reported</span>
+                {o.observed_by_reviewer_proxy
+                  ? <span className="chip info" style={{ marginLeft: "auto" }}>reviewer-observed</span>
+                  : <span className="chip untrusted" style={{ marginLeft: "auto" }}>runner-reported</span>}
               </div>
               <div className="muted" style={{ fontSize: 13.5 }}>{o.expected}</div>
               <code style={{ fontSize: 12, color: "var(--subtle)", overflowWrap: "anywhere" }}>{errorName(o.rpc_error)}</code>
@@ -230,8 +234,8 @@ function effects(t: TimelineItem): string {
       ? `Transfer ${near(t.amount!)} NEAR delivered · callback ${t.callback}`
       : `Transfer failed (${t.native_failure}) · ${near(t.amount!)} NEAR system refund · still charged · callback ${t.callback}`;
   }
-  if (t.decision === "Denied") return `No transfer · ${REASON_TEXT[t.reason ?? ""] ?? ""}`;
-  if (t.decision === "ReceiptFailure") return "Receipt failed: no transfer, no state change (checked in history)";
+  if (t.decision === "Denied") return `No transfer, C unchanged, audit sequence +1 · ${REASON_TEXT[t.reason ?? ""] ?? ""}`;
+  if (t.decision === "ReceiptFailure") return "Receipt failed: no transfer, no vault data committed (checked in history)";
   if (t.decision === "Frozen") return "Vault frozen: irreversible, no new admissions";
   if (t.decision === "Construction") return "Keyless creation batch: create, fund, deploy, init";
   return "Account setup";

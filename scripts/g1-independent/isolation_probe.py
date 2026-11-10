@@ -24,6 +24,15 @@ def tcp(host, port):
         s.close()
 
 
+def writable(d):
+    try:
+        os.symlink("/nonexistent", os.path.join(d, ".probe-link"))
+    except OSError:
+        return False
+    os.unlink(os.path.join(d, ".probe-link"))
+    return True
+
+
 def rpc(method, params):
     body = json.dumps({"jsonrpc": "2.0", "id": "probe", "method": method, "params": params}).encode()
     req = urllib.request.Request("http://127.0.0.1:3030", data=body, headers={"Content-Type": "application/json"})
@@ -48,6 +57,7 @@ def main():
         "direct_node_rpc_localhost_ipv6": tcp("::1", port) if socket.has_ipv6 else "no ipv6",
         "external_network_1.1.1.1:443": tcp("1.1.1.1", 443),
         "forbidden_paths_exist": {p: os.path.exists(p) for p in forbidden},
+        "socket_dir_writable": writable("/sock"),
         "admin_methods_via_filter": {
             "sandbox_patch_state": rpc("sandbox_patch_state", {"records": []}),
             "sandbox_fast_forward": rpc("sandbox_fast_forward", {"delta_height": 1}),
@@ -62,6 +72,7 @@ def main():
           and not str(probes["direct_node_rpc_localhost_ipv6"]).startswith("CONNECTED")
           and not probes["external_network_1.1.1.1:443"].startswith("CONNECTED")
           and not any(probes["forbidden_paths_exist"].values())
+          and probes["socket_dir_writable"] is False
           and all(v.get("denied_by_filter") for k, v in probes["admin_methods_via_filter"].items()
                   if not k.endswith("_allowed"))
           and probes["admin_methods_via_filter"]["query_view_access_key_list_allowed"].get("has_result"))

@@ -88,6 +88,10 @@ def make_handler(upstream, allowed, log):
                 with opener.open(r, timeout=60) as resp:
                     body = resp.read()
                 entry.update(decision="forward", response_bytes=len(body))
+                if method in SUBMIT and len(body) <= 16384:
+                    # Reviewer-side record of what the node answered to each submission, so a
+                    # pre-inclusion rejection is observed by the reviewer, not only runner-reported.
+                    entry["response"] = body.decode("utf-8", "replace")
                 code = 200
             except Exception as exc:  # upstream unavailable: report, never retry
                 entry.update(decision="forward-error", error=str(exc))

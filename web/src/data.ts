@@ -27,7 +27,7 @@ export interface Run {
   events: { seq: number; event: string; receipt_id: string; block_height: number }[];
   state_history: { state_writes: number; charged_series: string[]; seq_series: number[] };
   timeline: TimelineItem[];
-  offchain_rejections: { label: string; intent: string; expected: string; tx_hash: string; rpc_error: unknown; source: string }[];
+  offchain_rejections: { label: string; intent: string; expected: string; tx_hash: string; rpc_error: unknown; source: string; observed_by_reviewer_proxy?: boolean }[];
   isolation: { checks: Verdict; direct_node_rpc: string; forbidden_paths_visible: string[];
     admin_methods_denied: Record<string, boolean>; runner_methods_forwarded: string[]; runner_methods_denied: string[] };
   omission: { forged_verdicts: Record<string, Verdict>; omitted_tx_hash: string[]; recovered_receipts: string[];
@@ -63,7 +63,7 @@ export const REASON_TEXT: Record<string, string> = {
   RecipientNotAllowed: "The recipient is not on the mandate's allowlist.",
   RecordQuotaExhausted: "All K accepted-request slots are used. The refund did not give any back.",
   BudgetExceeded: "C + amount would exceed the fixed budget B.",
-  MalformedInput: "Non-canonical input. The receipt failed before admission, with no state change.",
+  MalformedInput: "Non-canonical input. The receipt failed before admission and committed no vault data (gas and nonce are still spent).",
   PolicyMismatch: "The request names a different mandate.",
   Frozen: "The owner froze the vault.",
 };

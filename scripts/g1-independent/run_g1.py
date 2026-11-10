@@ -37,6 +37,10 @@ sys.path.insert(0, str(REPO))
 from packages.collector import canonical, digest  # noqa: E402
 from packages.verifier.forge import export_rpc_records, omit_request_root  # noqa: E402
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from safe_import import (import_json, validate_capture, validate_isolation,  # noqa: E402
+                         validate_runner_log)
+
 TOOLS = Path(os.environ.get("NEAR_VAULT_TOOLS", Path.home() / ".local/share/near-agent-vault-lab"))
 NODE_BIN = TOOLS / "sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox"
 ACTOR = REPO / "target/debug/g1_actor"
@@ -100,18 +104,33 @@ def write(p, obj):
     p.write_text(json.dumps(obj, indent=2) + "\n")
 
 
-def bwrap(runner_dir, script):
-    """Run `script` (sh) in the runner sandbox. Only listed paths exist inside."""
+BRIDGE = "python3 -I /runner-scripts/sandbox_bridge.py /sock/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; "
+
+
+def sandbox(script, ro=(), rw=()):
+    """Run `script` (sh) in the runner sandbox: all namespaces unshared, no network route,
+    only the listed (host, guest) binds exist inside. The proxy socket directory is always
+    bound READ-ONLY; the only runner-writable host directory is the one passed in `rw`, and the
+    reviewer reads it afterwards solely through safe_import (no-follow, descriptor-relative)."""
     cmd = ["bwrap", "--unshare-all", "--die-with-parent", "--new-session", "--clearenv",
-           "--setenv", "HOME", "/runner", "--setenv", "PATH", "/usr/bin:/bin",
+           "--setenv", "HOME", "/tmp", "--setenv", "PATH", "/usr/bin:/bin",
            "--ro-bind", "/usr", "/usr", "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
            "--symlink", "usr/bin", "/bin", "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp",
            "--ro-bind", str(ACTOR), "/runner-bin/g1_actor",
            "--ro-bind", str(SCRIPTS), "/runner-scripts",
-           "--ro-bind", str(REPO / "packages"), "/runner-pkg/packages",
-           "--bind", str(runner_dir), "/runner", "--chdir", "/runner",
-           "/bin/sh", "-ec", script]
+           "--ro-bind", str(REPO / "packages"), "/runner-pkg/packages"]
+    for host, guest in ro:
+        cmd += ["--ro-bind", str(host), guest]
+    for host, guest in rw:
+        cmd += ["--bind", str(host), guest]
+    cmd += ["--chdir", "/tmp", "/bin/sh", "-ec", script]
     return run(cmd)
+
+
+def fresh_dir(base, name):
+    d = base / name
+    d.mkdir(mode=0o700)  # never reused: a runner can only ever have touched dirs it was given
+    return d
 
 
 class Proxy:
@@ -165,7 +184,7 @@ def main():
     node_home = rev / "node"
     pub = REPO / "evidence" / "g1-independent" / a.run_id
     assert not base.exists() and not pub.exists(), "fresh run directories required"
-    for d in (rev, runner, runner / "out"):
+    for d in (rev, runner, runner / "out"):  # created by the reviewer before any sandbox runs
         d.mkdir(parents=True, mode=0o700)
     url = f"http://127.0.0.1:{a.rpc_port}"
     summary = {"schema": "g1-independent/run/v1", "run_id": a.run_id, "network": "SANDBOX (local)",
@@ -205,22 +224,35 @@ def main():
              "--wasm", WASM, "--out", pub / "reviewer/construct.json"])
         cons = json.loads((pub / "reviewer/construct.json").read_text())
 
-        # 4. Runner sandbox: isolation probe, then the untrusted agent workload.
+        # 4a. Isolation probe in its own sandbox invocation (same filter as the workload faces).
+        #     Its result is imported into reviewer storage BEFORE any untrusted workload runs.
         forbidden = [str(node_home), str(rev), str(Path.home()), str(rev / "owner.key.json"),
-                     str(node_home / "validator_key.json"), str(REPO)]
-        proxy = Proxy(runner / "rpc.sock", url, "submit", pub / "runner/proxy-submit.jsonl")
+                     str(node_home / "validator_key.json"), str(REPO), str(base)]
+        sock, probe_out = fresh_dir(base, "sock-probe"), fresh_dir(base, "probe-out")
+        proxy = Proxy(sock / "rpc.sock", url, "submit", pub / "runner/proxy-probe.jsonl")
         try:
-            bwrap(runner, "python3 -I /runner-scripts/sandbox_bridge.py /runner/rpc.sock 3030 >/tmp/bridge.log 2>&1 & "
-                          "sleep 0.5; "
-                          f"python3 -I /runner-scripts/isolation_probe.py /runner/out/isolation.json {a.rpc_port} "
-                          + " ".join(forbidden) + "; "
-                          "/runner-bin/g1_actor runner-attack --rpc http://127.0.0.1:3030 --runner-dir /runner "
-                          "--out /runner/out/runner-log.json")
+            sandbox(BRIDGE + f"python3 -I /runner-scripts/isolation_probe.py /probe/isolation.json {a.rpc_port} "
+                    + " ".join(forbidden) + " || echo 'isolation probe reported FAIL'",
+                    ro=[(sock, "/sock"), (runner, "/runner")], rw=[(probe_out, "/probe")])
         finally:
             proxy.close()
-        shutil.copy(runner / "out/isolation.json", pub / "runner/isolation.json")
-        shutil.copy(runner / "out/runner-log.json", pub / "runner/runner-log.json")
-        iso = json.loads((runner / "out/isolation.json").read_text())
+        iso_bytes, iso = import_json(probe_out, "isolation.json", 1 << 20, validate_isolation)
+        (pub / "runner").mkdir(parents=True, exist_ok=True)
+        (pub / "runner/isolation.json").write_bytes(iso_bytes)
+        if iso["isolation_checks"] != "PASS":
+            raise RuntimeError("isolation probe FAIL: not starting the untrusted workload")
+
+        # 4b. Untrusted agent workload: agent FC keys + read-only socket dir; writes only /runner.
+        sock = fresh_dir(base, "sock-submit")
+        proxy = Proxy(sock / "rpc.sock", url, "submit", pub / "runner/proxy-submit.jsonl")
+        try:
+            sandbox(BRIDGE + "/runner-bin/g1_actor runner-attack --rpc http://127.0.0.1:3030 --runner-dir /runner "
+                    "--out /runner/out/runner-log.json",
+                    ro=[(sock, "/sock")], rw=[(runner, "/runner")])
+        finally:
+            proxy.close()
+        log_bytes, _ = import_json(runner, "out/runner-log.json", 16 << 20, validate_runner_log)
+        (pub / "runner/runner-log.json").write_bytes(log_bytes)
         summary["isolation"] = {"checks": iso["isolation_checks"],
                                 "direct_node_rpc": iso["direct_node_rpc_127.0.0.1"],
                                 "forbidden_paths_visible": [p for p, v in iso["forbidden_paths_exist"].items() if v],
@@ -260,7 +292,10 @@ def main():
                                                     "RecipientNotAllowed", "RecordQuotaExhausted"]),
                           "failed_call_classes": ["MalformedInput"]}}
         write(pub / "reviewer-descriptor.json", d)
-        shutil.copy(pub / "reviewer-descriptor.json", runner / "descriptor.json")
+        # Delivered through a FRESH reviewer-created directory mounted read-only, never by writing
+        # into the runner-writable tree (a planted symlink there would redirect the write).
+        runner_input = fresh_dir(base, "runner-input")
+        write(runner_input / "descriptor.json", d)
 
         # 7. Independent acquisition: direct node access, NO runner input of any kind.
         ind = base / "independent"
@@ -278,15 +313,16 @@ def main():
         log(f"independent verdicts {summary['independent']['verdicts']}")
 
         # 8. Runner presentation through the READ-ONLY filter (submission now refused).
-        proxy = Proxy(runner / "rpc.sock", url, "read", pub / "runner/proxy-read.jsonl")
+        sock, pres_out = fresh_dir(base, "sock-read"), fresh_dir(base, "presentation-out")
+        proxy = Proxy(sock / "rpc.sock", url, "read", pub / "runner/proxy-read.jsonl")
         try:
-            bwrap(runner, "python3 -I /runner-scripts/sandbox_bridge.py /runner/rpc.sock 3030 >/tmp/bridge.log 2>&1 & "
-                          "sleep 0.5; cd /runner-pkg && "
-                          "python3 -E -s -m packages.verifier collect --network sandbox --rpc http://127.0.0.1:3030 "
-                          "--descriptor /runner/descriptor.json --out /runner/out/presentation")
+            sandbox(BRIDGE + "cd /runner-pkg && "
+                    "python3 -E -s -m packages.verifier collect --network sandbox --rpc http://127.0.0.1:3030 "
+                    "--descriptor /input/descriptor.json --out /presentation/p",
+                    ro=[(sock, "/sock"), (runner_input, "/input")], rw=[(pres_out, "/presentation")])
         finally:
             proxy.close()
-        presented = json.loads((runner / "out/presentation/presented-capture.json").read_text())
+        pres_bytes, presented = import_json(pres_out, "p/presented-capture.json", 128 << 20, validate_capture)
 
         # 9. The runner's lie: drop request 2's entire root, descendants, refund, rows; rehash.
         forged, omitted = omit_request_root(presented, "2")
@@ -300,7 +336,7 @@ def main():
 
         # 10. Offline comparisons against the reviewer's own capture.
         (base / "capture.json").write_bytes(cap_bytes)
-        (base / "presented.json").write_bytes(canonical(presented) + b"\n")
+        (base / "presented.json").write_bytes(pres_bytes)
         verifier("compare", "--capture", base / "capture.json", "--descriptor", pub / "reviewer-descriptor.json",
                  "--presented", base / "presented.json", "--out", pub / "compare-genuine.json")
         verifier("compare", "--capture", base / "capture.json", "--descriptor", pub / "reviewer-descriptor.json",
