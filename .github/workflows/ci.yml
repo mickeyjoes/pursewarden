@@ -1,0 +1,47 @@
+# Regression CI. Read-only: no secrets, no deployments, no network calls to NEAR.
+name: ci
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence:
+    name: Evidence regressions (Python stdlib)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: 68 evidence tests (synthetic, runner boundary, G1/G2 replay of recorded RPC)
+        # bubblewrap end-to-end tests skip themselves when unprivileged namespaces are unavailable.
+        run: python3 -m unittest discover -s tests/evidence -t . -v
+
+  web:
+    name: Web bundle reproducibility and build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Bundle regenerated from committed raw RPC equals the committed bundle
+        run: python3 scripts/build_web_bundle.py && git diff --exit-code web/public/bundle.json
+      - name: Build
+        working-directory: web
+        run: npm ci --no-audit --no-fund && npm run build
+
+  contract:
+    name: Contract tests and cross-machine artifact reproducibility
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust 1.93.0 (pinned by rust-toolchain.toml)
+        run: rustup toolchain install 1.93.0 --target wasm32-unknown-unknown --profile minimal --component rustfmt,clippy
+      - name: Contract unit tests (SPEC vectors, canonical parsing, storage bound)
+        run: cargo +1.93.0 test -p near-agent-vault --locked
+      - name: Harness encoder test
+        run: cargo +1.93.0 test -p g1-sandbox-tests --locked --lib
+      - name: Install cargo-near 0.22.0
+        run: cargo +1.93.0 install cargo-near --version =0.22.0 --locked --no-default-features --root "$HOME/.local/share/near-agent-vault-lab/cargo-near-0.22.0"
+      - name: Rebuild the protected WASM on a different machine and compare bytes
+        run: scripts/build-contract.sh && sha256sum artifacts/near_agent_vault.wasm && git diff --exit-code artifacts/

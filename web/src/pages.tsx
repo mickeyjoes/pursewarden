@@ -392,11 +392,13 @@ export function Docs({ bundle }: { bundle: Bundle }) {
       <p className="lede">Three paths, from cheapest to strongest. None of them needs a wallet or funds. Everything runs on your machine.</p>
       {[
         ["1 · Re-verify the recorded runs (seconds, Python 3 stdlib only)",
-          "python3 -m unittest discover -s tests/evidence -t .   # 61 tests: synthetic, runner-boundary, replay of real recorded RPC"],
+          "python3 -m unittest discover -s tests/evidence -t .   # 68 tests: synthetic, runner-boundary, G1/G2 replay of real recorded RPC"],
         ["2 · Rebuild the contract and compare bytes",
           `scripts/build-contract.sh   # expect sha256 ${run.artifact.wasm_sha256}\ngit diff --exit-code artifacts/`],
         ["3 · Run a fresh independent G1 experiment (~5 min, Linux + bubblewrap)",
           "cargo build -p g1-sandbox-tests --locked --bin g1_actor\npython3 scripts/g1-independent/run_g1.py my-run --rpc-port 3240 --net-port 24777"],
+        ["4 · Run the G2 concurrency comparison (~25 s, Linux + bubblewrap)",
+          "cargo build -p g1-sandbox-tests --locked --bin g2_actor\npython3 scripts/g2-independent/run_g2.py my-g2 --rpc-port 3290 --net-port 24827"],
       ].map(([t, c]) => (
         <div key={t} className="cmd" style={{ marginTop: 22 }}><h3 style={{ fontSize: 15 }}>{t}</h3><pre>{c}</pre></div>
       ))}

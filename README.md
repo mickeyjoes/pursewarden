@@ -29,7 +29,8 @@ An AI agent that can pay for things needs spending authority. A wallet key gives
    - the per-block state history.
 
    If a runner hands over a bundle that silently omits a transaction, the verifier finds the transaction on its own and marks the bundle **FAIL**.
-4. **An Attack Lab (static web app).** A read-only replay of the recorded runs: decisions, receipt trees and the verifier catching a forged bundle.
+4. **A concurrency test (G2).** Eight concurrent requests against a 5 NEAR budget. The protected vault admits exactly the budget, and the verifier proves the denials happened while earlier transfers were still pending. A deliberately broken control (our own fixture) overspends under the same burst.
+5. **An Attack Lab (static web app).** A read-only replay of the recorded runs: decisions, receipt trees, the burst block by block, and the verifier catching a forged bundle.
 
 How NEAR fits: function-call access keys give the agent a capability without custody. Keyless contract accounts and the receipt model let one receipt charge the budget and schedule the payment atomically. Failed transfers are refunded by `system` receipts that the verifier can tell apart from gas refunds.
 
@@ -48,8 +49,13 @@ No wallet, account or funds are needed for any step.
 python3 -m unittest discover -s tests/evidence -t .
 ```
 
-**See:** `Ran 61 tests … OK`.
+**See:** `Ran 68 tests … OK`.
 - 43 synthetic adversarial tests run against a fake RPC oracle.
+- 7 G2 tests replay the recorded concurrency runs:
+  - the protected vault admits 2 of 8, with 6 pending-transfer witnesses;
+  - the generous control admits 8 of 8;
+  - the vulnerable fixture overspends 12 NEAR;
+  - plus edge cases of the witness logic.
 - 11 runner-boundary regressions: runner-planted symlinks must never make the reviewer read a private file. 3 of them run through the real sandbox and skip if `bwrap` is unavailable.
 - 7 tests run against **actual recorded nearcore 2.13.4 responses**. They replay every committed independent run and check:
   - the exact ledger: C = 3, S = 1, F = 2, U = 0 NEAR, headroom 2;
@@ -121,6 +127,18 @@ This command:
 
 **See:** `isolation PASS`, then independent verdicts `safety/settlement/evidence/scenario_coverage: PASS`, then the forged bundle `evidence: FAIL` with `omitted_root_matches_forger: true`. Results land in `evidence/g1-independent/my-run/`. Private keys stay under `~/.local/share/near-agent-vault-lab/g1-independent/my-run/`.
 
+### 6. Run the G2 concurrency comparison yourself (about 25 s)
+
+```bash
+cargo +1.93.0 build -p g1-sandbox-tests --locked --bin g2_actor
+python3 scripts/g2-independent/run_g2.py my-g2 --rpc-port 3290 --net-port 24827
+```
+
+**See:** in the printed results,
+- `protected`: four PASS verdicts, three admitted (1 initial + 2 of 8), six `BudgetExceeded`, and every `pending_witness` entry with `"witness": true`;
+- `generous`: nine admitted;
+- `vulnerable`: `"delivered_principal"` of 17 NEAR, `"overspend"` of 12 NEAR, and eight admissions in a single block.
+
 ## What the recorded runs show
 
 Three fresh sandbox chains were used: `test-chain-d8AyA` (run C, after the review fix), `test-chain-6J4eY` and `test-chain-oJOg4`. All three used the same artifact and the same scenario.
@@ -137,7 +155,17 @@ Three fresh sandbox chains were used: `test-chain-d8AyA` (run C, after the revie
 | 8–11 | Agent key calls `freeze`, transfers, attaches a deposit, calls another receiver | Rejected by NEAR before inclusion | No chain trace |
 | 12 | Owner `freeze` | Frozen | No further admissions |
 
-Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. The vault has zero keys from creation to Q, and its code was deployed exactly once. Details: [`docs/G1_INDEPENDENT_RESULT.md`](docs/G1_INDEPENDENT_RESULT.md).
+Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. "Headroom" means unused budget: with K = 2 slots used and the vault frozen, nothing more is spendable. The vault has zero keys from creation to Q, and its code was deployed exactly once. Details: [`docs/G1_INDEPENDENT_RESULT.md`](docs/G1_INDEPENDENT_RESULT.md).
+
+**Concurrency (G2).** Two more fresh chains, `test-chain-OPkoc` and `test-chain-G0vKO`, ran the same workload in each run. After one settled 1 NEAR payment, eight 2 NEAR requests were pre-signed with eight different agent keys and submitted at once. The results:
+
+| Target | Budget | Burst admitted | Result |
+| --- | --- | --- | --- |
+| Protected vault | 5 NEAR | **2 of 8** | 6 × `BudgetExceeded`; C = 5 NEAR = B |
+| Generous control (same code) | 100 NEAR | 8 of 8 | C = 17 NEAR |
+| Vulnerable teaching fixture (checks only settled spend; our own contract) | 5 NEAR | 8 of 8, in one block | **17 NEAR delivered, 12 NEAR over budget** |
+
+The six denials all executed in one block, while the two admitted transfers were still unexecuted (next block) and only 1 NEAR had settled. A settled-only check would have admitted all of them, and that is exactly what the fixture did. This native-pending witness is computed from the captured receipts. Details: [`docs/G2_RESULT.md`](docs/G2_RESULT.md).
 
 ## Claims and limits
 
@@ -147,7 +175,8 @@ Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. The vault h
 | A failed transfer is charged (F) even though its principal is refunded | The owner sets an honest mandate and allowlist | Testnet or mainnet enforcement, or custody safety |
 | Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed-input failures commit no vault data. | The reviewer's node reports the chain truthfully (no light-client or consensus proofs) | Audit or formal verification |
 | The vault stays keyless, with code deployed once | The deployed bytes are the reviewed source (checked by hash and rebuild) | Late-failure atomicity under FAULT builds, forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry (not run) |
-| The independent collector recovers a root that a runner omitted, without being given its hash | Runner isolation is by Linux namespaces on one host | Concurrency comparisons against other designs (G2, not run) |
+| The independent collector recovers a root that a runner omitted, without being given its hash | Runner isolation is by Linux namespaces on one host | Comparisons against other projects (the vulnerable control is our own fixture) |
+| Under an eight-request concurrent burst, admissions stop exactly at B, and denials occur while earlier transfers are still pending | Single shard, single validator sandbox; requests to one vault execute sequentially | Multi-shard or cross-contract concurrency, load beyond eight requests (not run) |
 
 Residual vault funds have **no** withdrawal path by design, so this is a research vault, not a product wallet.
 
@@ -160,10 +189,13 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 | `scripts/build-contract.sh`, `scripts/inspect_wasm.py` | Pinned build and fail-closed import/export gate |
 | `packages/collector`, `packages/verifier` | Independent acquisition and verification (stdlib Python) |
 | `tests/evidence/` | Synthetic adversarial tests and replay regressions on real responses |
-| `tests/sandbox/` | Rust sandbox harness: sign-once transactions, independent encoder/decoder, `g1_actor` role binary |
-| `scripts/g1-independent/` | Run orchestrator, filter proxy, sandbox bridge, isolation probe, retention comparison |
+| `tests/sandbox/` | Rust sandbox harness: sign-once transactions, independent encoder/decoder, `g1_actor` / `g2_actor` role binaries |
+| `scripts/g1-independent/` | Run orchestrator, filter proxy, sandbox bridge, isolation probe, safe import, retention comparison |
+| `scripts/g2-independent/`, `fixtures/vulnerable-settled-only/` | G2 concurrency orchestrator. Deliberately vulnerable teaching fixture (sandbox only, own lockfile). |
 | `scripts/sandbox-setup/` | Pinned nearcore 2.13.4 sandbox start/stop |
-| `evidence/g1-independent/` | Two evidence runs and two retained development attempts |
+| `evidence/g1-independent/` | Three G1 evidence runs (A, B, and C after the review fix), the review runs, and retained development attempts |
+| `evidence/g2-independent/` | Two G2 evidence runs and one development attempt |
+| `.github/workflows/` | `ci` (evidence tests, web reproducibility, contract tests, cross-machine WASM rebuild); `pages` (manual Attack Lab deployment) |
 | `evidence/g1/` | Agent A's original Oct 29 runner evidence. Its node history has since been pruned. |
 | `web/` | Attack Lab (Vite, React) |
 | `docs/` | Gate results, interface, review handoff, submission notes |

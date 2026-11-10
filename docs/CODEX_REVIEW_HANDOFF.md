@@ -6,7 +6,7 @@
 
 | What | Revision |
 | --- | --- |
-| Branch under review | `integration/g1-recovery`, worktree `/home/mickey/Dev/Hackathons/NEAR/near-agent-vault-integration` (resolve HEAD with `git -C … rev-parse HEAD`) |
+| Branch under review | `integration/g1-recovery`, worktree `~/Dev/Hackathons/NEAR/near-agent-vault-integration` (resolve HEAD with `git -C … rev-parse HEAD`) |
 | Common baseline | `2ca4b51121e01dcb29d090bf37541f4ea537c82b` |
 | Contract implementation (Agent A, unchanged since) | `c9da90ceb8676e81d96620f45d40ace2aa3a8914`. `git diff c9da90c HEAD -- contracts/ Cargo.toml Cargo.lock rust-toolchain.toml` is empty. |
 | Evidence implementation (Agent B) | `90506c0c20ee9783bb03cee9ab7ec97f4537f49f` |
@@ -17,12 +17,12 @@
 | Evidence runs A and B | `bbf7924` (runs executed at `91c4ce6` and `e783dac`, respectively) |
 | Web, docs, submission kit | `5ecb5cd`, `58a28db`, `f2f8cce`, `106f9c2` and later |
 
-The prior decision being answered is `/home/mickey/Dev/Hackathons/NEAR/reports/G1_Independent_Integration_Decision_2026-10-29.md` (§4 acceptance gate).
+The prior decision being answered is `~/Dev/Hackathons/NEAR/reports/G1_Independent_Integration_Decision_2026-10-29.md` (§4 acceptance gate).
 
 ## Commands (all local; no funds; about 10 minutes in total)
 
 ```bash
-cd /home/mickey/Dev/Hackathons/NEAR/near-agent-vault-integration
+cd ~/Dev/Hackathons/NEAR/near-agent-vault-integration
 python3 -m unittest discover -s tests/evidence -t .                  # expect 50 OK
 cargo +1.93.0 test -p near-agent-vault --locked                      # expect 12 OK
 scripts/build-contract.sh && git diff --exit-code artifacts/         # expect c7c77263…, gate PASS
