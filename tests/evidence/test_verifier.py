@@ -43,7 +43,7 @@ class EvidenceTests(unittest.TestCase):
         result, capture = verify(self.node, self.d)
         self.assertEqual(result["chain_evidence_checks"], "PASS", result)
         self.assertEqual(result["recovery"]["ledger"], {"C": str(3*YOCTO), "S": str(YOCTO),
-                         "F": str(2*YOCTO), "U": "0", "headroom": str(2*YOCTO)})
+                         "F": str(2*YOCTO), "U": "0", "headroom": str(2*YOCTO), "accepted_count": 2})
         self.assertEqual(len(capture["graphs"]), 4)
         self.assertEqual(len(result["recovery"]["principal_refunds"]), 1)
         self.assertEqual(len(result["recovery"]["gas_refunds"]), 2)
@@ -179,12 +179,22 @@ class EvidenceTests(unittest.TestCase):
         self.assert_closed(verify(self.node, self.d)[0], "NOT_FINAL")
 
     def test_callback_failure_does_not_change_native_success(self):
+        # Consistent model of a forced callback panic: record stays Pending, no callback event.
+        d, node = fixture(callback1_fails=True)
+        result, _ = verify(node, d)
+        self.assertEqual(result["chain_evidence_checks"], "PASS", result)
+        self.assertEqual(result["recovery"]["ledger"]["S"], str(YOCTO))
+        p1 = next(p for p in result["recovery"]["payments"] if p["request_id"] == "1")
+        self.assertEqual((p1["class"], p1["callback_observation"]), ("S", "CallbackFailed"))
+        self.assertEqual(result["recovery"]["callback_observation"]["callback_unconfirmed"], str(YOCTO))
+
+    def test_failed_callback_with_terminal_record_is_rejected(self):
+        # Negative control retained from the original test: a failed callback cannot coexist
+        # with a terminal (CbSucceeded) retained record.
         graph = self.graph(1)
         callback = next(o for o in graph["receipts_outcome"] if o["id"] == h("callback-1"))
         callback["outcome"]["status"] = {"Failure": {"ActionError": "SYNTHETIC callback panic"}}
-        result, _ = verify(self.node, self.d)
-        self.assertEqual(result["chain_evidence_checks"], "PASS", result)
-        self.assertEqual(result["recovery"]["ledger"]["S"], str(YOCTO))
+        self.assert_closed(verify(self.node, self.d)[0], "CALLBACK_FAILED_RECORD_TERMINAL")
 
     def test_callback_without_native_dependency_is_rejected(self):
         callback = next(r for r in self.graph()["receipts"] if r["receipt_id"] == h("callback-2"))

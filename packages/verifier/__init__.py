@@ -438,6 +438,10 @@ def analyze(capture, d):
                 require(not vault_children, "FAILED_RECEIPT_DISPATCH", rid)
                 method = actions[0]["FunctionCall"]["method_name"] if (
                     len(actions) == 1 and isinstance(actions[0], dict) and "FunctionCall" in actions[0]) else None
+                if method == "on_payment_result" and receipt["predecessor_id"] == d["vault"]:
+                    # A failed callback is an observation about the callback only; it never
+                    # reclassifies the native transfer and must leave the record Pending.
+                    callback_receipts[rid] = {"failed": True, "events": []}
                 failures.append({"tx_hash": txid, "receipt_id": rid, "predecessor": receipt["predecessor_id"],
                                  "method": method, "class": failure_summary(outcomes[rid]),
                                  "block_hash": outcomes[rid]["block_hash"]})
@@ -551,12 +555,17 @@ def analyze(capture, d):
             p["principal_refund_receipt"] = linked[0]["receipt_id"]
             p["principal_refund_block"] = linked[0]["block_hash"]
         cb = callback_receipts.get(p["callback_receipt"])
-        require(cb is not None and p["callback_outcome"] == "SuccessValue", "CALLBACK_UNCONFIRMED",
-                p["request_id"], "INCONCLUSIVE")
+        require(cb is not None, "CALLBACK_MISSING", p["request_id"], "INCONCLUSIVE")
+        if cb.get("failed"):
+            require(p["callback_status_retained"] == "Pending", "CALLBACK_FAILED_RECORD_TERMINAL",
+                    p["request_id"])
+            p["callback_observation"] = "CallbackFailed"
+            continue
         expected_status = "CbFailed" if p["class"] == "F" else "CbSucceeded"
         require(p["callback_status_retained"] == expected_status and len(cb["events"]) == 1
                 and cb["events"][0]["data"]["callback_status"] == expected_status,
                 "CALLBACK_NATIVE_DISAGREEMENT", p["request_id"], "INCONCLUSIVE")
+        p["callback_observation"] = expected_status
         p["callback_seq"] = str(cb["events"][0]["seq"])
 
     # Committed event sequence: exactly 0..seq, once each, in execution order, consistent with C.
@@ -607,7 +616,9 @@ def analyze(capture, d):
             "ledger": {"C": str(c), "S": str(s), "F": str(f), "U": str(u),
                        "headroom": str(int(d["budget"]) - c), "accepted_count": st["accepted_count"]},
             "callback_observation": {"cb_succeeded_amount": str(st["cb_succeeded_amount"]),
-                                     "cb_failed_amount": str(st["cb_failed_amount"])},
+                                     "cb_failed_amount": str(st["cb_failed_amount"]),
+                                     "callback_unconfirmed": str(sum(int(p["amount"]) for p in payments
+                                                                     if p["callback_status_retained"] == "Pending"))},
             "attribution": {"vault": d["vault"], "chain_id": d["chain_id"],
                             "genesis_block_hash": d["genesis_block_hash"], "wasm_sha256": d["wasm_sha256"],
                             "policy_hash": d["policy_hash"],
