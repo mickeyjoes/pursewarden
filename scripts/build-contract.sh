@@ -14,7 +14,14 @@ set -euo pipefail
 REPO=$(cd "$(dirname "$0")/.." && pwd)
 CARGO_NEAR=${CARGO_NEAR:-$HOME/.local/share/near-agent-vault-lab/cargo-near-0.22.0/bin/cargo-near}
 CARGO_HOME_DIR=${CARGO_HOME:-$HOME/.cargo}
-RUSTFLAGS_WASM="-C link-arg=-s --remap-path-prefix=$CARGO_HOME_DIR/registry/src=/cargo/registry/src --remap-path-prefix=$REPO=/build"
+# rustc rewrites std's virtual /rustc/<commit>/ paths to the local rust-src checkout when the
+# rust-src component is installed, so generic std code monomorphized into the contract embeds
+# "$SYSROOT/lib/rustlib/src/rust/..." panic paths (the builder's home directory). Map them back
+# to the canonical virtual prefix so the bytes do not depend on the builder's home or on
+# whether rust-src is installed. (Added 2026-11-10; the 5b05246b artifact predates this.)
+SYSROOT=$(cd "$REPO" && rustc --print sysroot)
+RUSTC_COMMIT=$(cd "$REPO" && rustc -vV | sed -n 's/^commit-hash: //p')
+RUSTFLAGS_WASM="-C link-arg=-s --remap-path-prefix=$CARGO_HOME_DIR/registry/src=/cargo/registry/src --remap-path-prefix=$REPO=/build --remap-path-prefix=$SYSROOT/lib/rustlib/src/rust=/rustc/$RUSTC_COMMIT"
 
 "$CARGO_NEAR" near --version
 ( cd "$REPO/contracts/vault" && rustc --version && \
@@ -26,6 +33,7 @@ cp "$REPO/target/near/near_agent_vault/near_agent_vault.wasm" "$REPO/artifacts/n
 if strings -n 6 "$REPO/artifacts/near_agent_vault.wasm" | grep -q "$HOME"; then
   echo "artifact still embeds $HOME" >&2; exit 1
 fi
-python3 -I "$REPO/scripts/inspect_wasm.py" "$REPO/artifacts/near_agent_vault.wasm" \
-  --json "$REPO/artifacts/near_agent_vault.inspect.json" > /dev/null \
+# Relative paths keep the builder's checkout path out of the committed report.
+( cd "$REPO" && python3 -I scripts/inspect_wasm.py artifacts/near_agent_vault.wasm \
+  --json artifacts/near_agent_vault.inspect.json > /dev/null ) \
   && echo "capability gate: PASS" || { echo "capability gate: FAIL (see artifacts/near_agent_vault.inspect.json)" >&2; exit 1; }

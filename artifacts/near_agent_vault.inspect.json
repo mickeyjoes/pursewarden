@@ -1,7 +1,7 @@
 {
-  "file": "/home/mickey/Dev/Hackathons/NEAR/near-agent-vault-contract/artifacts/near_agent_vault.wasm",
-  "size_bytes": 154714,
-  "sha256_hex": "5b05246bb41e11857f56845aca62edf92888e2ebbd210443f29577c22c216b26",
+  "file": "artifacts/near_agent_vault.wasm",
+  "size_bytes": 154346,
+  "sha256_hex": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
   "imports": [
     "env.account_balance",
     "env.attached_deposit",
