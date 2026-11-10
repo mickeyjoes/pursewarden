@@ -22,3 +22,5 @@
 __pycache__/
 *.pyc
 .work/
+# Stand-alone fixture build output.
+fixtures/**/target/

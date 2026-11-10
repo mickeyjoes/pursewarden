@@ -213,7 +213,8 @@ def one_cut(capture, d):
         require(decode64(agent_code["code_base64"]) == b"", "AGENT_HAS_CODE", d["agent"])
     require(queries["agent/view_account"]["code_hash"] == "1" * 32, "AGENT_CODE_HASH", d["agent"])
     keys = queries["agent/view_access_key_list"]["keys"]
-    require(len(keys) == 8 and len({k["public_key"] for k in keys}) == 8,
+    n_keys = d.get("agent_key_count", 8)
+    require(len(keys) == n_keys and len({k["public_key"] for k in keys}) == n_keys,
             "AGENT_KEY_COUNT", len(keys))
     for key in keys:
         check_agent_permission(key["access_key"]["permission"], d)
@@ -494,6 +495,7 @@ def analyze(capture, d):
                 denials.append({"tx_hash": txid, "receipt_id": rid, "request_id": args.get("request_id"),
                                 "recipient": args.get("recipient"), "amount": args.get("amount"),
                                 "reason": result["reason"], "seq": result["seq"],
+                                "charged_at_decision": result.get("charged"),
                                 "block_hash": outcomes[rid]["block_hash"]})
                 continue
             direct_transfers = [bodies[c] for c in vault_children
@@ -599,6 +601,7 @@ def analyze(capture, d):
 
     hist = history_check(capture, d, creation[0], effects, failed_receipts, st["policy_body_hex"], st)
 
+    witness = pending_witness(payments, denials, heights, int(d["budget"]))
     c = sum(int(p["amount"]) for p in payments)
     s = sum(int(p["amount"]) for p in payments if p["class"] == "S")
     f = sum(int(p["amount"]) for p in payments if p["class"] == "F")
@@ -608,6 +611,7 @@ def analyze(capture, d):
     principal = [r for r in refunds if r["parent_id"] in {p["transfer_receipt"] for p in payments}]
     return {"root_ids": sorted(capture["graphs"]), "payments": payments,
             "denials": denials, "failed_calls": failures, "other_vault_calls": other_calls,
+            "pending_witness": witness,
             "freeze": freeze_receipts,
             "principal_refunds": principal, "balance_refunds": refunds, "gas_refunds": gas_refunds,
             "events": [{"seq": e["seq"], "event": e["event"], "receipt_id": e["receipt_id"],
@@ -624,6 +628,34 @@ def analyze(capture, d):
                             "policy_hash": d["policy_hash"],
                             "h0": {"hash": d["h0_hash"], "height": d["h0_height"]},
                             "q": {"hash": d["q_hash"], "height": d["q_height"]}}}
+
+
+def pending_witness(payments, denials, heights, budget):
+    """Native-pending witness, from independently captured receipts only.
+
+    For each BudgetExceeded denial: which earlier-admitted transfers (admission seq < denial
+    seq) had NOT yet executed when the denial executed (transfer execution height strictly
+    greater than the denial's height), and whether a settled-only check (counting only
+    transfers that had already executed successfully) would have admitted the request."""
+    out = []
+    for x in denials:
+        if x["reason"] != "BudgetExceeded":
+            continue
+        hd, sd, amount = heights[x["block_hash"]], int(x["seq"]), int(x["amount"])
+        earlier = [p for p in payments if int(p["admission_seq"]) < sd]
+        pending = [p for p in earlier if heights[p["execution_block"]] > hd]
+        settled = sum(int(p["amount"]) for p in earlier if p["class"] == "S" and heights[p["execution_block"]] < hd)
+        out.append({"request_id": x["request_id"], "denial_seq": x["seq"], "denial_height": hd,
+                    "amount": x["amount"], "charged_at_decision": x.get("charged_at_decision"),
+                    "pending_admitted_transfers": [{"request_id": p["request_id"], "amount": p["amount"],
+                                                    "admission_seq": p["admission_seq"],
+                                                    "admission_height": heights[p["admission_block"]],
+                                                    "transfer_execution_height": heights[p["execution_block"]]}
+                                                   for p in pending],
+                    "settled_before_denial": str(settled),
+                    "settled_only_check_would_admit": settled + amount <= budget,
+                    "witness": bool(pending) and settled + amount <= budget})
+    return out
 
 
 def scenario_check(recovered, d):

@@ -147,9 +147,33 @@ def mutate_cmd(argv):
     return 0 if ok else 1
 
 
+def control_cmd(argv):
+    """Independent outflow audit of a G2 CONTROL (vulnerable fixture) vault."""
+    from packages.verifier.control import run_control
+    p = argparse.ArgumentParser(prog="control")
+    p.add_argument("--network", required=True, choices=["sandbox"])
+    p.add_argument("--rpc", required=True)
+    p.add_argument("--descriptor", required=True)
+    p.add_argument("--out", required=True)
+    a = p.parse_args(argv)
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=False)
+    d = read_json(a.descriptor)
+    source = Rpc(a.rpc, a.network, out / "rpc")
+    result, capture = run_control(source, d)
+    result["metrics"] = source.metrics()
+    if capture is not None:
+        (out / "control-capture.json").write_bytes(canonical(capture) + b"\n")
+        result["capture_sha256"] = digest(capture)
+    (out / "result.json").write_text(json.dumps(result, indent=2) + "\n")
+    print(json.dumps({k: result.get(k) for k in ("label", "admissions", "denials", "delivered_principal",
+                                                  "overspend", "admissions_per_block", "issues")}, indent=2))
+    return 0 if not result["issues"] else 1
+
+
 def main():
     argv = sys.argv[1:]
-    commands = {"collect": collect_cmd, "compare": compare_cmd, "mutate": mutate_cmd,
+    commands = {"collect": collect_cmd, "compare": compare_cmd, "mutate": mutate_cmd, "control": control_cmd,
                 "export-rpc": lambda a: (print(export_rpc_records(*_export_args(a))), 0)[1]}
     if argv and argv[0] in commands:
         return commands[argv[0]](argv[1:])

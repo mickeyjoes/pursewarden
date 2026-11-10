@@ -1,0 +1,27 @@
+# VULNERABLE TEACHING FIXTURE. Local sandbox only. Never deploy anywhere else.
+# Stand-alone (own workspace + lockfile) so it cannot affect the protected vault's build or lock.
+[package]
+name = "vulnerable-settled-only"
+description = "Deliberately vulnerable control for the G2 concurrency comparison: admission counts only SETTLED spend."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+publish = false
+license = "UNLICENSED"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+near-sdk = { version = "=5.29.1" }
+
+[workspace]
+resolver = "3"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true

@@ -201,6 +201,8 @@ def validate_descriptor(d):
     require(type(d["max_accepted_requests"]) is int and 1 <= d["max_accepted_requests"] <= 64,
             "RECORD_QUOTA", d["max_accepted_requests"])
     require(d.get("asset", "NativeNear") == "NativeNear", "ASSET", d.get("asset"))
+    require(type(d.get("agent_key_count", 8)) is int and 1 <= d.get("agent_key_count", 8) <= 64,
+            "AGENT_KEY_COUNT", d.get("agent_key_count"))
     for recipient in d["recipients"]:
         account(recipient)
         require("." in recipient and recipient not in {d["vault"], d["agent"], d["owner"]},
@@ -260,6 +262,17 @@ def collect(source, d):
     validate_descriptor(d)
     require(d["network"] == "sandbox", "PUBLIC_COMPLETENESS_UNSUPPORTED",
             "testnet/mainnet support read-only inspection only; no fresh frontier proof")
+    status, genesis, gblock = check_identity(source, d)
+    final, blocks, protocol = walk_window(source, d)
+    initial_absence = {role: absent_at(source, d[role], d["h0_hash"], d["h0_height"])
+                       for role in ("vault", "agent")}
+    chunks, roots, root_blocks, graphs = discover_roots(source, d, blocks)
+    return vault_capture(source, d, status, genesis, gblock, final, blocks, protocol, initial_absence,
+                         chunks, root_blocks, graphs)
+
+
+def check_identity(source, d):
+    """Reviewer-pinned chain identity: chain ID, exact node version, genesis config and block."""
     status = source.call("status", {})
     require(status["chain_id"] == d["chain_id"], "WRONG_CHAIN", status["chain_id"])
     require(status["version"] == d["node_version"], "NODE_VERSION", status["version"])
@@ -268,6 +281,11 @@ def collect(source, d):
     require(digest(genesis) == d["genesis_rpc_sha256"], "GENESIS_CONFIG", digest(genesis))
     gblock = source.call("block", {"block_id": genesis["genesis_height"]})
     require(gblock["header"]["hash"] == d["genesis_block_hash"], "WRONG_GENESIS", "block hash")
+    return status, genesis, gblock
+
+
+def walk_window(source, d):
+    """Blocks H0..Q on the canonical final chain (bounded), one epoch, pinned protocol config."""
     final = source.call("block", {"finality": "final"})
     # Bounded finality strategy: Q must be at or below the node's final head AND be the block the
     # node serves for Q's height on its canonical chain. This avoids spending the block budget on
@@ -304,8 +322,12 @@ def collect(source, d):
         require(digest(config) == d["protocol_config_sha256"], "PROTOCOL_CONFIGURATION", bh)
         require(sorted(protocol_shards(config)) == sorted(d["shard_ids"]), "PROTOCOL_SHARDS", bh)
         protocol[bh] = config
-    initial_absence = {role: absent_at(source, d[role], d["h0_hash"], d["h0_height"])
-                       for role in ("vault", "agent")}
+    return final, blocks, protocol
+
+
+def discover_roots(source, d, blocks):
+    """Every transaction root from chunks newly included in (H0, Q], with FINAL graphs.
+    No runner-supplied hash ever seeds this."""
     chunks, roots, root_blocks = {}, {}, {}
     for block in blocks[1:]:
         headers, height = block["chunks"], block["header"]["height"]
@@ -343,6 +365,11 @@ def collect(source, d):
                             "sender_account_id": tx["signer_id"], "wait_until": "FINAL"})
         require(graph["transaction"] == tx, "TRANSACTION_MISMATCH", txid)
         graphs[txid] = graph
+    return chunks, roots, root_blocks, graphs
+
+
+def vault_capture(source, d, status, genesis, gblock, final, blocks, protocol, initial_absence,
+                  chunks, root_blocks, graphs):
     q, vault = d["q_hash"], d["vault"]
     queries = {}
     for role, aid in (("vault", vault), ("agent", d["agent"])):
