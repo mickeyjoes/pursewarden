@@ -22,6 +22,7 @@ export interface Run {
     max_accepted_requests: number; expires_at_ns: string; policy_hash: string; chain_id: string; agent_keys: number; vault_keys: number };
   window: { h0: { hash: string; height: number }; q: { hash: string; height: number } };
   verdicts_live: Record<"safety" | "settlement" | "evidence" | "scenario_coverage", Verdict>;
+  frozen_at_q: boolean;
   ledger: { C: string; S: string; F: string; U: string; headroom: string; accepted_count: number };
   callback_observation: { cb_succeeded_amount: string; cb_failed_amount: string; callback_unconfirmed: string };
   events: { seq: number; event: string; receipt_id: string; block_height: number }[];
@@ -43,8 +44,9 @@ export interface G2Request { request_id: string; decision: "Admitted" | "Denied"
   transfer_height?: number; amount: string; settlement?: string; charged_at_decision?: string; tx_hash: string }
 export interface G2Target { vault: string; budget: string; max_per_request: string; max_accepted_requests: number; agent_keys: number;
   computed_if_live: Record<string, Verdict>; verdicts_live: Record<string, Verdict>; ledger: Run["ledger"];
-  requests: G2Request[]; pending_witness: { request_id: string; denial_height: number; settled_before_denial: string;
-    charged_at_decision: string; settled_only_check_would_admit: boolean; witness: boolean;
+  requests: G2Request[]; pending_witness: { request_id: string; denial_height: number; settled_before_denial_min: string;
+    settled_before_denial_max: string; same_block_settlement_ambiguity: boolean;
+    charged_at_decision: string; settled_only_check_would_admit: boolean | null; witness: boolean;
     pending_admitted_transfers: { request_id: string; transfer_execution_height: number }[] }[];
   replay_capture_sha256: string; rpc_records: number }
 export interface G2Control { label: string; vault: string; budget: string; admissions: number; denials: number;

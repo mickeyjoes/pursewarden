@@ -49,13 +49,13 @@ No wallet, account or funds are needed for any step.
 python3 -m unittest discover -s tests/evidence -t .
 ```
 
-**See:** `Ran 68 tests … OK`.
+**See:** `Ran 70 tests … OK`.
 - 43 synthetic adversarial tests run against a fake RPC oracle.
-- 7 G2 tests replay the recorded concurrency runs:
+- 9 G2 tests replay the recorded concurrency runs:
   - the protected vault admits 2 of 8, with 6 pending-transfer witnesses;
   - the generous control admits 8 of 8;
   - the vulnerable fixture overspends 12 NEAR;
-  - plus edge cases of the witness logic.
+  - plus edge cases of the witness logic, including the review's same-block counterexample, which must come out ambiguous rather than a witness.
 - 11 runner-boundary regressions: runner-planted symlinks must never make the reviewer read a private file. 3 of them run through the real sandbox and skip if `bwrap` is unavailable.
 - 7 tests run against **actual recorded nearcore 2.13.4 responses**. They replay every committed independent run and check:
   - the exact ledger: C = 3, S = 1, F = 2, U = 0 NEAR, headroom 2;

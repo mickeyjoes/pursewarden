@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: 68 evidence tests (synthetic, runner boundary, G1/G2 replay of recorded RPC)
+      - name: 70 evidence tests (synthetic, runner boundary, G1/G2 replay of recorded RPC)
         # bubblewrap end-to-end tests skip themselves when unprivileged namespaces are unavailable.
         run: python3 -m unittest discover -s tests/evidence -t . -v
 

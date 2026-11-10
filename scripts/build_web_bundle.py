@@ -201,6 +201,7 @@ def build_run(run_dir):
         "window": {"h0": {"hash": d["h0_hash"], "height": d["h0_height"]},
                    "q": {"hash": d["q_hash"], "height": d["q_height"]}},
         "verdicts_live": summary["independent"]["verdicts"],
+        "frozen_at_q": any(e["event"] == "freeze" for e in rec["events"]),
         "ledger": rec["ledger"], "callback_observation": rec["callback_observation"],
         "events": rec["events"], "state_history": rec["state_history"],
         "timeline": timeline, "offchain_rejections": offchain,

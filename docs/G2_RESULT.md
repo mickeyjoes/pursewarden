@@ -64,10 +64,14 @@ Attempts are listed in `evidence/g2-independent/ATTEMPTS.md` (`g2i-dev-01` was a
 For each `BudgetExceeded` denial *d*, using only captured receipts:
 - **Earlier admissions:** payments whose admission seq is below *d*'s seq.
 - **Pending:** earlier admissions whose native transfer outcome is in a block **strictly higher** than *d*'s block. Same-block execution is not counted as pending.
-- **Settled before *d*:** successful transfers that executed in a block strictly lower than *d*'s.
-- **Witness:** the pending set is non-empty **and** settled + amount ≤ B. In other words, a settled-only design would have admitted *d*.
+- **Settled before *d* is a bound, not an exact amount.** Block heights cannot order receipts within one block. Successful earlier transfers strictly below *d*'s block give `settled_min`; adding those in *d*'s own block gives `settled_max`.
+- **Settled-only counterfactual:**
+  - `True` only if `settled_max + amount ≤ B`;
+  - `False` if `settled_min + amount > B`;
+  - otherwise `null`, meaning **ambiguous**, because the same-block order would be needed.
+- **Witness:** the pending set is non-empty **and** the counterfactual is `True`.
 
-Edge cases are unit-tested in `tests/evidence/test_g2_replay.py::PendingWitnessLogic`.
+This bounded form fixes independent review finding W1 (`reports/G2_CODEX_POSTFIX_REVIEW_2026-11-10.md`). The earlier version treated the lower bound as exact, so a same-block success could produce a false "would admit". In the committed runs C and D, and in the review run, no successful earlier transfer shares a denial's block. `settled_min = settled_max = 1 NEAR` for all six denials, so all six witnesses stand unchanged. Edge cases are unit-tested in `tests/evidence/test_g2_replay.py::PendingWitnessLogic`, including the review's counterexample, which returns ambiguous rather than a witness.
 
 ## Reproduce
 

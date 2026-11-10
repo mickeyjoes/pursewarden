@@ -238,15 +238,16 @@ const runLabel = (id: string) => id.split("-").pop()!.toUpperCase();
 /** Unused budget is not the same as spendable authority: K slots and the freeze also bind. */
 function spendable(run: Run): string {
   const slotsLeft = run.policy.max_accepted_requests - run.ledger.accepted_count;
-  if (slotsLeft <= 0) return "0";
+  if (run.frozen_at_q || slotsLeft <= 0) return "0";
   const h = BigInt(run.ledger.headroom), m = BigInt(run.policy.max_per_request);
   return (h < m * BigInt(slotsLeft) ? h : m * BigInt(slotsLeft)).toString();
 }
 function spendableWhy(run: Run): string {
   const used = `${run.ledger.accepted_count} of K = ${run.policy.max_accepted_requests} payment slots used`;
+  const frozen = run.frozen_at_q ? " The vault is frozen at Q, so no new admissions are possible." : "";
   return run.ledger.accepted_count >= run.policy.max_accepted_requests
-    ? `${used}, so the remaining ${near(run.ledger.headroom)} NEAR of budget cannot be spent. The vault is also frozen at Q.`
-    : `${used}.`;
+    ? `${used}, so the remaining ${near(run.ledger.headroom)} NEAR of budget cannot be spent.${frozen}`
+    : `${used}.${frozen}`;
 }
 
 function effects(t: TimelineItem): string {
@@ -392,7 +393,7 @@ export function Docs({ bundle }: { bundle: Bundle }) {
       <p className="lede">Three paths, from cheapest to strongest. None of them needs a wallet or funds. Everything runs on your machine.</p>
       {[
         ["1 · Re-verify the recorded runs (seconds, Python 3 stdlib only)",
-          "python3 -m unittest discover -s tests/evidence -t .   # 68 tests: synthetic, runner-boundary, G1/G2 replay of real recorded RPC"],
+          "python3 -m unittest discover -s tests/evidence -t .   # 70 tests: synthetic, runner-boundary, G1/G2 replay of real recorded RPC"],
         ["2 · Rebuild the contract and compare bytes",
           `scripts/build-contract.sh   # expect sha256 ${run.artifact.wasm_sha256}\ngit diff --exit-code artifacts/`],
         ["3 · Run a fresh independent G1 experiment (~5 min, Linux + bubblewrap)",
@@ -470,7 +471,7 @@ export function Burst({ bundle }: { bundle: Bundle }) {
       <section className="section" style={{ paddingTop: 36 }} aria-labelledby="blocks">
         <h2 id="blocks" style={{ fontSize: 20, marginBottom: 6 }}>Protected vault, block by block</h2>
         <p className="muted" style={{ fontSize: 14, marginBottom: 14 }}>
-          NEAR executes the vault's receipts one at a time. A transfer the vault schedules runs one block later.
+          NEAR executes the vault's receipts one at a time. In these runs, each transfer the vault scheduled ran in the next block.
         </p>
         <div className="blocks">
           {[...new Set(P.requests.flatMap((r) => [r.height, r.transfer_height]).filter(Boolean) as number[])].sort((a, b) => a - b).map((h) => (
@@ -497,8 +498,10 @@ export function Burst({ bundle }: { bundle: Bundle }) {
             <div>
               <strong>Native-pending witness ({witnesses} of {P.pending_witness.length} denials).</strong> Every BudgetExceeded denial executed in
               block #{burstBlock}, while the two admitted transfers were still unexecuted: they ran in block #{transferBlock}.
-              At that moment only {near(w0.settled_before_denial)} NEAR had settled. A check that counts only settled spend would have
-              admitted all of them. The vault counts admitted principal instead, so C was already {near(w0.charged_at_decision)} NEAR.
+              At that moment only {near(w0.settled_before_denial_max)} NEAR had settled. No other transfer settled in that block, so
+              the amount is exact. A check that counts only settled spend would therefore have admitted all of them. The vault counts
+              admitted principal instead, so C was already {near(w0.charged_at_decision)} NEAR.
+              {P.pending_witness.some((w) => w.same_block_settlement_ambiguity) && " Some denials share a block with another settlement; those are not counted as witnesses."}
             </div>
           </div>
         )}

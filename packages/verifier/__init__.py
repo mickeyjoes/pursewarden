@@ -633,10 +633,18 @@ def analyze(capture, d):
 def pending_witness(payments, denials, heights, budget):
     """Native-pending witness, from independently captured receipts only.
 
-    For each BudgetExceeded denial: which earlier-admitted transfers (admission seq < denial
-    seq) had NOT yet executed when the denial executed (transfer execution height strictly
-    greater than the denial's height), and whether a settled-only check (counting only
-    transfers that had already executed successfully) would have admitted the request."""
+    For each BudgetExceeded denial d:
+    - pending: earlier admissions (admission seq < d's seq) whose native transfer outcome is in a
+      block STRICTLY higher than d's block. That is positive evidence the transfer had not
+      executed when d executed.
+    - settled spend is bounded, not exact. Block heights cannot order receipts inside one
+      block, so a successful earlier transfer in d's own block may have settled before or
+      after d (independent review W1, 2026-11-10):
+        settled_min = successful earlier transfers in blocks strictly below d's block
+        settled_max = successful earlier transfers in blocks at or below d's block
+    - settled_only_check_would_admit: True only if settled_max + amount <= B; False if
+      settled_min + amount > B; otherwise None (ambiguous: same-block order is needed).
+    - witness: some transfer pending AND the settled-only check would admit for certain."""
     out = []
     for x in denials:
         if x["reason"] != "BudgetExceeded":
@@ -644,7 +652,15 @@ def pending_witness(payments, denials, heights, budget):
         hd, sd, amount = heights[x["block_hash"]], int(x["seq"]), int(x["amount"])
         earlier = [p for p in payments if int(p["admission_seq"]) < sd]
         pending = [p for p in earlier if heights[p["execution_block"]] > hd]
-        settled = sum(int(p["amount"]) for p in earlier if p["class"] == "S" and heights[p["execution_block"]] < hd)
+        succ = [p for p in earlier if p["class"] == "S"]
+        settled_min = sum(int(p["amount"]) for p in succ if heights[p["execution_block"]] < hd)
+        settled_max = sum(int(p["amount"]) for p in succ if heights[p["execution_block"]] <= hd)
+        if settled_max + amount <= budget:
+            would_admit = True
+        elif settled_min + amount > budget:
+            would_admit = False
+        else:
+            would_admit = None
         out.append({"request_id": x["request_id"], "denial_seq": x["seq"], "denial_height": hd,
                     "amount": x["amount"], "charged_at_decision": x.get("charged_at_decision"),
                     "pending_admitted_transfers": [{"request_id": p["request_id"], "amount": p["amount"],
@@ -652,9 +668,11 @@ def pending_witness(payments, denials, heights, budget):
                                                     "admission_height": heights[p["admission_block"]],
                                                     "transfer_execution_height": heights[p["execution_block"]]}
                                                    for p in pending],
-                    "settled_before_denial": str(settled),
-                    "settled_only_check_would_admit": settled + amount <= budget,
-                    "witness": bool(pending) and settled + amount <= budget})
+                    "settled_before_denial_min": str(settled_min),
+                    "settled_before_denial_max": str(settled_max),
+                    "same_block_settlement_ambiguity": settled_min != settled_max,
+                    "settled_only_check_would_admit": would_admit,
+                    "witness": bool(pending) and would_admit is True})
     return out
 
 

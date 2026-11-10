@@ -45,7 +45,9 @@ class G2Replay(unittest.TestCase):
                 self.assertEqual(len(w), 6)
                 for x in w:
                     self.assertTrue(x["witness"], x)
-                    self.assertEqual(x["settled_before_denial"], str(NEAR))
+                    self.assertEqual((x["settled_before_denial_min"], x["settled_before_denial_max"]), (str(NEAR), str(NEAR)))
+                    self.assertFalse(x["same_block_settlement_ambiguity"])
+                    self.assertIs(x["settled_only_check_would_admit"], True)
                     self.assertEqual(x["charged_at_decision"], str(5 * NEAR))
                     self.assertEqual(len(x["pending_admitted_transfers"]), 2)
                     for t in x["pending_admitted_transfers"]:
@@ -96,12 +98,34 @@ class PendingWitnessLogic(unittest.TestCase):
         w = pending_witness(pays, [self.deny("4", 4, "b12")], self.H, 5 * NEAR)
         self.assertEqual(w[0]["pending_admitted_transfers"], [])
         self.assertFalse(w[0]["witness"])
-        self.assertEqual(w[0]["settled_before_denial"], str(5 * NEAR))
+        self.assertEqual(w[0]["settled_before_denial_max"], str(5 * NEAR))
+        self.assertIs(w[0]["settled_only_check_would_admit"], False)
 
     def test_same_block_execution_is_not_counted_as_pending(self):
         pays = [self.pay("2", 2, "b10", "b10")]
         w = pending_witness(pays, [self.deny("4", 4, "b10")], self.H, 5 * NEAR)
         self.assertFalse(w[0]["witness"])
+
+    def test_same_block_success_with_a_pending_transfer_is_ambiguous_not_a_witness(self):
+        # Independent review W1 counterexample (B = 5, request 2): ID 2's transfer succeeds in the
+        # denial's own block 10, ID 3's in block 11. Settled is 2 or 4 depending on in-block order.
+        H = {"b8": 8, "b9": 9, "b10": 10, "b11": 11}
+        pays = [self.pay("1", 1, "b8", "b9"), self.pay("2", 2, "b9", "b10"), self.pay("3", 4, "b10", "b11", amt=1)]
+        w = pending_witness(pays, [self.deny("4", 5, "b10")], H, 5 * NEAR)[0]
+        self.assertEqual([t["request_id"] for t in w["pending_admitted_transfers"]], ["3"])
+        self.assertEqual((w["settled_before_denial_min"], w["settled_before_denial_max"]), (str(2 * NEAR), str(4 * NEAR)))
+        self.assertTrue(w["same_block_settlement_ambiguity"])
+        self.assertIsNone(w["settled_only_check_would_admit"])
+        self.assertFalse(w["witness"])
+
+    def test_same_block_success_that_cannot_change_the_answer_stays_a_witness(self):
+        # Even counting the same-block success, settled 1 + 1 + 2 <= 5: unambiguous admit.
+        H = {"b8": 8, "b9": 9, "b10": 10, "b11": 11}
+        pays = [self.pay("1", 1, "b8", "b9", amt=1), self.pay("2", 2, "b9", "b10", amt=1), self.pay("3", 3, "b10", "b11")]
+        w = pending_witness(pays, [self.deny("4", 5, "b10")], H, 5 * NEAR)[0]
+        self.assertTrue(w["same_block_settlement_ambiguity"])
+        self.assertIs(w["settled_only_check_would_admit"], True)
+        self.assertTrue(w["witness"])
 
     def test_later_admission_is_not_counted(self):
         pays = [self.pay("9", 9, "b10", "b11")]

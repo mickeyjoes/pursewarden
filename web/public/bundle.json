@@ -60,6 +60,7 @@
     "evidence": "PASS",
     "scenario_coverage": "PASS"
    },
+   "frozen_at_q": true,
    "ledger": {
     "C": "3000000000000000000000000",
     "S": "1000000000000000000000000",
@@ -1307,6 +1308,7 @@
     "evidence": "PASS",
     "scenario_coverage": "PASS"
    },
+   "frozen_at_q": true,
    "ledger": {
     "C": "3000000000000000000000000",
     "S": "1000000000000000000000000",
@@ -2554,6 +2556,7 @@
     "evidence": "PASS",
     "scenario_coverage": "PASS"
    },
+   "frozen_at_q": true,
    "ledger": {
     "C": "3000000000000000000000000",
     "S": "1000000000000000000000000",
@@ -3909,7 +3912,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -3935,7 +3940,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -3961,7 +3968,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -3987,7 +3996,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4013,7 +4024,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4039,7 +4052,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      }
@@ -4440,7 +4455,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4466,7 +4483,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4492,7 +4511,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4518,7 +4539,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4544,7 +4567,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      },
@@ -4570,7 +4595,9 @@
         "transfer_execution_height": 75
        }
       ],
-      "settled_before_denial": "1000000000000000000000000",
+      "settled_before_denial_min": "1000000000000000000000000",
+      "settled_before_denial_max": "1000000000000000000000000",
+      "same_block_settlement_ambiguity": false,
       "settled_only_check_would_admit": true,
       "witness": true
      }
