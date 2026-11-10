@@ -28,7 +28,7 @@ export function ProvenanceBar({ run }: { run: Run | null }) {
             <span>chain <code>{run.node.chain_id}</code></span>
             <span>nearcore {run.node.version.version}</span>
             <span>window H0 #{run.window.h0.height} → Q #{run.window.q.height}</span>
-            <span title={run.replay_check.capture_sha256}>capture <code>{short(run.replay_check.capture_sha256, 5)}</code></span>
+            <span title={`SHA-256 of the capture rebuilt by replaying ${run.replay_check.rpc_records} recorded RPC responses: ${run.replay_check.capture_sha256}`}>replay digest <code>{short(run.replay_check.capture_sha256, 5)}</code></span>
           </>
         ) : (
           <span>loading evidence…</span>

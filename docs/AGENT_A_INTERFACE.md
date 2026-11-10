@@ -1,3 +1,5 @@
+> **Superseded (2026-11-10).** This was Agent B's provisional adapter, written before Agent A's artifact existed. The actual interface uses `view_code.hash`, decimal-string `seq`/`admission_seq`, JSON-number count/index fields and a ten-field policy body. See `docs/G1_INDEPENDENT_RESULT.md`.
+
 # G1 evidence integration handoff (Agent B)
 
 This adapter is provisional until exercised against the protected artifact. It does not change SPEC-V1.1 or its acceptance criteria. No runner-provided roots or verdicts seed collection.

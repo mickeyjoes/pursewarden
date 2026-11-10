@@ -322,7 +322,7 @@ No STOP condition fired. None of the following blocks the G1 contract claim as s
 - Expected: zero vault keys forever, exactly one code change, `code_hash = base58(sha256(wasm))`.
 - Agent: one owner-signed transaction `[CreateAccount, Transfer, AddKey(FunctionCall{receiver_id: vault, method_names: ["request_payment"], allowance: finite}) × n]`, no code and no full-access key.
 
-**Methods** (JSON in and out; every integer is a canonical decimal *string*; hashes are base58):
+**Methods** (JSON in and out; every integer is a canonical decimal *string*; hashes are base58). *(Erratum 2026-11-10: `accepted_count`, `max_accepted_requests` and `recipient_index` are JSON numbers.)*
 
 | Method | Caller / deposit | Args | Returns / effect |
 | --- | --- | --- | --- |
@@ -351,7 +351,7 @@ If the transfer fails, the runtime adds `system → vault` `[Transfer{deposit: a
 | `b'r' ‖ u64 LE request_id` (9 bytes) | `recipient_index u8, amount u128, admission_seq u64, status u8 (0 Pending, 1 CbSucceeded, 2 CbFailed)` (26 bytes) |
 | `b'i' ‖ u32 LE position` (5 bytes) | `request_id u64 LE` (8 bytes) |
 
-The first 9 STATE fields Borsh-encode exactly the policy body. Therefore `policy_hash = SHA256("near-agent-vault-lab/mandate/v1\0" ‖ STATE[0..policy_len])`, and `request_digest = SHA256("near-agent-vault-lab/request/v1\0" ‖ Borsh(vault, policy_hash, agent, id u64, recipient, amount u128))`. A reference decoder is `decode_state` / `decode_record` in `tests/sandbox/src/lib.rs`.
+The first 9 STATE fields Borsh-encode exactly the policy body. *(Erratum 2026-11-10: the policy body is the first **ten** fields, including K; see `docs/G1_INDEPENDENT_RESULT.md` § Interface errata.)* Therefore `policy_hash = SHA256("near-agent-vault-lab/mandate/v1\0" ‖ STATE[0..policy_len])`, and `request_digest = SHA256("near-agent-vault-lab/request/v1\0" ‖ Borsh(vault, policy_hash, agent, id u64, recipient, amount u128))`. A reference decoder is `decode_state` / `decode_record` in `tests/sandbox/src/lib.rs`.
 
 **Discovery caveat (observed).** A call to a non-exported method fails with `MethodNotFound` and leaves no vault account or data change, so it is invisible to vault-scoped `EXPERIMENTAL_changes`. In this run there are 13 such receipts. Enumerate transactions from chunks.
 
