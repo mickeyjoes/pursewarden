@@ -498,8 +498,9 @@ export function Burst({ bundle }: { bundle: Bundle }) {
             <div>
               <strong>Native-pending witness ({witnesses} of {P.pending_witness.length} denials).</strong> Every BudgetExceeded denial executed in
               block #{burstBlock}, while the two admitted transfers were still unexecuted: they ran in block #{transferBlock}.
-              At that moment only {near(w0.settled_before_denial_max)} NEAR had settled. No other transfer settled in that block, so
-              the amount is exact. A check that counts only settled spend would therefore have admitted all of them. The vault counts
+              At that moment only {near(w0.settled_before_denial_max)} NEAR had settled
+              {w0.same_block_settlement_ambiguity ? " (at most)" : ". No earlier admitted transfer settled in the denials' block, so that amount is exact"}.
+              A check that counts only settled spend would therefore have admitted every witnessed denial. The vault counts
               admitted principal instead, so C was already {near(w0.charged_at_decision)} NEAR.
               {P.pending_witness.some((w) => w.same_block_settlement_ambiguity) && " Some denials share a block with another settlement; those are not counted as witnesses."}
             </div>
