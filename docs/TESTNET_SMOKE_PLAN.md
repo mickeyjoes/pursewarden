@@ -14,11 +14,25 @@ Show that the same protected artifact (`c7c77263…dd768`) deploys and enforces 
 | Same nearcore locally | Official sandbox build 2.14.0-rc.5 (protocol 88). Tarball SHA-256 `11ff2021…ed0a5e`, binary `f0104897…f55699b`. These are recorded hashes; upstream publishes no checksum. |
 | **Rehearsal of this exact plan on a fresh PV88 local chain** | **PASS.** The artifact deploys (no PrepareError on PV88). Decisions as expected: admit / admit + failed transfer with principal refund / DuplicateRequest / AboveMaxPerRequest / RecipientNotAllowed / **BudgetExceeded** / frozen. At the inspector's final block: code hash = artifact, 0 vault keys, policy hash recomputed from raw state, C = 0.8, headroom 0.2. See `evidence/testnet-rehearsal/`. |
 | Read-only `plan` against real testnet | Works through the forwarder; it used only `status` and `query` |
-| Safety refusals | A non-loopback RPC, a `--network` / `chain_id` mismatch, and a testnet `run` without the approval flag are all refused before any key is loaded |
+| Safety refusals | A non-loopback RPC, a `--network` / `chain_id` mismatch, a WASM other than `c7c77263…`, and a testnet `run` without the approval flag are all refused before any key is loaded. A key file for another account, or whose secret does not match its public key, is refused before anything is signed. The key must also be a FullAccess key of the owner on chain. |
+| Stop on first mismatch | `run` checks every decision and native transfer outcome against the table below as it goes. On the first difference it sends nothing more, writes what it has with `"stopped"`, and exits non-zero. |
+| Hardened tool rehearsed | `pv88-20261110T194351Z` on fresh chain `test-chain-041sx` (protocol 88): five refusals recorded in `refusals.txt`, then the full plan with the owner key in the near-cli-rs file shape, **inspection PASS**. |
+
+## Owner account (preflight 2026-11-10, read-only)
+
+`evidence/testnet-smoke/preflight-20261110T194516Z/` records the raw RPC responses (`rpc.json`) and the plan output (`plan.json`), all from public testnet at final block 277112107.
+
+| Check | Result |
+| --- | --- |
+| Account | `pursewarden.testnet`: 10 testnet NEAR, no contract code |
+| Keys | One key, `ed25519:5kifqyd3…8gPFk`, **FullAccess**. It matches the public key in the owner's credential file. |
+| Credential file | `~/.near-credentials/testnet/pursewarden.testnet.json`, near-cli-rs shape (`private_key`, no `account_id`). The tool accepts it and takes the account from `--owner`. Its secret is never printed, logged or written. |
+| Subaccounts | `pw-vault`, `pw-agent`, `pw-payee`, `pw-missing` and `pw-attacker` `.pursewarden.testnet` are all absent. Only `pursewarden.testnet` can create them, so `pw-missing` and `pw-attacker` stay nonexistent. |
+| Plan | `sufficient: true`, artifact SHA-256 `c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768` (154,346 bytes) |
 
 ## What the owner needs to provide
 
-1. A **testnet** account you control with **≥ 3.47 testnet NEAR**. The faucet gives free testnet NEAR (hackathon FAQ Q-008: near-cli faucet or near-faucet.io). Example: `pursewarden-demo.testnet`.
+1. A **testnet** account you control with **≥ 3.47 testnet NEAR** (provided: `pursewarden.testnet`). The faucet gives free testnet NEAR (hackathon FAQ Q-008: near-cli faucet or near-faucet.io). Example: `pursewarden-demo.testnet`.
 2. Its full-access key as a local file in the near-cli KeyFile shape (`{"account_id", "public_key", "secret_key"}`), **outside the repository**, e.g. `~/.near-credentials/testnet/<account>.json`. It is never committed. The tool reads it only for `run`.
 
 ## Accounts and transactions (all testnet; owner `<O>`)
@@ -36,7 +50,9 @@ Show that the same protected artifact (`c7c77263…dd768`) deploys and enforces 
 | 9 | agent → vault | id 5, 0.3 → payee (C 0.8 + 0.3 > 1; a slot is still free) | Denied `BudgetExceeded` |
 | 10 | `<O>` → vault | `freeze` | Frozen |
 
-Total cost is about **3.47 testnet NEAR**. About 2.27 testnet NEAR stays locked in `pw-vault.<O>` forever, because the vault has no withdrawal path by design. No mainnet key, no mainnet transaction, no real funds.
+**Funds.** The owner sends exactly **3.26899 testnet NEAR** (0.1 + 0.5 + 2.66899) plus gas for its 4 transactions (about 0.023 in the rehearsal). The balance precondition of 3.46899 adds 0.2 of gas headroom, which is not sent.
+
+**None of it can come back.** About 2.27 stays in `pw-vault` (keyless, no withdrawal path by design). The payee ends with 0.5 (keyless). The agent keeps about 0.5 less its gas (FunctionCall keys only, and their secrets are discarded after the run). **Maximum committed for good: about 3.30 testnet NEAR.** The owner keeps about 6.7 of 10. No mainnet key, no mainnet transaction, no real funds.
 
 ## Commands (after approval)
 

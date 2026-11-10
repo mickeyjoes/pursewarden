@@ -13,7 +13,12 @@
 //!   Anything else, including "mainnet", is refused before any key is loaded.
 //! - `plan` is read-only and never loads a key.
 //! - `run` on testnet additionally requires --owner-approved-testnet-broadcast yes.
-//! - Small amounts only: B = 1 NEAR, M = 0.4 NEAR, K = 3. About 3.3 testnet NEAR in total.
+//! - --wasm must hash to the reviewed artifact c7c77263…; anything else is refused.
+//! - The owner key must be a FullAccess key of --owner on chain. It is never printed or written.
+//! - `run` stops at the first transaction whose result differs from the plan and still writes what it
+//!   has, marked "stopped".
+//! - Small amounts only: B = 1 NEAR, M = 0.4 NEAR, K = 3. The owner sends about 3.27 testnet NEAR plus
+//!   gas, and none of it can come back (keyless vault and payee, FunctionCall-only agent).
 use anyhow::{anyhow, bail, Context, Result};
 use g1_sandbox_tests::*;
 use near_crypto::{KeyType, SecretKey};
@@ -30,6 +35,11 @@ const KEY_ALLOWANCE: u128 = NEAR / 4;
 const RESERVE_MARGIN: u128 = 10_000_000_000_000_000_000_000;
 const STATE_ENTRY_MAX: u64 = 5 + 1024 + 40;
 const PER_ADMISSION: u64 = 128;
+const ARTIFACT_SHA256: &str = "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768";
+const EXPECT: [(&str, &str, &str); 6] = [("pay_1_payee", "Admitted", "native transfer succeeds"),
+    ("pay_2_missing", "Admitted", "native transfer fails"), ("replay_1", "Denied", "DuplicateRequest"),
+    ("over_cap", "Denied", "AboveMaxPerRequest"), ("exfiltrate", "Denied", "RecipientNotAllowed"),
+    ("budget_exceeded", "Denied", "BudgetExceeded")];
 
 fn args() -> (String, HashMap<String, String>) {
     let mut it = std::env::args().skip(1);
@@ -71,6 +81,51 @@ async fn connect(m: &HashMap<String, String>) -> Result<(Rpc, String, String)> {
     Ok((rpc, network, chain))
 }
 
+/// Reads --wasm and refuses anything but the reviewed artifact.
+fn artifact(m: &HashMap<String, String>) -> Result<Vec<u8>> {
+    let wasm = std::fs::read(need(m, "wasm")?)?;
+    let h: String = sha256(&[&wasm]).iter().map(|b| format!("{b:02x}")).collect();
+    if h != ARTIFACT_SHA256 {
+        bail!("refusing: --wasm sha256 {h} is not the reviewed artifact {ARTIFACT_SHA256}");
+    }
+    Ok(wasm)
+}
+
+/// Loads the owner key without printing it. Accepts the near-cli KeyFile shape
+/// ({account_id, public_key, secret_key}) and the near-cli-rs shape (private_key, no account_id).
+fn owner_key(path: &str, owner: &str) -> Result<Key> {
+    let v: Value = serde_json::from_slice(&std::fs::read(path).with_context(|| format!("read {path}"))?)
+        .map_err(|_| anyhow!("owner key file is not valid JSON"))?;
+    if let Some(a) = v.get("account_id") {
+        if a.as_str() != Some(owner) {
+            bail!("owner key file is for {a}, not {owner}");
+        }
+    }
+    let s = v.get("secret_key").or_else(|| v.get("private_key")).and_then(|s| s.as_str())
+        .ok_or_else(|| anyhow!("owner key file has no secret_key / private_key"))?;
+    let sk: SecretKey = s.parse().map_err(|_| anyhow!("owner key file: the secret key does not parse"))?;
+    if v.get("public_key").and_then(|p| p.as_str()) != Some(sk.public_key().to_string().as_str()) {
+        bail!("owner key file: the secret key does not match its public_key");
+    }
+    Ok(Key::from_secret(owner, sk))
+}
+
+/// The vault's native transfer to `to` in this transaction: Some(true) success, Some(false) failure.
+fn native(fin: &Value, vault: &str, to: &str) -> Option<bool> {
+    let r = fin["receipts"].as_array()?.iter().find(|r| r["predecessor_id"] == vault && r["receiver_id"] == to
+        && r["receipt"]["Action"]["actions"].as_array().is_some_and(|a| a.iter().any(|x| x.get("Transfer").is_some())))?;
+    Some(TxView::new(fin.clone()).is_success(r["receipt_id"].as_str()?))
+}
+
+fn write(path: &PathBuf, out: &Value) -> Result<()> {
+    if let Some(d) = path.parent() {
+        std::fs::create_dir_all(d)?;
+    }
+    std::fs::write(path, serde_json::to_vec_pretty(out)?).with_context(|| format!("write {}", path.display()))?;
+    eprintln!("[smoke] wrote {}", path.display());
+    Ok(())
+}
+
 fn reserve(wasm_len: u64) -> (u64, u128) {
     let s_max = 100 + wasm_len + STATE_ENTRY_MAX + u64::from(K) * PER_ADMISSION;
     (s_max, u128::from(s_max) * 10_000_000_000_000_000_000 + RESERVE_MARGIN)
@@ -84,19 +139,20 @@ async fn absent(rpc: &Rpc, id: &str) -> Result<bool> {
 async fn plan(m: &HashMap<String, String>) -> Result<Value> {
     let (rpc, network, chain) = connect(m).await?;
     let n = names(need(m, "owner")?);
-    let wasm_len = m.get("wasm").map(|p| std::fs::metadata(p).map(|x| x.len()).unwrap_or(154_346)).unwrap_or(154_346);
+    let wasm_len = artifact(m)?.len() as u64;
     let (s_max, r_total) = reserve(wasm_len);
     let vault_funding = B + r_total + 100 * MILLI;
     let owner_view = rpc.query_raw(json!({"request_type": "view_account", "account_id": n.owner}), &BlockRef::Final).await?;
     let balance = owner_view["result"]["amount"].as_str().and_then(|s| s.parse::<u128>().ok());
-    let need_total = vault_funding + 100 * MILLI + 500 * MILLI + 200 * MILLI; // + gas headroom
+    let sent_total = vault_funding + 100 * MILLI + 500 * MILLI;
+    let need_total = sent_total + 200 * MILLI; // + gas headroom
     let mut free = json!({});
     for id in [&n.vault, &n.agent, &n.payee, &n.missing, &n.attacker] {
         free[id.as_str()] = json!(absent(&rpc, id).await?);
     }
     Ok(json!({
         "schema": "pursewarden-smoke-plan/v1", "network": network, "chain_id": chain,
-        "artifact": "artifacts/near_agent_vault.wasm (c7c77263…, same as all sandbox evidence)",
+        "artifact_sha256": ARTIFACT_SHA256, "artifact_bytes": wasm_len,
         "owner": n.owner, "owner_exists": balance.is_some(), "owner_balance_yocto": balance.map(|b| b.to_string()),
         "required_owner_balance_yocto": need_total.to_string(),
         "sufficient": balance.map(|b| b >= need_total),
@@ -117,7 +173,8 @@ async fn plan(m: &HashMap<String, String>) -> Result<Value> {
             {"signer": n.owner, "receiver": n.vault, "call": "freeze", "expect": "Frozen"}
         ],
         "expected_final": {"C": "0.8 NEAR", "S": "0.4 NEAR", "F": "0.4 NEAR", "headroom": "0.2 NEAR", "vault_keys": 0},
-        "funds_left_locked": "The vault has no withdrawal path by design: about 2.3 testnet NEAR stays in pw-vault."
+        "owner_sends_yocto": sent_total.to_string(),
+        "funds_left_locked": "Nothing comes back to the owner. The vault has no withdrawal path by design (about 2.27 stays in pw-vault), the payee is keyless (0.1 + 0.4 received) and the agent holds only FunctionCall keys that are discarded after the run (0.5 less its gas). The owner also pays gas for 4 transactions; the 0.2 headroom is a balance precondition, not a transfer."
     }))
 }
 
@@ -140,62 +197,99 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
     if network == "testnet" && m.get("owner-approved-testnet-broadcast").map(|s| s.as_str()) != Some("yes") {
         bail!("testnet broadcast requires --owner-approved-testnet-broadcast yes (owner approval)");
     }
+    let path = PathBuf::from(need(m, "out")?);
+    if path.exists() {
+        bail!("{} already exists; use a fresh run id", path.display());
+    }
     let p = plan(m).await?;
     if p["sufficient"] != json!(true) || p["accounts_must_not_exist"].as_object().map(|o| o.values().any(|v| v != &json!(true))).unwrap_or(true) {
         bail!("preconditions not met: {}", serde_json::to_string_pretty(&p)?);
     }
     let n = names(need(m, "owner")?);
-    let owner = Key::from_file(&PathBuf::from(need(m, "owner-key")?))?;
-    if owner.account.as_str() != n.owner {
-        bail!("owner key is for {}, not {}", owner.account, n.owner);
+    let owner = owner_key(need(m, "owner-key")?, &n.owner)?;
+    let ak = rpc.view_access_key(&n.owner, &owner.public_key(), &BlockRef::Final).await?;
+    if ak["permission"] != json!("FullAccess") {
+        bail!("the owner key is not a FullAccess key of {}", n.owner);
     }
-    let wasm = std::fs::read(need(m, "wasm")?)?;
+    let wasm = artifact(m)?;
     let (_s, r_total) = reserve(wasm.len() as u64);
-    let mut txs = vec![];
-    txs.push(exec(&rpc, &owner, &n.payee, vec![act::create_account(), act::transfer(100 * MILLI)], "create_payee").await?);
+    let recipients = [n.missing.as_str(), n.payee.as_str()];
     let keys: Vec<Key> = (0..AGENT_KEYS).map(|_| Key::from_secret(&n.agent, SecretKey::from_random(KeyType::ED25519))).collect();
+    let mut out = json!({"schema": "pursewarden-smoke-run/v1", "network": network, "chain_id": chain, "plan": p,
+        "artifact_sha256": ARTIFACT_SHA256, "owner": n.owner, "owner_public_key": owner.public_key(), "vault": n.vault,
+        "agent": n.agent, "recipients": recipients, "budget": B.to_string(), "max_per_request": M.to_string(),
+        "max_accepted_requests": K, "agent_public_keys": keys.iter().map(|k| k.public_key()).collect::<Vec<_>>(),
+        "trust": "Runner-recorded transaction list (the inspector re-reads every hash from the node)."});
+    let mut txs: Vec<Value> = vec![];
+    let stop = |out: &mut Value, txs: &[Value], why: String| -> anyhow::Error {
+        out["transactions"] = json!(txs);
+        out["stopped"] = json!(why);
+        if let Err(e) = write(&path, out) {
+            eprintln!("[smoke] could not write partial evidence: {e}");
+        }
+        anyhow!("STOPPED: {why}")
+    };
+    let ok_first = |t: &Value| t.get("final").is_some_and(|f| { let tv = TxView::new(f.clone()); tv.is_success(&tv.first_receipt_id()) });
+    let t = exec(&rpc, &owner, &n.payee, vec![act::create_account(), act::transfer(100 * MILLI)], "create_payee").await?;
+    txs.push(t.clone());
+    if !ok_first(&t) {
+        return Err(stop(&mut out, &txs, "create_payee did not succeed".into()));
+    }
     let mut a = vec![act::create_account(), act::transfer(500 * MILLI)];
     for k in &keys {
         a.push(act::add_fc_key(k.near_public_key(), &n.vault, &["request_payment"], KEY_ALLOWANCE));
     }
-    txs.push(exec(&rpc, &owner, &n.agent, a, "create_agent").await?);
+    let t = exec(&rpc, &owner, &n.agent, a, "create_agent").await?;
+    txs.push(t.clone());
+    if !ok_first(&t) {
+        return Err(stop(&mut out, &txs, "create_agent did not succeed".into()));
+    }
     let now_ns = json_u64(&rpc.final_block().await?["header"]["timestamp_nanosec"]);
     let expires = now_ns + 24 * 3600 * 1_000_000_000;
-    let recipients = [n.missing.as_str(), n.payee.as_str()];
     let init = json!({"agent": n.agent, "budget": B.to_string(), "max_per_request": M.to_string(),
         "allowed_recipients": recipients, "expires_at_ns": expires.to_string(), "max_accepted_requests": K.to_string()});
     let create = exec(&rpc, &owner, &n.vault, vec![act::create_account(), act::transfer(B + r_total + 100 * MILLI),
         act::deploy(&wasm), act::call("new", &init, 100, 0)], "create_vault").await?;
-    let fin = create.get("final").ok_or_else(|| anyhow!("vault creation rejected: {create}"))?.clone();
+    txs.push(create.clone());
+    out["expires_at_ns"] = json!(expires.to_string());
+    let Some(fin) = create.get("final").cloned() else {
+        return Err(stop(&mut out, &txs, "vault creation rejected at validation".into()));
+    };
     let tv = TxView::new(fin);
-    let ph = tv.success_json(&tv.first_receipt_id()).and_then(|v| v.as_str().map(|s| s.to_string()))
-        .ok_or_else(|| anyhow!("vault init did not return a policy hash"))?;
+    let Some(ph) = tv.success_json(&tv.first_receipt_id()).and_then(|v| v.as_str().map(|s| s.to_string())) else {
+        return Err(stop(&mut out, &txs, "vault init did not return a policy hash".into()));
+    };
     let independent = b58(&policy_hash(&PolicyInput { chain_id: &chain, vault: &n.vault, owner: &n.owner, agent: &n.agent,
         budget: B, max_per_request: M, recipients: &recipients, expires_at_ns: expires, k: K }));
+    out["policy_hash"] = json!(ph);
     if ph != independent {
-        bail!("policy hash mismatch: contract {ph} vs independent {independent}");
+        return Err(stop(&mut out, &txs, format!("policy hash mismatch: contract {ph} vs independent {independent}")));
     }
-    txs.push(create);
     let req = |id: &str, to: &str, amt: u128| json!({"request_id": id, "recipient": to, "amount": amt.to_string(), "policy_hash": ph});
-    let steps = [("pay_1_payee", req("1", &n.payee, M)), ("pay_2_missing", req("2", &n.missing, M)),
-                 ("replay_1", req("1", &n.payee, M)), ("over_cap", req("3", &n.payee, 500 * MILLI)),
-                 ("exfiltrate", req("4", &n.attacker, M)), ("budget_exceeded", req("5", &n.payee, 300 * MILLI))];
-    for (i, (label, args)) in steps.iter().enumerate() {
-        txs.push(exec(&rpc, &keys[i % AGENT_KEYS], &n.vault, vec![act::call("request_payment", args, 100, 0)], label).await?);
+    let steps = [req("1", &n.payee, M), req("2", &n.missing, M), req("1", &n.payee, M), req("3", &n.payee, 500 * MILLI),
+                 req("4", &n.attacker, M), req("5", &n.payee, 300 * MILLI)];
+    for (i, (args, (label, want, detail))) in steps.iter().zip(EXPECT).enumerate() {
+        let t = exec(&rpc, &keys[i % AGENT_KEYS], &n.vault, vec![act::call("request_payment", args, 100, 0)], label).await?;
+        txs.push(t.clone());
+        let fin = t.get("final").cloned().unwrap_or(Value::Null);
+        let tv = TxView::new(fin.clone());
+        let dec = if fin.is_null() { None } else { tv.success_json(&tv.first_receipt_id()) };
+        let got = dec.as_ref().map(|d| (d["decision"].as_str().unwrap_or_default().to_string(),
+            if d["decision"] == "Denied" { d["reason"].as_str().unwrap_or_default().to_string() } else {
+                match native(&fin, &n.vault, args["recipient"].as_str().unwrap_or_default()) {
+                    Some(true) => "native transfer succeeds".into(), Some(false) => "native transfer fails".into(), None => "no native transfer".into() }
+            }));
+        if got.as_ref().map(|(d, r)| (d.as_str(), r.as_str())) != Some((want, detail)) {
+            return Err(stop(&mut out, &txs, format!("{label}: expected {want} / {detail}, observed {got:?}")));
+        }
     }
-    txs.push(exec(&rpc, &owner, &n.vault, vec![act::call("freeze", &json!({}), 30, 0)], "freeze").await?);
-    let out = json!({"schema": "pursewarden-smoke-run/v1", "network": network, "chain_id": chain, "plan": p,
-        "policy_hash": ph, "expires_at_ns": expires.to_string(), "owner": n.owner, "vault": n.vault, "agent": n.agent,
-        "recipients": recipients, "budget": B.to_string(), "max_per_request": M.to_string(), "max_accepted_requests": K,
-        "agent_public_keys": keys.iter().map(|k| k.public_key()).collect::<Vec<_>>(),
-        "trust": "Runner-recorded transaction list (the inspector re-reads every hash from the node).", "transactions": txs});
-    let path = PathBuf::from(need(m, "out")?);
-    if let Some(d) = path.parent() {
-        std::fs::create_dir_all(d)?;
+    let t = exec(&rpc, &owner, &n.vault, vec![act::call("freeze", &json!({}), 30, 0)], "freeze").await?;
+    txs.push(t.clone());
+    if !ok_first(&t) {
+        return Err(stop(&mut out, &txs, "freeze did not succeed".into()));
     }
-    std::fs::write(&path, serde_json::to_vec_pretty(&out)?).with_context(|| format!("write {}", path.display()))?;
-    eprintln!("[smoke] wrote {}", path.display());
-    Ok(())
+    out["transactions"] = json!(txs);
+    write(&path, &out)
 }
 
 #[tokio::main]
