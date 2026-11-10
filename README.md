@@ -48,9 +48,10 @@ No wallet, account or funds are needed for any step.
 python3 -m unittest discover -s tests/evidence -t .
 ```
 
-**See:** `Ran 50 tests … OK`.
+**See:** `Ran 61 tests … OK`.
 - 43 synthetic adversarial tests run against a fake RPC oracle.
-- 7 tests run against **actual recorded nearcore 2.13.4 responses**. They replay both independent runs and check:
+- 11 runner-boundary regressions: runner-planted symlinks must never make the reviewer read a private file. 3 of them run through the real sandbox and skip if `bwrap` is unavailable.
+- 7 tests run against **actual recorded nearcore 2.13.4 responses**. They replay every committed independent run and check:
   - the exact ledger: C = 3, S = 1, F = 2, U = 0 NEAR, headroom 2;
   - recovery of the omitted transaction root;
   - that 18 tamperings of the genuine responses are all rejected.
@@ -122,7 +123,7 @@ This command:
 
 ## What the recorded runs show
 
-Two fresh sandbox chains were used: `test-chain-oJOg4` and `test-chain-6J4eY`. Both used the same artifact and the same scenario.
+Three fresh sandbox chains were used: `test-chain-d8AyA` (run C, after the review fix), `test-chain-6J4eY` and `test-chain-oJOg4`. All three used the same artifact and the same scenario.
 
 | Step | Request | Decision | Effect (from the reviewer's own capture) |
 | --- | --- | --- | --- |

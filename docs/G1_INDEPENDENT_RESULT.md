@@ -11,7 +11,9 @@
 
 ## Verdict
 
-**G1: PASS on local-sandbox evidence, against the acceptance gate Agent E defined.** It passed on two fresh, reviewer-owned nodes. It remains subject to the independent Codex review in [`docs/CODEX_REVIEW_HANDOFF.md`](CODEX_REVIEW_HANDOFF.md).
+**G1: PASS on local-sandbox evidence, against the acceptance gate Agent E defined.** It passed on three fresh, reviewer-owned nodes (runs A, B and C).
+
+The independent Codex review (`reports/G1_CODEX_REVIEW_2026-11-10.md`, of `7fa66e2`) returned **NARROW** with one isolation blocker, C1. The reviewer followed runner-planted symlinks when importing runner output, so a hostile runner could have had a reviewer-only file copied into public evidence. The review also flagged inaccurate denial wording. Both are fixed in `71a679c` (§Isolation) and covered by 11 regressions. **Run C is the fresh run on the fixed code that the review required.** Runs A and B used the pre-fix import path with the fixed, non-hostile workload: their chain evidence is unaffected, but only run C demonstrates the repaired file boundary.
 
 The reviewer's collector was never given the failed payment's transaction hash. It rediscovered the entire genuine 2 NEAR failed-payment root by scanning chunks: the transaction, admission, failed native transfer, system principal refund, callback and gas refunds. The runner's presented bundle had omitted all of that, along with its rows, records and history, and had recomputed its checksums. The forged presentation gets **evidence FAIL (`OMITTED_ROOT`)**. The genuine presentation shows **zero differences**.
 
@@ -25,17 +27,17 @@ What this verdict does **not** cover:
 ## Runs
 
 | | Run A | Run B |
-| --- | --- | --- |
-| Run ID | `g1i-20261110T135044Z-a` | `g1i-20261110T135407Z-b` |
-| Code commit | `91c4ce6` (clean tree) | `e783dac` (clean tree) |
-| Chain / genesis block | `test-chain-oJOg4` / `FEtCmJuu…HbgDN` | `test-chain-6J4eY` / `5W2M11Zu…Zv3FH` |
-| H0 (before any vault/agent construction) | #21 `E4SBrXbY…9dwob` | #21 `A6HRGssy…KxC2K` |
-| Q (after freeze; effects settled +20 blocks) | #110 `J1WVzaRY…HQc8S` | #110 `HwoYpHUi…Vhx8y` |
-| Policy hash (ten fields, includes chain ID) | `DfSCNzCN…ud2FC` | `5QkSjMiK…Zv3FH` |
-| Omitted root, recovered | `CsVXLYPw…H6Ri3` | `3sY8eamk…tzKH` |
-| Recovered principal refund | `FPssFvNX…4Ef33c7` | `EyniEAcb…3zC4Rni` |
-| Independent acquisition | 562 RPC calls, 953,518 bytes, 0.55 s | 562 RPC calls, 953,488 bytes, 0.60 s |
-| Whole run | 271 s | 271 s |
+| --- | --- | --- | --- |
+| Run ID | `g1i-20261110T135044Z-a` | `g1i-20261110T135407Z-b` | `g1i-20261110T144905Z-c` (post-C1 fix) |
+| Code commit | `91c4ce6` (clean tree) | `e783dac` (clean tree) | `71a679c` (clean tree) |
+| Chain / genesis block | `test-chain-oJOg4` / `FEtCmJuu…HbgDN` | `test-chain-6J4eY` / `5W2M11Zu…Zv3FH` | `test-chain-d8AyA` / `94T7M5B5…kaggt` |
+| H0 (before any vault/agent construction) | #21 `E4SBrXbY…9dwob` | #21 `A6HRGssy…KxC2K` | #19 `77S1Bj9x…CVc8B` |
+| Q (after freeze; effects settled +20 blocks) | #110 `J1WVzaRY…HQc8S` | #110 `HwoYpHUi…Vhx8y` | #116 `DYK42upq…AQ6dE` |
+| Policy hash (ten fields, includes chain ID) | `DfSCNzCN…ud2FC` | `5QkSjMiK…Zv3FH` | `12P3YxD3…Jn4m2` |
+| Omitted root, recovered | `CsVXLYPw…H6Ri3` | `3sY8eamk…tzKH` | `DggYL4pr…LhZfd` |
+| Recovered principal refund | `FPssFvNX…4Ef33c7` | `EyniEAcb…3zC4Rni` | `EPiZpmTn…X9HUjAZ` |
+| Independent acquisition | 562 RPC calls, 953,518 bytes, 0.55 s | 562 RPC calls, 953,488 bytes, 0.60 s | 610 RPC calls, 986,292 bytes, 1.23 s |
+| Whole run | 271 s | 271 s | 274 s |
 
 Each run's evidence is in `evidence/g1-independent/<run>/`:
 
@@ -78,7 +80,20 @@ Development attempts `g1i-dev-01` and `g1i-dev-02` are retained with their cause
 
 ## Isolation
 
-The runner runs under `bwrap --unshare-all --die-with-parent --clearenv`. The isolation probe runs inside the sandbox, and the reviewer-side filter proxy logs every request.
+The runner runs under `bwrap --unshare-all --die-with-parent --clearenv`. The reviewer-side filter proxy logs every request.
+
+**File boundary, after the C1 fix (`71a679c`, demonstrated by run C):**
+- Each run uses three separate sandbox invocations: the isolation probe, the workload, and the presentation.
+- Each invocation gets a fresh reviewer-created proxy-socket directory, bound **read-only**. The probe asserts this.
+- The probe's result is imported into reviewer storage **before** any untrusted workload starts.
+- The descriptor reaches the runner through a fresh read-only input directory. Nothing is ever written into the runner-writable tree after the runner has run.
+- Every runner output is imported only through `scripts/g1-independent/safe_import.py`:
+  - descriptor-relative `O_NOFOLLOW` at every path component;
+  - a regular file with a single link, bounded size;
+  - strict JSON with secret-field rejection, then a schema check;
+  - the bytes are stored by the reviewer and the path is never re-read.
+- Regressions (`tests/evidence/test_runner_boundary.py`) plant final-component and intermediate-directory symlinks to a dummy reviewer-only file, both directly and from inside the production sandbox. The import refuses them.
+- The proxy now also records the node's response to each submission, so run C's four pre-inclusion rejections are **reviewer-observed**, not only runner-reported.
 
 | Check | Result |
 | --- | --- |
@@ -86,7 +101,8 @@ The runner runs under `bwrap --unshare-all --die-with-parent --clearenv`. The is
 | Node RPC port (`127.0.0.1:<rpc>`) | `ConnectionRefused`. The sandbox has its own network namespace. |
 | External network | Unreachable |
 | Paths not visible | Node home, `validator_key.json`, owner key, reviewer directory, the user's home, the repository checkout |
-| Admin methods (`sandbox_patch_state`, `sandbox_fast_forward`, `adv_produce_blocks`, `client_config`, `network_info`) | Refused by the filter |
+| Admin methods (`sandbox_patch_state`, `sandbox_fast_forward`, `adv_produce_blocks`, `client_config`, `network_info`) | Refused by the filter. Codex additionally probed batch arrays, case and whitespace variants, unknown query types and oversized bodies: all refused (`reports/codex-review-20261110/filter-probes.json`). |
+| Proxy socket directory | Read-only inside the sandbox (run C) |
 | Methods the runner actually used | `send_tx`, `EXPERIMENTAL_tx_status`, `block`, `query` (view types only) |
 | Runner credentials | Eight `FunctionCall` keys for `request_payment` on the vault |
 
@@ -131,8 +147,8 @@ The previously committed `5b05246b` artifact embeds `/home/<user>/.rustup/toolch
 | --- | --- | --- |
 | Contract unit tests (SPEC vectors, parser, storage) | `cargo test -p near-agent-vault --locked` | 12/12 |
 | Harness encoder | `cargo test -p g1-sandbox-tests --locked --lib` | 1/1 |
-| Evidence suite | `python3 -m unittest discover -s tests/evidence -t .` | 50/50: 43 synthetic (fake oracle) and 7 on actual recorded 2.13.4 responses (Agent A's Oct 29 graphs, plus full replay of runs A/B: exact ledger, whole-root omission, 18 mutations) |
-| Independent G1 runs | `python3 scripts/g1-independent/run_g1.py <run>` | 2/2 PASS (above) |
+| Evidence suite | `python3 -m unittest discover -s tests/evidence -t .` | 61/61: 11 C1 runner-boundary regressions (3 end-to-end through the production sandbox), 43 synthetic (fake oracle) and 7 on actual recorded 2.13.4 responses (Agent A's Oct 29 graphs, plus full replay of runs A/B: exact ledger, whole-root omission, 18 mutations) |
+| Independent G1 runs | `python3 scripts/g1-independent/run_g1.py <run>` | 3/3 PASS (above), plus an uncommitted clean-clone run on `f2f8cce` and Codex's review run `review-codex-20261110-b` on `7fa66e2` |
 
 ## Interface errata (requested by Agent E)
 

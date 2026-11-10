@@ -3,15 +3,15 @@
  "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",
  "runs": [
   {
-   "run_id": "g1i-20261110T135044Z-a",
+   "run_id": "g1i-20261110T144905Z-c",
    "mode": "REPLAY",
    "network": "SANDBOX",
-   "captured_at": "2026-11-10T13:50:44Z",
-   "repo_commit": "91c4ce65c1aa1395a19cccde2d139f17fe45f119",
+   "captured_at": "2026-11-10T14:49:05Z",
+   "repo_commit": "71a679cdc27c07202005114c148d49d2e0b105ca",
    "node": {
-    "chain_id": "test-chain-oJOg4",
-    "genesis_hash": "FEtCmJuumRj2sNbmE4zaQQ7AwCn48AcZJRA7kHaHbgDN",
-    "genesis_block_hash": "FEtCmJuumRj2sNbmE4zaQQ7AwCn48AcZJRA7kHaHbgDN",
+    "chain_id": "test-chain-d8AyA",
+    "genesis_hash": "94T7M5B5WDdsiyF4L76sxG3xKLcQvJG72dnNT3ckaggt",
+    "genesis_block_hash": "94T7M5B5WDdsiyF4L76sxG3xKLcQvJG72dnNT3ckaggt",
     "version": {
      "build": "2.13.4",
      "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
@@ -19,7 +19,7 @@
      "version": "2.13.4"
     },
     "protocol_version": 86,
-    "rpc": "http://127.0.0.1:3240",
+    "rpc": "http://127.0.0.1:3280",
     "binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2"
    },
    "artifact": {
@@ -38,20 +38,20 @@
     "budget": "5000000000000000000000000",
     "max_per_request": "2000000000000000000000000",
     "max_accepted_requests": 2,
-    "expires_at_ns": "1794405049030760699",
-    "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
-    "chain_id": "test-chain-oJOg4",
+    "expires_at_ns": "1794408550600799036",
+    "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
+    "chain_id": "test-chain-d8AyA",
     "agent_keys": 8,
     "vault_keys": 0
    },
    "window": {
     "h0": {
-     "hash": "E4SBrXbYfKsWdjHeknp83uFG4twpSzU8fK4Ma6Y9dwob",
-     "height": 21
+     "hash": "77S1Bj9xAVaLDDLCWeQGHgf1TWjVPubYvBkoiVYCVc8B",
+     "height": 19
     },
     "q": {
-     "hash": "J1WVzaRYLsBaNkCDzJPGRSu2WoVwcZaeh8vkbWbnRJmm",
-     "height": 110
+     "hash": "DYK42upq2kkTmYbCszPk8zKMWHX4wvrkhnjJzpHAQ6dE",
+     "height": 116
     }
    },
    "verdicts_live": {
@@ -77,62 +77,62 @@
     {
      "seq": 0,
      "event": "init",
-     "receipt_id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
-     "block_height": 32
+     "receipt_id": "57L28nv2syL7jcHvKCGuSqwAGJtAibnAc52szagHp8ah",
+     "block_height": 30
     },
     {
      "seq": 1,
      "event": "admission",
-     "receipt_id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
-     "block_height": 43
+     "receipt_id": "8mYp7Ee98VdLMpkk6fEBaf19nspSXFnfzHefQvKtrWu6",
+     "block_height": 48
     },
     {
      "seq": 2,
      "event": "callback",
-     "receipt_id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
-     "block_height": 45
+     "receipt_id": "EJSnbMya72Ufqv1bNkj7qWuaHNKjS4xyLSAWK3GTZZNQ",
+     "block_height": 50
     },
     {
      "seq": 3,
      "event": "admission",
-     "receipt_id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
-     "block_height": 51
+     "receipt_id": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
+     "block_height": 56
     },
     {
      "seq": 4,
      "event": "callback",
-     "receipt_id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
-     "block_height": 53
+     "receipt_id": "BtH2GV9xFaUC4bEFr5yQpt4qfdTegKrnxsns5k3uJ3nJ",
+     "block_height": 58
     },
     {
      "seq": 5,
      "event": "denial",
-     "receipt_id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
-     "block_height": 59
+     "receipt_id": "Dqa9CgHyZuLu83muvZo9iebHJtWr7qZxUEu5DDxLNDcX",
+     "block_height": 64
     },
     {
      "seq": 6,
      "event": "denial",
-     "receipt_id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
-     "block_height": 65
+     "receipt_id": "7txsSGgZBHgLY8wUPHu3Bn9WTRsbA8Ldyc3nWFtsE7tF",
+     "block_height": 70
     },
     {
      "seq": 7,
      "event": "denial",
-     "receipt_id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
-     "block_height": 71
+     "receipt_id": "548Qfcg9aZNwWBFfcb1ZPzRvFCGHvW8apDfC2Ur6HcXB",
+     "block_height": 76
     },
     {
      "seq": 8,
      "event": "denial",
-     "receipt_id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
-     "block_height": 77
+     "receipt_id": "Dx4K5h1kKKGxV3g7iRvNpBpy82shr7v34Mcg42NWoVJW",
+     "block_height": 82
     },
     {
      "seq": 9,
      "event": "freeze",
-     "receipt_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
-     "block_height": 89
+     "receipt_id": "z3nQyviPF7rJBtMD2q8jHt6pS77YGCUtVYrguZAp4HP",
+     "block_height": 94
     }
    ],
    "state_history": {
@@ -175,19 +175,19 @@
    },
    "timeline": [
     {
-     "tx_hash": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
-     "height": 25,
+     "tx_hash": "F52eEDodypTdjwdZ6Ca5yf3meRsutsJuMRjAq2UWgZcL",
+     "height": 23,
      "signer": "owner.test.near",
      "receiver": "agent.owner.test.near",
      "tree": {
-      "tx_hash": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+      "tx_hash": "F52eEDodypTdjwdZ6Ca5yf3meRsutsJuMRjAq2UWgZcL",
       "signer": "owner.test.near",
       "receiver": "agent.owner.test.near",
-      "included_height": 25,
+      "included_height": 23,
       "receipts": [
        {
-        "id": "CFFWxLqBMvezZmNiP8ZTQrnKNJdrmCCBjskHoWH1qju4",
-        "parent": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+        "id": "CvcnGatyY5gYbXSXhquuVdb7zbZXgcY8woB4bxrAVESE",
+        "parent": "F52eEDodypTdjwdZ6Ca5yf3meRsutsJuMRjAq2UWgZcL",
         "kind": "account_setup",
         "predecessor": "owner.test.near",
         "receiver": "agent.owner.test.near",
@@ -206,12 +206,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 26,
+        "block_height": 24,
         "event": null
        },
        {
-        "id": "HKaLdmUhoCJfZwJKcWftm8mQhUWbZux1nG276ETqD7Ax",
-        "parent": "CFFWxLqBMvezZmNiP8ZTQrnKNJdrmCCBjskHoWH1qju4",
+        "id": "2y5r6VqgTvEzx4U1qBTSagbyo6wnYzZ6ZANcjYiKCGdH",
+        "parent": "CvcnGatyY5gYbXSXhquuVdb7zbZXgcY8woB4bxrAVESE",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "owner.test.near",
@@ -221,7 +221,7 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 27,
+        "block_height": 25,
         "event": null
        }
       ]
@@ -230,19 +230,19 @@
      "decision": "Setup"
     },
     {
-     "tx_hash": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
-     "height": 31,
+     "tx_hash": "Btor6akfz6pT2df7998RQsQ1nSDEgbd92dmtassBgse7",
+     "height": 29,
      "signer": "owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+      "tx_hash": "Btor6akfz6pT2df7998RQsQ1nSDEgbd92dmtassBgse7",
       "signer": "owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 31,
+      "included_height": 29,
       "receipts": [
        {
-        "id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
-        "parent": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+        "id": "57L28nv2syL7jcHvKCGuSqwAGJtAibnAc52szagHp8ah",
+        "parent": "Btor6akfz6pT2df7998RQsQ1nSDEgbd92dmtassBgse7",
         "kind": "construction",
         "predecessor": "owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -255,12 +255,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 32,
+        "block_height": 30,
         "event": "init"
        },
        {
-        "id": "BALKZpmVXHViEsFstAmH9qmBRPi7m2MZfdCZrKUmnVqK",
-        "parent": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+        "id": "8Sv1CL3gU5ztjzF33BPiJxVz4cCJ9XYVP8rXy8DG2Y31",
+        "parent": "57L28nv2syL7jcHvKCGuSqwAGJtAibnAc52szagHp8ah",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "owner.test.near",
@@ -270,7 +270,7 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 33,
+        "block_height": 31,
         "event": null
        }
       ]
@@ -284,26 +284,26 @@
        "missing.test.near"
       ],
       "budget": "5000000000000000000000000",
-      "expires_at_ns": "1794405049030760699",
+      "expires_at_ns": "1794408550600799036",
       "max_accepted_requests": "2",
       "max_per_request": "2000000000000000000000000"
      },
      "decision": "Construction"
     },
     {
-     "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
-     "height": 42,
+     "tx_hash": "hCVYSsEfpEzNQt8r6JwtMhH7PKxzdYa8srbCnYVBQcQ",
+     "height": 47,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+      "tx_hash": "hCVYSsEfpEzNQt8r6JwtMhH7PKxzdYa8srbCnYVBQcQ",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 42,
+      "included_height": 47,
       "receipts": [
        {
-        "id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
-        "parent": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "id": "8mYp7Ee98VdLMpkk6fEBaf19nspSXFnfzHefQvKtrWu6",
+        "parent": "hCVYSsEfpEzNQt8r6JwtMhH7PKxzdYa8srbCnYVBQcQ",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -313,12 +313,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 43,
+        "block_height": 48,
         "event": "admission"
        },
        {
-        "id": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
-        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "id": "EAjS51k4BbFon3wjgZ4ht2yETSZgs22VPBrKSHkMK8iV",
+        "parent": "8mYp7Ee98VdLMpkk6fEBaf19nspSXFnfzHefQvKtrWu6",
         "kind": "transfer",
         "predecessor": "vault.owner.test.near",
         "receiver": "alice.test.near",
@@ -328,27 +328,27 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 44,
+        "block_height": 49,
         "event": null
        },
        {
-        "id": "64wXMhqxZJK23UpZcSfFdiS9A1GNuw9QaLtukmikNXsM",
-        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "id": "J2GMbhK1LRoBmpG1mJqTY2BYj8b4MmMRDkAPrNKZtAW",
+        "parent": "8mYp7Ee98VdLMpkk6fEBaf19nspSXFnfzHefQvKtrWu6",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.079517 NEAR"
+         "Transfer 0.0795174 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 44,
+        "block_height": 49,
         "event": null
        },
        {
-        "id": "3HHetNjAvxpxdzguopNWM4UvNPnkCnigjXPjtsAPcRSz",
-        "parent": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
+        "id": "5R4spLCEVRNW1RaaBAZXuKybWW11qCdZ35cZJiNW1aTU",
+        "parent": "EAjS51k4BbFon3wjgZ4ht2yETSZgs22VPBrKSHkMK8iV",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
@@ -358,12 +358,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 45,
+        "block_height": 50,
         "event": null
        },
        {
-        "id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
-        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "id": "EJSnbMya72Ufqv1bNkj7qWuaHNKjS4xyLSAWK3GTZZNQ",
+        "parent": "8mYp7Ee98VdLMpkk6fEBaf19nspSXFnfzHefQvKtrWu6",
         "kind": "callback",
         "predecessor": "vault.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -373,22 +373,22 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 45,
+        "block_height": 50,
         "event": "callback"
        },
        {
-        "id": "EAAdxqWdBEQzYY6PQHATnb5BrLuvp94NsHiXxyaG2emP",
-        "parent": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "id": "EE7ioPLDW4QusqkCceVFPy5idbX5rA34ggew7nkgBesu",
+        "parent": "EJSnbMya72Ufqv1bNkj7qWuaHNKjS4xyLSAWK3GTZZNQ",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.020714 NEAR"
+         "Transfer 0.0207141 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 46,
+        "block_height": 51,
         "event": null
        }
       ]
@@ -403,7 +403,7 @@
      "method": "request_payment",
      "args": {
       "amount": "1000000000000000000000000",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "alice.test.near",
       "request_id": "1"
      },
@@ -418,19 +418,19 @@
      "principal_refund": null
     },
     {
-     "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
-     "height": 50,
+     "tx_hash": "DggYL4prM46ZoSS5ek71AWLX5L39MAKBQ9z9DkrLhZfd",
+     "height": 55,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+      "tx_hash": "DggYL4prM46ZoSS5ek71AWLX5L39MAKBQ9z9DkrLhZfd",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 50,
+      "included_height": 55,
       "receipts": [
        {
-        "id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
-        "parent": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "id": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
+        "parent": "DggYL4prM46ZoSS5ek71AWLX5L39MAKBQ9z9DkrLhZfd",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -440,12 +440,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 51,
+        "block_height": 56,
         "event": "admission"
        },
        {
-        "id": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
-        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "id": "C99gdTNsRsc4C7CU6Sxf2sZ234uYiDN37wmqYF9PBvTw",
+        "parent": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
         "kind": "transfer",
         "predecessor": "vault.owner.test.near",
         "receiver": "missing.test.near",
@@ -456,27 +456,27 @@
          "kind": "Failure",
          "detail": "AccountDoesNotExist"
         },
-        "block_height": 52,
+        "block_height": 57,
         "event": null
        },
        {
-        "id": "ExBvK33xwwLAQsrp9T5KBigqFGWmetFV4uHHY7qPD3tt",
-        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "id": "9a3kj2pTLib29mmqyX7xwd8ghtpc1N52aXWyMx333qEX",
+        "parent": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.0795135 NEAR"
+         "Transfer 0.0795138 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 52,
+        "block_height": 57,
         "event": null
        },
        {
-        "id": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
-        "parent": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "id": "EPiZpmTnJGyDesvhehVZpegG995AJ951UUZiuX9HUjAZ",
+        "parent": "C99gdTNsRsc4C7CU6Sxf2sZ234uYiDN37wmqYF9PBvTw",
         "kind": "principal_refund",
         "predecessor": "system",
         "receiver": "vault.owner.test.near",
@@ -486,12 +486,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 53,
+        "block_height": 58,
         "event": null
        },
        {
-        "id": "6tix7LVP3dtThbkPCieHHJ4eNPTK9y2AAagbk3Pvky4H",
-        "parent": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "id": "GtenfbFWRw78UywUsF3NRpLxMRAsEkY8NQd1MW3njww4",
+        "parent": "C99gdTNsRsc4C7CU6Sxf2sZ234uYiDN37wmqYF9PBvTw",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
@@ -501,12 +501,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 53,
+        "block_height": 58,
         "event": null
        },
        {
-        "id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
-        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "id": "BtH2GV9xFaUC4bEFr5yQpt4qfdTegKrnxsns5k3uJ3nJ",
+        "parent": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
         "kind": "callback",
         "predecessor": "vault.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -516,22 +516,22 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 53,
+        "block_height": 58,
         "event": "callback"
        },
        {
-        "id": "GX7M2pbRH5xt1hpAceRouubGsaw33nyy4VvNsMHX7zQV",
-        "parent": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "id": "BskjT9VDtHE6acLMNgeWq6nCvi5ta4Sc3ykmERtauqRE",
+        "parent": "BtH2GV9xFaUC4bEFr5yQpt4qfdTegKrnxsns5k3uJ3nJ",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.0207137 NEAR"
+         "Transfer 0.0207138 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 54,
+        "block_height": 59,
         "event": null
        }
       ]
@@ -546,7 +546,7 @@
      "method": "request_payment",
      "args": {
       "amount": "2000000000000000000000000",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "missing.test.near",
       "request_id": "2"
      },
@@ -558,22 +558,22 @@
      "native_failure": "AccountDoesNotExist",
      "admission_seq": "3",
      "callback": "CbFailed",
-     "principal_refund": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7"
+     "principal_refund": "EPiZpmTnJGyDesvhehVZpegG995AJ951UUZiuX9HUjAZ"
     },
     {
-     "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
-     "height": 58,
+     "tx_hash": "5p3DCjnuNrmZ9jykvhWtPrKFvrfWUGp8UTQfukfatMoP",
+     "height": 63,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+      "tx_hash": "5p3DCjnuNrmZ9jykvhWtPrKFvrfWUGp8UTQfukfatMoP",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 58,
+      "included_height": 63,
       "receipts": [
        {
-        "id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
-        "parent": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+        "id": "Dqa9CgHyZuLu83muvZo9iebHJtWr7qZxUEu5DDxLNDcX",
+        "parent": "5p3DCjnuNrmZ9jykvhWtPrKFvrfWUGp8UTQfukfatMoP",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -583,22 +583,22 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 59,
+        "block_height": 64,
         "event": "denial"
        },
        {
-        "id": "EiAUiLPZV3XihTgSfasNM2UomB2srXE6EepsMqkyNCUy",
-        "parent": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "id": "CXMdojhr2jGhv31Df6Zp8mEpPzyaZme3VLsXkpZ4d8an",
+        "parent": "Dqa9CgHyZuLu83muvZo9iebHJtWr7qZxUEu5DDxLNDcX",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.100711 NEAR"
+         "Transfer 0.100712 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 60,
+        "block_height": 65,
         "event": null
        }
       ]
@@ -613,7 +613,7 @@
      "method": "request_payment",
      "args": {
       "amount": "1000000000000000000000000",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "alice.test.near",
       "request_id": "1"
      },
@@ -625,19 +625,19 @@
      "seq": "5"
     },
     {
-     "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
-     "height": 64,
+     "tx_hash": "H344fkX3CfrAwUHoDyx8nTKyRo9BQHxKFBBSyXMLk5kF",
+     "height": 69,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+      "tx_hash": "H344fkX3CfrAwUHoDyx8nTKyRo9BQHxKFBBSyXMLk5kF",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 64,
+      "included_height": 69,
       "receipts": [
        {
-        "id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
-        "parent": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+        "id": "7txsSGgZBHgLY8wUPHu3Bn9WTRsbA8Ldyc3nWFtsE7tF",
+        "parent": "H344fkX3CfrAwUHoDyx8nTKyRo9BQHxKFBBSyXMLk5kF",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -647,12 +647,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 65,
+        "block_height": 70,
         "event": "denial"
        },
        {
-        "id": "438fLCETnskRf7JszBUeJxdb1x3RgQ8Wq8mCMuV17FHH",
-        "parent": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "id": "HCuvhFzwpNGfmBQRL8b2tcL3Cj4NJZX9qXMqWN8ie7BU",
+        "parent": "7txsSGgZBHgLY8wUPHu3Bn9WTRsbA8Ldyc3nWFtsE7tF",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
@@ -662,7 +662,7 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 66,
+        "block_height": 71,
         "event": null
        }
       ]
@@ -677,7 +677,7 @@
      "method": "request_payment",
      "args": {
       "amount": "2000000000000000000000001",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "alice.test.near",
       "request_id": "3"
      },
@@ -689,19 +689,19 @@
      "seq": "6"
     },
     {
-     "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
-     "height": 70,
+     "tx_hash": "HMRsZ78syrKAAAyjACFUvoR9aBVBGj2R7LJj2vyPNE2c",
+     "height": 75,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+      "tx_hash": "HMRsZ78syrKAAAyjACFUvoR9aBVBGj2R7LJj2vyPNE2c",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 70,
+      "included_height": 75,
       "receipts": [
        {
-        "id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
-        "parent": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+        "id": "548Qfcg9aZNwWBFfcb1ZPzRvFCGHvW8apDfC2Ur6HcXB",
+        "parent": "HMRsZ78syrKAAAyjACFUvoR9aBVBGj2R7LJj2vyPNE2c",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -711,22 +711,22 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 71,
+        "block_height": 76,
         "event": "denial"
        },
        {
-        "id": "9AXFndN8KxH3b21oFRVqTyiQMDKqMHNhS45Xx3Nz7y5M",
-        "parent": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "id": "77pk6eE7Pj33nCaJYGKLAGJqRFFWyzGfstAyLC86xcMn",
+        "parent": "548Qfcg9aZNwWBFfcb1ZPzRvFCGHvW8apDfC2Ur6HcXB",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
         "actions": [
-         "Transfer 0.100712 NEAR"
+         "Transfer 0.100713 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 72,
+        "block_height": 77,
         "event": null
        }
       ]
@@ -741,7 +741,7 @@
      "method": "request_payment",
      "args": {
       "amount": "1000000000000000000000000",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "attacker.test.near",
       "request_id": "4"
      },
@@ -753,19 +753,19 @@
      "seq": "7"
     },
     {
-     "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
-     "height": 76,
+     "tx_hash": "6KW14AnECsmxdPvKpS8FK5Hte4SN6jmNejGqx9DLQC7z",
+     "height": 81,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+      "tx_hash": "6KW14AnECsmxdPvKpS8FK5Hte4SN6jmNejGqx9DLQC7z",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 76,
+      "included_height": 81,
       "receipts": [
        {
-        "id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
-        "parent": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+        "id": "Dx4K5h1kKKGxV3g7iRvNpBpy82shr7v34Mcg42NWoVJW",
+        "parent": "6KW14AnECsmxdPvKpS8FK5Hte4SN6jmNejGqx9DLQC7z",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -775,12 +775,12 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 77,
+        "block_height": 82,
         "event": "denial"
        },
        {
-        "id": "9qqq9RTLzVhP47z9rwEsTKQdzmktCiEqc4hiBGTp9qhS",
-        "parent": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "id": "H6K4muZCyofkjzaakcAwSA4NfhfHWX6THW3EGt6MwyBw",
+        "parent": "Dx4K5h1kKKGxV3g7iRvNpBpy82shr7v34Mcg42NWoVJW",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
@@ -790,7 +790,7 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 78,
+        "block_height": 83,
         "event": null
        }
       ]
@@ -805,7 +805,7 @@
      "method": "request_payment",
      "args": {
       "amount": "2000000000000000000000000",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
       "recipient": "alice.test.near",
       "request_id": "5"
      },
@@ -817,19 +817,19 @@
      "seq": "8"
     },
     {
-     "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
-     "height": 82,
+     "tx_hash": "FWwPEVWy5KPLrrQ6REynGt8fNJtxZPNm6x7nWmwF4kob",
+     "height": 87,
      "signer": "agent.owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+      "tx_hash": "FWwPEVWy5KPLrrQ6REynGt8fNJtxZPNm6x7nWmwF4kob",
       "signer": "agent.owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 82,
+      "included_height": 87,
       "receipts": [
        {
-        "id": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
-        "parent": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+        "id": "FXZdnX6ioj4gyxCdANQW1xsBp2jyGRh8VDZKYMp6YS81",
+        "parent": "FWwPEVWy5KPLrrQ6REynGt8fNJtxZPNm6x7nWmwF4kob",
         "kind": "vault_call",
         "predecessor": "agent.owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -840,12 +840,12 @@
          "kind": "Failure",
          "detail": "MalformedInput"
         },
-        "block_height": 83,
+        "block_height": 88,
         "event": null
        },
        {
-        "id": "34zjH712wSNW87K6xtBJeDcqtLWqw35cbVMbcfe3hA4A",
-        "parent": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
+        "id": "FDPCTy6LcEWGygrahhCvYuf6s9DSAup5dJJC5bVCU3Hd",
+        "parent": "FXZdnX6ioj4gyxCdANQW1xsBp2jyGRh8VDZKYMp6YS81",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "agent.owner.test.near",
@@ -855,7 +855,7 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 84,
+        "block_height": 89,
         "event": null
        }
       ]
@@ -872,25 +872,25 @@
       "request_id": "6",
       "recipient": "alice.test.near",
       "amount": "1e24",
-      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC"
+      "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2"
      },
      "decision": "ReceiptFailure",
      "reason": "MalformedInput"
     },
     {
-     "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
-     "height": 88,
+     "tx_hash": "9NwEbHdDkjPqwdLRJYrbJwzY4bGXGrtgbo2K1V6zB4Y5",
+     "height": 93,
      "signer": "owner.test.near",
      "receiver": "vault.owner.test.near",
      "tree": {
-      "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+      "tx_hash": "9NwEbHdDkjPqwdLRJYrbJwzY4bGXGrtgbo2K1V6zB4Y5",
       "signer": "owner.test.near",
       "receiver": "vault.owner.test.near",
-      "included_height": 88,
+      "included_height": 93,
       "receipts": [
        {
-        "id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
-        "parent": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+        "id": "z3nQyviPF7rJBtMD2q8jHt6pS77YGCUtVYrguZAp4HP",
+        "parent": "9NwEbHdDkjPqwdLRJYrbJwzY4bGXGrtgbo2K1V6zB4Y5",
         "kind": "vault_call",
         "predecessor": "owner.test.near",
         "receiver": "vault.owner.test.near",
@@ -900,22 +900,22 @@
         "status": {
          "kind": "Success"
         },
-        "block_height": 89,
+        "block_height": 94,
         "event": "freeze"
        },
        {
-        "id": "EYnXAUpV1yQiHDmmvPLABaRRG1WZK6vbrQJSwkshHhNz",
-        "parent": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "id": "DaaCZcATAsfCjA3MXeewsuNNbTGVpvGzS3EDSRYNwcio",
+        "parent": "z3nQyviPF7rJBtMD2q8jHt6pS77YGCUtVYrguZAp4HP",
         "kind": "gas_refund",
         "predecessor": "system",
         "receiver": "owner.test.near",
         "actions": [
-         "Transfer 0.0307423 NEAR"
+         "Transfer 0.0307424 NEAR"
         ],
         "status": {
          "kind": "Success"
         },
-        "block_height": 90,
+        "block_height": 95,
         "event": null
        }
       ]
@@ -931,7 +931,7 @@
      "label": "agent_calls_freeze",
      "intent": "Use the agent key outside its permission",
      "expected": "Rejected: key restricted to request_payment",
-     "tx_hash": "4ixaqwyuvBPm36sCQ2Kg1EhZTguSqAGDVUWkGRnnXFnj",
+     "tx_hash": "2zwoLLhv6e11igGyoxB1b8Gb9eDCJbmKVBG9h7GFLo9t",
      "rpc_error": {
       "TxExecutionError": {
        "InvalidTxError": {
@@ -943,14 +943,14 @@
        }
       }
      },
-     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
-     "observed_by_reviewer_proxy": false
+     "source": "node error recorded by the reviewer's filter proxy (and the runner log); no on-chain trace",
+     "observed_by_reviewer_proxy": true
     },
     {
      "label": "agent_direct_transfer",
      "intent": "Use the agent key outside its permission",
      "expected": "Rejected: function-call key cannot transfer",
-     "tx_hash": "FpCeUEgJWeKVZMPkYuZHGpQhq8KJ9MSEfXTNjnhBDsEP",
+     "tx_hash": "GkMqtgyc2nQ97SEwZ65B2qTivKGboz3MoWn6KafhB1AM",
      "rpc_error": {
       "TxExecutionError": {
        "InvalidTxError": {
@@ -958,14 +958,14 @@
        }
       }
      },
-     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
-     "observed_by_reviewer_proxy": false
+     "source": "node error recorded by the reviewer's filter proxy (and the runner log); no on-chain trace",
+     "observed_by_reviewer_proxy": true
     },
     {
      "label": "agent_attaches_deposit",
      "intent": "Use the agent key outside its permission",
      "expected": "Rejected: function-call key cannot attach deposit",
-     "tx_hash": "BuTPKGJCDqJrKJfCzmhUp9DjY7SAagUzDVvHuWHJ8dHt",
+     "tx_hash": "5CiP7FKCb8vXPJQR8oHV2PuMEcrnDFdzotJ7jGHLqBdm",
      "rpc_error": {
       "TxExecutionError": {
        "InvalidTxError": {
@@ -973,14 +973,14 @@
        }
       }
      },
-     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
-     "observed_by_reviewer_proxy": false
+     "source": "node error recorded by the reviewer's filter proxy (and the runner log); no on-chain trace",
+     "observed_by_reviewer_proxy": true
     },
     {
      "label": "agent_calls_other_receiver",
      "intent": "Use the agent key outside its permission",
      "expected": "Rejected: key restricted to the vault",
-     "tx_hash": "EPGAe4jtJJBuBXWdGDsYt1ud41Yo8vMETSRtwWN13muP",
+     "tx_hash": "Ck9EwGENNZdJxtxrF5kfpGuCmdH16UBvPDNe5GDJunrW",
      "rpc_error": {
       "TxExecutionError": {
        "InvalidTxError": {
@@ -993,8 +993,8 @@
        }
       }
      },
-     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
-     "observed_by_reviewer_proxy": false
+     "source": "node error recorded by the reviewer's filter proxy (and the runner log); no on-chain trace",
+     "observed_by_reviewer_proxy": true
     }
    ],
    "isolation": {
@@ -1010,10 +1010,15 @@
      "query_view_access_key_list_allowed": false
     },
     "runner_methods_forwarded": [
+     "EXPERIMENTAL_changes",
+     "EXPERIMENTAL_genesis_config",
+     "EXPERIMENTAL_protocol_config",
      "EXPERIMENTAL_tx_status",
      "block",
+     "chunk",
      "query",
-     "send_tx"
+     "send_tx",
+     "status"
     ],
     "runner_methods_denied": [
      "adv_produce_blocks",
@@ -1031,35 +1036,36 @@
      "scenario_coverage": "PASS"
     },
     "omitted_tx_hash": [
-     "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3"
+     "DggYL4prM46ZoSS5ek71AWLX5L39MAKBQ9z9DkrLhZfd"
     ],
     "recovered_receipts": [
-     "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
-     "6tix7LVP3dtThbkPCieHHJ4eNPTK9y2AAagbk3Pvky4H",
-     "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
-     "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
-     "ExBvK33xwwLAQsrp9T5KBigqFGWmetFV4uHHY7qPD3tt",
-     "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
-     "GX7M2pbRH5xt1hpAceRouubGsaw33nyy4VvNsMHX7zQV"
+     "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
+     "9a3kj2pTLib29mmqyX7xwd8ghtpc1N52aXWyMx333qEX",
+     "BskjT9VDtHE6acLMNgeWq6nCvi5ta4Sc3ykmERtauqRE",
+     "BtH2GV9xFaUC4bEFr5yQpt4qfdTegKrnxsns5k3uJ3nJ",
+     "C99gdTNsRsc4C7CU6Sxf2sZ234uYiDN37wmqYF9PBvTw",
+     "EPiZpmTnJGyDesvhehVZpegG995AJ951UUZiuX9HUjAZ",
+     "GtenfbFWRw78UywUsF3NRpLxMRAsEkY8NQd1MW3njww4"
     ],
     "recovered_payment": [
      {
       "request_id": "2",
-      "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
-      "admission_receipt": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
-      "transfer_receipt": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+      "tx_hash": "DggYL4prM46ZoSS5ek71AWLX5L39MAKBQ9z9DkrLhZfd",
+      "admission_receipt": "9HdDKKVeKzbNYmk97dyHiNypy8wmnXnxura6GbUiCj22",
+      "transfer_receipt": "C99gdTNsRsc4C7CU6Sxf2sZ234uYiDN37wmqYF9PBvTw",
       "recipient": "missing.test.near",
       "amount": "2000000000000000000000000",
       "class": "F",
       "native_failure": "AccountDoesNotExist",
-      "admission_block": "2txrom1hhYyva1m518ph7cPFqSGAzrHitJdHo9zxcggE",
-      "execution_block": "CtYwvgiHumdkSTGFXMCBpUkVfZnmkPfm4MCmVbedRiPP",
-      "callback_receipt": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+      "admission_block": "yahGutoby3twQGJy5cZ1Qknh4esDd9qn8pXyHe6FaDo",
+      "execution_block": "DGUSTUttwa2Gizkyf6VSwunumQfCJ7PFfxAppVaXRKoN",
+      "callback_receipt": "BtH2GV9xFaUC4bEFr5yQpt4qfdTegKrnxsns5k3uJ3nJ",
       "callback_outcome": "SuccessValue",
       "callback_status_retained": "CbFailed",
       "admission_seq": "3",
-      "principal_refund_receipt": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
-      "principal_refund_block": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA",
+      "principal_refund_receipt": "EPiZpmTnJGyDesvhehVZpegG995AJ951UUZiuX9HUjAZ",
+      "principal_refund_block": "A71cLgbfa83GnmM4EtvbVKwPUMS6K5iaWeUqVnAvkJ1C",
+      "callback_observation": "CbFailed",
       "callback_seq": "4"
      }
     ],
@@ -1195,7 +1201,7 @@
    ],
    "retention": {
     "schema": "g1-independent/retention-compare/v1",
-    "run_id": "g1i-20261110T135044Z-a",
+    "run_id": "g1i-20261110T144905Z-c",
     "excluded": [
      "final_head (live head)",
      "status except chain_id, genesis_hash, version, protocol_version"
@@ -1219,28 +1225,28 @@
     "all_identical": true,
     "graphs_compared": 10,
     "graphs_identical": 10,
-    "first_final_head": 112,
-    "later_final_head": 2111,
-    "first_capture_sha256": "a190c245112b25ccfc124ffa37f22f29007a86b6e5b9da805049a7d89cf05eca",
-    "later_capture_sha256": "fdad265093b7ed3e0dc62ebb6690db37eed5c6c72d2a00b59b99d65ee5c0d9b7",
+    "first_final_head": 119,
+    "later_final_head": 2118,
+    "first_capture_sha256": "d5fa8c0817a8caa508b4c3d6c2de54b6eff6c1df5d0100422bd82875c7bd05a4",
+    "later_capture_sha256": "2f14a058cc84e880d3490618279fb1e7ccdb852b1038a60b37bfd956d538114f",
     "produced_blocks_after_q": 2000
    },
    "replay_check": {
-    "capture_sha256": "2520c12d897e6f50e71617f45386a99926b3580fe724f0f1899aef5122d3a29e",
-    "rpc_records": 562
+    "capture_sha256": "0b57994688b72caf9bfd8dd1e7662504df71dd098732b713364a8d3d47eebc28",
+    "rpc_records": 610
    },
    "sources": {
-    "descriptor": "evidence/g1-independent/g1i-20261110T135044Z-a/reviewer-descriptor.json",
-    "summary": "evidence/g1-independent/g1i-20261110T135044Z-a/run-summary.json",
-    "raw_rpc": "evidence/g1-independent/g1i-20261110T135044Z-a/independent/rpc.jsonl.gz",
-    "independent_result": "evidence/g1-independent/g1i-20261110T135044Z-a/independent/result.json",
-    "runner_log": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/runner-log.json",
-    "isolation": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/isolation.json",
-    "forged_presentation": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/forged-presentation.json",
-    "compare_forged": "evidence/g1-independent/g1i-20261110T135044Z-a/compare-forged.json",
-    "compare_genuine": "evidence/g1-independent/g1i-20261110T135044Z-a/compare-genuine.json",
-    "mutations": "evidence/g1-independent/g1i-20261110T135044Z-a/mutations.json",
-    "retention": "evidence/g1-independent/g1i-20261110T135044Z-a/retention-compare.json"
+    "descriptor": "evidence/g1-independent/g1i-20261110T144905Z-c/reviewer-descriptor.json",
+    "summary": "evidence/g1-independent/g1i-20261110T144905Z-c/run-summary.json",
+    "raw_rpc": "evidence/g1-independent/g1i-20261110T144905Z-c/independent/rpc.jsonl.gz",
+    "independent_result": "evidence/g1-independent/g1i-20261110T144905Z-c/independent/result.json",
+    "runner_log": "evidence/g1-independent/g1i-20261110T144905Z-c/runner/runner-log.json",
+    "isolation": "evidence/g1-independent/g1i-20261110T144905Z-c/runner/isolation.json",
+    "forged_presentation": "evidence/g1-independent/g1i-20261110T144905Z-c/runner/forged-presentation.json",
+    "compare_forged": "evidence/g1-independent/g1i-20261110T144905Z-c/compare-forged.json",
+    "compare_genuine": "evidence/g1-independent/g1i-20261110T144905Z-c/compare-genuine.json",
+    "mutations": "evidence/g1-independent/g1i-20261110T144905Z-c/mutations.json",
+    "retention": "evidence/g1-independent/g1i-20261110T144905Z-c/retention-compare.json"
    }
   },
   {
@@ -2251,10 +2257,15 @@
      "query_view_access_key_list_allowed": false
     },
     "runner_methods_forwarded": [
+     "EXPERIMENTAL_changes",
+     "EXPERIMENTAL_genesis_config",
+     "EXPERIMENTAL_protocol_config",
      "EXPERIMENTAL_tx_status",
      "block",
+     "chunk",
      "query",
-     "send_tx"
+     "send_tx",
+     "status"
     ],
     "runner_methods_denied": [
      "adv_produce_blocks",
@@ -2483,6 +2494,1252 @@
     "compare_genuine": "evidence/g1-independent/g1i-20261110T135407Z-b/compare-genuine.json",
     "mutations": "evidence/g1-independent/g1i-20261110T135407Z-b/mutations.json",
     "retention": "evidence/g1-independent/g1i-20261110T135407Z-b/retention-compare.json"
+   }
+  },
+  {
+   "run_id": "g1i-20261110T135044Z-a",
+   "mode": "REPLAY",
+   "network": "SANDBOX",
+   "captured_at": "2026-11-10T13:50:44Z",
+   "repo_commit": "91c4ce65c1aa1395a19cccde2d139f17fe45f119",
+   "node": {
+    "chain_id": "test-chain-oJOg4",
+    "genesis_hash": "FEtCmJuumRj2sNbmE4zaQQ7AwCn48AcZJRA7kHaHbgDN",
+    "genesis_block_hash": "FEtCmJuumRj2sNbmE4zaQQ7AwCn48AcZJRA7kHaHbgDN",
+    "version": {
+     "build": "2.13.4",
+     "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+     "rustc_version": "1.93.0",
+     "version": "2.13.4"
+    },
+    "protocol_version": 86,
+    "rpc": "http://127.0.0.1:3240",
+    "binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2"
+   },
+   "artifact": {
+    "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+    "code_hash": "ESrXNXb3uKaeesbHe2ySHTMUtbwww4ZCKDWrMa3cLoB5",
+    "bytes": 154346
+   },
+   "policy": {
+    "vault": "vault.owner.test.near",
+    "owner": "owner.test.near",
+    "agent": "agent.owner.test.near",
+    "recipients": [
+     "alice.test.near",
+     "missing.test.near"
+    ],
+    "budget": "5000000000000000000000000",
+    "max_per_request": "2000000000000000000000000",
+    "max_accepted_requests": 2,
+    "expires_at_ns": "1794405049030760699",
+    "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+    "chain_id": "test-chain-oJOg4",
+    "agent_keys": 8,
+    "vault_keys": 0
+   },
+   "window": {
+    "h0": {
+     "hash": "E4SBrXbYfKsWdjHeknp83uFG4twpSzU8fK4Ma6Y9dwob",
+     "height": 21
+    },
+    "q": {
+     "hash": "J1WVzaRYLsBaNkCDzJPGRSu2WoVwcZaeh8vkbWbnRJmm",
+     "height": 110
+    }
+   },
+   "verdicts_live": {
+    "safety": "PASS",
+    "settlement": "PASS",
+    "evidence": "PASS",
+    "scenario_coverage": "PASS"
+   },
+   "ledger": {
+    "C": "3000000000000000000000000",
+    "S": "1000000000000000000000000",
+    "F": "2000000000000000000000000",
+    "U": "0",
+    "headroom": "2000000000000000000000000",
+    "accepted_count": 2
+   },
+   "callback_observation": {
+    "cb_succeeded_amount": "1000000000000000000000000",
+    "cb_failed_amount": "2000000000000000000000000",
+    "callback_unconfirmed": "0"
+   },
+   "events": [
+    {
+     "seq": 0,
+     "event": "init",
+     "receipt_id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+     "block_height": 32
+    },
+    {
+     "seq": 1,
+     "event": "admission",
+     "receipt_id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+     "block_height": 43
+    },
+    {
+     "seq": 2,
+     "event": "callback",
+     "receipt_id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+     "block_height": 45
+    },
+    {
+     "seq": 3,
+     "event": "admission",
+     "receipt_id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+     "block_height": 51
+    },
+    {
+     "seq": 4,
+     "event": "callback",
+     "receipt_id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+     "block_height": 53
+    },
+    {
+     "seq": 5,
+     "event": "denial",
+     "receipt_id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+     "block_height": 59
+    },
+    {
+     "seq": 6,
+     "event": "denial",
+     "receipt_id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+     "block_height": 65
+    },
+    {
+     "seq": 7,
+     "event": "denial",
+     "receipt_id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+     "block_height": 71
+    },
+    {
+     "seq": 8,
+     "event": "denial",
+     "receipt_id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+     "block_height": 77
+    },
+    {
+     "seq": 9,
+     "event": "freeze",
+     "receipt_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+     "block_height": 89
+    }
+   ],
+   "state_history": {
+    "state_writes": 10,
+    "charged_series": [
+     "0",
+     "1000000000000000000000000",
+     "1000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000",
+     "3000000000000000000000000"
+    ],
+    "seq_series": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "records_written": [
+     1,
+     2
+    ],
+    "index_written": [
+     0,
+     1
+    ],
+    "code_change_representation": [
+     "wasm-bytes"
+    ]
+   },
+   "timeline": [
+    {
+     "tx_hash": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+     "height": 25,
+     "signer": "owner.test.near",
+     "receiver": "agent.owner.test.near",
+     "tree": {
+      "tx_hash": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+      "signer": "owner.test.near",
+      "receiver": "agent.owner.test.near",
+      "included_height": 25,
+      "receipts": [
+       {
+        "id": "CFFWxLqBMvezZmNiP8ZTQrnKNJdrmCCBjskHoWH1qju4",
+        "parent": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+        "kind": "account_setup",
+        "predecessor": "owner.test.near",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "CreateAccount",
+         "Transfer 5 NEAR",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment",
+         "AddKey FunctionCall\u2192request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 26,
+        "event": null
+       },
+       {
+        "id": "HKaLdmUhoCJfZwJKcWftm8mQhUWbZux1nG276ETqD7Ax",
+        "parent": "CFFWxLqBMvezZmNiP8ZTQrnKNJdrmCCBjskHoWH1qju4",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "owner.test.near",
+        "actions": [
+         "Transfer 0.00113705 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 27,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "decision": "Setup"
+    },
+    {
+     "tx_hash": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+     "height": 31,
+     "signer": "owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+      "signer": "owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 31,
+      "receipts": [
+       {
+        "id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+        "parent": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+        "kind": "construction",
+        "predecessor": "owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "CreateAccount",
+         "Transfer 7.56771 NEAR",
+         "DeployContract sha256:c7c772635acea093\u2026",
+         "FunctionCall new"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 32,
+        "event": "init"
+       },
+       {
+        "id": "BALKZpmVXHViEsFstAmH9qmBRPi7m2MZfdCZrKUmnVqK",
+        "parent": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "owner.test.near",
+        "actions": [
+         "Transfer 0.110156 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 33,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "method": "new",
+     "args": {
+      "agent": "agent.owner.test.near",
+      "allowed_recipients": [
+       "alice.test.near",
+       "missing.test.near"
+      ],
+      "budget": "5000000000000000000000000",
+      "expires_at_ns": "1794405049030760699",
+      "max_accepted_requests": "2",
+      "max_per_request": "2000000000000000000000000"
+     },
+     "decision": "Construction"
+    },
+    {
+     "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+     "height": 42,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 42,
+      "receipts": [
+       {
+        "id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "parent": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 43,
+        "event": "admission"
+       },
+       {
+        "id": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
+        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "kind": "transfer",
+        "predecessor": "vault.owner.test.near",
+        "receiver": "alice.test.near",
+        "actions": [
+         "Transfer 1 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 44,
+        "event": null
+       },
+       {
+        "id": "64wXMhqxZJK23UpZcSfFdiS9A1GNuw9QaLtukmikNXsM",
+        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.079517 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 44,
+        "event": null
+       },
+       {
+        "id": "3HHetNjAvxpxdzguopNWM4UvNPnkCnigjXPjtsAPcRSz",
+        "parent": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.000200864 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 45,
+        "event": null
+       },
+       {
+        "id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "parent": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "kind": "callback",
+        "predecessor": "vault.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall on_payment_result"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 45,
+        "event": "callback"
+       },
+       {
+        "id": "EAAdxqWdBEQzYY6PQHATnb5BrLuvp94NsHiXxyaG2emP",
+        "parent": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.020714 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 46,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "pay_1_alice_1near",
+      "intent": "Legitimate payment within mandate",
+      "expected": "Admitted; transfer succeeds",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "1000000000000000000000000",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "alice.test.near",
+      "request_id": "1"
+     },
+     "decision": "Admitted",
+     "request_id": "1",
+     "amount": "1000000000000000000000000",
+     "recipient": "alice.test.near",
+     "settlement": "S",
+     "native_failure": null,
+     "admission_seq": "1",
+     "callback": "CbSucceeded",
+     "principal_refund": null
+    },
+    {
+     "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+     "height": 50,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 50,
+      "receipts": [
+       {
+        "id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "parent": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 51,
+        "event": "admission"
+       },
+       {
+        "id": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "kind": "transfer",
+        "predecessor": "vault.owner.test.near",
+        "receiver": "missing.test.near",
+        "actions": [
+         "Transfer 2 NEAR"
+        ],
+        "status": {
+         "kind": "Failure",
+         "detail": "AccountDoesNotExist"
+        },
+        "block_height": 52,
+        "event": null
+       },
+       {
+        "id": "ExBvK33xwwLAQsrp9T5KBigqFGWmetFV4uHHY7qPD3tt",
+        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.0795135 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 52,
+        "event": null
+       },
+       {
+        "id": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+        "parent": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "kind": "principal_refund",
+        "predecessor": "system",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "Transfer 2 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 53,
+        "event": null
+       },
+       {
+        "id": "6tix7LVP3dtThbkPCieHHJ4eNPTK9y2AAagbk3Pvky4H",
+        "parent": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.000200864 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 53,
+        "event": null
+       },
+       {
+        "id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "parent": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "kind": "callback",
+        "predecessor": "vault.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall on_payment_result"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 53,
+        "event": "callback"
+       },
+       {
+        "id": "GX7M2pbRH5xt1hpAceRouubGsaw33nyy4VvNsMHX7zQV",
+        "parent": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.0207137 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 54,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "pay_2_missing_2near",
+      "intent": "Legitimate request to an allowlisted account that does not exist",
+      "expected": "Admitted; transfer fails; principal refunded; budget stays charged",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "2000000000000000000000000",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "missing.test.near",
+      "request_id": "2"
+     },
+     "decision": "Admitted",
+     "request_id": "2",
+     "amount": "2000000000000000000000000",
+     "recipient": "missing.test.near",
+     "settlement": "F",
+     "native_failure": "AccountDoesNotExist",
+     "admission_seq": "3",
+     "callback": "CbFailed",
+     "principal_refund": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7"
+    },
+    {
+     "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+     "height": 58,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 58,
+      "receipts": [
+       {
+        "id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "parent": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 59,
+        "event": "denial"
+       },
+       {
+        "id": "EiAUiLPZV3XihTgSfasNM2UomB2srXE6EepsMqkyNCUy",
+        "parent": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.100711 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 60,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "replay_id_1",
+      "intent": "Replay an already-paid request ID",
+      "expected": "Denied DuplicateRequest",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "1000000000000000000000000",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "alice.test.near",
+      "request_id": "1"
+     },
+     "decision": "Denied",
+     "reason": "DuplicateRequest",
+     "request_id": "1",
+     "amount": "1000000000000000000000000",
+     "recipient": "alice.test.near",
+     "seq": "5"
+    },
+    {
+     "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+     "height": 64,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 64,
+      "receipts": [
+       {
+        "id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "parent": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 65,
+        "event": "denial"
+       },
+       {
+        "id": "438fLCETnskRf7JszBUeJxdb1x3RgQ8Wq8mCMuV17FHH",
+        "parent": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.100713 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 66,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "over_per_request_cap",
+      "intent": "Exceed max_per_request by 1 yoctoNEAR",
+      "expected": "Denied AboveMaxPerRequest",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "2000000000000000000000001",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "alice.test.near",
+      "request_id": "3"
+     },
+     "decision": "Denied",
+     "reason": "AboveMaxPerRequest",
+     "request_id": "3",
+     "amount": "2000000000000000000000001",
+     "recipient": "alice.test.near",
+     "seq": "6"
+    },
+    {
+     "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+     "height": 70,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 70,
+      "receipts": [
+       {
+        "id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "parent": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 71,
+        "event": "denial"
+       },
+       {
+        "id": "9AXFndN8KxH3b21oFRVqTyiQMDKqMHNhS45Xx3Nz7y5M",
+        "parent": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.100712 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 72,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "exfiltrate_to_attacker",
+      "intent": "Pay an account outside the allowlist",
+      "expected": "Denied RecipientNotAllowed",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "1000000000000000000000000",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "attacker.test.near",
+      "request_id": "4"
+     },
+     "decision": "Denied",
+     "reason": "RecipientNotAllowed",
+     "request_id": "4",
+     "amount": "1000000000000000000000000",
+     "recipient": "attacker.test.near",
+     "seq": "7"
+    },
+    {
+     "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+     "height": 76,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 76,
+      "receipts": [
+       {
+        "id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "parent": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 77,
+        "event": "denial"
+       },
+       {
+        "id": "9qqq9RTLzVhP47z9rwEsTKQdzmktCiEqc4hiBGTp9qhS",
+        "parent": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.100713 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 78,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "refund_reuse_quota",
+      "intent": "Spend the refunded 2 NEAR again after the record quota is used",
+      "expected": "Denied RecordQuotaExhausted (budget charge is permanent)",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "amount": "2000000000000000000000000",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "recipient": "alice.test.near",
+      "request_id": "5"
+     },
+     "decision": "Denied",
+     "reason": "RecordQuotaExhausted",
+     "request_id": "5",
+     "amount": "2000000000000000000000000",
+     "recipient": "alice.test.near",
+     "seq": "8"
+    },
+    {
+     "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+     "height": 82,
+     "signer": "agent.owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+      "signer": "agent.owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 82,
+      "receipts": [
+       {
+        "id": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
+        "parent": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+        "kind": "vault_call",
+        "predecessor": "agent.owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall request_payment"
+        ],
+        "status": {
+         "kind": "Failure",
+         "detail": "MalformedInput"
+        },
+        "block_height": 83,
+        "event": null
+       },
+       {
+        "id": "34zjH712wSNW87K6xtBJeDcqtLWqw35cbVMbcfe3hA4A",
+        "parent": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "agent.owner.test.near",
+        "actions": [
+         "Transfer 0.100777 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 84,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "runner_intent": {
+      "label": "malformed_amount_exponent",
+      "intent": "Non-canonical amount \"1e24\"",
+      "expected": "Receipt failure before admission; no state change",
+      "source": "runner log (UNTRUSTED)"
+     },
+     "method": "request_payment",
+     "args": {
+      "request_id": "6",
+      "recipient": "alice.test.near",
+      "amount": "1e24",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC"
+     },
+     "decision": "ReceiptFailure",
+     "reason": "MalformedInput"
+    },
+    {
+     "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+     "height": 88,
+     "signer": "owner.test.near",
+     "receiver": "vault.owner.test.near",
+     "tree": {
+      "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+      "signer": "owner.test.near",
+      "receiver": "vault.owner.test.near",
+      "included_height": 88,
+      "receipts": [
+       {
+        "id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "parent": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+        "kind": "vault_call",
+        "predecessor": "owner.test.near",
+        "receiver": "vault.owner.test.near",
+        "actions": [
+         "FunctionCall freeze"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 89,
+        "event": "freeze"
+       },
+       {
+        "id": "EYnXAUpV1yQiHDmmvPLABaRRG1WZK6vbrQJSwkshHhNz",
+        "parent": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "kind": "gas_refund",
+        "predecessor": "system",
+        "receiver": "owner.test.near",
+        "actions": [
+         "Transfer 0.0307423 NEAR"
+        ],
+        "status": {
+         "kind": "Success"
+        },
+        "block_height": 90,
+        "event": null
+       }
+      ]
+     },
+     "source": "verifier (independent capture)",
+     "method": "freeze",
+     "args": {},
+     "decision": "Frozen"
+    }
+   ],
+   "offchain_rejections": [
+    {
+     "label": "agent_calls_freeze",
+     "intent": "Use the agent key outside its permission",
+     "expected": "Rejected: key restricted to request_payment",
+     "tx_hash": "4ixaqwyuvBPm36sCQ2Kg1EhZTguSqAGDVUWkGRnnXFnj",
+     "rpc_error": {
+      "TxExecutionError": {
+       "InvalidTxError": {
+        "InvalidAccessKeyError": {
+         "MethodNameMismatch": {
+          "method_name": "freeze"
+         }
+        }
+       }
+      }
+     },
+     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
+     "observed_by_reviewer_proxy": false
+    },
+    {
+     "label": "agent_direct_transfer",
+     "intent": "Use the agent key outside its permission",
+     "expected": "Rejected: function-call key cannot transfer",
+     "tx_hash": "FpCeUEgJWeKVZMPkYuZHGpQhq8KJ9MSEfXTNjnhBDsEP",
+     "rpc_error": {
+      "TxExecutionError": {
+       "InvalidTxError": {
+        "InvalidAccessKeyError": "RequiresFullAccess"
+       }
+      }
+     },
+     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
+     "observed_by_reviewer_proxy": false
+    },
+    {
+     "label": "agent_attaches_deposit",
+     "intent": "Use the agent key outside its permission",
+     "expected": "Rejected: function-call key cannot attach deposit",
+     "tx_hash": "BuTPKGJCDqJrKJfCzmhUp9DjY7SAagUzDVvHuWHJ8dHt",
+     "rpc_error": {
+      "TxExecutionError": {
+       "InvalidTxError": {
+        "InvalidAccessKeyError": "DepositWithFunctionCall"
+       }
+      }
+     },
+     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
+     "observed_by_reviewer_proxy": false
+    },
+    {
+     "label": "agent_calls_other_receiver",
+     "intent": "Use the agent key outside its permission",
+     "expected": "Rejected: key restricted to the vault",
+     "tx_hash": "EPGAe4jtJJBuBXWdGDsYt1ud41Yo8vMETSRtwWN13muP",
+     "rpc_error": {
+      "TxExecutionError": {
+       "InvalidTxError": {
+        "InvalidAccessKeyError": {
+         "ReceiverMismatch": {
+          "ak_receiver": "vault.owner.test.near",
+          "tx_receiver": "alice.test.near"
+         }
+        }
+       }
+      }
+     },
+     "source": "runner log + filter-proxy log (no on-chain trace by construction)",
+     "observed_by_reviewer_proxy": false
+    }
+   ],
+   "isolation": {
+    "checks": "PASS",
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused",
+    "forbidden_paths_visible": [],
+    "admin_methods_denied": {
+     "sandbox_patch_state": true,
+     "sandbox_fast_forward": true,
+     "adv_produce_blocks": true,
+     "client_config": true,
+     "network_info": true,
+     "query_view_access_key_list_allowed": false
+    },
+    "runner_methods_forwarded": [
+     "EXPERIMENTAL_changes",
+     "EXPERIMENTAL_genesis_config",
+     "EXPERIMENTAL_protocol_config",
+     "EXPERIMENTAL_tx_status",
+     "block",
+     "chunk",
+     "query",
+     "send_tx",
+     "status"
+    ],
+    "runner_methods_denied": [
+     "adv_produce_blocks",
+     "client_config",
+     "network_info",
+     "sandbox_fast_forward",
+     "sandbox_patch_state"
+    ]
+   },
+   "omission": {
+    "forged_verdicts": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "FAIL",
+     "scenario_coverage": "PASS"
+    },
+    "omitted_tx_hash": [
+     "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3"
+    ],
+    "recovered_receipts": [
+     "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+     "6tix7LVP3dtThbkPCieHHJ4eNPTK9y2AAagbk3Pvky4H",
+     "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+     "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+     "ExBvK33xwwLAQsrp9T5KBigqFGWmetFV4uHHY7qPD3tt",
+     "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+     "GX7M2pbRH5xt1hpAceRouubGsaw33nyy4VvNsMHX7zQV"
+    ],
+    "recovered_payment": [
+     {
+      "request_id": "2",
+      "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+      "admission_receipt": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+      "transfer_receipt": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+      "recipient": "missing.test.near",
+      "amount": "2000000000000000000000000",
+      "class": "F",
+      "native_failure": "AccountDoesNotExist",
+      "admission_block": "2txrom1hhYyva1m518ph7cPFqSGAzrHitJdHo9zxcggE",
+      "execution_block": "CtYwvgiHumdkSTGFXMCBpUkVfZnmkPfm4MCmVbedRiPP",
+      "callback_receipt": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+      "callback_outcome": "SuccessValue",
+      "callback_status_retained": "CbFailed",
+      "admission_seq": "3",
+      "principal_refund_receipt": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+      "principal_refund_block": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA",
+      "callback_seq": "4"
+     }
+    ],
+    "genuine_differences": []
+   },
+   "mutations": [
+    {
+     "name": "genesis_block_hash",
+     "rejected": true,
+     "issues": [
+      "WRONG_GENESIS"
+     ]
+    },
+    {
+     "name": "chain_id",
+     "rejected": true,
+     "issues": [
+      "WRONG_CHAIN"
+     ]
+    },
+    {
+     "name": "artifact_byte",
+     "rejected": true,
+     "issues": [
+      "WRONG_CONTRACT"
+     ]
+    },
+    {
+     "name": "vault_identity",
+     "rejected": true,
+     "issues": [
+      "MANDATE_IDENTITY"
+     ]
+    },
+    {
+     "name": "transfer_amount",
+     "rejected": true,
+     "issues": [
+      "TRANSFER_TERMS"
+     ]
+    },
+    {
+     "name": "transfer_outcome",
+     "rejected": true,
+     "issues": [
+      "FAKE_PRINCIPAL_REFUND"
+     ]
+    },
+    {
+     "name": "principal_refund_removed",
+     "rejected": true,
+     "issues": [
+      "PRINCIPAL_REFUND_MISSING_OR_EXTRA"
+     ]
+    },
+    {
+     "name": "principal_refund_amount",
+     "rejected": true,
+     "issues": [
+      "REFUND_PRINCIPAL_LINKAGE"
+     ]
+    },
+    {
+     "name": "produced_block_identity",
+     "rejected": true,
+     "issues": [
+      "BLOCK_PARENT"
+     ]
+    },
+    {
+     "name": "retained_record_amount",
+     "rejected": true,
+     "issues": [
+      "CHARGE_RECORDS"
+     ]
+    },
+    {
+     "name": "index_mapping",
+     "rejected": true,
+     "issues": [
+      "RECORD_INDEX"
+     ]
+    },
+    {
+     "name": "event_sequence",
+     "rejected": true,
+     "issues": [
+      "ADMISSION_EVENT"
+     ]
+    },
+    {
+     "name": "callback_data_mapping",
+     "rejected": true,
+     "issues": [
+      "CALLBACK_DEPENDENCY"
+     ]
+    },
+    {
+     "name": "charge_decrease_in_history",
+     "rejected": true,
+     "issues": [
+      "CHARGE_DECREASED"
+     ]
+    },
+    {
+     "name": "vault_access_key",
+     "rejected": true,
+     "issues": [
+      "VAULT_HAS_KEYS"
+     ]
+    },
+    {
+     "name": "extra_vault_outflow",
+     "rejected": true,
+     "issues": [
+      "ADMISSION_AUTHORITY_OR_MULTIPLE_TRANSFERS"
+     ]
+    },
+    {
+     "name": "node_side_chunk_omission",
+     "rejected": true,
+     "issues": [
+      "UNMATCHED_ADMISSIONS"
+     ]
+    },
+    {
+     "name": "failed_receipt_commits_state",
+     "rejected": true,
+     "issues": [
+      "FAILED_RECEIPT_COMMITTED_STATE"
+     ]
+    }
+   ],
+   "retention": {
+    "schema": "g1-independent/retention-compare/v1",
+    "run_id": "g1i-20261110T135044Z-a",
+    "excluded": [
+     "final_head (live head)",
+     "status except chain_id, genesis_hash, version, protocol_version"
+    ],
+    "fields_identical": {
+     "blocks": true,
+     "chunks": true,
+     "descriptor_sha256": true,
+     "genesis": true,
+     "genesis_block": true,
+     "graphs": true,
+     "history": true,
+     "initial_absence": true,
+     "mode": true,
+     "protocol": true,
+     "queries": true,
+     "root_blocks": true,
+     "schema": true,
+     "status": true
+    },
+    "all_identical": true,
+    "graphs_compared": 10,
+    "graphs_identical": 10,
+    "first_final_head": 112,
+    "later_final_head": 2111,
+    "first_capture_sha256": "a190c245112b25ccfc124ffa37f22f29007a86b6e5b9da805049a7d89cf05eca",
+    "later_capture_sha256": "fdad265093b7ed3e0dc62ebb6690db37eed5c6c72d2a00b59b99d65ee5c0d9b7",
+    "produced_blocks_after_q": 2000
+   },
+   "replay_check": {
+    "capture_sha256": "2520c12d897e6f50e71617f45386a99926b3580fe724f0f1899aef5122d3a29e",
+    "rpc_records": 562
+   },
+   "sources": {
+    "descriptor": "evidence/g1-independent/g1i-20261110T135044Z-a/reviewer-descriptor.json",
+    "summary": "evidence/g1-independent/g1i-20261110T135044Z-a/run-summary.json",
+    "raw_rpc": "evidence/g1-independent/g1i-20261110T135044Z-a/independent/rpc.jsonl.gz",
+    "independent_result": "evidence/g1-independent/g1i-20261110T135044Z-a/independent/result.json",
+    "runner_log": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/runner-log.json",
+    "isolation": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/isolation.json",
+    "forged_presentation": "evidence/g1-independent/g1i-20261110T135044Z-a/runner/forged-presentation.json",
+    "compare_forged": "evidence/g1-independent/g1i-20261110T135044Z-a/compare-forged.json",
+    "compare_genuine": "evidence/g1-independent/g1i-20261110T135044Z-a/compare-genuine.json",
+    "mutations": "evidence/g1-independent/g1i-20261110T135044Z-a/mutations.json",
+    "retention": "evidence/g1-independent/g1i-20261110T135044Z-a/retention-compare.json"
    }
   }
  ]

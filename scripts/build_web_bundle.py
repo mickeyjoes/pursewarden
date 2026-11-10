@@ -73,6 +73,17 @@ def status_of(o):
     return {"kind": "Success"}
 
 
+def isolation_from_logs(run_dir, iso):
+    """Recompute forwarded/denied runner methods from every reviewer filter-proxy log present."""
+    entries = []
+    for f in ("proxy-probe.jsonl", "proxy-submit.jsonl", "proxy-read.jsonl"):
+        p = run_dir / "runner" / f
+        if p.exists():
+            entries += [json.loads(x) for x in p.read_text().splitlines()]
+    return dict(iso, runner_methods_forwarded=sorted({e["method"] for e in entries if e.get("decision") == "forward"}),
+                runner_methods_denied=sorted({e["method"] for e in entries if e.get("decision") == "deny"}))
+
+
 def build_run(run_dir):
     run = run_dir.name
     d = read(run_dir / "reviewer-descriptor.json")
@@ -192,7 +203,7 @@ def build_run(run_dir):
         "ledger": rec["ledger"], "callback_observation": rec["callback_observation"],
         "events": rec["events"], "state_history": rec["state_history"],
         "timeline": timeline, "offchain_rejections": offchain,
-        "isolation": summary["isolation"],
+        "isolation": isolation_from_logs(run_dir, summary["isolation"]),
         "omission": {"forged_verdicts": cmp_forged["verdicts"],
                      "omitted_tx_hash": [i["tx_hash"] for i in omitted],
                      "recovered_receipts": omitted[0]["recovered_receipts"] if omitted else [],
@@ -214,8 +225,9 @@ def build_run(run_dir):
 
 def main():
     root = REPO / "evidence/g1-independent"
-    names = sys.argv[1:] or sorted(p.name for p in root.glob("g1i-*") if "-dev-" not in p.name
-                                   and (p / "run-summary.json").exists())
+    # Newest first: the most recent run (on the latest tooling) is the default view.
+    names = sys.argv[1:] or sorted((p.name for p in root.glob("g1i-*") if "-dev-" not in p.name
+                                    and (p / "run-summary.json").exists()), reverse=True)
     bundle = {"schema": "pursewarden-bundle/v1",
               "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through "
                       "the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",

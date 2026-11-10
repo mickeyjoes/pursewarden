@@ -258,7 +258,8 @@ def main():
                                 "forbidden_paths_visible": [p for p, v in iso["forbidden_paths_exist"].items() if v],
                                 "admin_methods_denied": {k: v.get("denied_by_filter") for k, v in
                                                          iso["admin_methods_via_filter"].items()}}
-        proxied = [json.loads(x) for x in (pub / "runner/proxy-submit.jsonl").read_text().splitlines()]
+        proxied = [json.loads(x) for f in ("proxy-probe.jsonl", "proxy-submit.jsonl")
+                   for x in (pub / "runner" / f).read_text().splitlines()]
         summary["isolation"]["runner_methods_forwarded"] = sorted({x["method"] for x in proxied if x.get("decision") == "forward"})
         summary["isolation"]["runner_methods_denied"] = sorted({x["method"] for x in proxied if x.get("decision") == "deny"})
 

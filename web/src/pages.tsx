@@ -114,7 +114,7 @@ export function Lab({ bundle }: { bundle: Bundle }) {
           <div className="tabs" role="group" aria-label="Select recorded run">
             {bundle.runs.map((r, i) => (
               <button key={r.run_id} aria-pressed={i === ri} onClick={() => { setRi(i); setOpen(null); }}>
-                Run {String.fromCharCode(65 + i)} · {r.node.chain_id}
+                Run {runLabel(r.run_id)} · {r.node.chain_id}
               </button>
             ))}
           </div>
@@ -228,6 +228,8 @@ export function Lab({ bundle }: { bundle: Bundle }) {
   );
 }
 
+const runLabel = (id: string) => id.split("-").pop()!.toUpperCase();
+
 function effects(t: TimelineItem): string {
   if (t.decision === "Admitted") {
     return t.settlement === "S"
@@ -264,7 +266,7 @@ export function Verify({ bundle }: { bundle: Bundle }) {
           </div>
           <div className="tabs" role="group" aria-label="Select recorded run">
             {bundle.runs.map((r, i) => (
-              <button key={r.run_id} aria-pressed={i === ri} onClick={() => setRi(i)}>Run {String.fromCharCode(65 + i)}</button>
+              <button key={r.run_id} aria-pressed={i === ri} onClick={() => setRi(i)}>Run {runLabel(r.run_id)}</button>
             ))}
           </div>
         </div>
@@ -369,7 +371,7 @@ export function Docs({ bundle }: { bundle: Bundle }) {
       <p className="lede">Three paths, from cheapest to strongest. None of them needs a wallet or funds. Everything runs on your machine.</p>
       {[
         ["1 · Re-verify the recorded runs (seconds, Python 3 stdlib only)",
-          "python3 -m unittest discover -s tests/evidence -t .   # 50 tests: synthetic + replay of real recorded RPC"],
+          "python3 -m unittest discover -s tests/evidence -t .   # 61 tests: synthetic, runner-boundary, replay of real recorded RPC"],
         ["2 · Rebuild the contract and compare bytes",
           `scripts/build-contract.sh   # expect sha256 ${run.artifact.wasm_sha256}\ngit diff --exit-code artifacts/`],
         ["3 · Run a fresh independent G1 experiment (~5 min, Linux + bubblewrap)",

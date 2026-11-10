@@ -1,0 +1,37 @@
+{"t": 1794322153.2815971, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794322153.288904, "bytes": 73, "method": "block", "decision": "forward", "response_bytes": 2640}
+{"t": 1794322153.2935345, "bytes": 618, "method": "send_tx", "decision": "forward", "response_bytes": 73, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"3\"}"}
+{"t": 1794322153.4065213, "bytes": 192, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 13605}
+{"t": 1794322154.3001137, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794322154.3037045, "bytes": 73, "method": "block", "decision": "forward", "response_bytes": 2686}
+{"t": 1794322154.308439, "bytes": 622, "method": "send_tx", "decision": "forward", "response_bytes": 73, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"7\"}"}
+{"t": 1794322154.4272153, "bytes": 193, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 14909}
+{"t": 1794322155.340296, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794322155.3466096, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2684}
+{"t": 1794322155.354163, "bytes": 619, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"11\"}"}
+{"t": 1794322155.4581726, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6499}
+{"t": 1794322156.1059208, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794322156.1128461, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2686}
+{"t": 1794322156.1222188, "bytes": 619, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"15\"}"}
+{"t": 1794322156.239848, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6506}
+{"t": 1794322156.8655665, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794322156.870451, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794322156.8771195, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"19\"}"}
+{"t": 1794322156.9906557, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6527}
+{"t": 1794322157.6246698, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794322157.629129, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2687}
+{"t": 1794322157.6353729, "bytes": 619, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"23\"}"}
+{"t": 1794322157.7564106, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6509}
+{"t": 1794322158.3821046, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794322158.386816, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2687}
+{"t": 1794322158.391831, "bytes": 591, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"27\"}"}
+{"t": 1794322158.5101, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 4598}
+{"t": 1794322159.1552675, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794322159.1590898, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794322159.164616, "bytes": 415, "method": "send_tx", "decision": "forward", "response_bytes": 269, "response": "{\"jsonrpc\":\"2.0\",\"error\":{\"name\":\"HANDLER_ERROR\",\"cause\":{\"info\":{},\"name\":\"INVALID_TRANSACTION\"},\"code\":-32000,\"message\":\"Server error\",\"data\":{\"TxExecutionError\":{\"InvalidTxError\":{\"InvalidAccessKeyError\":{\"MethodNameMismatch\":{\"method_name\":\"freeze\"}}}}}},\"id\":\"31\"}"}
+{"t": 1794322159.1689754, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794322159.1742187, "bytes": 383, "method": "send_tx", "decision": "forward", "response_bytes": 242, "response": "{\"jsonrpc\":\"2.0\",\"error\":{\"name\":\"HANDLER_ERROR\",\"cause\":{\"info\":{},\"name\":\"INVALID_TRANSACTION\"},\"code\":-32000,\"message\":\"Server error\",\"data\":{\"TxExecutionError\":{\"InvalidTxError\":{\"InvalidAccessKeyError\":\"RequiresFullAccess\"}}}},\"id\":\"33\"}"}
+{"t": 1794322159.1789274, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794322159.1836147, "bytes": 619, "method": "send_tx", "decision": "forward", "response_bytes": 247, "response": "{\"jsonrpc\":\"2.0\",\"error\":{\"name\":\"HANDLER_ERROR\",\"cause\":{\"info\":{},\"name\":\"INVALID_TRANSACTION\"},\"code\":-32000,\"message\":\"Server error\",\"data\":{\"TxExecutionError\":{\"InvalidTxError\":{\"InvalidAccessKeyError\":\"DepositWithFunctionCall\"}}}},\"id\":\"35\"}"}
+{"t": 1794322159.1877928, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794322159.1919959, "bytes": 611, "method": "send_tx", "decision": "forward", "response_bytes": 314, "response": "{\"jsonrpc\":\"2.0\",\"error\":{\"name\":\"HANDLER_ERROR\",\"cause\":{\"info\":{},\"name\":\"INVALID_TRANSACTION\"},\"code\":-32000,\"message\":\"Server error\",\"data\":{\"TxExecutionError\":{\"InvalidTxError\":{\"InvalidAccessKeyError\":{\"ReceiverMismatch\":{\"ak_receiver\":\"vault.owner.test.near\",\"tx_receiver\":\"alice.test.near\"}}}}}},\"id\":\"37\"}"}

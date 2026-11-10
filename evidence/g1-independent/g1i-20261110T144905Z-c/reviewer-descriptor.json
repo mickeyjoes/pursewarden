@@ -1,0 +1,60 @@
+{
+  "schema": "near-g1-reviewer/v1",
+  "network": "sandbox",
+  "chain_id": "test-chain-d8AyA",
+  "genesis_block_hash": "94T7M5B5WDdsiyF4L76sxG3xKLcQvJG72dnNT3ckaggt",
+  "genesis_rpc_sha256": "3947ee15f91dfd2eb2509cc2e244ec311ad41e350300cbfc28155a9b9ae9ed4c",
+  "node_version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  },
+  "protocol_config_sha256": "ec7b829c56fd1b730946880a74477000ea4b448d51d70760a089511e5823a2f6",
+  "h0_hash": "77S1Bj9xAVaLDDLCWeQGHgf1TWjVPubYvBkoiVYCVc8B",
+  "h0_height": 19,
+  "q_hash": "DYK42upq2kkTmYbCszPk8zKMWHX4wvrkhnjJzpHAQ6dE",
+  "q_height": 116,
+  "vault": "vault.owner.test.near",
+  "owner": "owner.test.near",
+  "agent": "agent.owner.test.near",
+  "recipients": [
+    "alice.test.near",
+    "missing.test.near"
+  ],
+  "policy_hash": "12P3YxD3vqaLsjPTqs5rHnFKkdV5yBtU8aZfgXtJn4m2",
+  "budget": "5000000000000000000000000",
+  "max_per_request": "2000000000000000000000000",
+  "expires_at_ns": "1794408550600799036",
+  "max_accepted_requests": 2,
+  "asset": "NativeNear",
+  "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "node_binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+  "node_config_sha256": "53b8465ff20856fce153607c77e47d193b435ffb28d06cf102dbdc0ba929e65a",
+  "genesis_file_sha256": "26b2772456506e1d9e9e5f2aa16700314ff00cfddaff75951a22572da2219cd3",
+  "max_blocks": 10000,
+  "max_roots": 1000,
+  "shard_ids": [
+    0
+  ],
+  "expected": {
+    "ledger": {
+      "C": "3000000000000000000000000",
+      "S": "1000000000000000000000000",
+      "F": "2000000000000000000000000",
+      "U": "0",
+      "headroom": "2000000000000000000000000",
+      "accepted_count": 2
+    },
+    "principal_refunds": 1,
+    "denial_reasons": [
+      "AboveMaxPerRequest",
+      "DuplicateRequest",
+      "RecipientNotAllowed",
+      "RecordQuotaExhausted"
+    ],
+    "failed_call_classes": [
+      "MalformedInput"
+    ]
+  }
+}
