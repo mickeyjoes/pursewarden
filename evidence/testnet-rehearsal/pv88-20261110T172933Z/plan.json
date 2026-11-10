@@ -1,0 +1,112 @@
+{
+  "accounts_must_not_exist": {
+    "pw-agent.test.near": true,
+    "pw-attacker.test.near": true,
+    "pw-missing.test.near": true,
+    "pw-payee.test.near": true,
+    "pw-vault.test.near": true
+  },
+  "artifact": "artifacts/near_agent_vault.wasm (c7c77263…, same as all sandbox evidence)",
+  "chain_id": "test-chain-COz4m",
+  "expected_final": {
+    "C": "0.8 NEAR",
+    "F": "0.4 NEAR",
+    "S": "0.4 NEAR",
+    "headroom": "0.2 NEAR",
+    "vault_keys": 0
+  },
+  "funds_left_locked": "The vault has no withdrawal path by design: about 2.3 testnet NEAR stays in pw-vault.",
+  "network": "sandbox",
+  "owner": "test.near",
+  "owner_balance_yocto": "1000000000000000000000000000000000",
+  "owner_exists": true,
+  "policy": {
+    "budget": "1000000000000000000000000",
+    "expiry": "+24 h from the final block",
+    "max_accepted_requests": 3,
+    "max_per_request": "400000000000000000000000",
+    "recipients": [
+      "pw-missing.test.near",
+      "pw-payee.test.near"
+    ]
+  },
+  "required_owner_balance_yocto": "3468990000000000000000000",
+  "reserve_total": "1568990000000000000000000",
+  "schema": "pursewarden-smoke-plan/v1",
+  "storage_bound_bytes": 155899,
+  "sufficient": true,
+  "transactions": [
+    {
+      "actions": [
+        "CreateAccount",
+        "Transfer 0.1 NEAR"
+      ],
+      "receiver": "pw-payee.test.near",
+      "signer": "test.near",
+      "why": "keyless allowlisted payee"
+    },
+    {
+      "actions": [
+        "CreateAccount",
+        "Transfer 0.5 NEAR",
+        "AddKey FunctionCall(vault, request_payment, 0.25 NEAR) x3"
+      ],
+      "receiver": "pw-agent.test.near",
+      "signer": "test.near",
+      "why": "restricted agent"
+    },
+    {
+      "actions": [
+        "CreateAccount",
+        "Transfer 2668990000000000000000000 yocto",
+        "DeployContract c7c77263",
+        "FunctionCall new(B=1, M=0.4, K=3)"
+      ],
+      "receiver": "pw-vault.test.near",
+      "signer": "test.near",
+      "why": "keyless vault in one batch"
+    },
+    {
+      "call": "request_payment id 1: 0.4 NEAR -> payee",
+      "expect": "Admitted, transfer succeeds",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "request_payment id 2: 0.4 NEAR -> pw-missing (does not exist)",
+      "expect": "Admitted, transfer fails, principal refunded, C stays 0.8",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "request_payment id 1 again",
+      "expect": "Denied DuplicateRequest",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "request_payment id 3: 0.5 NEAR",
+      "expect": "Denied AboveMaxPerRequest",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "request_payment id 4: 0.4 NEAR -> pw-attacker",
+      "expect": "Denied RecipientNotAllowed",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "request_payment id 5: 0.3 NEAR -> payee (C 0.8 + 0.3 > B 1; a slot is still free)",
+      "expect": "Denied BudgetExceeded",
+      "receiver": "pw-vault.test.near",
+      "signer": "pw-agent.test.near"
+    },
+    {
+      "call": "freeze",
+      "expect": "Frozen",
+      "receiver": "pw-vault.test.near",
+      "signer": "test.near"
+    }
+  ]
+}
