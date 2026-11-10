@@ -2,7 +2,7 @@
 
 | | |
 | --- | --- |
-| Date | 2026-11-10 (runs at 15:42–15:43 UTC; timebox started 15:36 UTC, G2 engineering finished at about 16:00 UTC) |
+| Date | 2026-11-10. The G2 timebox started at 15:36 UTC. The implementation commit `acd6ba6` is at 15:42 UTC, and the current evidence runs C/D at 15:52 UTC (commit times). |
 | Branch | `feat/g2-concurrency`, from G1 release `d948613`. The G1 baseline is unchanged: its tests and replay digests are identical. |
 | Network | **Local sandbox only** (nearcore 2.13.4, one fresh chain per run). No public network and no real funds. |
 | Protected artifact | `c7c77263…dd768`, the same as G1 |
