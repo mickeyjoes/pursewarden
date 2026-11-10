@@ -1,0 +1,271 @@
+{
+  "schema": "near-g1-mutations/v1",
+  "source": "REPLAY of genuine recorded RPC responses",
+  "baseline": {
+    "chain_evidence_checks": "PASS",
+    "computed_if_live": {
+      "safety": "PASS",
+      "settlement": "PASS",
+      "evidence": "PASS",
+      "scenario_coverage": "PASS"
+    },
+    "issues": [
+      "NOT_LIVE_ACQUISITION"
+    ]
+  },
+  "mutations": {
+    "genesis_block_hash": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "WRONG_GENESIS"
+      ]
+    },
+    "chain_id": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "WRONG_CHAIN"
+      ]
+    },
+    "artifact_byte": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "WRONG_CONTRACT"
+      ]
+    },
+    "vault_identity": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "MANDATE_IDENTITY"
+      ]
+    },
+    "transfer_amount": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "FAIL",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "TRANSFER_TERMS"
+      ]
+    },
+    "transfer_outcome": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "FAKE_PRINCIPAL_REFUND"
+      ]
+    },
+    "principal_refund_removed": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "INCONCLUSIVE",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "PRINCIPAL_REFUND_MISSING_OR_EXTRA"
+      ]
+    },
+    "principal_refund_amount": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "REFUND_PRINCIPAL_LINKAGE"
+      ]
+    },
+    "produced_block_identity": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "BLOCK_PARENT"
+      ]
+    },
+    "retained_record_amount": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "CHARGE_RECORDS"
+      ]
+    },
+    "index_mapping": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "RECORD_INDEX"
+      ]
+    },
+    "event_sequence": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "ADMISSION_EVENT"
+      ]
+    },
+    "callback_data_mapping": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "CALLBACK_DEPENDENCY"
+      ]
+    },
+    "charge_decrease_in_history": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "FAIL",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "CHARGE_DECREASED"
+      ]
+    },
+    "vault_access_key": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "FAIL",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "VAULT_HAS_KEYS"
+      ]
+    },
+    "extra_vault_outflow": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "ADMISSION_AUTHORITY_OR_MULTIPLE_TRANSFERS"
+      ]
+    },
+    "node_side_chunk_omission": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "INCONCLUSIVE",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "INCONCLUSIVE",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "UNMATCHED_ADMISSIONS"
+      ]
+    },
+    "failed_receipt_commits_state": {
+      "applied": true,
+      "rejected": true,
+      "chain_evidence_checks": "INCONCLUSIVE",
+      "verdicts": {
+        "safety": "FAIL",
+        "settlement": "INCONCLUSIVE",
+        "evidence": "FAIL",
+        "scenario_coverage": "INCONCLUSIVE"
+      },
+      "issues": [
+        "FAILED_RECEIPT_COMMITTED_STATE"
+      ]
+    }
+  },
+  "all_applied_and_rejected": true
+}

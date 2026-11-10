@@ -1,0 +1,167 @@
+{
+  "schema": "g1-independent/run/v1",
+  "run_id": "g1i-20261110T135407Z-b",
+  "network": "SANDBOX (local)",
+  "repo_commit": "e783daca20bafc2ca09c92b676e9e4ee3a74e34c",
+  "repo_dirty": false,
+  "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "actor_sha256": "59bf4681a37ff02c0e8e4950c8370a00dc9f69f7497f37c5e44f27cc24f4f849",
+  "node_binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+  "phases": {},
+  "node": {
+    "chain_id": "test-chain-6J4eY",
+    "genesis_hash": "5W2M11ZuHkYjckDap3aXRNQo4isPRqnPRAtiC32b4Z6c",
+    "genesis_block_hash": "5W2M11ZuHkYjckDap3aXRNQo4isPRqnPRAtiC32b4Z6c",
+    "version": {
+      "build": "2.13.4",
+      "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+      "rustc_version": "1.93.0",
+      "version": "2.13.4"
+    },
+    "protocol_version": 86,
+    "rpc": "http://127.0.0.1:3250"
+  },
+  "isolation": {
+    "checks": "PASS",
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused",
+    "forbidden_paths_visible": [],
+    "admin_methods_denied": {
+      "sandbox_patch_state": true,
+      "sandbox_fast_forward": true,
+      "adv_produce_blocks": true,
+      "client_config": true,
+      "network_info": true,
+      "query_view_access_key_list_allowed": false
+    },
+    "runner_methods_forwarded": [
+      "EXPERIMENTAL_tx_status",
+      "block",
+      "query",
+      "send_tx"
+    ],
+    "runner_methods_denied": [
+      "adv_produce_blocks",
+      "client_config",
+      "network_info",
+      "sandbox_fast_forward",
+      "sandbox_patch_state"
+    ]
+  },
+  "independent": {
+    "verdicts": {
+      "safety": "PASS",
+      "settlement": "PASS",
+      "evidence": "PASS",
+      "scenario_coverage": "PASS"
+    },
+    "chain_evidence_checks": "PASS",
+    "issues": [],
+    "metrics": {
+      "rpc_count": 562,
+      "response_bytes": 953488,
+      "elapsed_seconds": 0.5957
+    },
+    "capture_sha256": "9e4e224f873a66cf945f8086fd30f0ace4385dcfae0ebf7db42593a8787986e9",
+    "rpc_records_exported": 562
+  },
+  "omission": {
+    "genuine_presentation_differences": [],
+    "genuine_presentation_verdicts": {
+      "safety": "PASS",
+      "settlement": "PASS",
+      "evidence": "PASS",
+      "scenario_coverage": "PASS"
+    },
+    "forged_presentation_verdicts": {
+      "safety": "PASS",
+      "settlement": "PASS",
+      "evidence": "FAIL",
+      "scenario_coverage": "PASS"
+    },
+    "forged_differences": [
+      "OMITTED_ROOT",
+      "TAMPERED_CAPTURE_FIELD"
+    ],
+    "omitted_root_recovered": [
+      "3sY8eamk3Bj2L84ZhkPMq59DdbZB16qM643S2AG2tzKH"
+    ],
+    "omitted_root_matches_forger": true,
+    "recovered_payment": [
+      {
+        "request_id": "2",
+        "tx_hash": "3sY8eamk3Bj2L84ZhkPMq59DdbZB16qM643S2AG2tzKH",
+        "admission_receipt": "EPPkp7MyXuXNzWuR8dNqbRzj6ewdL3e15pc3zRvTKTv4",
+        "transfer_receipt": "8eaBrcSTeYURBLYUVZUz58wRuVLjBX9LA6Yqwt8zSStr",
+        "recipient": "missing.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "F",
+        "native_failure": "AccountDoesNotExist",
+        "admission_block": "9cYmFUi7Uixyvm4FVGhckerHAqf7rNkpLH9Fvq9pEpYu",
+        "execution_block": "3B2XJT5UWH5oEthTpQnRsskMwdytcCL5qX55NeRzZn4n",
+        "callback_receipt": "8qykaBEkfzvMvw3xGU5gsVkfN2WJewaKqCNWiB4YsmxJ",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbFailed",
+        "admission_seq": "3",
+        "principal_refund_receipt": "EyniEAcbF1mDomD8a8XcbYXEfNrCSZ9d5eeg83zC4Rni",
+        "principal_refund_block": "FQGRncUtr8TGf39SjcAmUucBDTnRS38bcNn8ZQXCqHVb",
+        "callback_observation": "CbFailed",
+        "callback_seq": "4"
+      }
+    ],
+    "recovered_principal_refunds": [
+      {
+        "tx_hash": "3sY8eamk3Bj2L84ZhkPMq59DdbZB16qM643S2AG2tzKH",
+        "receipt_id": "EyniEAcbF1mDomD8a8XcbYXEfNrCSZ9d5eeg83zC4Rni",
+        "parent_id": "8eaBrcSTeYURBLYUVZUz58wRuVLjBX9LA6Yqwt8zSStr",
+        "recipient": "vault.owner.test.near",
+        "amount": "2000000000000000000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "FQGRncUtr8TGf39SjcAmUucBDTnRS38bcNn8ZQXCqHVb"
+      }
+    ]
+  },
+  "mutations": {
+    "baseline_replay": "PASS",
+    "all_applied_and_rejected": true,
+    "count": 18
+  },
+  "retention": {
+    "q_height": 110,
+    "reacquired_at_final_height": 2111,
+    "produced_blocks_after_q": 2001,
+    "fields_identical": false,
+    "differing_fields": [
+      "status"
+    ],
+    "verdicts": {
+      "safety": "PASS",
+      "settlement": "PASS",
+      "evidence": "PASS",
+      "scenario_coverage": "PASS"
+    }
+  },
+  "elapsed_seconds": 270.9,
+  "log": [
+    "2026-11-10T13:54:14Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/scripts/sandbox-setup/start-node.sh g1i-20261110T135407Z-b",
+    "2026-11-10T13:54:15Z node test-chain-6J4eY genesis 5W2M11ZuHkYjckDap3aXRNQo4isPRqnPRAtiC32b4Z6c",
+    "2026-11-10T13:54:15Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-prepare --rpc http://127.0.0.1:3250 --node-home ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer/prepare.json",
+    "2026-11-10T13:54:18Z H0 21 A6HRGssyU483yRiYriDbvUWcTG7QaPz2u7rPd6HKxC2K (before any vault/agent construction)",
+    "2026-11-10T13:54:18Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-construct --rpc http://127.0.0.1:3250 --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer --runner-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/runner --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-integration/artifacts/near_agent_vault.wasm --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer/construct.json",
+    "2026-11-10T13:54:20Z filter proxy submit pid 1174187",
+    "2026-11-10T13:54:20Z $ bwrap --unshare-all --die-with-parent --new-session --clearenv --setenv HOME /runner --setenv PATH /usr/bin:/bin --ro-bind /usr /usr --symlink usr/lib /lib --symlink usr/lib64 /lib64 --symlink usr/bin /bin --proc /proc --dev /dev --tmpfs /tmp --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor /runner-bin/g1_actor --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/scripts/g1-independent /runner-scripts --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/packages /runner-pkg/packages --bind ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/runner /runner --chdir /runner /bin/sh -ec python3 -I /runner-scripts/sandbox_bridge.py /runner/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; python3 -I /runner-scripts/isolation_probe.py /runner/out/isolation.json 3250 ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer ~ ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/owner.key.json ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node/validator_key.json ~/Dev/Hackathons/NEAR/near-agent-vault-integration; /runner-bin/g1_actor runner-attack --rpc http://127.0.0.1:3030 --runner-dir /runner --out /runner/out/runner-log.json",
+    "2026-11-10T13:54:26Z filter proxy closed (runner ingress closed)",
+    "2026-11-10T13:54:26Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-freeze --rpc http://127.0.0.1:3250 --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer/freeze.json",
+    "2026-11-10T13:54:29Z Q 110 HwoYpHUiKshi3xua7KG166KE5MQArQWGKZzBaK9Vhx8y",
+    "2026-11-10T13:54:29Z $ /usr/bin/python3 -E -s -m packages.verifier --network sandbox --rpc http://127.0.0.1:3250 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer-descriptor.json --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-integration/artifacts/near_agent_vault.wasm --node-binary ~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox --node-config ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node/config.json --genesis-file ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node/genesis.json --out ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/independent",
+    "2026-11-10T13:54:30Z independent verdicts {'safety': 'PASS', 'settlement': 'PASS', 'evidence': 'PASS', 'scenario_coverage': 'PASS'}",
+    "2026-11-10T13:54:30Z filter proxy read pid 1175081",
+    "2026-11-10T13:54:30Z $ bwrap --unshare-all --die-with-parent --new-session --clearenv --setenv HOME /runner --setenv PATH /usr/bin:/bin --ro-bind /usr /usr --symlink usr/lib /lib --symlink usr/lib64 /lib64 --symlink usr/bin /bin --proc /proc --dev /dev --tmpfs /tmp --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor /runner-bin/g1_actor --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/scripts/g1-independent /runner-scripts --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/packages /runner-pkg/packages --bind ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/runner /runner --chdir /runner /bin/sh -ec python3 -I /runner-scripts/sandbox_bridge.py /runner/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; cd /runner-pkg && python3 -E -s -m packages.verifier collect --network sandbox --rpc http://127.0.0.1:3030 --descriptor /runner/descriptor.json --out /runner/out/presentation",
+    "2026-11-10T13:54:32Z filter proxy closed (runner ingress closed)",
+    "2026-11-10T13:54:32Z $ /usr/bin/python3 -E -s -m packages.verifier compare --capture ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/capture.json --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer-descriptor.json --presented ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/presented.json --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/compare-genuine.json",
+    "2026-11-10T13:54:32Z $ /usr/bin/python3 -E -s -m packages.verifier compare --capture ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/capture.json --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer-descriptor.json --presented ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/runner/forged-presentation.json --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/compare-forged.json",
+    "2026-11-10T13:54:32Z $ /usr/bin/python3 -E -s -m packages.verifier mutate --rpc-records ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/independent/rpc.jsonl.gz --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer-descriptor.json --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/mutations.json",
+    "2026-11-10T13:54:33Z waiting for final height 2110 (no fast-forward)",
+    "2026-11-10T13:58:44Z $ /usr/bin/python3 -E -s -m packages.verifier --network sandbox --rpc http://127.0.0.1:3250 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-20261110T135407Z-b/reviewer-descriptor.json --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-integration/artifacts/near_agent_vault.wasm --node-binary ~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox --node-config ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node/config.json --genesis-file ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node/genesis.json --out ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/retention",
+    "2026-11-10T13:58:45Z node 1169276 stopped; history kept at ~/.local/share/near-agent-vault-lab/g1-independent/g1i-20261110T135407Z-b/reviewer/node"
+  ]
+}

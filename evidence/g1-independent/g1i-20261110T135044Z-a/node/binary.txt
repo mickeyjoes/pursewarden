@@ -1,0 +1,10 @@
+binary_path=~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox
+binary_sha256=4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2
+tarball_url=https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore/Linux-x86_64/2.13.4/near-sandbox.tar.gz
+tarball_sha256=5690a4635172263cf026683f75965cac09dd916912584f12709974fed620163f
+binary_version=neard (release 2.13.4) (build 2.13.4) (commit 44f7ae6cd7ef08bab604e20a473bf77e35d4c993) (rustc 1.93.0) (min_protocol 83) (protocol 86) (db 49)
+binary_features=features: [default, dump_test_contract, json_rpc, near_dump_test_contract, rosetta_rpc, sandbox]
+rpc_addr=127.0.0.1:3240
+net_addr=127.0.0.1:24777
+epoch_length=100000
+started_utc=2026-11-10T13:50:44Z

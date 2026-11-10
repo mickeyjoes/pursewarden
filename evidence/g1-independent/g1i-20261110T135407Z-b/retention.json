@@ -1,0 +1,15 @@
+{
+  "q_height": 110,
+  "reacquired_at_final_height": 2111,
+  "produced_blocks_after_q": 2001,
+  "fields_identical": false,
+  "differing_fields": [
+    "status"
+  ],
+  "verdicts": {
+    "safety": "PASS",
+    "settlement": "PASS",
+    "evidence": "PASS",
+    "scenario_coverage": "PASS"
+  }
+}

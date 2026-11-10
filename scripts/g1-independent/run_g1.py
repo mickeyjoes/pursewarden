@@ -338,7 +338,12 @@ def main():
                  "--genesis-file", node_home / "genesis.json", "--out", ret)
         c1 = json.loads(cap_bytes)
         c2 = json.loads((ret / "independent-capture.json").read_text())
-        same = {k: canonical(c1[k]) == canonical(c2[k]) for k in c1 if k != "final_head"}
+        # final_head and the live status snapshot change over time; from status compare identity
+        # only (see retention_compare.py, which writes the authoritative comparison).
+        same = {k: (all(c1[k].get(x) == c2[k].get(x) for x in ("chain_id", "genesis_hash", "version",
+                                                                  "protocol_version"))
+                    if k == "status" else canonical(c1[k]) == canonical(c2[k]))
+                for k in c1 if k != "final_head"}
         r2 = json.loads((ret / "result.json").read_text())
         summary["retention"] = {"q_height": qh["height"], "reacquired_at_final_height": later["header"]["height"],
                                 "produced_blocks_after_q": later["header"]["height"] - qh["height"],

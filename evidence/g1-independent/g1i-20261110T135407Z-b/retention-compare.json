@@ -1,0 +1,31 @@
+{
+  "schema": "g1-independent/retention-compare/v1",
+  "run_id": "g1i-20261110T135407Z-b",
+  "excluded": [
+    "final_head (live head)",
+    "status except chain_id, genesis_hash, version, protocol_version"
+  ],
+  "fields_identical": {
+    "blocks": true,
+    "chunks": true,
+    "descriptor_sha256": true,
+    "genesis": true,
+    "genesis_block": true,
+    "graphs": true,
+    "history": true,
+    "initial_absence": true,
+    "mode": true,
+    "protocol": true,
+    "queries": true,
+    "root_blocks": true,
+    "schema": true,
+    "status": true
+  },
+  "all_identical": true,
+  "graphs_compared": 10,
+  "graphs_identical": 10,
+  "first_final_head": 112,
+  "later_final_head": 2112,
+  "first_capture_sha256": "9e4e224f873a66cf945f8086fd30f0ace4385dcfae0ebf7db42593a8787986e9",
+  "later_capture_sha256": "8e08e38f5a08499bdbe746340bcc3248cee79391355d12a6585008482b5b0b8b"
+}

@@ -1,0 +1,417 @@
+{
+  "schema": "near-g1-compare/v1",
+  "capture_sha256": "a190c245112b25ccfc124ffa37f22f29007a86b6e5b9da805049a7d89cf05eca",
+  "presented_sha256": "e5294fe23f114631263beaf3df38c0187d4d539bd9d66ef89a70651ae98c51bb",
+  "mode": "LIVE",
+  "verdicts": {
+    "safety": "PASS",
+    "settlement": "PASS",
+    "evidence": "PASS",
+    "scenario_coverage": "PASS"
+  },
+  "chain_evidence_checks": "PASS",
+  "issues": [],
+  "recovery": {
+    "root_ids": [
+      "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+      "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+      "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+      "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+      "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+      "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+      "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+      "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+      "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+      "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp"
+    ],
+    "payments": [
+      {
+        "request_id": "1",
+        "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "admission_receipt": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "transfer_receipt": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
+        "recipient": "alice.test.near",
+        "amount": "1000000000000000000000000",
+        "class": "S",
+        "native_failure": null,
+        "admission_block": "7QgsTtfL3jpPabTEZA5mnrZv7RvGYMDQAMck6oKaVu2B",
+        "execution_block": "9fbrwYeRRMjW6jHtM3TwERQzMLxNQi79RPFzRJNjBXMs",
+        "callback_receipt": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbSucceeded",
+        "admission_seq": "1",
+        "callback_seq": "2"
+      },
+      {
+        "request_id": "2",
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "admission_receipt": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "transfer_receipt": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "recipient": "missing.test.near",
+        "amount": "2000000000000000000000000",
+        "class": "F",
+        "native_failure": "AccountDoesNotExist",
+        "admission_block": "2txrom1hhYyva1m518ph7cPFqSGAzrHitJdHo9zxcggE",
+        "execution_block": "CtYwvgiHumdkSTGFXMCBpUkVfZnmkPfm4MCmVbedRiPP",
+        "callback_receipt": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "callback_outcome": "SuccessValue",
+        "callback_status_retained": "CbFailed",
+        "admission_seq": "3",
+        "principal_refund_receipt": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+        "principal_refund_block": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA",
+        "callback_seq": "4"
+      }
+    ],
+    "denials": [
+      {
+        "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+        "receipt_id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "request_id": "5",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000000",
+        "reason": "RecordQuotaExhausted",
+        "seq": "8",
+        "block_hash": "3FL48N58Wcde7XQNZLpEYXEVUv5SJSLD4HARto8yjPAE"
+      },
+      {
+        "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+        "receipt_id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "request_id": "3",
+        "recipient": "alice.test.near",
+        "amount": "2000000000000000000000001",
+        "reason": "AboveMaxPerRequest",
+        "seq": "6",
+        "block_hash": "7sM8JMgmPwqd9h4dCnsNpmUM1tEyNJy4HbRuwiMNnzTZ"
+      },
+      {
+        "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+        "receipt_id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "request_id": "4",
+        "recipient": "attacker.test.near",
+        "amount": "1000000000000000000000000",
+        "reason": "RecipientNotAllowed",
+        "seq": "7",
+        "block_hash": "CSNV71EdCAEkPGFjNxXoJff2ZSsxt7gN7QNFR5hafHa3"
+      },
+      {
+        "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+        "receipt_id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "request_id": "1",
+        "recipient": "alice.test.near",
+        "amount": "1000000000000000000000000",
+        "reason": "DuplicateRequest",
+        "seq": "5",
+        "block_hash": "4yoJG3eC1rPeuvrN9h4yKJbsCNhq4cDrVfPFo9JWgAxx"
+      }
+    ],
+    "failed_calls": [
+      {
+        "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+        "receipt_id": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
+        "predecessor": "agent.owner.test.near",
+        "method": "request_payment",
+        "class": "MalformedInput",
+        "block_hash": "7xHg228JEaJfNpXPCUPZu2SPvtAEoNYXH6h5JBt4yS9J"
+      }
+    ],
+    "other_vault_calls": [],
+    "freeze": [
+      {
+        "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+        "receipt_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "events": [
+          {
+            "event": "freeze",
+            "seq": 9,
+            "data": {
+              "seq": "9",
+              "vault": "vault.owner.test.near",
+              "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+              "charged": "3000000000000000000000000",
+              "accepted_count": 2
+            },
+            "receipt_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+            "block_hash": "5XZqAZEhYj3VEoQ9vpGhWoPJQTvQWbQL3Nv96p1Z3mDg"
+          }
+        ]
+      }
+    ],
+    "principal_refunds": [
+      {
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "receipt_id": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+        "parent_id": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "recipient": "vault.owner.test.near",
+        "amount": "2000000000000000000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA"
+      }
+    ],
+    "balance_refunds": [
+      {
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "receipt_id": "FPssFvNXEyHb2W3jYTXaQkuUzhdXNMFzsuiMY4Ef33c7",
+        "parent_id": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "recipient": "vault.owner.test.near",
+        "amount": "2000000000000000000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA"
+      }
+    ],
+    "gas_refunds": [
+      {
+        "tx_hash": "26syoH1hGZ5GzsKsRuxvQZCsumWEoRP7MDtk1caE86Pj",
+        "receipt_id": "9qqq9RTLzVhP47z9rwEsTKQdzmktCiEqc4hiBGTp9qhS",
+        "parent_id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "recipient": "agent.owner.test.near",
+        "amount": "100712543506820300000000",
+        "outcome": "SuccessValue",
+        "block_hash": "3DBExjjEf8goZJpuXxsz3EE1VNHvYBArkvnLf8DKjRuD"
+      },
+      {
+        "tx_hash": "37kn8pyZWoR78bqU61kPL55KkRaa98mZR3gFcGggzWYY",
+        "receipt_id": "HKaLdmUhoCJfZwJKcWftm8mQhUWbZux1nG276ETqD7Ax",
+        "parent_id": "CFFWxLqBMvezZmNiP8ZTQrnKNJdrmCCBjskHoWH1qju4",
+        "recipient": "owner.test.near",
+        "amount": "1137053004381200000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9KZd2bbUg9xjh2rsEYf6GYMraFgie1ZkkdNDXpYFsNSv"
+      },
+      {
+        "tx_hash": "3G8BzYqDDkK9FfTxGbmJdzvr6XkcTDoaAT42ARLpkgNN",
+        "receipt_id": "EYnXAUpV1yQiHDmmvPLABaRRG1WZK6vbrQJSwkshHhNz",
+        "parent_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "recipient": "owner.test.near",
+        "amount": "30742337142627000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "AXjSwhpuXVoXyiF45L9wPVKDrU1LqY2oesrJnrsNieaX"
+      },
+      {
+        "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "receipt_id": "3HHetNjAvxpxdzguopNWM4UvNPnkCnigjXPjtsAPcRSz",
+        "parent_id": "9uqhPoNSKt89UvqXy9UvaJrhWtmVQSrF8Az7oqRJeGUF",
+        "recipient": "agent.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "8c5CibJknfgx61J5gU7s9yRfn6aB1s4Zzpx9sBKFN8bG"
+      },
+      {
+        "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "receipt_id": "EAAdxqWdBEQzYY6PQHATnb5BrLuvp94NsHiXxyaG2emP",
+        "parent_id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "recipient": "agent.owner.test.near",
+        "amount": "20714014134837500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "5UENh4SmGTo7usyrnuRZYhKuAonR7jjDfVcabQpy86JL"
+      },
+      {
+        "tx_hash": "3qNLoc2hB65usvW5Zzt8UAbjPvbtRVZXkBva7aRczg9N",
+        "receipt_id": "64wXMhqxZJK23UpZcSfFdiS9A1GNuw9QaLtukmikNXsM",
+        "parent_id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "recipient": "agent.owner.test.near",
+        "amount": "79517042961285400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "9fbrwYeRRMjW6jHtM3TwERQzMLxNQi79RPFzRJNjBXMs"
+      },
+      {
+        "tx_hash": "3x817jPHnE5SRqsG2Xw3sNni9wFTz6gof4i6VVnRtCUj",
+        "receipt_id": "34zjH712wSNW87K6xtBJeDcqtLWqw35cbVMbcfe3hA4A",
+        "parent_id": "7MV5HNMB6RfQ27ydL1UPH6MtZAUbDouamqQzBbeYnDeC",
+        "recipient": "agent.owner.test.near",
+        "amount": "100776583908285500000000",
+        "outcome": "SuccessValue",
+        "block_hash": "2wnbqBjBz6WPL8ZvQovr86r8jzCcdLH3fEVYsBLVDkLs"
+      },
+      {
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "receipt_id": "6tix7LVP3dtThbkPCieHHJ4eNPTK9y2AAagbk3Pvky4H",
+        "parent_id": "A8xTtt12FHpQu53CMc6S3RZKNzhQTr2ZrfFG2FYKYPTJ",
+        "recipient": "agent.owner.test.near",
+        "amount": "200864306250000000000",
+        "outcome": "SuccessValue",
+        "block_hash": "6M7uS51Q2X7mFHefh5kneQe8Fd8f8qVo6jMYtgeMtrBA"
+      },
+      {
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "receipt_id": "GX7M2pbRH5xt1hpAceRouubGsaw33nyy4VvNsMHX7zQV",
+        "parent_id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "recipient": "agent.owner.test.near",
+        "amount": "20713660360936700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "DrV4E5ozbyv8AYvy4CU42U8PE6uoRiieQ7iU16zpQzuV"
+      },
+      {
+        "tx_hash": "CsVXLYPwwcNbrGHFocpGiCaMtXpWS5eduTXUZBaH6Ri3",
+        "receipt_id": "ExBvK33xwwLAQsrp9T5KBigqFGWmetFV4uHHY7qPD3tt",
+        "parent_id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "recipient": "agent.owner.test.near",
+        "amount": "79513487513987800000000",
+        "outcome": "SuccessValue",
+        "block_hash": "CtYwvgiHumdkSTGFXMCBpUkVfZnmkPfm4MCmVbedRiPP"
+      },
+      {
+        "tx_hash": "GNvHBVsnBqmzQQiK3ob6iE8zWrWCUD7Q7K5mmn2tMaBh",
+        "receipt_id": "BALKZpmVXHViEsFstAmH9qmBRPi7m2MZfdCZrKUmnVqK",
+        "parent_id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+        "recipient": "owner.test.near",
+        "amount": "110156235686067700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "HRDDsZ5VgKHJXaSo2mDNfFdjHz739tAgk496spb126X"
+      },
+      {
+        "tx_hash": "Gx4yNUojDNHb9R2n3hGxgFeLK1XdBxBVyVFU7k9u3hrJ",
+        "receipt_id": "438fLCETnskRf7JszBUeJxdb1x3RgQ8Wq8mCMuV17FHH",
+        "parent_id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "recipient": "agent.owner.test.near",
+        "amount": "100712627539414700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "3iDMukh9e2cKavE5HwxDx5rugZtobds9TZZFCuPb6hrF"
+      },
+      {
+        "tx_hash": "Hd61uBRKnSX9qzfDxGri9H23ZJZVdGu28yxPqZZm6UM",
+        "receipt_id": "9AXFndN8KxH3b21oFRVqTyiQMDKqMHNhS45Xx3Nz7y5M",
+        "parent_id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "recipient": "agent.owner.test.near",
+        "amount": "100712475936304700000000",
+        "outcome": "SuccessValue",
+        "block_hash": "GKvkcjVLfQkefr3AfwmWvkeLAZDauHRffmhWUPcWcZaF"
+      },
+      {
+        "tx_hash": "J3GXdcibpjV5buKiaQT3rN3KJhLzXgjBNTZZAab3UsVp",
+        "receipt_id": "EiAUiLPZV3XihTgSfasNM2UomB2srXE6EepsMqkyNCUy",
+        "parent_id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "recipient": "agent.owner.test.near",
+        "amount": "100711255569924400000000",
+        "outcome": "SuccessValue",
+        "block_hash": "J2coaYepwzMK9sGgJ8VmH5Xpib5m2n3uibu6wDxNQmkY"
+      }
+    ],
+    "events": [
+      {
+        "seq": 0,
+        "event": "init",
+        "receipt_id": "2Bbnd4CcqaMuZzG4yodAHTFqQ1XMznPpn9ZmfkdR4fGz",
+        "block_height": 32
+      },
+      {
+        "seq": 1,
+        "event": "admission",
+        "receipt_id": "5TsoUMHw5p9ZrdZRMjC49NvdLhXGShwk3qPQKTfDQgfb",
+        "block_height": 43
+      },
+      {
+        "seq": 2,
+        "event": "callback",
+        "receipt_id": "4HCuNwK2eKnSxSPjDdNqpSwzpqyWSeEeK72cFJjbnBC1",
+        "block_height": 45
+      },
+      {
+        "seq": 3,
+        "event": "admission",
+        "receipt_id": "62eqD182LTLi4KBzmSuWwM2yMZGHssHYSBtsCueNGGPE",
+        "block_height": 51
+      },
+      {
+        "seq": 4,
+        "event": "callback",
+        "receipt_id": "CW9Y19Z9ddEMurGNciTKBnrL8HxcBB1We5fazP1fuXJh",
+        "block_height": 53
+      },
+      {
+        "seq": 5,
+        "event": "denial",
+        "receipt_id": "6d6HqE3Q9Q6D1rTrttvVdW84e8rbbJqVHB3XcagnAM9Q",
+        "block_height": 59
+      },
+      {
+        "seq": 6,
+        "event": "denial",
+        "receipt_id": "44A8PGMHq8sCa9uE9ZsAPSx88ttRkVBy3c6srtUHduMP",
+        "block_height": 65
+      },
+      {
+        "seq": 7,
+        "event": "denial",
+        "receipt_id": "57psULs82dT7CLfkFYQ8hD36sYaSNxHtvkgnWk4dTz8E",
+        "block_height": 71
+      },
+      {
+        "seq": 8,
+        "event": "denial",
+        "receipt_id": "F49SG62ryxxdpSuHZtwRWtM5XhPm1M9cwpKX9t4miMEE",
+        "block_height": 77
+      },
+      {
+        "seq": 9,
+        "event": "freeze",
+        "receipt_id": "2J9LdE8driSdSZqoao5XXKvi4YJHcMfr61M74yf1kaPH",
+        "block_height": 89
+      }
+    ],
+    "state_history": {
+      "state_writes": 10,
+      "charged_series": [
+        "0",
+        "1000000000000000000000000",
+        "1000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000",
+        "3000000000000000000000000"
+      ],
+      "seq_series": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "records_written": [
+        1,
+        2
+      ],
+      "index_written": [
+        0,
+        1
+      ],
+      "code_change_representation": [
+        "wasm-bytes"
+      ]
+    },
+    "ledger": {
+      "C": "3000000000000000000000000",
+      "S": "1000000000000000000000000",
+      "F": "2000000000000000000000000",
+      "U": "0",
+      "headroom": "2000000000000000000000000",
+      "accepted_count": 2
+    },
+    "callback_observation": {
+      "cb_succeeded_amount": "1000000000000000000000000",
+      "cb_failed_amount": "2000000000000000000000000"
+    },
+    "attribution": {
+      "vault": "vault.owner.test.near",
+      "chain_id": "test-chain-oJOg4",
+      "genesis_block_hash": "FEtCmJuumRj2sNbmE4zaQQ7AwCn48AcZJRA7kHaHbgDN",
+      "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+      "policy_hash": "DfSCNzCNszKzL9T9wnQY6uWPSCEquHiApGbjZFFud2FC",
+      "h0": {
+        "hash": "E4SBrXbYfKsWdjHeknp83uFG4twpSzU8fK4Ma6Y9dwob",
+        "height": 21
+      },
+      "q": {
+        "hash": "J1WVzaRYLsBaNkCDzJPGRSu2WoVwcZaeh8vkbWbnRJmm",
+        "height": 110
+      }
+    }
+  }
+}
