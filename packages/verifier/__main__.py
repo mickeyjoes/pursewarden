@@ -171,9 +171,35 @@ def control_cmd(argv):
     return 0 if not result["issues"] else 1
 
 
+def inspect_smoke_cmd(argv):
+    """Read-only inspection of a smoke run (testnet or sandbox); never a completeness proof."""
+    import hashlib
+    from packages.verifier.inspect_smoke import inspect
+    p = argparse.ArgumentParser(prog="inspect-smoke")
+    p.add_argument("--network", required=True, choices=["sandbox", "testnet"])
+    p.add_argument("--rpc", required=True)
+    p.add_argument("--run", required=True, help="smoke_actor run output (runner-recorded transaction list)")
+    p.add_argument("--wasm", required=True)
+    p.add_argument("--out", required=True)
+    a = p.parse_args(argv)
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=False)
+    run = read_json(a.run)
+    source = Rpc(a.rpc, a.network, out / "rpc")
+    try:
+        result = inspect(source, run, hashlib.sha256(Path(a.wasm).read_bytes()).hexdigest())
+    except EvidenceError as exc:
+        result = {"result": "FAIL" if exc.verdict == "FAIL" else "INCONCLUSIVE", "issues": [{"code": exc.code, "detail": exc.detail}]}
+    result["metrics"] = source.metrics()
+    (out / "inspection.json").write_text(json.dumps(result, indent=2) + "\n")
+    print(json.dumps({k: result.get(k) for k in ("label", "result", "cut", "ledger", "issues")}, indent=2))
+    return 0 if result.get("result") == "PASS" else 1
+
+
 def main():
     argv = sys.argv[1:]
     commands = {"collect": collect_cmd, "compare": compare_cmd, "mutate": mutate_cmd, "control": control_cmd,
+                "inspect-smoke": inspect_smoke_cmd,
                 "export-rpc": lambda a: (print(export_rpc_records(*_export_args(a))), 0)[1]}
     if argv and argv[0] in commands:
         return commands[argv[0]](argv[1:])

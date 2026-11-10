@@ -1,0 +1,94 @@
+{
+  "schema": "pursewarden-smoke-inspection/v1",
+  "network": "sandbox",
+  "label": "SANDBOX SMOKE INSPECTION: runner-listed transactions re-read from the node; not an independent completeness proof",
+  "issues": [],
+  "cut": {
+    "q_height": 64,
+    "q_hash": "C6MTJGnRXDPw2TcC1vKJQKgqiyL4PLYAGFraEhygnrcJ",
+    "code_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+    "vault_keys": 0,
+    "policy_hash": "9gEf5tTuZSbZ9n6CpzvDKhxUYkyTsJjNUDK2DZN82FWM",
+    "charged": "800000000000000000000000",
+    "accepted_count": 2,
+    "seq": 9,
+    "frozen": true
+  },
+  "steps": [
+    {
+      "label": "create_payee",
+      "tx_hash": "D1QD3DoKMybYR763g7X7wJ1iDxAcXZkUNSJ39uGa8ppP",
+      "receipts": 2
+    },
+    {
+      "label": "create_agent",
+      "tx_hash": "BgTn1MgfwxJFMVQANJAg5Q3aP5qUXwAKqzni3CgWquf7",
+      "receipts": 2
+    },
+    {
+      "label": "create_vault",
+      "tx_hash": "BWRVhSehzY42cuHCchjV7Ew5KeZoWVUivooPfJjar1oq",
+      "receipts": 2
+    },
+    {
+      "label": "pay_1_payee",
+      "tx_hash": "CxQSt14uVfezXrtRHF9U1czLBVTNPo95oeUakh3ncnt2",
+      "receipts": 6,
+      "decision": "Admitted",
+      "native": "S"
+    },
+    {
+      "label": "pay_2_missing",
+      "tx_hash": "UVsV88gGVdDtSWgfQ4JDgyAihan4jcXPiwd3pBpv6yB",
+      "receipts": 7,
+      "decision": "Admitted",
+      "native": "F",
+      "native_failure": "AccountDoesNotExist",
+      "principal_refund": true
+    },
+    {
+      "label": "replay_1",
+      "tx_hash": "4LQridwhiAwPXwWsY3X68bgRKpoeYqzTPCW6eiG5JjKm",
+      "receipts": 2,
+      "decision": "Denied",
+      "reason": "DuplicateRequest"
+    },
+    {
+      "label": "over_cap",
+      "tx_hash": "YwqJcMNtT4hSP6UzhBy4UbPUGD5fEeqmZ2RDcgSXkNM",
+      "receipts": 2,
+      "decision": "Denied",
+      "reason": "AboveMaxPerRequest"
+    },
+    {
+      "label": "exfiltrate",
+      "tx_hash": "C1EJ8tHhPPBNGUWc95rMjbkeZYddj1bVFergyq7JuGU3",
+      "receipts": 2,
+      "decision": "Denied",
+      "reason": "RecipientNotAllowed"
+    },
+    {
+      "label": "budget_exceeded",
+      "tx_hash": "DnzDEZDs6C6WfESdcRVT8AvXMKmbLoZhKtJLszfULanY",
+      "receipts": 2,
+      "decision": "Denied",
+      "reason": "BudgetExceeded"
+    },
+    {
+      "label": "freeze",
+      "tx_hash": "81VmTa9qw426SdSeDJncTagUN9hGTMfsxmEpxYyUf7ZH",
+      "receipts": 2
+    }
+  ],
+  "ledger": {
+    "C": "800000000000000000000000",
+    "sum_records": "800000000000000000000000",
+    "headroom": "200000000000000000000000"
+  },
+  "result": "PASS",
+  "metrics": {
+    "rpc_count": 21,
+    "response_bytes": 290345,
+    "elapsed_seconds": 0.064
+  }
+}
