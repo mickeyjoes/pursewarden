@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Pursewarden: a NEAR vault that gives an AI agent a fixed, non-refillable spending budget, with an independent verifier that does not trust the agent's own report. Read-only replay of recorded local-sandbox runs." />
     <meta name="color-scheme" content="dark light" />
+    <!-- Static, read-only site: no third-party requests, no inline scripts, no forms. GitHub Pages
+         cannot set response headers, so the policy is declared here. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'" />
+    <meta name="referrer" content="no-referrer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pursewarden: your AI agent can spend, it can't overspend" />
+    <meta property="og:description" content="Keyless NEAR vault with a fixed budget, adversarially tested on a local sandbox: 8 concurrent requests vs a 5 NEAR budget, and an independent verifier that catches a hidden payment. Experimental, not audited." />
+    <meta name="twitter:card" content="summary" />
     <title>Pursewarden · Attack Lab</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='6' width='24' height='20' rx='4' fill='none' stroke='%236E9BFF' stroke-width='2.5'/%3E%3Cpath d='M10 14h12M10 19h7' stroke='%234ED8AB' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
   </head>

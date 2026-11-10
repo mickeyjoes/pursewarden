@@ -23,9 +23,10 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             Experimental prototype. Evidence comes from a local NEAR sandbox and is replayed here. Not audited. Not for real custody.
             Testnet and mainnet are not claimed.</p>
           <div className="cta">
-            <a className="btn primary" href="#/lab">Open the Attack Lab <ArrowRight aria-hidden /></a>
-            <a className="btn" href="#/verify"><FileSearch aria-hidden /> Watch the verifier catch a lie</a>
+            <a className="btn primary" href="#/tour/1">Take the 3-step tour <ArrowRight aria-hidden /></a>
+            <a className="btn" href="#/lab">Open the Attack Lab</a>
           </div>
+          {bundle.g2_runs?.[0] && <ProofStrip bundle={bundle} />}
         </div>
         <div className="card" aria-label="Recorded run summary">
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
@@ -570,5 +571,17 @@ function BurstTeaser({ bundle }: { bundle: Bundle }) {
       </div>
       <div className="cta"><a className="btn" href="#/burst">See the burst block by block <ArrowRight aria-hidden /></a></div>
     </section>
+  );
+}
+
+function ProofStrip({ bundle }: { bundle: Bundle }) {
+  const g = bundle.g2_runs[0];
+  const w = g.protected.pending_witness.filter((x) => x.witness).length;
+  return (
+    <ul className="proof-strip" aria-label="Headline results (local sandbox)">
+      <li><a href="#/tour/1"><strong>{near(g.protected.ledger.C)} vs {near(g.vulnerable.delivered_principal)} NEAR</strong><span>8 requests against a 5 NEAR budget</span></a></li>
+      <li><a href="#/tour/2"><strong>{w} of {g.protected.pending_witness.length}</strong><span>denials while transfers were in flight</span></a></li>
+      <li><a href="#/tour/3"><strong>1 hidden payment</strong><span>found by the verifier on its own</span></a></li>
+    </ul>
   );
 }

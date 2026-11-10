@@ -7,19 +7,25 @@ import { Moon, Sun } from "lucide-react";
 import { ProvenanceBar, provOf } from "./components";
 import { loadBundle, REPO_URL, type Bundle } from "./data";
 import { Burst, Docs, Lab, Landing, Verify } from "./pages";
+import { Tour } from "./tour";
 
-const ROUTES = { "/": "Overview", "/lab": "Attack Lab", "/burst": "Burst (G2)", "/verify": "Verifier", "/docs": "Reproduce" } as const;
+const ROUTES = { "/": "Overview", "/tour": "Tour", "/lab": "Attack Lab", "/burst": "Burst (G2)", "/verify": "Verifier", "/docs": "Reproduce" } as const;
 type Route = keyof typeof ROUTES;
 
-function useRoute(): Route {
-  const get = () => (location.hash.replace(/^#/, "") || "/") as Route;
-  const [r, setR] = useState<Route>(get);
+function useRoute(): [Route, number] {
+  const get = (): [Route, number] => {
+    const h = location.hash.replace(/^#/, "") || "/";
+    const m = h.match(/^\/tour(?:\/(\d+))?$/);
+    if (m) return ["/tour", Number(m[1] ?? 1)];
+    return [(h in ROUTES ? h : "/") as Route, 0];
+  };
+  const [r, setR] = useState<[Route, number]>(get);
   useEffect(() => {
     const on = () => { setR(get()); window.scrollTo(0, 0); };
     window.addEventListener("hashchange", on);
     return () => window.removeEventListener("hashchange", on);
   }, []);
-  return r in ROUTES ? r : "/";
+  return r;
 }
 
 function ThemeToggle() {
@@ -37,7 +43,7 @@ function ThemeToggle() {
 }
 
 function App() {
-  const route = useRoute();
+  const [route, step] = useRoute();
   const [bundle, setBundle] = useState<Bundle | null>(null);
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => { loadBundle().then(setBundle, (e) => setErr(String(e))); }, []);
@@ -52,14 +58,14 @@ function App() {
             Pursewarden <small>fixed-budget NEAR vaults for AI agents</small>
           </a>
           <nav className="nav" aria-label="Main">
-            {(Object.keys(ROUTES) as Route[]).map((r) => (
+            {(Object.keys(ROUTES) as Route[]).filter((r) => r !== "/tour").map((r) => (
               <a key={r} href={`#${r}`} aria-current={route === r ? "page" : undefined}>{ROUTES[r]}</a>
             ))}
           </nav>
           <ThemeToggle />
         </div>
       </header>
-      <ProvenanceBar info={!bundle ? null : route === "/burst" && bundle.g2_runs?.[0]
+      <ProvenanceBar info={!bundle ? null : (route === "/burst" || (route === "/tour" && step <= 2)) && bundle.g2_runs?.[0]
         ? { run_id: bundle.g2_runs[0].run_id, chain_id: bundle.g2_runs[0].node.chain_id, version: "2.13.4",
             digest: bundle.g2_runs[0].protected.replay_capture_sha256, digestTitle: "SHA-256 of the protected-vault capture rebuilt by replay" }
         : provOf(bundle.runs[0])} />
@@ -67,6 +73,7 @@ function App() {
         {err && <div className="callout bad" style={{ marginTop: 32 }}>Could not load evidence bundle: {err}</div>}
         {!bundle && !err && <p className="muted" style={{ paddingTop: 48 }}>Loading recorded evidence…</p>}
         {bundle && route === "/" && <Landing bundle={bundle} />}
+        {bundle && route === "/tour" && <Tour bundle={bundle} step={step} />}
         {bundle && route === "/lab" && <Lab bundle={bundle} />}
         {bundle && route === "/burst" && <Burst bundle={bundle} />}
         {bundle && route === "/verify" && <Verify bundle={bundle} />}

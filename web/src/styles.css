@@ -253,3 +253,49 @@ pre.raw { background: var(--bg); border: 1px solid var(--hairline); border-radiu
   .block { min-width: 0; }
   .nav a { white-space: nowrap; }
 }
+
+/* Guided tour */
+.dots { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.dots a { display: block; width: 28px; height: 6px; border-radius: 3px; background: var(--hairline); }
+.dots a[aria-current="step"] { background: var(--accent); }
+.tour-step h1 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.03em; max-width: 22ch; }
+.tour-step h1 span { color: var(--muted); }
+.tour-step .lede { margin: 16px 0 26px; }
+.tour-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--hairline); flex-wrap: wrap; }
+.verify-box { margin-top: 22px; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-l); padding: 16px 18px; }
+.verify-box pre { margin: 0; background: var(--bg); border: 1px solid var(--hairline); border-radius: var(--r-m); padding: 12px 14px; font: 12.5px/1.6 var(--mono); overflow-x: auto; }
+.verify-box .files { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 13px; }
+.verify-box .files a svg { vertical-align: -1px; }
+.duel { display: grid; gap: 18px; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-l); padding: 22px; position: relative; }
+.duel-row { display: grid; grid-template-columns: 230px 1fr 250px; gap: 18px; align-items: center; }
+.duel-label { display: flex; flex-direction: column; gap: 2px; font-size: 14px; }
+.duel-label span { color: var(--subtle); font-size: 12.5px; }
+.duel-bar { position: relative; height: 40px; background: var(--raised); border-radius: var(--r-m); border: 1px solid var(--hairline); }
+.duel-bar .fill { height: 100%; border-radius: var(--r-m); display: flex; align-items: center; padding: 0 12px; font: 650 13px var(--mono); color: #0E1116;
+  animation: grow .9s cubic-bezier(.2,.7,.2,1) both; transform-origin: left; }
+.duel-bar .fill.ok { background: var(--allow); }
+.budget-line { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--text); opacity: .8; }
+.duel-result { font-size: 13.5px; font-weight: 600; color: var(--allow); display: flex; gap: 6px; align-items: center; }
+.duel-result.bad { color: var(--deny); }
+.duel-result svg { width: 16px; height: 16px; flex: none; }
+.duel-axis { position: relative; height: 16px; margin-left: calc(230px + 18px); margin-right: calc(250px + 18px); font: 11.5px var(--mono); color: var(--subtle); }
+.duel-axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.duel-axis span:first-child { transform: none; left: 0; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .duel-bar .fill { animation: none; } }
+@media (max-width: 860px) {
+  .duel-row { grid-template-columns: 1fr; gap: 8px; }
+  .duel-axis { margin: 0; }
+}
+.flight { display: flex; align-items: stretch; gap: 14px; flex-wrap: wrap; }
+.flight-block { flex: 1 1 280px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--hairline)); border-radius: var(--r-m); padding: 12px; }
+.flight-block.later { border-color: var(--hairline); }
+.flight-block .bh { font: 600 11.5px var(--mono); color: var(--subtle); margin-bottom: 8px; }
+.flight-arrow { align-self: center; font-size: 26px; color: var(--subtle); }
+@media (max-width: 640px) { .flight-arrow { display: none; } }
+.proof-strip { list-style: none; padding: 0; margin: 22px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.proof-strip a { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--hairline); border-radius: var(--r-m); background: var(--surface); color: var(--text); }
+.proof-strip a:hover { text-decoration: none; border-color: var(--accent); }
+.proof-strip strong { font: 650 15px var(--mono); }
+.proof-strip span { font-size: 12.5px; color: var(--subtle); }
+@media (max-width: 640px) { .proof-strip { grid-template-columns: 1fr; } }
