@@ -12,9 +12,9 @@ Nothing in this file has been sent, posted or published. The rules were re-check
 ## 1. Owner checklist, in order
 
 1. Follow `docs/RELEASE_CHECKLIST.md`. Engineering items are verified; the owner items remain.
-2. Confirm the license. The MIT `LICENSE` file is a proposal ("The near-agent-vault-lab contributors"). Edit the copyright line if you want your name or organisation.
-3. Approve pushing `release/testnet-proof` and fast-forwarding `master` (commands in the readiness report). Then make the repository public.
-4. Hosted demo (recommended): Settings → Pages → Source: **GitHub Actions**, then Actions → `pages` → Run workflow. The URL will be `https://mickeyjoes.github.io/near-agent-vault-lab/`. Keep it up until at least 2026-11-18, ideally 2026-11-25. The custom domain `pursewarden.com` is unregistered; see `docs/DEPLOY.md`.
+2. License: MIT, "Copyright (c) 2026 The Pursewarden contributors" (confirmed). Edit the copyright line only if you want your name or organisation instead.
+3. Make the repository public: `https://github.com/mickeyjoes/pursewarden`. It was renamed from `near-agent-vault-lab`, and old links redirect.
+4. Hosted demo, in the same sitting: Settings → Pages → Source: **GitHub Actions**, then Actions → `pages` → Run workflow. The URL will be `https://mickeyjoes.github.io/pursewarden/`, which the README already links. Keep it up until at least 2026-11-18, ideally 2026-11-25. The custom domain `pursewarden.com` is unregistered; see `docs/DEPLOY.md`.
 5. Record the demo video (§4) and publish the X post (§5) yourself.
 6. Create the `hackathon-submission` tag on the final commit, push it, then fill in the payload (§6) and submit once.
 
@@ -31,18 +31,38 @@ Draft, 1,662 characters:
 
 **Recommendation: `["security", "agents"]`.** Use `["security"]` alone if you prefer the narrowest framing.
 
-## 4. Demo video (2:00) and recording instructions
+## 4. Demo video (2:00): storyboard
 
-Record from the hosted site (`https://mickeyjoes.github.io/near-agent-vault-lab/`) or a local preview (`cd web && npm ci && npm run build && npx vite preview --port 4173`). Use a 1440×900 window, dark theme and 100 % zoom. Keep the provenance chips visible (REPLAY · SANDBOX on the tour, TESTNET on the testnet page). The guided tour is the spine of the video: use the → key to advance.
+**Story.** Three proofs, each shown from recorded data and then checkable by the viewer:
+1. the budget holds under concurrency (G2);
+2. a hidden payment cannot be hidden from the verifier (G1);
+3. the same contract runs on public NEAR testnet.
 
-| Time | Screen | Voice-over |
-| --- | --- | --- |
-| 0:00–0:12 | Overview hero and proof strip | "AI agents need to pay for things. Give one a wallet key and it can spend everything. Pursewarden gives it a NEAR vault with a fixed budget. The agent's only key can *ask*, and the vault has no keys at all." |
-| 0:12–0:45 | Tour step 1: the 5 vs 17 NEAR bars | "A compromised agent fires eight 2 NEAR payment requests at once, from eight different keys, against a 5 NEAR budget. Our vault admits exactly two and stops at 5. A deliberately broken contract we wrote as a control counts only completed payments. It lets all eight through: 17 NEAR out of a 5 NEAR budget." |
-| 0:45–1:15 | Tour step 2: block #74 → #75 | "Here's why. All six denials happened in this block, while the two approved transfers hadn't even landed yet; they landed in the next block. Only 1 NEAR had actually settled. A balance-based check says yes. Pursewarden charges the budget the moment it approves, so it says no. The verifier proves this from receipts, and it refuses to count cases it can't order." |
-| 1:15–1:40 | Tour step 3: hidden vs recovered lists | "Don't trust the operator's report either. In this test, the operator hands over evidence with one failed payment removed and every checksum recomputed. The verifier was never told that transaction existed. It scans every block on its own node, finds it, and fails the bundle." |
-| 1:40–1:52 | Testnet page: the transaction table, then click "Read live from testnet" | "And it's on public testnet too: the same contract, keyless, every decision a public transaction. This reads its state live and it still matches." |
-| 1:52–2:00 | Terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 75 tests … OK` | "The adversarial results are sandbox evidence you can replay with one command. Experimental, not audited. Built at NEAR HACKATHON." |
+Every number below is from the committed evidence; say nothing that the screen does not show.
+
+**Setup.**
+- Record the hosted site (`https://mickeyjoes.github.io/pursewarden/`) or a local preview (`cd web && npm ci && npm run build && npx vite preview --port 4173`).
+- Use a 1440×900 browser window at 100 % zoom, dark theme, and export at 1080p.
+- Use a clean browser profile: no bookmarks bar, extensions, other tabs, notifications or personal accounts in view.
+- Keep the provenance bar visible. It reads REPLAY · SANDBOX on the tour and TESTNET on the testnet page.
+- Advance the tour with the → key. Before recording, click "Read live from testnet" once to warm the connection.
+- Keep the cursor still unless you are pointing at something.
+
+| Time | Screen and action | On-screen caption (lower third) | Voice-over (about 300 words in total) |
+| --- | --- | --- | --- |
+| 0:00–0:10 | Overview hero. Slow push toward "Your agent can spend. It can't overspend." | Pursewarden · built at NEAR HACKATHON | "Give an AI agent a wallet key and it can spend everything. Pursewarden gives it a NEAR vault with one fixed budget. The agent's only key can ask; the vault itself has no keys." |
+| 0:10–0:22 | Click **Take the 3-step tour**. Tour step 1 opens. | G2 · 8 requests × 2 NEAR · budget 5 NEAR | "Here's the attack. After one normal 1 NEAR payment, a compromised agent fires eight 2 NEAR requests at once, each from a different key, against a 5 NEAR budget." |
+| 0:22–0:42 | Step 1: point at the protected bar (5), then the fixture bar (17, +12). | Protected: 2 of 8 admitted, C = 5 = B · Settled-only fixture: 17 NEAR delivered | "Our vault admits exactly two and stops at five. For contrast, a deliberately broken contract we wrote ourselves, which only counts payments that have already settled, lets all eight through: 17 NEAR out of a 5 NEAR budget." |
+| 0:42–1:02 | → Step 2. Point at block #74 (six denials), then #75 (two transfers). | 6 of 6 denials while transfers were still in flight | "Why? All six denials executed in block 74. The two approved transfers hadn't landed yet; they ran in block 75. Only 1 NEAR had settled, so a balance check would say yes. Pursewarden charges the budget at approval, so it says no. The verifier proves this from the receipts, and refuses to count any case it can't order." |
+| 1:02–1:27 | → Step 3. Point at the struck-out row #55 on the left, then the recovered row on the right, then the callout. | G1 · operator hides a failed 2 NEAR payment → evidence FAIL | "Now don't trust the operator either. In this test the operator hands over evidence with one failed payment removed and every checksum recomputed. The verifier was never told that transaction existed. It scans every block and chunk on its own node, recovers the payment and its refund, and fails the bundle. Eighteen other tamperings are rejected too." |
+| 1:27–1:47 | Nav → **Testnet**. Scroll to the transaction table. Click **Read live from testnet**; the LIVE chip and the "yes" column appear. | Public NEAR testnet · pw-vault.pursewarden.testnet · 0 keys | "And it's not just a sandbox. The same contract, byte for byte, is live on public NEAR testnet with no keys. A payment, a failed payment that stays charged, then a replay, a cap overrun, an outsider and an over-budget request are all refused: each one a public transaction. This reads its state live, and it still matches." |
+| 1:47–2:00 | Terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 75 tests … OK`. End card: repository URL and demo URL. | github.com/mickeyjoes/pursewarden · experimental, not audited | "Every result replays from committed chain data with one command. Pursewarden: an agent that can spend, but can't overspend. Experimental and not audited. Built at NEAR HACKATHON." |
+
+**Do not say:**
+- that the testnet run proves concurrency or completeness (the sandbox results do that);
+- that the fixture is anyone else's code;
+- that the forged bundle was an observed attack (it is a test of the verifier);
+- anything about mainnet, audits or production custody.
 
 Optional B-roll, sped up: `python3 scripts/g2-independent/run_g2.py demo` (a fresh chain in about 25 s), or the Attack Lab trace with a receipt tree open.
 
@@ -55,15 +75,15 @@ Optional B-roll, sped up: `python3 scripts/g2-independent/run_g2.py demo` (a fre
 > 🔎 An independent verifier rebuilds every run from the chain and catches a report that hides a payment
 > 🌐 Also on NEAR testnet: https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet
 >
-> Sandbox evidence plus a testnet smoke test, not audited. Reproducible evidence: <REPO_URL>
+> Sandbox evidence plus a testnet smoke test, not audited. Reproducible evidence: https://github.com/mickeyjoes/pursewarden
 >
 > @NEARProtocol #NEARHackathon
 
-Attach the 2-minute video. Optional: @NearLegion @NearBuilders, and the Pages URL.
+Attach the 2-minute video. Optional: @NearLegion @NearBuilders, and the demo URL `https://mickeyjoes.github.io/pursewarden/`.
 
 ## 6. Submission payload template (do not send until confirmed)
 
-Every `<…>` value is yours to supply. Nothing is pre-filled with personal data. Generate `requestId` once (`uuidgen | tr A-Z a-z`) and reuse it on retries. Do not commit the filled payload.
+Every `<…>` value is yours to supply; they are deliberately left as placeholders. Nothing is pre-filled with personal data. Generate `requestId` once (`uuidgen | tr A-Z a-z`) and reuse it on retries. Do not commit the filled payload.
 
 ```json
 {
@@ -74,7 +94,7 @@ Every `<…>` value is yours to supply. Nothing is pre-filled with personal data
   "size": "<1 | 2 - 4 | 4 - 6 | 6 - 8 | 8+>",
   "tracks": ["security", "agents"],
   "nearAddress": "<your MAINNET payout account, e.g. name.near>",
-  "projectUrl": "https://github.com/mickeyjoes/near-agent-vault-lab",
+  "projectUrl": "https://github.com/mickeyjoes/pursewarden",
   "demoUrl": "<https://x.com/…/status/… of your demo post>",
   "idea": "<§2 text>",
   "consent": true

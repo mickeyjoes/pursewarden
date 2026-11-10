@@ -21,8 +21,8 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             An independent verifier rebuilds every effect from the chain, so the agent's own report doesn't have to be trusted.
           </p>
           <p className="qualifier"><AlertTriangle aria-hidden />
-            Experimental prototype. The main evidence comes from a local NEAR sandbox and is replayed here; a narrow smoke test also
-            ran on <a href="#/testnet">public testnet</a>. Not audited. Not for real custody. Mainnet is not claimed.</p>
+            <span>Experimental prototype. The main evidence comes from a local NEAR sandbox and is replayed here; a narrow smoke test also
+            ran on <a href="#/testnet">public testnet</a>. Not audited. Not for real custody. Mainnet is not claimed.</span></p>
           <div className="cta">
             <a className="btn primary" href="#/tour/1">Take the 3-step tour <ArrowRight aria-hidden /></a>
             <a className="btn" href="#/lab">Open the Attack Lab</a>

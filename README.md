@@ -1,15 +1,29 @@
 # Pursewarden: fixed-budget NEAR vaults for AI agents
 
+**[▶ Live demo](https://mickeyjoes.github.io/pursewarden/)** · **[3-step guided tour](https://mickeyjoes.github.io/pursewarden/#/tour/1)** · **[Testnet contract `pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)** · **[Reproduce it yourself](#try-it-do-x--see-y)**
+
 > **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. A narrow, owner-approved smoke test also ran on **public NEAR testnet** ([`pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)). Nothing runs on mainnet. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
+
+[![Eight concurrent 2 NEAR payment requests against a 5 NEAR budget. The protected vault admits 2 of 8 and stops at C = 5 NEAR = B; our deliberately vulnerable settled-only fixture admits all 8 and delivers 17 NEAR (12 over budget); a generous 100 NEAR control admits all 8. Below, block by block: six BudgetExceeded denials execute in block 74 while the two admitted transfers are still pending and only run in block 75.](docs/media/g2-burst.png)](https://mickeyjoes.github.io/pursewarden/#/burst)
+
+<sub>G2 concurrency, replayed from a recorded local-sandbox run: eight 2 NEAR requests at once against a 5 NEAR budget. The protected vault stops at exactly 5 NEAR. A settled-only design (our own teaching fixture) pays out 17.</sub>
 
 ## Start here (judges)
 
 | If you have… | Do | See |
 | --- | --- | --- |
-| 30 seconds | Open the hosted Attack Lab tour: `https://mickeyjoes.github.io/near-agent-vault-lab/#/tour/1` (once Pages is enabled), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
+| 30 seconds | Open the [hosted guided tour](https://mickeyjoes.github.io/pursewarden/#/tour/1), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
 | 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 75 tests … OK`, including replays of the real recorded chain data (sandbox and testnet) |
 | A browser | Open the [vault on testnet.nearblocks.io](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet), or the hosted page's `#/testnet` | The same artifact `c7c77263…` deployed keyless on public testnet: 10 public transactions, 6 vault decisions, all as planned |
 | 5 minutes | `python3 scripts/g2-independent/run_g2.py my-g2` (after `cargo build … --bin g2_actor`; step 6) | A fresh local chain reproduces the concurrency result end to end |
+
+### Screenshots
+
+| | |
+| --- | --- |
+| [![Overview page: the headline "Your agent can spend. It can't overspend.", a recorded-run card showing a 5 NEAR budget, 3 NEAR charged, 2 payments admitted and 9 rejected probes with SAFETY PASS, and three result tiles: 5 vs 17 NEAR, 6 of 6 denials while transfers were in flight, 1 hidden payment found.](docs/media/overview.png)](https://mickeyjoes.github.io/pursewarden/) | [![G1 verifier page: the runner's presented bundle, with the failed 2 NEAR payment at block 55 struck out and evidence FAIL, beside the reviewer's independent capture, which recovered that transaction from its own chunk scan, with evidence PASS. A note confirms the recovered request: 2 NEAR to missing.test.near, transfer failed with AccountDoesNotExist, principal refunded, 7 receipts.](docs/media/g1-verifier.png)](https://mickeyjoes.github.io/pursewarden/#/verify) |
+| **Overview.** The claim, the recorded G1 run and the headline results (local sandbox, replayed). | **G1 verifier.** A dishonest operator's bundle hides a failed payment. The verifier finds it on its own and fails the bundle. |
+| [![Public testnet proof page, labelled TESTNET: contract identity for pw-vault.pursewarden.testnet with code SHA-256 equal to the reviewed artifact, 0 access keys, a policy hash recomputed from raw state, frozen; the immutable mandate (budget 1 NEAR, 0.4 per request, 3 payments, two allowlisted recipients); a ledger of 0.4 delivered, 0.4 failed but charged, 0.2 headroom; and the 10 public transactions with explorer links: two admitted payments (one refunded), then DuplicateRequest, AboveMaxPerRequest, RecipientNotAllowed and BudgetExceeded denials, and a freeze.](docs/media/testnet-proof.png)](https://mickeyjoes.github.io/pursewarden/#/testnet) | **Public testnet proof.** The same artifact on NEAR testnet: 10 public transactions, every decision as planned, inspected from a public node. A narrow smoke test, not a completeness or concurrency result. |
 
 **Where things ran**
 
@@ -264,7 +278,7 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 | `evidence/g1/` | Agent A's original Oct 29 runner evidence. Its node history has since been pruned. |
 | `web/` | Attack Lab (Vite, React) |
 | `docs/` | Gate results (`G1_INDEPENDENT_RESULT.md`, `G2_RESULT.md`), `DEPLOY.md`, `TESTNET_SMOKE_PLAN.md`, review handoffs, `SUBMISSION.md`, `RELEASE_CHECKLIST.md` |
-| `reports/` | Independent Codex review reports and their reproductions |
+| `reports/` | Independent Codex review reports and their reproductions, kept as written. They predate the rename; their `github.com/mickeyjoes/near-agent-vault-lab` links redirect to this repository. |
 
 ## Timeline, provenance and disclosures
 
@@ -286,4 +300,6 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 
 ## License
 
-See [`LICENSE`](LICENSE).
+MIT, see [`LICENSE`](LICENSE). Third-party components keep their own licenses: Rust crates are MIT or Apache-2.0, `react` and `vite` are MIT, `lucide-react` is ISC, and the Geist fonts bundled into the web build are OFL-1.1.
+
+`contracts/vault/Cargo.toml` and `fixtures/vulnerable-settled-only/Cargo.toml` still say `license = "UNLICENSED"`, which predates the license decision. The repository's MIT `LICENSE` governs them too. The fields are left unchanged so those packages stay exactly as reviewed and recorded.

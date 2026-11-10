@@ -1,10 +1,10 @@
 # Release checklist (deadline 2026-11-14 23:59 UTC)
 
-Items marked ✅ are verified by the agent. Items marked ☐ are owner actions. None of the ☐ items has been done.
+Items marked ✅ are done and verified. Items marked ☐ are owner actions that have not been done yet. Final state: `docs/FINAL_PUBLICATION_HANDOFF.md`.
 
 ## Engineering
 
-- ✅ CI green at `d2dc2d2` (run 42850602121 and the branch run): evidence tests, web reproducibility and build, contract tests, **cross-machine WASM rebuild = `c7c77263…`**.
+- ✅ CI green on every pushed release commit, including the **cross-machine WASM rebuild = `c7c77263…`**: `d2dc2d2`, `7b69c0a`, `a87eee2` (runs 42894171563 and 42898838670). The current commit's run is in the handoff.
 - ✅ 75 evidence tests pass locally (including 5 replays of the public-testnet inspection). 12 contract tests pass. The web bundle regenerates byte-identically from committed raw RPC.
 - ✅ Independent reviews addressed: C1 (runner symlink import) fixed in `71a679c`; W1 (witness same-block ambiguity) fixed in `71dfc47`. Both review reports are committed under `reports/`.
 - ✅ Testnet smoke plan rehearsed on a local protocol-88 sandbox (testnet's nearcore): PASS.
@@ -12,12 +12,14 @@ Items marked ✅ are verified by the agent. Items marked ☐ are owner actions. 
 - ✅ Testnet page (`#/testnet`) with recorded proof and a click-to-read live viewer; the live read matches the recorded inspection.
 - ✅ Secret scan: every blob reachable from every ref checked against all real keys on disk, with no matches. The commit email and historical home-path strings are known and were accepted by the owner.
 - ✅ UI: all routes on desktop and mobile, dark and light; tour keyboard navigation; CSP with no violations; root and sub-path hosting; no console errors.
-- ☐ Push `release/testnet-proof` (local only; this round's mission required separate approval to push), then fast-forward `master` after CI is green on it.
+- ✅ `release/testnet-proof` pushed and `master` fast-forwarded after green CI (owner-approved).
+- ✅ Repository renamed `mickeyjoes/near-agent-vault-lab` → **`mickeyjoes/pursewarden`** while private. All branches and tags were preserved and old URLs redirect. Public-facing links were updated. The WASM's embedded source link still names the old URL (it is part of the protected artifact) and redirects.
+- ✅ Screenshots in `docs/media/` (Overview, G2 Burst, G1 Verifier, Public Testnet Proof) with alt text; the README leads with the G2 image and quick links.
 
 ## Publication (owner)
 
-1. ☐ **Make the repository public:** `gh repo edit mickeyjoes/near-agent-vault-lab --visibility public --accept-visibility-change-consequences`.
-2. ☐ **Enable Pages:** Settings → Pages → Source: GitHub Actions. Then `gh workflow run pages -R mickeyjoes/near-agent-vault-lab --ref master` and check `https://mickeyjoes.github.io/near-agent-vault-lab/#/tour/1`. The custom domain `pursewarden.com` is not registered; see `docs/DEPLOY.md` §B if you buy it.
+1. ☐ **Make the repository public:** `gh repo edit mickeyjoes/pursewarden --visibility public --accept-visibility-change-consequences`.
+2. ☐ **Enable Pages:** Settings → Pages → Source: GitHub Actions (or `gh api -X POST repos/mickeyjoes/pursewarden/pages -f build_type=workflow`). Then `gh workflow run pages -R mickeyjoes/pursewarden --ref master` and check `https://mickeyjoes.github.io/pursewarden/#/tour/1`. The custom domain `pursewarden.com` is not registered; see `docs/DEPLOY.md` §B if you buy it.
 3. ✅ **Testnet smoke**: done with owner approval (see Engineering).
 4. ☐ **Record the 2-minute video** (`docs/SUBMISSION.md` §4) from the hosted site or a local preview.
 5. ☐ **Post on X** with the video. It must say "built at NEAR HACKATHON" and tag @NEARProtocol and #NEARHackathon (`docs/SUBMISSION.md` §5).

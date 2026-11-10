@@ -70,7 +70,7 @@ export interface TestnetRun { run_id: string; mode: "REPLAY"; network: "TESTNET"
   explorer: string; sources: Record<string, string> }
 export interface Bundle { schema: string; note: string; runs: Run[]; g2_runs: G2Run[]; testnet_runs?: TestnetRun[] }
 
-export const REPO_URL = "https://github.com/mickeyjoes/near-agent-vault-lab";
+export const REPO_URL = "https://github.com/mickeyjoes/pursewarden";
 export const YOCTO = 10n ** 24n;
 
 export function near(yocto: string | bigint, digits = 2): string {

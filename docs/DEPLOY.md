@@ -16,15 +16,15 @@ No CSP violations were observed on any route, including the live viewer (headles
 
 Requires the repository to be **public**, because Pages on private repositories needs a paid plan.
 
-1. GitHub → repository → Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+1. GitHub → repository → Settings → Pages → Build and deployment → Source: **GitHub Actions**. Or: `gh api -X POST repos/mickeyjoes/pursewarden/pages -f build_type=workflow`.
 2. Actions → `pages` → **Run workflow** on `master`. Or from a terminal:
 
    ```bash
-   gh workflow run pages -R mickeyjoes/near-agent-vault-lab --ref master
-   gh run watch -R mickeyjoes/near-agent-vault-lab "$(gh run list -R mickeyjoes/near-agent-vault-lab --workflow pages --limit 1 --json databaseId --jq '.[0].databaseId')"
+   gh workflow run pages -R mickeyjoes/pursewarden --ref master
+   gh run watch -R mickeyjoes/pursewarden "$(gh run list -R mickeyjoes/pursewarden --workflow pages --limit 1 --json databaseId --jq '.[0].databaseId')"
    ```
 
-3. Open `https://mickeyjoes.github.io/near-agent-vault-lab/`. Check that the tour loads (`#/tour/1`) and that the provenance bar shows REPLAY · SANDBOX.
+3. Open `https://mickeyjoes.github.io/pursewarden/`. Check that the tour loads (`#/tour/1`) with REPLAY · SANDBOX in the provenance bar, and that `#/testnet` shows TESTNET and its "Read live from testnet" button returns matching values.
 
 Keep it online until at least 2026-11-18, ideally 2026-11-25 (hackathon FAQ Q-012).
 
@@ -46,7 +46,7 @@ If you register it:
 3. Set the custom domain on the repository (Settings → Pages → Custom domain), or:
 
    ```bash
-   gh api -X PUT repos/mickeyjoes/near-agent-vault-lab/pages -f cname=pursewarden.com
+   gh api -X PUT repos/mickeyjoes/pursewarden/pages -f cname=pursewarden.com
    ```
 
    With GitHub Actions deployments a `CNAME` file in the artifact is ignored and not needed. The repository setting is what counts.
