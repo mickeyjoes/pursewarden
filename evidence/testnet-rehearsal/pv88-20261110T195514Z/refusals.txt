@@ -1,0 +1,5 @@
+wrong_wasm_plan: refused: Error: refusing: --wasm sha256 541b3e9daa09b20bf85fa273e5cbd3e80185aa4ec298e765db87742b70138a53 is not the reviewed artifact c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768
+wrong_network: refused: Error: refusing: --network testnet but node reports chain_id "test-chain-49yCL"
+non_loopback_rpc: refused: Error: RPC must be loopback (use scripts/testnet/https_rpc_forwarder.py for testnet)
+owner_key_wrong-account: refused: Error: owner key file is for "someone-else.near", not test.near
+owner_key_wrong-public: refused: Error: owner key file: the secret key does not match its public_key

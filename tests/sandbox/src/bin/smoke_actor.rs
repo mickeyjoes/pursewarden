@@ -35,6 +35,11 @@ const KEY_ALLOWANCE: u128 = NEAR / 4;
 const RESERVE_MARGIN: u128 = 10_000_000_000_000_000_000_000;
 const STATE_ENTRY_MAX: u64 = 5 + 1024 + 40;
 const PER_ADMISSION: u64 = 128;
+/// Owner-approved ceiling on everything the owner account spends, gas included (3.5 testnet NEAR).
+const SPEND_CAP: u128 = 3500 * MILLI;
+const OWNER_TXS: u64 = 4;
+/// Generous per-transaction gas bound for the owner's transactions (the largest attaches 100 Tgas).
+const OWNER_GAS_BOUND_TGAS: u64 = 400;
 const ARTIFACT_SHA256: &str = "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768";
 const EXPECT: [(&str, &str, &str); 6] = [("pay_1_payee", "Admitted", "native transfer succeeds"),
     ("pay_2_missing", "Admitted", "native transfer fails"), ("replay_1", "Denied", "DuplicateRequest"),
@@ -178,15 +183,47 @@ async fn plan(m: &HashMap<String, String>) -> Result<Value> {
     }))
 }
 
-async fn exec(rpc: &Rpc, key: &Key, receiver: &str, actions: Vec<near_primitives::action::Action>, label: &str) -> Result<Value> {
-    let sent = sign_and_send(rpc, key, receiver, actions, label).await?;
-    let mut out = json!({"label": label, "tx_hash": sent.hash, "signer": sent.sender, "receiver": sent.receiver});
-    match &sent.submit {
-        Err(e) => out["validation_rejected"] = e.clone(),
-        Ok(_) => out["final"] = rpc.tx_final(&sent.hash, &sent.sender).await?,
+/// Signs and submits once, then waits for FINAL by hash. It never re-signs and never returns an error
+/// once something may have been broadcast; problems are recorded in the returned JSON instead.
+async fn exec(rpc: &Rpc, key: &Key, receiver: &str, actions: Vec<near_primitives::action::Action>, label: &str) -> Value {
+    let sent = match sign_and_send(rpc, key, receiver, actions, label).await {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("[smoke] {label}: not sent ({e})");
+            return json!({"label": label, "not_sent": e.to_string()});
+        }
+    };
+    let mut out = json!({"label": label, "tx_hash": sent.hash, "signer": sent.sender, "receiver": sent.receiver, "nonce": sent.nonce});
+    let poll = match &sent.submit {
+        Err(e) if e["cause"]["name"] == "INVALID_TRANSACTION" => {
+            out["validation_rejected"] = e.clone();
+            false
+        }
+        Err(e) => {
+            out["uncertain_submit"] = e.clone();
+            true
+        }
+        Ok(r) => {
+            out["submit"] = r.clone();
+            true
+        }
+    };
+    if poll {
+        for attempt in 1..=3 {
+            match rpc.tx_final(&sent.hash, &sent.sender).await {
+                Ok(f) => {
+                    out["final"] = f;
+                    break;
+                }
+                Err(e) => {
+                    eprintln!("[smoke] {label}: polling attempt {attempt} by hash failed: {e}");
+                    out[format!("poll_error_{attempt}")] = json!(e.to_string());
+                }
+            }
+        }
     }
-    eprintln!("[smoke] {label}: {}", if out.get("final").is_some() { "FINAL" } else { "rejected at validation" });
-    Ok(out)
+    eprintln!("[smoke] {label} {}: {}", sent.hash, if out.get("final").is_some() { "FINAL" } else { "NOT FINAL (stopping)" });
+    out
 }
 
 async fn run(m: &HashMap<String, String>) -> Result<()> {
@@ -213,13 +250,23 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
     }
     let wasm = artifact(m)?;
     let (_s, r_total) = reserve(wasm.len() as u64);
+    let gas_price: u128 = rpc.call("gas_price", json!([null])).await?["gas_price"].as_str()
+        .and_then(|g| g.parse().ok()).ok_or_else(|| anyhow!("gas_price unavailable"))?;
+    let sent_total: u128 = p["owner_sends_yocto"].as_str().and_then(|v| v.parse().ok()).ok_or_else(|| anyhow!("plan"))?;
+    let worst = sent_total + u128::from(OWNER_TXS * OWNER_GAS_BOUND_TGAS * TGAS) * gas_price;
+    // Enforced on testnet. A local sandbox's genesis gas price is higher, so there it is only reported.
+    if network == "testnet" && worst >= SPEND_CAP {
+        bail!("refusing: worst-case owner spend {worst} yocto at gas price {gas_price} is not below the approved cap {SPEND_CAP}");
+    }
+    eprintln!("[smoke] gas price {gas_price}; worst-case owner spend {worst} yocto < cap {SPEND_CAP}");
     let recipients = [n.missing.as_str(), n.payee.as_str()];
     let keys: Vec<Key> = (0..AGENT_KEYS).map(|_| Key::from_secret(&n.agent, SecretKey::from_random(KeyType::ED25519))).collect();
     let mut out = json!({"schema": "pursewarden-smoke-run/v1", "network": network, "chain_id": chain, "plan": p,
         "artifact_sha256": ARTIFACT_SHA256, "owner": n.owner, "owner_public_key": owner.public_key(), "vault": n.vault,
         "agent": n.agent, "recipients": recipients, "budget": B.to_string(), "max_per_request": M.to_string(),
         "max_accepted_requests": K, "agent_public_keys": keys.iter().map(|k| k.public_key()).collect::<Vec<_>>(),
-        "trust": "Runner-recorded transaction list (the inspector re-reads every hash from the node)."});
+        "trust": "Runner-recorded transaction list (the inspector re-reads every hash from the node).",
+        "gas_price_at_start": gas_price.to_string(), "worst_case_owner_spend_yocto": worst.to_string(), "spend_cap_yocto": SPEND_CAP.to_string()});
     let mut txs: Vec<Value> = vec![];
     let stop = |out: &mut Value, txs: &[Value], why: String| -> anyhow::Error {
         out["transactions"] = json!(txs);
@@ -230,7 +277,7 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
         anyhow!("STOPPED: {why}")
     };
     let ok_first = |t: &Value| t.get("final").is_some_and(|f| { let tv = TxView::new(f.clone()); tv.is_success(&tv.first_receipt_id()) });
-    let t = exec(&rpc, &owner, &n.payee, vec![act::create_account(), act::transfer(100 * MILLI)], "create_payee").await?;
+    let t = exec(&rpc, &owner, &n.payee, vec![act::create_account(), act::transfer(100 * MILLI)], "create_payee").await;
     txs.push(t.clone());
     if !ok_first(&t) {
         return Err(stop(&mut out, &txs, "create_payee did not succeed".into()));
@@ -239,21 +286,24 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
     for k in &keys {
         a.push(act::add_fc_key(k.near_public_key(), &n.vault, &["request_payment"], KEY_ALLOWANCE));
     }
-    let t = exec(&rpc, &owner, &n.agent, a, "create_agent").await?;
+    let t = exec(&rpc, &owner, &n.agent, a, "create_agent").await;
     txs.push(t.clone());
     if !ok_first(&t) {
         return Err(stop(&mut out, &txs, "create_agent did not succeed".into()));
     }
-    let now_ns = json_u64(&rpc.final_block().await?["header"]["timestamp_nanosec"]);
+    let now_ns = match rpc.final_block().await {
+        Ok(b) => json_u64(&b["header"]["timestamp_nanosec"]),
+        Err(e) => return Err(stop(&mut out, &txs, format!("could not read the final block for the expiry: {e}"))),
+    };
     let expires = now_ns + 24 * 3600 * 1_000_000_000;
     let init = json!({"agent": n.agent, "budget": B.to_string(), "max_per_request": M.to_string(),
         "allowed_recipients": recipients, "expires_at_ns": expires.to_string(), "max_accepted_requests": K.to_string()});
     let create = exec(&rpc, &owner, &n.vault, vec![act::create_account(), act::transfer(B + r_total + 100 * MILLI),
-        act::deploy(&wasm), act::call("new", &init, 100, 0)], "create_vault").await?;
+        act::deploy(&wasm), act::call("new", &init, 100, 0)], "create_vault").await;
     txs.push(create.clone());
     out["expires_at_ns"] = json!(expires.to_string());
     let Some(fin) = create.get("final").cloned() else {
-        return Err(stop(&mut out, &txs, "vault creation rejected at validation".into()));
+        return Err(stop(&mut out, &txs, "create_vault did not reach FINAL".into()));
     };
     let tv = TxView::new(fin);
     let Some(ph) = tv.success_json(&tv.first_receipt_id()).and_then(|v| v.as_str().map(|s| s.to_string())) else {
@@ -269,7 +319,7 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
     let steps = [req("1", &n.payee, M), req("2", &n.missing, M), req("1", &n.payee, M), req("3", &n.payee, 500 * MILLI),
                  req("4", &n.attacker, M), req("5", &n.payee, 300 * MILLI)];
     for (i, (args, (label, want, detail))) in steps.iter().zip(EXPECT).enumerate() {
-        let t = exec(&rpc, &keys[i % AGENT_KEYS], &n.vault, vec![act::call("request_payment", args, 100, 0)], label).await?;
+        let t = exec(&rpc, &keys[i % AGENT_KEYS], &n.vault, vec![act::call("request_payment", args, 100, 0)], label).await;
         txs.push(t.clone());
         let fin = t.get("final").cloned().unwrap_or(Value::Null);
         let tv = TxView::new(fin.clone());
@@ -283,7 +333,7 @@ async fn run(m: &HashMap<String, String>) -> Result<()> {
             return Err(stop(&mut out, &txs, format!("{label}: expected {want} / {detail}, observed {got:?}")));
         }
     }
-    let t = exec(&rpc, &owner, &n.vault, vec![act::call("freeze", &json!({}), 30, 0)], "freeze").await?;
+    let t = exec(&rpc, &owner, &n.vault, vec![act::call("freeze", &json!({}), 30, 0)], "freeze").await;
     txs.push(t.clone());
     if !ok_first(&t) {
         return Err(stop(&mut out, &txs, "freeze did not succeed".into()));
