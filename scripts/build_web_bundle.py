@@ -269,6 +269,59 @@ def build_g2(run_dir):
                         "fixture_source": "fixtures/vulnerable-settled-only/src/lib.rs"}}
 
 
+def build_testnet(run_dir):
+    """Public testnet smoke: re-derive the inspection by replaying its committed raw RPC records."""
+    from packages.verifier.inspect_smoke import inspect
+    run = read(run_dir / "run.json")
+    prov = read(run_dir / "provenance.json")
+    records = load_rpc_records(run_dir / "inspection/rpc")
+    node = ReplayNode(records)
+    res = inspect(node, run, prov["artifact_sha256"])
+    committed = read(run_dir / "inspection/inspection.json")
+    committed.pop("metrics", None)
+    assert res == committed, "testnet inspection does not replay to the committed result"
+    assert res["result"] == "PASS" and not res["issues"], res["issues"]
+    status = node.call("status", {})
+    after = read(run_dir / "after.json")["_summary"]
+    mandate = loads(bytes(node.call("query", {"request_type": "call_function", "account_id": run["vault"],
+                    "method_name": "get_mandate", "args_base64": "e30=", "block_id": res["cut"]["q_hash"]})["result"]))
+    steps = []
+    for t, st in zip(run["transactions"], res["steps"]):
+        assert t["label"] == st["label"] and t["tx_hash"] == st["tx_hash"]
+        g = node.call("EXPERIMENTAL_tx_status", {"tx_hash": t["tx_hash"], "sender_account_id": t["signer"], "wait_until": "FINAL"})
+        assert g["transaction"]["signer_id"] == t["signer"] and g["transaction"]["receiver_id"] == t["receiver"]
+        args = None
+        for a in g["transaction"]["actions"]:
+            if isinstance(a, dict) and "FunctionCall" in a and a["FunctionCall"]["method_name"] == "request_payment":
+                args = loads(decode64(a["FunctionCall"]["args"]))
+        steps.append({k: v for k, v in {"label": t["label"], "tx_hash": t["tx_hash"], "signer": t["signer"], "receiver": t["receiver"],
+                      "decision": st.get("decision"), "reason": st.get("reason"), "native": st.get("native"),
+                      "native_failure": (st.get("native_failure") or {}).get("kind") if isinstance(st.get("native_failure"), dict) else st.get("native_failure"),
+                      "principal_refund": st.get("principal_refund"), "receipts": st["receipts"],
+                      "request_id": args and args["request_id"], "amount": args and args["amount"],
+                      "recipient": args and args["recipient"]}.items() if v is not None})
+    return {"run_id": run_dir.name, "mode": "REPLAY", "network": "TESTNET", "label": res["label"],
+            "node": {"chain_id": status["chain_id"], "version": status["version"]["version"],
+                     "protocol_version": status["protocol_version"]},
+            "tool_commit": prov["tool_commit"], "artifact_sha256": prov["artifact_sha256"],
+            "accounts": {"owner": run["owner"], "vault": run["vault"], "agent": run["agent"],
+                         "payee": run["recipients"][1], "missing": run["recipients"][0],
+                         "attacker": "pw-attacker." + run["owner"]},
+            "policy": {"budget": run["budget"], "max_per_request": run["max_per_request"],
+                       "max_accepted_requests": run["max_accepted_requests"], "recipients": run["recipients"],
+                       "expires_at_ns": run["expires_at_ns"], "policy_hash": run["policy_hash"]},
+            "cut": res["cut"], "ledger": dict(res["ledger"], S=mandate["cb_succeeded_amount"], F=mandate["cb_failed_amount"],
+                                              U=mandate["callback_unconfirmed"]),
+            "agent_keys": len(run["agent_public_keys"]), "steps": steps, "rpc_records": len(records),
+            "owner_spend": {"source": "after.json: read-only snapshot, not part of the replayed inspection",
+                            "total": after["owner_total_spend_yocto"], "transfers": after["owner_transfers_yocto"],
+                            "gas": after["owner_gas_yocto"], "cap": run["spend_cap_yocto"]},
+            "explorer": prov["explorer"],
+            "sources": {"readme": f"evidence/testnet-smoke/{run_dir.name}/README.md",
+                        "run": f"evidence/testnet-smoke/{run_dir.name}/run.json",
+                        "inspection": f"evidence/testnet-smoke/{run_dir.name}/inspection/inspection.json"}}
+
+
 def main():
     root = REPO / "evidence/g1-independent"
     # Newest first: the most recent run (on the latest tooling) is the default view.
@@ -276,11 +329,14 @@ def main():
                                     and (p / "run-summary.json").exists()), reverse=True)
     bundle = {"schema": "pursewarden-bundle/v1",
               "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through "
-                      "the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",
+                      "the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs (runs, g2_runs) and of "
+                      "one public TESTNET smoke inspection (testnet_runs).",
               "runs": [build_run(root / n) for n in names],
               "g2_runs": [build_g2(p) for p in sorted((REPO / "evidence/g2-independent").glob("g2i-*"), reverse=True)
                           if "-dev-" not in p.name and (p / "run-summary.json").exists()
-                          and not (p / "SUPERSEDED").exists()]}
+                          and not (p / "SUPERSEDED").exists()],
+              "testnet_runs": [build_testnet(p) for p in sorted((REPO / "evidence/testnet-smoke").glob("tn-*"), reverse=True)
+                               if (p / "provenance.json").exists() and not (p / "SUPERSEDED").exists()]}
     out = REPO / "web/public/bundle.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(bundle, indent=1, sort_keys=False) + "\n"

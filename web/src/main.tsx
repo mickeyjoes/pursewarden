@@ -7,9 +7,10 @@ import { Moon, Sun } from "lucide-react";
 import { ProvenanceBar, provOf } from "./components";
 import { loadBundle, REPO_URL, type Bundle } from "./data";
 import { Burst, Docs, Lab, Landing, Verify } from "./pages";
+import { Testnet } from "./testnet";
 import { Tour } from "./tour";
 
-const ROUTES = { "/": "Overview", "/tour": "Tour", "/lab": "Attack Lab", "/burst": "Burst (G2)", "/verify": "Verifier", "/docs": "Reproduce" } as const;
+const ROUTES = { "/": "Overview", "/tour": "Tour", "/lab": "Attack Lab", "/burst": "Burst (G2)", "/verify": "Verifier", "/testnet": "Testnet", "/docs": "Reproduce" } as const;
 type Route = keyof typeof ROUTES;
 
 function useRoute(): [Route, number] {
@@ -65,7 +66,10 @@ function App() {
           <ThemeToggle />
         </div>
       </header>
-      <ProvenanceBar info={!bundle ? null : (route === "/burst" || (route === "/tour" && step <= 2)) && bundle.g2_runs?.[0]
+      <ProvenanceBar info={!bundle ? null : route === "/testnet" && bundle.testnet_runs?.[0]
+        ? { run_id: bundle.testnet_runs[0].run_id, chain_id: bundle.testnet_runs[0].node.chain_id, version: bundle.testnet_runs[0].node.version,
+            note: `inspected at final block #${bundle.testnet_runs[0].cut.q_height}`, network: "TESTNET" }
+        : (route === "/burst" || (route === "/tour" && step <= 2)) && bundle.g2_runs?.[0]
         ? { run_id: bundle.g2_runs[0].run_id, chain_id: bundle.g2_runs[0].node.chain_id, version: "2.13.4",
             digest: bundle.g2_runs[0].protected.replay_capture_sha256, digestTitle: "SHA-256 of the protected-vault capture rebuilt by replay" }
         : provOf(bundle.runs[0])} />
@@ -77,6 +81,7 @@ function App() {
         {bundle && route === "/lab" && <Lab bundle={bundle} />}
         {bundle && route === "/burst" && <Burst bundle={bundle} />}
         {bundle && route === "/verify" && <Verify bundle={bundle} />}
+        {bundle && route === "/testnet" && <Testnet bundle={bundle} />}
         {bundle && route === "/docs" && <Docs bundle={bundle} />}
       </main>
       <footer>

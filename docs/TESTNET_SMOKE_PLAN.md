@@ -1,6 +1,6 @@
 # Testnet smoke demonstration: plan for owner approval
 
-**Status: prepared and rehearsed locally on testnet's exact protocol version. NOT broadcast.** Nothing is sent to testnet until the owner approves. Mainnet is out of scope; the tooling refuses `chain_id: mainnet`.
+**Status: EXECUTED on public testnet with explicit owner approval: PASS** (`evidence/testnet-smoke/tn-20261110T195542Z/`). It was rehearsed first on testnet's exact protocol version. Total owner spend: 3.2925 testnet NEAR, under the approved 3.5 cap. Mainnet is out of scope; the tooling refuses `chain_id: mainnet`.
 
 ## Purpose
 

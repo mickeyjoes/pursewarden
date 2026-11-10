@@ -1,13 +1,14 @@
 # Pursewarden: fixed-budget NEAR vaults for AI agents
 
-> **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. Nothing here is deployed to testnet or mainnet: a testnet smoke is prepared and rehearsed, but not broadcast. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
+> **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. A narrow, owner-approved smoke test also ran on **public NEAR testnet** ([`pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)). Nothing runs on mainnet. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
 
 ## Start here (judges)
 
 | If you have… | Do | See |
 | --- | --- | --- |
 | 30 seconds | Open the hosted Attack Lab tour: `https://mickeyjoes.github.io/near-agent-vault-lab/#/tour/1` (once Pages is enabled), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
-| 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 70 tests … OK`, including replays of the real recorded chain data |
+| 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 75 tests … OK`, including replays of the real recorded chain data (sandbox and testnet) |
+| A browser | Open the [vault on testnet.nearblocks.io](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet), or the hosted page's `#/testnet` | The same artifact `c7c77263…` deployed keyless on public testnet: 10 public transactions, 6 vault decisions, all as planned |
 | 5 minutes | `python3 scripts/g2-independent/run_g2.py my-g2` (after `cargo build … --bin g2_actor`; step 6) | A fresh local chain reproduces the concurrency result end to end |
 
 **Where things ran**
@@ -16,7 +17,7 @@
 | --- | --- |
 | Local sandbox (nearcore 2.13.4, protocol 86) | **All adversarial evidence**: G1 (3 committed evidence runs plus the independent reviewer's run), G2 concurrency (2 current evidence runs, 2 superseded, plus the reviewer's run), omission recovery, 18 tamperings, runner isolation. Every committed run has its raw RPC capture for replay. |
 | Local sandbox on testnet's protocol (nearcore 2.14.0-rc.5, protocol 88) | The testnet smoke plan, rehearsed unchanged: **PASS** (`evidence/testnet-rehearsal/`) |
-| NEAR testnet | **Prepared, not broadcast.** It needs owner approval and a funded testnet account ([plan](docs/TESTNET_SMOKE_PLAN.md)) |
+| NEAR testnet (protocol 88) | **Smoke test, PASS** (`tn-20261110T195542Z`, [report](evidence/testnet-smoke/tn-20261110T195542Z/README.md)). The owner-approved 10-transaction plan from `pursewarden.testnet`. Code = `c7c77263`, 0 vault keys, one payment, one failed payment plus refund, replay, cap, allowlist and budget denials, freeze. Inspected from the public node. **Not** a completeness, concurrency or adversarial-runner result. |
 | NEAR mainnet | None. Tooling refuses `chain_id: mainnet`. |
 
 ## What it is
@@ -66,7 +67,7 @@ No wallet, account or funds are needed for any step.
 python3 -m unittest discover -s tests/evidence -t .
 ```
 
-**See:** `Ran 70 tests … OK`.
+**See:** `Ran 75 tests … OK`.
 - 43 synthetic adversarial tests run against a fake RPC oracle.
 - 9 G2 tests replay the recorded concurrency runs:
   - the protected vault admits 2 of 8, with 6 pending-transfer witnesses;
@@ -78,6 +79,7 @@ python3 -m unittest discover -s tests/evidence -t .
   - the exact ledger: C = 3, S = 1, F = 2, U = 0 NEAR, headroom 2;
   - recovery of the omitted transaction root;
   - that 18 tamperings of the genuine responses are all rejected.
+- 5 tests replay the recorded **public testnet** inspection: it must reproduce the committed PASS exactly, while a flipped denial reason, an added vault key, a `mainnet` chain ID or a wrong artifact must not pass.
 
 ### 2. Re-run the verifier comparison by hand (under 1 s)
 
@@ -156,6 +158,17 @@ python3 scripts/g2-independent/run_g2.py my-g2 --rpc-port 3290 --net-port 24827
 - `generous`: nine admitted;
 - `vulnerable`: `"delivered_principal"` of 17 NEAR, `"overspend"` of 12 NEAR, and eight admissions in a single block.
 
+### 7. Re-inspect the public testnet smoke (read-only, needs internet)
+
+```bash
+python3 scripts/testnet/https_rpc_forwarder.py --port 3399 --upstream https://rpc.testnet.near.org &
+# wait for: "testnet forwarder http://127.0.0.1:3399 -> https://rpc.testnet.near.org (chain_id testnet)"
+python3 -m packages.verifier inspect-smoke --network testnet --rpc http://127.0.0.1:3399 \
+  --run evidence/testnet-smoke/tn-20261110T195542Z/run.json --wasm artifacts/near_agent_vault.wasm --out /tmp/reinspect
+```
+
+**See:** `"result": "PASS"`, with code SHA-256 `c7c77263…`, `"vault_keys": 0`, C = 0.8 NEAR = the sum of records, and `"frozen": true`. Public nodes keep recent data only; after a few days, re-reading the transactions needs an archival RPC endpoint. The hosted page's **Testnet** view can also read the vault's current state live from your browser.
+
 ## What the recorded runs show
 
 Three fresh sandbox chains were used: `test-chain-d8AyA` (run C, after the review fix), `test-chain-6J4eY` and `test-chain-oJOg4`. All three used the same artifact and the same scenario.
@@ -184,12 +197,29 @@ Final cut: count = 2, C = 3, S = 1, F = 2, U = 0, headroom = 2 NEAR. "Headroom" 
 
 The six denials all executed in one block, while the two admitted transfers were still unexecuted (next block) and only 1 NEAR had settled. A settled-only check would have admitted all of them, and that is exactly what the fixture did. This native-pending witness is computed from the captured receipts. Details: [`docs/G2_RESULT.md`](docs/G2_RESULT.md).
 
+### Public testnet smoke (`tn-20261110T195542Z`)
+
+The same protected artifact, deployed with explicit owner approval from `pursewarden.testnet` (protocol 88). The owner spent 3.2925 testnet NEAR against an approved cap of 3.5. None of it can be withdrawn, by design. Every transaction is public:
+
+| # | Step | Result | Transaction |
+| --- | --- | --- | --- |
+| 1–3 | Create the keyless payee, the agent (3 FunctionCall keys) and the keyless vault (`c7c77263`, `new` returns the policy hash, which matched the independent encoder) | FINAL | [create_vault](https://testnet.nearblocks.io/txns/BQfmcRW99TYjL2L96eszJ4boAN4jkhxsFJDcA2DF2YVw) |
+| 4 | 0.4 NEAR to the payee | Admitted, delivered | [E5SFPvQg…](https://testnet.nearblocks.io/txns/E5SFPvQgwYu7utMH49S3cPE1PVk7PSWP3zgau9cCAhG1) |
+| 5 | 0.4 NEAR to an allowlisted account that does not exist | Admitted, transfer failed (`AccountDoesNotExist`), principal refunded, **still charged** | [8neZRYBV…](https://testnet.nearblocks.io/txns/8neZRYBVKKx83JmEUHKN9WcnuiqDPNQBN3iydccoUBzo) |
+| 6 | Request 1 again | Denied `DuplicateRequest` | [CWVnny9d…](https://testnet.nearblocks.io/txns/CWVnny9d3xxMLFf7cMurjstFZxYQ3XGSYh6MYDzv1Ljr) |
+| 7 | 0.5 NEAR (cap 0.4) | Denied `AboveMaxPerRequest` | [F1nMCJX9…](https://testnet.nearblocks.io/txns/F1nMCJX9o7x1rpJY6bJPwsdNGNfi2HDQbXnJ9sL4LkBL) |
+| 8 | 0.4 NEAR to a non-allowlisted account | Denied `RecipientNotAllowed` | [3NMC6E5U…](https://testnet.nearblocks.io/txns/3NMC6E5UVxmyFFe46AEisnHbMZmrWzTj7d2ruBreFkUk) |
+| 9 | 0.3 NEAR with C = 0.8 of B = 1 and a slot still free | Denied `BudgetExceeded` | [94tmQWg9…](https://testnet.nearblocks.io/txns/94tmQWg9VfGpfbU2cFgUNg8wst4MRW1igb7Uk5tX7Q14) |
+| 10 | Owner freezes the vault | Frozen | [69SHdQWo…](https://testnet.nearblocks.io/txns/69SHdQWoNtTBu7ACq9tSYFwkFsgQzirqPgbb4LaAYgNR) |
+
+At the inspected final block: code SHA-256 = artifact, **0 vault keys**, the policy hash recomputed from raw state, C = 0.8 NEAR = the sum of the two admission records, headroom 0.2, frozen. All transactions, the raw RPC and the inspection are in [`evidence/testnet-smoke/tn-20261110T195542Z/`](evidence/testnet-smoke/tn-20261110T195542Z/README.md). This is a smoke test: the transaction list comes from our runner, so it is not a completeness, concurrency or adversarial-runner result.
+
 ## Claims and limits
 
 | Claimed (tested on local sandbox) | Assumed | Not claimed |
 | --- | --- | --- |
 | C ≤ B, and C never decreases, including after refunds | The NEAR runtime executes receipts as specified | Prompt-injection defence: an agent can still waste its budget on allowlisted payees |
-| A failed transfer is charged (F) even though its principal is refunded | The owner sets an honest mandate and allowlist | Testnet or mainnet enforcement, or custody safety |
+| A failed transfer is charged (F) even though its principal is refunded | The owner sets an honest mandate and allowlist | Mainnet enforcement or custody safety. On testnet, only the narrow smoke test below |
 | Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed-input failures commit no vault data. | The reviewer's node reports the chain truthfully (no light-client or consensus proofs) | Audit or formal verification |
 | The vault stays keyless, with code deployed once | The deployed bytes are the reviewed source (checked by hash and rebuild) | Late-failure atomicity under FAULT builds, forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry (not run) |
 | The independent collector recovers a root that a runner omitted, without being given its hash | Runner isolation is by Linux namespaces on one host | Comparisons against other projects (the vulnerable control is our own fixture) |
@@ -203,7 +233,8 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 - **Trust model of the verifier.** It trusts the reviewer's own node. There are no light-client or consensus proofs. "Independent" means it gathers its own evidence and does not trust the runner's report. It is not an external audit: one team wrote the vault, the runner and the verifier.
 - **Runner isolation** uses Linux namespaces (bubblewrap) on the same host and UID. That is not separate machines. An independent review found one isolation flaw (the reviewer followed runner-planted symlinks), which is fixed with regressions. The later evidence uses the fix.
 - **G2 scope:** single shard, single validator, requests to one vault. "Concurrent" means pre-signed and submitted in parallel. The vulnerable target is our own teaching fixture. The pending-transfer witness reports same-block settlement as ambiguous and never counts it (review finding W1, fixed).
-- **Not executed:** late-failure atomicity (FAULT builds), forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry, multi-shard, testnet broadcast, any mainnet use.
+- **Testnet scope:** the public testnet smoke shows that the artifact deploys keyless and enforces its mandate for 10 runner-listed transactions, re-read from a public node. It is not an independent completeness proof (no reviewer-owned frontier), not a concurrency test and not an adversarial-runner test. Public nodes keep recent data only; re-reading it later needs an archival endpoint.
+- **Not executed:** late-failure atomicity (FAULT builds), forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry, multi-shard, any mainnet use.
 - **Product gaps:** no withdrawal or recovery path, NEAR native token only, a fixed one-shot budget (no recurring budgets), and no defence against an agent wasting its budget on allowlisted payees.
 
 ## Related NEAR infrastructure (not integrated)
@@ -226,6 +257,7 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 | `scripts/sandbox-setup/` | Pinned nearcore 2.13.4 sandbox start/stop |
 | `scripts/testnet/`, `tests/sandbox/src/bin/smoke_actor.rs` | Owner-gated testnet smoke: allowlisted HTTPS forwarder, plan/run actor, PV88 rehearsal |
 | `evidence/testnet-rehearsal/` | The testnet plan rehearsed on a local protocol-88 sandbox (sandbox evidence, not testnet) |
+| `evidence/testnet-smoke/` | **Public testnet**: read-only preflight, and the approved smoke run with raw RPC, inspection and explorer links |
 | `evidence/g1-independent/` | Three G1 evidence runs (A, B, and C after the review fix), the review runs, and retained development attempts |
 | `evidence/g2-independent/` | Two G2 evidence runs and one development attempt |
 | `.github/workflows/` | `ci` (evidence tests, web reproducibility, contract tests, cross-machine WASM rebuild); `pages` (manual Attack Lab deployment) |

@@ -2,6 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { AlertTriangle, ArrowRight, Ban, Check, EyeOff, FileSearch, KeyRound, Lock, Server, ShieldOff, Wallet, X } from "lucide-react";
 import { AuthorityBar, DecisionLabel, Drawer, VerdictChip } from "./components";
 import { near, REPO_URL, short, REASON_TEXT, type Bundle, type G2Target, type Run, type TimelineItem } from "./data";
+import { TestnetTeaser } from "./testnet";
 
 /* ------------------------------------------------------------------ Landing */
 export function Landing({ bundle }: { bundle: Bundle }) {
@@ -20,8 +21,8 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             An independent verifier rebuilds every effect from the chain, so the agent's own report doesn't have to be trusted.
           </p>
           <p className="qualifier"><AlertTriangle aria-hidden />
-            Experimental prototype. Evidence comes from a local NEAR sandbox and is replayed here. Not audited. Not for real custody.
-            Testnet and mainnet are not claimed.</p>
+            Experimental prototype. The main evidence comes from a local NEAR sandbox and is replayed here; a narrow smoke test also
+            ran on <a href="#/testnet">public testnet</a>. Not audited. Not for real custody. Mainnet is not claimed.</p>
           <div className="cta">
             <a className="btn primary" href="#/tour/1">Take the 3-step tour <ArrowRight aria-hidden /></a>
             <a className="btn" href="#/lab">Open the Attack Lab</a>
@@ -72,17 +73,20 @@ export function Landing({ bundle }: { bundle: Bundle }) {
 
       {bundle.g2_runs?.[0] && <BurstTeaser bundle={bundle} />}
 
+      <TestnetTeaser bundle={bundle} />
+
       <section className="section claims" aria-labelledby="claims">
         <div className="eyebrow">Claims ledger</div>
         <h2 id="claims" style={{ fontSize: 30, marginBottom: 24 }}>What we claim, what we assume, what we don't</h2>
         <div className="grid3">
-          <div className="card"><h3><Check aria-hidden style={{ color: "var(--allow)" }} /> Claimed (tested in sandbox)</h3><ul>
+          <div className="card"><h3><Check aria-hidden style={{ color: "var(--allow)" }} /> Claimed (tested)</h3><ul>
             <li>Admitted principal C never exceeds B, and nothing decreases C.</li>
             <li>A failed transfer is charged (F) even though its principal is refunded.</li>
             <li>Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed input commits no vault data.</li>
             <li>The vault has zero access keys from creation to cut; its code is deployed once.</li>
             <li>An independent collector recovers an omitted transaction root from its own node.</li>
-            <li>Under a burst of eight concurrent requests, admissions stop exactly at B, even while earlier transfers are still pending.</li></ul></div>
+            <li>Under a burst of eight concurrent requests, admissions stop exactly at B, even while earlier transfers are still pending.</li>
+            <li>On public testnet, the same artifact deployed keyless and enforced its mandate across a 10-transaction smoke test (not a completeness or concurrency result).</li></ul></div>
           <div className="card"><h3><AlertTriangle aria-hidden style={{ color: "var(--pending)" }} /> Assumed</h3><ul>
             <li>The NEAR runtime executes receipts as specified.</li>
             <li>The owner sets an honest mandate and an allowlist they trust.</li>
@@ -90,7 +94,7 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <li>The deployed bytes match the reviewed source (checked by hash and by a reproducible rebuild).</li></ul></div>
           <div className="card"><h3><Ban aria-hidden style={{ color: "var(--deny)" }} /> Not claimed</h3><ul>
             <li>Prompt-injection defence: an agent can still waste its budget on allowlisted payees.</li>
-            <li>Testnet or mainnet enforcement, or production custody.</li>
+            <li>Mainnet enforcement or production custody. On testnet, only the narrow smoke test.</li>
             <li>Audit, formal verification, recurring budgets, tokens other than NEAR.</li>
             <li>Comparisons against other projects. Our vulnerable control is our own deliberately broken fixture.</li>
             <li>Organisational independence: one team wrote the vault, runner and verifier.</li></ul></div>
@@ -401,14 +405,17 @@ export function Docs({ bundle }: { bundle: Bundle }) {
           "cargo build -p g1-sandbox-tests --locked --bin g1_actor\npython3 scripts/g1-independent/run_g1.py my-run --rpc-port 3240 --net-port 24777"],
         ["4 · Run the G2 concurrency comparison (~25 s, Linux + bubblewrap)",
           "cargo build -p g1-sandbox-tests --locked --bin g2_actor\npython3 scripts/g2-independent/run_g2.py my-g2 --rpc-port 3290 --net-port 24827"],
+        ["5 · Re-inspect the public testnet smoke (read-only, needs internet)",
+          "python3 scripts/testnet/https_rpc_forwarder.py --port 3399 --upstream https://rpc.testnet.near.org &\npython3 -m packages.verifier inspect-smoke --network testnet --rpc http://127.0.0.1:3399 \\\n  --run evidence/testnet-smoke/tn-20261110T195542Z/run.json --wasm artifacts/near_agent_vault.wasm --out /tmp/reinspect"],
       ].map(([t, c]) => (
         <div key={t} className="cmd" style={{ marginTop: 22 }}><h3 style={{ fontSize: 15 }}>{t}</h3><pre>{c}</pre></div>
       ))}
       <div className="callout" style={{ marginTop: 28 }}>
         <Server aria-hidden />
-        <div><strong>Where things ran.</strong> All evidence on this site comes from a fresh local NEAR sandbox (nearcore 2.13.4).
-          The testnet smoke plan was rehearsed unchanged on a local sandbox with testnet's own protocol (nearcore 2.14.0-rc.5). It has
-          <strong> not</strong> been broadcast to testnet: it needs owner approval (<code>docs/TESTNET_SMOKE_PLAN.md</code>). Nothing runs on mainnet.</div>
+        <div><strong>Where things ran.</strong> The attack lab, the concurrency burst (G2), the omission recovery and the independent
+          verifier (G1) all come from fresh local NEAR sandboxes (nearcore 2.13.4). A separate, owner-approved 10-transaction smoke test ran on
+          <strong> public NEAR testnet</strong> (protocol 88) after a rehearsal on a local copy of testnet's version: see <a href="#/testnet">Testnet</a>.
+          Nothing runs on mainnet.</div>
       </div>
       <div className="callout warn" style={{ marginTop: 12 }}>
         <AlertTriangle aria-hidden />

@@ -55,7 +55,20 @@ export interface G2Control { label: string; vault: string; budget: string; admis
 export interface G2Run { run_id: string; mode: "REPLAY"; network: "SANDBOX"; repo_commit: string; node: { chain_id: string };
   isolation: { checks: Verdict }; fixture_wasm_sha256: string; protected: G2Target; generous: G2Target; vulnerable: G2Control;
   sources: Record<string, string> }
-export interface Bundle { schema: string; note: string; runs: Run[]; g2_runs: G2Run[] }
+export interface TestnetStep { label: string; tx_hash: string; signer: string; receiver: string; receipts: number;
+  decision?: "Admitted" | "Denied"; reason?: string; native?: "S" | "F"; native_failure?: string; principal_refund?: boolean;
+  request_id?: string; amount?: string; recipient?: string }
+export interface TestnetRun { run_id: string; mode: "REPLAY"; network: "TESTNET"; label: string;
+  node: { chain_id: string; version: string; protocol_version: number }; tool_commit: string; artifact_sha256: string;
+  accounts: { owner: string; vault: string; agent: string; payee: string; missing: string; attacker: string };
+  policy: { budget: string; max_per_request: string; max_accepted_requests: number; recipients: string[]; expires_at_ns: string; policy_hash: string };
+  cut: { q_height: number; q_hash: string; code_sha256: string; vault_keys: number; policy_hash: string; charged: string;
+    accepted_count: number; seq: number; frozen: boolean };
+  ledger: { C: string; sum_records: string; headroom: string; S: string; F: string; U: string };
+  agent_keys: number; steps: TestnetStep[]; rpc_records: number;
+  owner_spend: { source: string; total: string; transfers: string; gas: string; cap: string };
+  explorer: string; sources: Record<string, string> }
+export interface Bundle { schema: string; note: string; runs: Run[]; g2_runs: G2Run[]; testnet_runs?: TestnetRun[] }
 
 export const REPO_URL = "https://github.com/mickeyjoes/near-agent-vault-lab";
 export const YOCTO = 10n ** 24n;
@@ -70,6 +83,18 @@ export function near(yocto: string | bigint, digits = 2): string {
   // Exact: never round an amount that a check depends on (e.g. M + 1 yoctoNEAR).
   return `${whole}.${trimmed.length < digits ? trimmed.padEnd(digits, "0") : trimmed}`;
 }
+const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+/** Base58 (32-byte NEAR hash) to lowercase hex. */
+export function b58ToHex(s: string): string {
+  let n = 0n;
+  for (const c of s) {
+    const i = B58.indexOf(c);
+    if (i < 0) throw new Error("not base58");
+    n = n * 58n + BigInt(i);
+  }
+  return n.toString(16).padStart(64, "0");
+}
+export const nsToUtc = (ns: string) => new Date(Number(BigInt(ns) / 1000000n)).toISOString().replace("T", " ").slice(0, 16) + " UTC";
 export const short = (h: string, n = 6) => (h.length > 2 * n + 1 ? `${h.slice(0, n)}…${h.slice(-n)}` : h);
 export const ratio = (a: string, b: string) => Number((BigInt(a) * 10000n) / BigInt(b)) / 100;
 

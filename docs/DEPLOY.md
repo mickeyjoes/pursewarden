@@ -1,15 +1,16 @@
 # Hosting the Attack Lab (GitHub Pages)
 
-The site is a static, read-only build of `web/`. It has no backend, wallet, keys or third-party requests. All data comes from `web/public/bundle.json`, which `scripts/build_web_bundle.py` regenerates by replaying the committed raw RPC captures through the verifier. The `pages` workflow re-checks that before it builds.
+The site is a static, read-only build of `web/`. It has no backend, wallet or keys. All recorded data comes from `web/public/bundle.json`, which `scripts/build_web_bundle.py` regenerates by replaying the committed raw RPC captures through the verifier. The `pages` workflow re-checks that before it builds.
 
-The build uses relative asset paths and hash routes (`#/tour/1`, `#/lab`, `#/burst`, `#/verify`, `#/docs`), so the same artifact works at a domain root and under a sub-path. There are no 404 rewrites to configure.
+The build uses relative asset paths and hash routes (`#/tour/1`, `#/lab`, `#/burst`, `#/verify`, `#/testnet`, `#/docs`), so the same artifact works at a domain root and under a sub-path. There are no 404 rewrites to configure.
 
 Security note: GitHub Pages cannot set response headers. `web/index.html` therefore declares a Content-Security-Policy meta tag:
 - same-origin scripts, fonts and data only;
+- one exception for `connect-src`: `https://rpc.testnet.near.org` and `https://test.rpc.fastnear.com`. The Testnet page's live state viewer uses them, only when the visitor clicks "Read live from testnet". It sends read-only JSON-RPC queries (`block`, `view_account`, `view_access_key_list`, `get_mandate`) without credentials or a referrer;
 - no inline scripts, no forms, no `base` changes;
 - `Referrer-Policy: no-referrer`.
 
-No CSP violations were observed on any route (headless Chrome, 2026-11-10).
+No CSP violations were observed on any route, including the live viewer (headless Chrome, 2026-11-10: 72 route checks at a root and a sub-path, desktop and mobile, dark and light).
 
 ## Option A: default URL (no domain needed)
 

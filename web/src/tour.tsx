@@ -186,6 +186,9 @@ function StepOmission({ bundle }: { bundle: Bundle }) {
       <Verify cmd={"python3 -m unittest tests.evidence.test_real_rpc -v   # replays real recorded RPC: omission recovery + 18 tamperings"}
         files={[["Forged-bundle comparison", r.sources.compare_forged], ["G1 result", "docs/G1_INDEPENDENT_RESULT.md"],
           ["Raw RPC capture", r.sources.raw_rpc]]} />
+      {bundle.testnet_runs?.[0] && <p className="muted" style={{ marginTop: 18 }}>
+        All three steps ran on local sandboxes. The same contract also ran a narrow smoke test on public testnet, with explorer links:{" "}
+        <a href="#/testnet">see the testnet proof</a>.</p>}
     </div>
   );
 }

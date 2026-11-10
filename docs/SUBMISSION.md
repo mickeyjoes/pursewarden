@@ -13,16 +13,16 @@ Nothing in this file has been sent, posted or published. The rules were re-check
 
 1. Follow `docs/RELEASE_CHECKLIST.md`. Engineering items are verified; the owner items remain.
 2. Confirm the license. The MIT `LICENSE` file is a proposal ("The near-agent-vault-lab contributors"). Edit the copyright line if you want your name or organisation.
-3. Approve pushing `feat/g2-concurrency` and fast-forwarding `master` (commands in the readiness report). Then make the repository public.
+3. Approve pushing `release/testnet-proof` and fast-forwarding `master` (commands in the readiness report). Then make the repository public.
 4. Hosted demo (recommended): Settings → Pages → Source: **GitHub Actions**, then Actions → `pages` → Run workflow. The URL will be `https://mickeyjoes.github.io/near-agent-vault-lab/`. Keep it up until at least 2026-11-18, ideally 2026-11-25. The custom domain `pursewarden.com` is unregistered; see `docs/DEPLOY.md`.
 5. Record the demo video (§4) and publish the X post (§5) yourself.
 6. Create the `hackathon-submission` tag on the final commit, push it, then fill in the payload (§6) and submit once.
 
 ## 2. Project description (`idea`, 20–2000 characters)
 
-Draft, 1,445 characters:
+Draft, 1,662 characters:
 
-> AI agents that pay for things need spending authority, but a wallet key gives them all of it. Pursewarden puts the limit on NEAR itself. An owner creates a keyless vault contract with an immutable mandate: total budget, per-payment cap, recipient allowlist, expiry and a maximum number of payments. The agent holds only NEAR function-call keys that can call request_payment with zero deposit. It cannot transfer, deploy or add keys. The vault charges every admitted payment against the budget before scheduling the transfer, in one receipt. A failed and refunded transfer stays charged, so authority cannot be recycled. When eight payment requests hit a 5 NEAR budget at once, the vault admits exactly two. The other six are denied while the two admitted transfers are still in flight. A deliberately broken control that checks only settled spend overspends 17 NEAR against the same 5 NEAR budget. An independent verifier rebuilds each run from the chain by scanning every block and chunk, decoding raw contract storage, recomputing the policy hash and reconciling receipts, refunds and events. When an operator hands over evidence that silently omits a payment, the verifier finds the missing transaction itself and fails the bundle. Every result comes from fresh local-sandbox runs with committed raw RPC data that anyone can replay. A read-only Attack Lab shows the evidence. Sandbox prototype only: not audited, no testnet or mainnet claims.
+> AI agents that pay for things need spending authority, but a wallet key gives them all of it. Pursewarden puts the limit on NEAR itself. An owner creates a keyless vault contract with an immutable mandate: total budget, per-payment cap, recipient allowlist, expiry and a maximum number of payments. The agent holds only NEAR function-call keys that can call request_payment with zero deposit. It cannot transfer, deploy or add keys. The vault charges every admitted payment against the budget before scheduling the transfer, in one receipt. A failed and refunded transfer stays charged, so authority cannot be recycled. When eight payment requests hit a 5 NEAR budget at once, the vault admits exactly two. The other six are denied while the two admitted transfers are still in flight. A deliberately broken control that checks only settled spend overspends 17 NEAR against the same 5 NEAR budget. An independent verifier rebuilds each run from the chain by scanning every block and chunk, decoding raw contract storage, recomputing the policy hash and reconciling receipts, refunds and events. When an operator hands over evidence that silently omits a payment, the verifier finds the missing transaction itself and fails the bundle. These results come from fresh local-sandbox runs with committed raw RPC data that anyone can replay. The same contract also passed a 10-transaction smoke test on public NEAR testnet (pw-vault.pursewarden.testnet): keyless, one payment, one failed and refunded payment that stays charged, four denials and a freeze, each a public transaction. A read-only Attack Lab shows the evidence. Prototype: not audited, no mainnet claims.
 
 ## 3. Tracks
 
@@ -33,15 +33,16 @@ Draft, 1,445 characters:
 
 ## 4. Demo video (2:00) and recording instructions
 
-Record from the hosted site (`https://mickeyjoes.github.io/near-agent-vault-lab/`) or a local preview (`cd web && npm ci && npm run build && npx vite preview --port 4173`). Use a 1440×900 window, dark theme and 100 % zoom. Keep the REPLAY · SANDBOX chips visible. The guided tour is the spine of the video: use the → key to advance.
+Record from the hosted site (`https://mickeyjoes.github.io/near-agent-vault-lab/`) or a local preview (`cd web && npm ci && npm run build && npx vite preview --port 4173`). Use a 1440×900 window, dark theme and 100 % zoom. Keep the provenance chips visible (REPLAY · SANDBOX on the tour, TESTNET on the testnet page). The guided tour is the spine of the video: use the → key to advance.
 
 | Time | Screen | Voice-over |
 | --- | --- | --- |
 | 0:00–0:12 | Overview hero and proof strip | "AI agents need to pay for things. Give one a wallet key and it can spend everything. Pursewarden gives it a NEAR vault with a fixed budget. The agent's only key can *ask*, and the vault has no keys at all." |
 | 0:12–0:45 | Tour step 1: the 5 vs 17 NEAR bars | "A compromised agent fires eight 2 NEAR payment requests at once, from eight different keys, against a 5 NEAR budget. Our vault admits exactly two and stops at 5. A deliberately broken contract we wrote as a control counts only completed payments. It lets all eight through: 17 NEAR out of a 5 NEAR budget." |
 | 0:45–1:15 | Tour step 2: block #74 → #75 | "Here's why. All six denials happened in this block, while the two approved transfers hadn't even landed yet; they landed in the next block. Only 1 NEAR had actually settled. A balance-based check says yes. Pursewarden charges the budget the moment it approves, so it says no. The verifier proves this from receipts, and it refuses to count cases it can't order." |
-| 1:15–1:45 | Tour step 3: hidden vs recovered lists | "Don't trust the operator's report either. In this test, the operator hands over evidence with one failed payment removed and every checksum recomputed. The verifier was never told that transaction existed. It scans every block on its own node, finds it, and fails the bundle." |
-| 1:45–2:00 | Reproduce page, then a terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 70 tests … OK` | "All of this is local-sandbox evidence that you can replay from committed raw chain data, with one command. Experimental, not audited. Built at NEAR HACKATHON." |
+| 1:15–1:40 | Tour step 3: hidden vs recovered lists | "Don't trust the operator's report either. In this test, the operator hands over evidence with one failed payment removed and every checksum recomputed. The verifier was never told that transaction existed. It scans every block on its own node, finds it, and fails the bundle." |
+| 1:40–1:52 | Testnet page: the transaction table, then click "Read live from testnet" | "And it's on public testnet too: the same contract, keyless, every decision a public transaction. This reads its state live and it still matches." |
+| 1:52–2:00 | Terminal: `python3 -m unittest discover -s tests/evidence -t .` → `Ran 75 tests … OK` | "The adversarial results are sandbox evidence you can replay with one command. Experimental, not audited. Built at NEAR HACKATHON." |
 
 Optional B-roll, sped up: `python3 scripts/g2-independent/run_g2.py demo` (a fresh chain in about 25 s), or the Attack Lab trace with a receipt tree open.
 
@@ -52,8 +53,9 @@ Optional B-roll, sped up: `python3 scripts/g2-independent/run_g2.py demo` (a fre
 > 🔑 Keyless NEAR vault, fixed budget, agent holds only function-call keys
 > ⚡ 8 payment requests at once against a 5 NEAR budget → exactly 2 admitted; a settled-only design overspends by 12
 > 🔎 An independent verifier rebuilds every run from the chain and catches a report that hides a payment
+> 🌐 Also on NEAR testnet: https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet
 >
-> Local sandbox prototype, not audited. Reproducible evidence: <REPO_URL>
+> Sandbox evidence plus a testnet smoke test, not audited. Reproducible evidence: <REPO_URL>
 >
 > @NEARProtocol #NEARHackathon
 

@@ -1,6 +1,6 @@
 {
  "schema": "pursewarden-bundle/v1",
- "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",
+ "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs (runs, g2_runs) and of one public TESTNET smoke inspection (testnet_runs).",
  "runs": [
   {
    "run_id": "g1i-20261110T144905Z-c",
@@ -4831,6 +4831,178 @@
    "sources": {
     "summary": "evidence/g2-independent/g2i-20261110T155212Z-c/run-summary.json",
     "fixture_source": "fixtures/vulnerable-settled-only/src/lib.rs"
+   }
+  }
+ ],
+ "testnet_runs": [
+  {
+   "run_id": "tn-20261110T195542Z",
+   "mode": "REPLAY",
+   "network": "TESTNET",
+   "label": "TESTNET SMOKE INSPECTION: runner-listed transactions re-read from the node; not an independent completeness proof",
+   "node": {
+    "chain_id": "testnet",
+    "version": "2.14.0-rc.5",
+    "protocol_version": 88
+   },
+   "tool_commit": "4cc602017e725843d472e0026f35d764b3fec158",
+   "artifact_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+   "accounts": {
+    "owner": "pursewarden.testnet",
+    "vault": "pw-vault.pursewarden.testnet",
+    "agent": "pw-agent.pursewarden.testnet",
+    "payee": "pw-payee.pursewarden.testnet",
+    "missing": "pw-missing.pursewarden.testnet",
+    "attacker": "pw-attacker.pursewarden.testnet"
+   },
+   "policy": {
+    "budget": "1000000000000000000000000",
+    "max_per_request": "400000000000000000000000",
+    "max_accepted_requests": 3,
+    "recipients": [
+     "pw-missing.pursewarden.testnet",
+     "pw-payee.pursewarden.testnet"
+    ],
+    "expires_at_ns": "1794427035179574414",
+    "policy_hash": "fAFXFPi76a5wsebUX5maGCFUyMc6YsY9EneG3rQZhzL"
+   },
+   "cut": {
+    "q_height": 277113571,
+    "q_hash": "HDzAuuMEUe9ayUCw2vaB537oE9hLeq2bf8eWun88txRE",
+    "code_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+    "vault_keys": 0,
+    "policy_hash": "fAFXFPi76a5wsebUX5maGCFUyMc6YsY9EneG3rQZhzL",
+    "charged": "800000000000000000000000",
+    "accepted_count": 2,
+    "seq": 9,
+    "frozen": true
+   },
+   "ledger": {
+    "C": "800000000000000000000000",
+    "sum_records": "800000000000000000000000",
+    "headroom": "200000000000000000000000",
+    "S": "400000000000000000000000",
+    "F": "400000000000000000000000",
+    "U": "0"
+   },
+   "agent_keys": 3,
+   "steps": [
+    {
+     "label": "create_payee",
+     "tx_hash": "2A8oQYdwSaz3eKdUGigFxgpzntPKTNXFxmYTtc6WYBQ7",
+     "signer": "pursewarden.testnet",
+     "receiver": "pw-payee.pursewarden.testnet",
+     "receipts": 2
+    },
+    {
+     "label": "create_agent",
+     "tx_hash": "24LFJWbvUHwQXqU1f5UyaD3umxDCggqzXdZKypp1ipP5",
+     "signer": "pursewarden.testnet",
+     "receiver": "pw-agent.pursewarden.testnet",
+     "receipts": 2
+    },
+    {
+     "label": "create_vault",
+     "tx_hash": "BQfmcRW99TYjL2L96eszJ4boAN4jkhxsFJDcA2DF2YVw",
+     "signer": "pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "receipts": 2
+    },
+    {
+     "label": "pay_1_payee",
+     "tx_hash": "E5SFPvQgwYu7utMH49S3cPE1PVk7PSWP3zgau9cCAhG1",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Admitted",
+     "native": "S",
+     "receipts": 6,
+     "request_id": "1",
+     "amount": "400000000000000000000000",
+     "recipient": "pw-payee.pursewarden.testnet"
+    },
+    {
+     "label": "pay_2_missing",
+     "tx_hash": "8neZRYBVKKx83JmEUHKN9WcnuiqDPNQBN3iydccoUBzo",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Admitted",
+     "native": "F",
+     "native_failure": "AccountDoesNotExist",
+     "principal_refund": true,
+     "receipts": 7,
+     "request_id": "2",
+     "amount": "400000000000000000000000",
+     "recipient": "pw-missing.pursewarden.testnet"
+    },
+    {
+     "label": "replay_1",
+     "tx_hash": "CWVnny9d3xxMLFf7cMurjstFZxYQ3XGSYh6MYDzv1Ljr",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Denied",
+     "reason": "DuplicateRequest",
+     "receipts": 2,
+     "request_id": "1",
+     "amount": "400000000000000000000000",
+     "recipient": "pw-payee.pursewarden.testnet"
+    },
+    {
+     "label": "over_cap",
+     "tx_hash": "F1nMCJX9o7x1rpJY6bJPwsdNGNfi2HDQbXnJ9sL4LkBL",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Denied",
+     "reason": "AboveMaxPerRequest",
+     "receipts": 2,
+     "request_id": "3",
+     "amount": "500000000000000000000000",
+     "recipient": "pw-payee.pursewarden.testnet"
+    },
+    {
+     "label": "exfiltrate",
+     "tx_hash": "3NMC6E5UVxmyFFe46AEisnHbMZmrWzTj7d2ruBreFkUk",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Denied",
+     "reason": "RecipientNotAllowed",
+     "receipts": 2,
+     "request_id": "4",
+     "amount": "400000000000000000000000",
+     "recipient": "pw-attacker.pursewarden.testnet"
+    },
+    {
+     "label": "budget_exceeded",
+     "tx_hash": "94tmQWg9VfGpfbU2cFgUNg8wst4MRW1igb7Uk5tX7Q14",
+     "signer": "pw-agent.pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "decision": "Denied",
+     "reason": "BudgetExceeded",
+     "receipts": 2,
+     "request_id": "5",
+     "amount": "300000000000000000000000",
+     "recipient": "pw-payee.pursewarden.testnet"
+    },
+    {
+     "label": "freeze",
+     "tx_hash": "69SHdQWoNtTBu7ACq9tSYFwkFsgQzirqPgbb4LaAYgNR",
+     "signer": "pursewarden.testnet",
+     "receiver": "pw-vault.pursewarden.testnet",
+     "receipts": 2
+    }
+   ],
+   "rpc_records": 21,
+   "owner_spend": {
+    "source": "after.json: read-only snapshot, not part of the replayed inspection",
+    "total": "3292469665660553300000000",
+    "transfers": "3268990000000000000000000",
+    "gas": "23479665660553300000000",
+    "cap": "3500000000000000000000000"
+   },
+   "explorer": "https://testnet.nearblocks.io",
+   "sources": {
+    "readme": "evidence/testnet-smoke/tn-20261110T195542Z/README.md",
+    "run": "evidence/testnet-smoke/tn-20261110T195542Z/run.json",
+    "inspection": "evidence/testnet-smoke/tn-20261110T195542Z/inspection/inspection.json"
    }
   }
  ]

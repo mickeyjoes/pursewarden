@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { AlertTriangle, Check, CircleDot, History, Server, X, XCircle } from "lucide-react";
+import { AlertTriangle, Check, CircleDot, Globe, History, Server, X, XCircle } from "lucide-react";
 import { near, short, type Receipt, type Run, type TimelineItem, type Verdict, REASON_TEXT } from "./data";
 
 export function VerdictChip({ v, label }: { v: Verdict; label?: string }) {
@@ -12,7 +12,8 @@ export function VerdictChip({ v, label }: { v: Verdict; label?: string }) {
   );
 }
 
-export interface ProvInfo { run_id: string; chain_id: string; version?: string; window?: string; digest?: string; digestTitle?: string }
+export interface ProvInfo { run_id: string; chain_id: string; version?: string; window?: string; digest?: string; digestTitle?: string;
+  network?: "SANDBOX" | "TESTNET"; note?: string }
 
 export function provOf(run: Run): ProvInfo {
   return { run_id: run.run_id, chain_id: run.node.chain_id, version: run.node.version.version,
@@ -27,15 +28,22 @@ export function ProvenanceBar({ info }: { info: ProvInfo | null }) {
         <span className="chip replay" title="Recorded run, replayed from committed raw RPC responses. Not live.">
           <History aria-hidden /> REPLAY
         </span>
-        <span className="chip net" title="Local reviewer-owned nearcore sandbox. Not testnet or mainnet.">
-          <Server aria-hidden /> SANDBOX
-        </span>
+        {info?.network === "TESTNET" ? (
+          <span className="chip testnet" title="Public NEAR testnet. A narrow smoke test; not mainnet, not a completeness or concurrency result.">
+            <Globe aria-hidden /> TESTNET
+          </span>
+        ) : (
+          <span className="chip net" title="Local reviewer-owned nearcore sandbox. Not testnet or mainnet.">
+            <Server aria-hidden /> SANDBOX
+          </span>
+        )}
         {info ? (
           <>
             <span>run <code>{info.run_id}</code></span>
             <span>chain <code>{info.chain_id}</code></span>
             {info.version && <span>nearcore {info.version}</span>}
             {info.window && <span>window {info.window}</span>}
+            {info.note && <span>{info.note}</span>}
             {info.digest && <span title={`${info.digestTitle}: ${info.digest}`}>replay digest <code>{short(info.digest, 5)}</code></span>}
           </>
         ) : (

@@ -1,0 +1,13 @@
+{
+  "schema": "pursewarden-testnet-provenance/v1",
+  "run_id": "tn-20261110T195542Z",
+  "network": "testnet",
+  "owner_approval": "Explicit owner approval for exactly the 10-transaction plan from pursewarden.testnet, committing about 3.30 testnet NEAR permanently, with a 3.5 testnet NEAR cap including gas.",
+  "tool_commit": "4cc602017e725843d472e0026f35d764b3fec158",
+  "tool_tree_clean": true,
+  "smoke_actor_sha256": "23c3b5c8143c0462cef070e88008c8e1d37a555d361295bd4bf11d9633e90a5b",
+  "smoke_actor_note": "Local debug build; this hash identifies the binary that ran and the one rehearsed in evidence/testnet-rehearsal/pv88-20261110T195514Z. It is not a reproducible-build claim.",
+  "artifact_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "rpc": "https://rpc.testnet.near.org via scripts/testnet/https_rpc_forwarder.py (allowlisted testnet hosts only)",
+  "explorer": "https://testnet.nearblocks.io"
+}
