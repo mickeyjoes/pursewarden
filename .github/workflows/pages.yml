@@ -1,0 +1,40 @@
+# Manual-only deployment of the read-only Attack Lab to GitHub Pages.
+# Nothing runs automatically: an owner triggers it after the repository is public and
+# Settings -> Pages -> Source is set to "GitHub Actions".
+name: pages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the bundle is reproducible from committed raw RPC
+        run: |
+          python3 scripts/build_web_bundle.py
+          git diff --exit-code web/public/bundle.json
+      - name: Build
+        working-directory: web
+        run: npm ci --no-audit --no-fund && npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
