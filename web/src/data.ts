@@ -1,0 +1,75 @@
+// Types for web/public/bundle.json (built by scripts/build_web_bundle.py from committed evidence).
+export type Verdict = "PASS" | "FAIL" | "INCONCLUSIVE";
+
+export interface Receipt {
+  id: string; parent: string | null; kind: string; predecessor: string; receiver: string;
+  actions: string[]; status: { kind: "Success" | "Failure"; detail?: string }; block_height: number; event: string | null;
+}
+export interface TimelineItem {
+  tx_hash: string; height: number; signer: string; receiver: string; source: string;
+  tree: { tx_hash: string; signer: string; receiver: string; included_height: number; receipts: Receipt[] };
+  runner_intent?: { label: string; intent: string; expected: string; source: string };
+  method?: string; args?: Record<string, unknown>; args_raw?: string;
+  decision: "Admitted" | "Denied" | "ReceiptFailure" | "Frozen" | "Construction" | "Setup";
+  reason?: string; request_id?: string; amount?: string; recipient?: string; settlement?: "S" | "F";
+  native_failure?: string | null; admission_seq?: string; callback?: string; principal_refund?: string | null; seq?: string;
+}
+export interface Run {
+  run_id: string; mode: "REPLAY"; network: "SANDBOX"; captured_at: string | null; repo_commit: string;
+  node: { chain_id: string; genesis_block_hash: string; version: { version: string; commit: string }; protocol_version: number; binary_sha256: string };
+  artifact: { wasm_sha256: string; code_hash: string; bytes: number };
+  policy: { vault: string; owner: string; agent: string; recipients: string[]; budget: string; max_per_request: string;
+    max_accepted_requests: number; expires_at_ns: string; policy_hash: string; chain_id: string; agent_keys: number; vault_keys: number };
+  window: { h0: { hash: string; height: number }; q: { hash: string; height: number } };
+  verdicts_live: Record<"safety" | "settlement" | "evidence" | "scenario_coverage", Verdict>;
+  ledger: { C: string; S: string; F: string; U: string; headroom: string; accepted_count: number };
+  callback_observation: { cb_succeeded_amount: string; cb_failed_amount: string; callback_unconfirmed: string };
+  events: { seq: number; event: string; receipt_id: string; block_height: number }[];
+  state_history: { state_writes: number; charged_series: string[]; seq_series: number[] };
+  timeline: TimelineItem[];
+  offchain_rejections: { label: string; intent: string; expected: string; tx_hash: string; rpc_error: unknown; source: string }[];
+  isolation: { checks: Verdict; direct_node_rpc: string; forbidden_paths_visible: string[];
+    admin_methods_denied: Record<string, boolean>; runner_methods_forwarded: string[]; runner_methods_denied: string[] };
+  omission: { forged_verdicts: Record<string, Verdict>; omitted_tx_hash: string[]; recovered_receipts: string[];
+    recovered_payment: { request_id: string; class: string; amount: string; recipient: string; native_failure: string;
+      principal_refund_receipt?: string; transfer_receipt: string }[]; genuine_differences: string[] };
+  mutations: { name: string; rejected: boolean; issues: string[] }[];
+  retention: { all_identical: boolean; graphs_compared: number; graphs_identical: number; produced_blocks_after_q: number;
+    first_final_head: number; later_final_head: number };
+  replay_check: { capture_sha256: string; rpc_records: number };
+  sources: Record<string, string>;
+}
+export interface Bundle { schema: string; note: string; runs: Run[] }
+
+export const REPO_URL = "https://github.com/mickeyjoes/near-agent-vault-lab";
+export const YOCTO = 10n ** 24n;
+
+export function near(yocto: string | bigint, digits = 2): string {
+  const v = typeof yocto === "bigint" ? yocto : BigInt(yocto);
+  const whole = v / YOCTO;
+  const frac = v % YOCTO;
+  if (frac === 0n) return `${whole}`;
+  const fs = frac.toString().padStart(24, "0");
+  const trimmed = fs.replace(/0+$/, "");
+  // Exact: never round an amount that a check depends on (e.g. M + 1 yoctoNEAR).
+  return `${whole}.${trimmed.length < digits ? trimmed.padEnd(digits, "0") : trimmed}`;
+}
+export const short = (h: string, n = 6) => (h.length > 2 * n + 1 ? `${h.slice(0, n)}…${h.slice(-n)}` : h);
+export const ratio = (a: string, b: string) => Number((BigInt(a) * 10000n) / BigInt(b)) / 100;
+
+export const REASON_TEXT: Record<string, string> = {
+  DuplicateRequest: "This request ID was already admitted. Retained IDs can never be paid twice.",
+  AboveMaxPerRequest: "The amount is above the per-request cap M.",
+  RecipientNotAllowed: "The recipient is not on the mandate's allowlist.",
+  RecordQuotaExhausted: "All K accepted-request slots are used. The refund did not give any back.",
+  BudgetExceeded: "C + amount would exceed the fixed budget B.",
+  MalformedInput: "Non-canonical input. The receipt failed before admission, with no state change.",
+  PolicyMismatch: "The request names a different mandate.",
+  Frozen: "The owner froze the vault.",
+};
+
+export async function loadBundle(): Promise<Bundle> {
+  const r = await fetch("./bundle.json", { cache: "no-store" });
+  if (!r.ok) throw new Error(`bundle.json: HTTP ${r.status}`);
+  return r.json();
+}

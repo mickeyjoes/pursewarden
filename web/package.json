@@ -1,0 +1,27 @@
+{
+  "name": "pursewarden-attack-lab",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Read-only Attack Lab for the NEAR fixed-mandate agent vault. Renders committed, replay-verified sandbox evidence. No wallet, no keys, no backend.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "bundle": "cd .. && python3 scripts/build_web_bundle.py",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "lucide-react": "1.62.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "vite": "8.3.5"
+  }
+}

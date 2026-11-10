@@ -1,0 +1,385 @@
+import { useMemo, useState } from "react";
+import { AlertTriangle, ArrowRight, Ban, Check, EyeOff, FileSearch, KeyRound, Lock, ShieldOff, Wallet, X } from "lucide-react";
+import { AuthorityBar, DecisionLabel, Drawer, VerdictChip } from "./components";
+import { near, REPO_URL, short, REASON_TEXT, type Bundle, type Run, type TimelineItem } from "./data";
+
+/* ------------------------------------------------------------------ Landing */
+export function Landing({ bundle }: { bundle: Bundle }) {
+  const run = bundle.runs[0];
+  const denials = run.timeline.filter((t) => t.decision === "Denied").length;
+  const failedCalls = run.timeline.filter((t) => t.decision === "ReceiptFailure").length;
+  return (
+    <>
+      <section className="hero">
+        <div>
+          <div className="eyebrow">AI Security &amp; Defense · NEAR</div>
+          <h1>Your agent can spend.<br /><span>It can't overspend.</span></h1>
+          <p className="lede">
+            Pursewarden gives an AI agent a NEAR vault with one fixed, non-refillable budget. Each payment is charged
+            before it is sent, and a failed payment still counts. The agent only ever holds a key that can ask.
+            An independent verifier rebuilds every effect from the chain, so the agent's own report doesn't have to be trusted.
+          </p>
+          <p className="qualifier"><AlertTriangle aria-hidden />
+            Experimental prototype. Evidence comes from a local NEAR sandbox and is replayed here. Not audited. Not for real custody.
+            Testnet and mainnet are not claimed.</p>
+          <div className="cta">
+            <a className="btn primary" href="#/lab">Open the Attack Lab <ArrowRight aria-hidden /></a>
+            <a className="btn" href="#/verify"><FileSearch aria-hidden /> Watch the verifier catch a lie</a>
+          </div>
+        </div>
+        <div className="card" aria-label="Recorded run summary">
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+            <span className="chip replay">REPLAY</span><span className="chip net">SANDBOX</span>
+            <VerdictChip v={run.verdicts_live.safety} label="safety" />
+          </div>
+          <div className="grid2" style={{ gap: 18 }}>
+            <div className="stat"><span className="v">{near(run.policy.budget)} N</span><span className="l">fixed budget B</span></div>
+            <div className="stat"><span className="v">{near(run.ledger.C)} N</span><span className="l">charged C (never decreases)</span></div>
+            <div className="stat"><span className="v">{run.ledger.accepted_count}</span><span className="l">payments admitted</span></div>
+            <div className="stat"><span className="v">{denials + failedCalls + run.offchain_rejections.length}</span><span className="l">attacks stopped</span></div>
+          </div>
+          <div style={{ marginTop: 20 }}><AuthorityBar run={run} /></div>
+          <p className="subtle" style={{ fontSize: 12.5, marginTop: 14 }}>
+            Run <code>{run.run_id}</code> on a fresh sandbox chain <code>{run.node.chain_id}</code>. Repeated on {bundle.runs.length - 1} more fresh node{bundle.runs.length > 2 ? "s" : ""} with the same results.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="how">
+        <div className="eyebrow">How it works</div>
+        <h2 id="how" style={{ fontSize: 30, marginBottom: 24 }}>Three accounts. Only one can move money, and it has no keys.</h2>
+        <div className="grid3">
+          <div className="card"><h3><KeyRound size={16} style={{ verticalAlign: -3 }} /> Owner</h3>
+            <p className="muted">Creates the vault once with an immutable mandate: budget B, per-request cap M, an allowlist, an expiry and at most K payments. The owner can freeze the vault and can never raise the budget.</p></div>
+          <div className="card"><h3><Lock size={16} style={{ verticalAlign: -3 }} /> Vault</h3>
+            <p className="muted">A NEAR contract account created <strong>keyless</strong> in one batch. It has no withdraw, upgrade or key-adding code path. It charges C before it sends, so a refund never restores authority.</p></div>
+          <div className="card"><h3><Wallet size={16} style={{ verticalAlign: -3 }} /> Agent</h3>
+            <p className="muted">Holds only function-call keys that can call <code>request_payment</code> on the vault with zero deposit. It cannot transfer, deploy, add keys or call anything else.</p></div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="proof">
+        <div className="eyebrow">What the recorded run shows</div>
+        <h2 id="proof" style={{ fontSize: 30, marginBottom: 24 }}>One run, end to end</h2>
+        <div className="flow">
+          <div><span className="n">01</span><h3>A normal payment</h3><p>1 NEAR to an allowlisted account. Admitted, delivered. C = 1.</p></div>
+          <div><span className="n">02</span><h3>A failed payment still counts</h3><p>2 NEAR to an allowlisted account that doesn't exist. The transfer fails and the 2 NEAR is refunded. C = 3 anyway.</p></div>
+          <div><span className="n">03</span><h3>The agent attacks</h3><p>A replay, a cap overrun, an exfiltration, reuse of the refund, malformed input and four key abuses. All are stopped.</p></div>
+          <div><span className="n">04</span><h3>The runner lies</h3><p>Its evidence bundle silently drops the failed payment. The verifier finds the missing transaction on its own.</p></div>
+        </div>
+      </section>
+
+      <section className="section claims" aria-labelledby="claims">
+        <div className="eyebrow">Claims ledger</div>
+        <h2 id="claims" style={{ fontSize: 30, marginBottom: 24 }}>What we claim, what we assume, what we don't</h2>
+        <div className="grid3">
+          <div className="card"><h3><Check aria-hidden style={{ color: "var(--allow)" }} /> Claimed (tested in sandbox)</h3><ul>
+            <li>Admitted principal C never exceeds B, and nothing decreases C.</li>
+            <li>A failed transfer is charged (F) even though its principal is refunded.</li>
+            <li>Replay, cap, allowlist, quota and malformed requests are denied with no effect.</li>
+            <li>The vault has zero access keys from creation to cut; its code is deployed once.</li>
+            <li>An independent collector recovers an omitted transaction root from its own node.</li></ul></div>
+          <div className="card"><h3><AlertTriangle aria-hidden style={{ color: "var(--pending)" }} /> Assumed</h3><ul>
+            <li>The NEAR runtime executes receipts as specified.</li>
+            <li>The owner sets an honest mandate and an allowlist they trust.</li>
+            <li>The reviewer's node reports the chain truthfully. The verifier checks consistency, not consensus proofs.</li>
+            <li>The deployed bytes match the reviewed source (checked by hash and by a reproducible rebuild).</li></ul></div>
+          <div className="card"><h3><Ban aria-hidden style={{ color: "var(--deny)" }} /> Not claimed</h3><ul>
+            <li>Prompt-injection defence: an agent can still waste its budget on allowlisted payees.</li>
+            <li>Testnet or mainnet enforcement, or production custody.</li>
+            <li>Audit, formal verification, recurring budgets, tokens other than NEAR.</li>
+            <li>Concurrency comparisons against other designs (not run).</li></ul></div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ Lab */
+export function Lab({ bundle }: { bundle: Bundle }) {
+  const [ri, setRi] = useState(0);
+  const run = bundle.runs[ri];
+  const [open, setOpen] = useState<TimelineItem | null>(null);
+  const [filter, setFilter] = useState<"agent" | "all">("agent");
+  const items = useMemo(() => run.timeline.filter((t) => filter === "all" || t.signer === run.policy.agent || t.method === "freeze"), [run, filter]);
+  return (
+    <>
+      <section className="section" style={{ paddingTop: 40 }}>
+        <div className="toolbar">
+          <div>
+            <div className="eyebrow">Attack Lab</div>
+            <h1 style={{ fontSize: 34 }}>A compromised agent against a fixed mandate</h1>
+          </div>
+          <div className="tabs" role="group" aria-label="Select recorded run">
+            {bundle.runs.map((r, i) => (
+              <button key={r.run_id} aria-pressed={i === ri} onClick={() => { setRi(i); setOpen(null); }}>
+                Run {String.fromCharCode(65 + i)} · {r.node.chain_id}
+              </button>
+            ))}
+          </div>
+        </div>
+        <p className="lede" style={{ marginTop: 12 }}>
+          These are real transactions from a local NEAR sandbox. The workload ran inside an isolated sandbox holding only the agent's
+          function-call keys. Every decision, receipt and number below comes from the reviewer's own capture.
+          Select a row to see its receipts.
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
+          {Object.entries(run.verdicts_live).map(([k, v]) => <VerdictChip key={k} v={v} label={k.replace("_", " ")} />)}
+          <span className="chip replay">REPLAY of recorded raw RPC</span>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 28 }}>
+        <div className="lab-top">
+          <div className="card">
+            <h3>Mandate (immutable)</h3>
+            <dl className="kv">
+              <dt>Budget B</dt><dd className="mono">{near(run.policy.budget)} NEAR</dd>
+              <dt>Per request M</dt><dd className="mono">{near(run.policy.max_per_request)} NEAR</dd>
+              <dt>Max payments K</dt><dd className="mono">{run.policy.max_accepted_requests}</dd>
+              <dt>Allowlist</dt><dd>{run.policy.recipients.map((r) => <code key={r} style={{ display: "block" }}>{r}</code>)}</dd>
+              <dt>Vault</dt><dd><code>{run.policy.vault}</code> · <strong style={{ color: "var(--allow)" }}>{run.policy.vault_keys} keys</strong></dd>
+              <dt>Agent</dt><dd><code>{run.policy.agent}</code> · {run.policy.agent_keys} FC keys → <code>request_payment</code></dd>
+              <dt>Policy hash</dt><dd className="hash">{run.policy.policy_hash}</dd>
+              <dt>Code</dt><dd className="hash">sha256 {short(run.artifact.wasm_sha256, 8)}</dd>
+            </dl>
+          </div>
+          <div className="card">
+            <h3>Budget authority at the final cut Q (#{run.window.q.height})</h3>
+            <AuthorityBar run={run} />
+            <div className="table-wrap" style={{ marginTop: 16 }}>
+              <table>
+                <thead><tr><th>Quantity</th><th>Verifier (from receipts)</th><th>Meaning</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>C</strong> charged</td><td className="mono">{near(run.ledger.C)}</td><td className="muted">Sum of admitted requests. Also equal to the contract's raw state and its view.</td></tr>
+                  <tr><td><strong>S</strong> settled</td><td className="mono">{near(run.ledger.S)}</td><td className="muted">Native transfers that succeeded</td></tr>
+                  <tr><td><strong>F</strong> failed</td><td className="mono">{near(run.ledger.F)}</td><td className="muted">Native transfers that failed. Principal refunded, budget still charged.</td></tr>
+                  <tr><td><strong>U</strong> unresolved</td><td className="mono">{near(run.ledger.U)}</td><td className="muted">Transfers with no final outcome at Q</td></tr>
+                  <tr><td><strong>B − C</strong></td><td className="mono">{near(run.ledger.headroom)}</td><td className="muted">Remaining authority</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="subtle" style={{ fontSize: 12.5, marginTop: 10 }}>
+              C over the run: {run.state_history.charged_series.map((c) => near(c)).filter((v, i, a) => a.indexOf(v) === i).join(" → ")} NEAR,
+              taken from {run.state_history.state_writes} independently decoded STATE writes. It never decreases.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 28 }} aria-labelledby="trace">
+        <div className="toolbar" style={{ marginBottom: 14 }}>
+          <h2 id="trace" style={{ fontSize: 20 }}>Trace: intent → request → decision → effects</h2>
+          <div className="tabs" role="group" aria-label="Filter rows">
+            <button aria-pressed={filter === "agent"} onClick={() => setFilter("agent")}>Agent + freeze</button>
+            <button aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All roots in window ({run.timeline.length})</button>
+          </div>
+        </div>
+        <div className="card" style={{ padding: "14px 0 0" }}>
+          <div className="lanes-head"><div>Block</div><div>Intent (runner, untrusted)</div><div>Request</div><div>Decision</div><div>Effects (verified)</div></div>
+          {items.map((t) => (
+            <button key={t.tx_hash} className="lane-row" aria-expanded={open?.tx_hash === t.tx_hash} onClick={() => setOpen(t)}>
+              <div className="h">#{t.height}</div>
+              <div>
+                <div className="t">{t.runner_intent?.label.replaceAll("_", " ") ?? (t.method === "freeze" ? "owner freeze" : t.decision.toLowerCase())}</div>
+                <div className="s">{t.runner_intent?.intent ?? `${t.signer} → ${t.receiver}`}</div>
+              </div>
+              <div>
+                <div className="t mono" style={{ fontSize: 12.5 }}>{t.method ?? "—"}{t.request_id ? ` · id ${t.request_id}` : ""}</div>
+                <div className="s">{t.amount ? `${near(t.amount)} NEAR → ${t.recipient}` : t.args_raw ? short(t.args_raw, 18) : short(t.tx_hash)}</div>
+              </div>
+              <div>
+                <DecisionLabel item={t} />
+                {t.reason && <div className="s mono">{t.reason}</div>}
+                {t.decision === "Admitted" && <div className="s">admission seq {t.admission_seq}</div>}
+              </div>
+              <div className="s" style={{ marginTop: 0 }}>{effects(t)}</div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 28 }} aria-labelledby="offchain">
+        <h2 id="offchain" style={{ fontSize: 20, marginBottom: 6 }}>Stopped before reaching the chain</h2>
+        <p className="muted" style={{ marginBottom: 14, fontSize: 14 }}>
+          NEAR rejected these key abuses when the agent submitted them, so they leave no chain trace. The node's errors are shown as
+          recorded by the runner and the reviewer's filter proxy. The verifier also confirmed that none of these transactions is on chain.
+        </p>
+        <div className="grid2">
+          {run.offchain_rejections.map((o) => (
+            <div key={o.tx_hash} className="card" style={{ padding: 16 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6 }}>
+                <ShieldOff size={16} style={{ color: "var(--deny)" }} aria-hidden />
+                <strong>{o.label.replaceAll("_", " ")}</strong>
+                <span className="chip untrusted" style={{ marginLeft: "auto" }}>runner-reported</span>
+              </div>
+              <div className="muted" style={{ fontSize: 13.5 }}>{o.expected}</div>
+              <code style={{ fontSize: 12, color: "var(--subtle)", overflowWrap: "anywhere" }}>{errorName(o.rpc_error)}</code>
+            </div>
+          ))}
+        </div>
+      </section>
+      {open && <Drawer item={open} run={run} onClose={() => setOpen(null)} />}
+    </>
+  );
+}
+
+function effects(t: TimelineItem): string {
+  if (t.decision === "Admitted") {
+    return t.settlement === "S"
+      ? `Transfer ${near(t.amount!)} NEAR delivered · callback ${t.callback}`
+      : `Transfer failed (${t.native_failure}) · ${near(t.amount!)} NEAR system refund · still charged · callback ${t.callback}`;
+  }
+  if (t.decision === "Denied") return `No transfer · ${REASON_TEXT[t.reason ?? ""] ?? ""}`;
+  if (t.decision === "ReceiptFailure") return "Receipt failed: no transfer, no state change (checked in history)";
+  if (t.decision === "Frozen") return "Vault frozen: irreversible, no new admissions";
+  if (t.decision === "Construction") return "Keyless creation batch: create, fund, deploy, init";
+  return "Account setup";
+}
+
+function errorName(e: unknown): string {
+  const s = JSON.stringify(e);
+  const m = s.match(/"(MethodNameMismatch|RequiresFullAccess|DepositWithFunctionCall|ReceiverMismatch|NotEnoughAllowance)"/);
+  return m ? m[1] : s.slice(0, 90);
+}
+
+/* ------------------------------------------------------------------ Verify */
+export function Verify({ bundle }: { bundle: Bundle }) {
+  const [ri, setRi] = useState(0);
+  const run = bundle.runs[ri];
+  const omitted = run.omission.omitted_tx_hash[0];
+  const agentRoots = run.timeline.filter((t) => t.signer === run.policy.agent || t.receiver === run.policy.vault || t.receiver === run.policy.agent);
+  const rec = run.omission.recovered_payment[0];
+  return (
+    <>
+      <section className="section" style={{ paddingTop: 40 }}>
+        <div className="toolbar">
+          <div>
+            <div className="eyebrow">Independent verification</div>
+            <h1 style={{ fontSize: 34 }}>Don't trust the runner. Rebuild the run.</h1>
+          </div>
+          <div className="tabs" role="group" aria-label="Select recorded run">
+            {bundle.runs.map((r, i) => (
+              <button key={r.run_id} aria-pressed={i === ri} onClick={() => setRi(i)}>Run {String.fromCharCode(65 + i)}</button>
+            ))}
+          </div>
+        </div>
+        <p className="lede" style={{ marginTop: 12 }}>
+          The agent's operator hands over an evidence bundle that looks complete and has valid checksums. It silently leaves out the
+          failed 2 NEAR payment: the transaction, every receipt, the refund, the retained record and the history rows.
+          The reviewer's collector is <strong>never given that transaction hash</strong>. It walks every block and chunk from H0 to Q on its own node.
+        </p>
+      </section>
+
+      <section className="section" style={{ paddingTop: 28 }}>
+        <div className="split">
+          <div className="card">
+            <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+              <EyeOff size={16} aria-hidden /> <h3 style={{ margin: 0 }}>Runner's presented bundle</h3>
+              <span style={{ marginLeft: "auto" }}><VerdictChip v={run.omission.forged_verdicts.evidence} label="evidence" /></span>
+            </div>
+            <ul className="rootlist">
+              {agentRoots.map((t) => (
+                <li key={t.tx_hash} className={t.tx_hash === omitted ? "gone" : ""}>
+                  <span>#{t.height}</span><span>{short(t.tx_hash, 7)}</span>
+                  <span className="lbl">{t.tx_hash === omitted ? "omitted by runner" : (t.runner_intent?.label ?? t.method ?? t.decision).replaceAll("_", " ")}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="card">
+            <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+              <FileSearch size={16} aria-hidden /> <h3 style={{ margin: 0 }}>Reviewer's independent capture</h3>
+              <span style={{ marginLeft: "auto" }}><VerdictChip v={run.verdicts_live.evidence} label="evidence" /></span>
+            </div>
+            <ul className="rootlist">
+              {agentRoots.map((t) => (
+                <li key={t.tx_hash} className={t.tx_hash === omitted ? "found" : ""}>
+                  <span>#{t.height}</span><span>{short(t.tx_hash, 7)}</span>
+                  <span className="lbl">{t.tx_hash === omitted ? "recovered from chunk scan" : (t.runner_intent?.label ?? t.method ?? t.decision).replaceAll("_", " ")}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        {rec && (
+          <div className="callout ok" style={{ marginTop: 16 }}>
+            <Check aria-hidden />
+            <div>
+              <strong>Recovered:</strong> request <code>{rec.request_id}</code>: {near(rec.amount)} NEAR to <code>{rec.recipient}</code>,
+              native transfer <strong>failed ({rec.native_failure})</strong>, principal refund receipt <code>{short(rec.principal_refund_receipt ?? "", 6)}</code>,
+              {" "}{run.omission.recovered_receipts.length} receipts in all. The forged bundle gets <strong>evidence FAIL</strong> (<code>OMITTED_ROOT</code>).
+              The genuine bundle matches exactly ({run.omission.genuine_differences.length} differences).
+            </div>
+          </div>
+        )}
+      </section>
+
+      <section className="section" style={{ paddingTop: 40 }} aria-labelledby="mut">
+        <h2 id="mut" style={{ fontSize: 20, marginBottom: 6 }}>{run.mutations.filter((m) => m.rejected).length} of {run.mutations.length} tamperings rejected</h2>
+        <p className="muted" style={{ marginBottom: 14, fontSize: 14 }}>Each row edits the genuine recorded RPC responses, replays them and requires the verifier to refuse a complete PASS.</p>
+        <div className="card" style={{ padding: 0 }}>
+          <div className="table-wrap"><table>
+            <thead><tr><th>Tampering</th><th>Result</th><th>Verifier finding</th></tr></thead>
+            <tbody>{run.mutations.map((m) => (
+              <tr key={m.name}><td>{m.name.replaceAll("_", " ")}</td>
+                <td>{m.rejected ? <span className="chip pass"><Check aria-hidden /> rejected</span> : <span className="chip fail"><X aria-hidden /> accepted</span>}</td>
+                <td className="mono" style={{ fontSize: 12.5 }}>{m.issues.join(", ")}</td></tr>))}
+            </tbody></table></div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 40 }} aria-labelledby="iso">
+        <h2 id="iso" style={{ fontSize: 20, marginBottom: 14 }}>Runner isolation and retention</h2>
+        <div className="grid2">
+          <div className="card">
+            <h3>Runner sandbox (bubblewrap, all namespaces unshared) <VerdictChip v={run.isolation.checks} /></h3>
+            <dl className="kv">
+              <dt>Direct node RPC</dt><dd>{run.isolation.direct_node_rpc.split(":")[0]}</dd>
+              <dt>Node home / owner key</dt><dd>{run.isolation.forbidden_paths_visible.length === 0 ? "not visible" : "VISIBLE"}</dd>
+              <dt>Admin RPC</dt><dd>{run.isolation.runner_methods_denied.join(", ")}: denied by the reviewer filter</dd>
+              <dt>Runner used</dt><dd>{run.isolation.runner_methods_forwarded.join(", ")}</dd>
+            </dl>
+          </div>
+          <div className="card">
+            <h3>Retention re-read {run.retention.all_identical ? <span className="chip pass">identical</span> : <span className="chip fail">differs</span>}</h3>
+            <dl className="kv">
+              <dt>Produced blocks after Q</dt><dd className="mono">{run.retention.produced_blocks_after_q} (no fast-forward)</dd>
+              <dt>Transaction graphs</dt><dd className="mono">{run.retention.graphs_identical}/{run.retention.graphs_compared} byte-identical</dd>
+              <dt>Blocks, chunks, Q state, history</dt><dd>byte-identical</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ Docs */
+export function Docs({ bundle }: { bundle: Bundle }) {
+  const run = bundle.runs[0];
+  return (
+    <section className="section" style={{ paddingTop: 40, maxWidth: 860 }}>
+      <div className="eyebrow">Reproduce</div>
+      <h1 style={{ fontSize: 34, marginBottom: 12 }}>Check it yourself</h1>
+      <p className="lede">Three paths, from cheapest to strongest. None of them needs a wallet or funds. Everything runs on your machine.</p>
+      {[
+        ["1 · Re-verify the recorded runs (seconds, Python 3 stdlib only)",
+          "python3 -m unittest discover -s tests/evidence -t .   # 50 tests: synthetic + replay of real recorded RPC"],
+        ["2 · Rebuild the contract and compare bytes",
+          `scripts/build-contract.sh   # expect sha256 ${run.artifact.wasm_sha256}\ngit diff --exit-code artifacts/`],
+        ["3 · Run a fresh independent G1 experiment (~5 min, Linux + bubblewrap)",
+          "cargo build -p g1-sandbox-tests --locked --bin g1_actor\npython3 scripts/g1-independent/run_g1.py my-run --rpc-port 3240 --net-port 24777"],
+      ].map(([t, c]) => (
+        <div key={t} className="cmd" style={{ marginTop: 22 }}><h3 style={{ fontSize: 15 }}>{t}</h3><pre>{c}</pre></div>
+      ))}
+      <div className="callout warn" style={{ marginTop: 28 }}>
+        <AlertTriangle aria-hidden />
+        <div>Trust statement: chain data was read by the reviewer from a single-validator local sandbox node it started itself. The verifier
+          checks consistency, completeness within the window, and the vault's invariants. A file digest proves that a file is unchanged,
+          not that NEAR consensus included it.</div>
+      </div>
+      <p className="muted" style={{ marginTop: 24 }}>Full documentation, the threat model and the limits are in the <a href={REPO_URL}>repository README</a>.</p>
+    </section>
+  );
+}
