@@ -1,0 +1,53 @@
+{
+  "network": "sandbox",
+  "chain_id": "test-chain-OPkoc",
+  "genesis_block_hash": "52azbRmkZZR6RtLa618fmXG3bBGdPFWdJFUqi5tKxbBC",
+  "genesis_rpc_sha256": "2c66a1a8511969e198bb103a4ee73d5aa599869a4fa1b39ea39aa0aaae48ca6d",
+  "node_version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  },
+  "protocol_config_sha256": "d34354d6ac602486b998209e22898de54f5c2fe9e095a0756ee208b74089dd7b",
+  "h0_hash": "a8ZTNT92zNpoGwEPZEug7hJnWj2HGb2W34ykeoDGQyt",
+  "h0_height": 14,
+  "q_hash": "Hw6hyh4VNcCNMSokACx8vxykC7FKzFV6rHJW9F7AvAdG",
+  "q_height": 140,
+  "max_blocks": 10000,
+  "max_roots": 1000,
+  "shard_ids": [
+    0
+  ],
+  "schema": "near-g1-reviewer/v1",
+  "vault": "generous.owner.test.near",
+  "owner": "owner.test.near",
+  "agent": "agent-gen.owner.test.near",
+  "recipients": [
+    "alice.test.near"
+  ],
+  "policy_hash": "8gkkVcuQSpPPrt1wUNcmVZgqg8xucoAJtANU1gvcUu1a",
+  "budget": "100000000000000000000000000",
+  "max_per_request": "2000000000000000000000000",
+  "expires_at_ns": "1794411775091128895",
+  "max_accepted_requests": 9,
+  "asset": "NativeNear",
+  "agent_key_count": 9,
+  "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "node_binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+  "node_config_sha256": "53b8465ff20856fce153607c77e47d193b435ffb28d06cf102dbdc0ba929e65a",
+  "genesis_file_sha256": "a8a7aa75c45ee8cb6ac2cc6a9d4de6bcf8b7baef83931ab46b5e9095cccdfe9d",
+  "expected": {
+    "ledger": {
+      "C": "17000000000000000000000000",
+      "S": "17000000000000000000000000",
+      "F": "0",
+      "U": "0",
+      "headroom": "83000000000000000000000000",
+      "accepted_count": 9
+    },
+    "principal_refunds": 0,
+    "denial_reasons": [],
+    "failed_call_classes": []
+  }
+}

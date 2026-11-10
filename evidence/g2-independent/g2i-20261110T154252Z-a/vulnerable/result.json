@@ -1,0 +1,118 @@
+{
+  "schema": "near-g2-control-result/v1",
+  "mode": "LIVE",
+  "label": "CONTROL (vulnerable teaching fixture)",
+  "vault": "vulnerable.owner.test.near",
+  "budget": "5000000000000000000000000",
+  "roots": 35,
+  "admissions": 9,
+  "denials": 0,
+  "transfers": [
+    {
+      "tx_hash": "5FJWmqdceBc65vt1BBgpoM21GzhJL7cFPJbwFkeG5Kvb",
+      "receipt_id": "A7yKvK8vCXzGC23iqbMm5H1kfGMC25QchFNkGUYx1vm1",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "5XNUNeDtQ5fRBcFXc952e4JjoCDKwA9ZetdHueYLDLKT",
+      "receipt_id": "5e22vybJ6EszsZEDigLcWMuwqfTTpgqheG9GjT2ZSF9u",
+      "recipient": "alice.test.near",
+      "amount": "1000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 98,
+      "parent_height": 97
+    },
+    {
+      "tx_hash": "9dMndRtUcCSFTNAaGU7eCag1qZDsbKkuXsZafiynVoL1",
+      "receipt_id": "EsA6JsbjLekmocqdWpsS7V8etgTBpDAfP363dPZfmtTv",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "CiK529oZqaAFTThumQyhHBRziUcSbz8aPfNTRva4e8vb",
+      "receipt_id": "76PHEcvf2LSso2WAXKsGxAbuE5LvBQxNWk5Ck9LB5tCo",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "EY5viDcJLY32vWSioHgQjnDP28ChrxoENFi9mH5RKZYh",
+      "receipt_id": "3F5o6GiFqqbQAA9CqkH1PERYQ8Hr4pCvZisyPGJJ7HQi",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "EbqB8yykNaTFPEyWjYJgphcToqayEvTkNy1yFaFwncza",
+      "receipt_id": "A4ogTsHskwHVtuAiGBRofA6zE15pc9tDpYFQrY6AGmwa",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "HnjAZ4fvumBifWHEobdsQGrNFTUpjimecjmioU4A1GeD",
+      "receipt_id": "2k3jwadPGFGHs6bvN55Rse7uqT9Qrc2Ej1EJDG3pV1hL",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "HqM8gHcMBv8UT1v2jZjjW5rxLgRc4VFjQDdNEzzvUPut",
+      "receipt_id": "4wHztxxLhBmfCipGhC7XVYvCMjY9Ud58vUubQzd33bw7",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    },
+    {
+      "tx_hash": "WH6XNQqeTzmv8fq1AqZc7bvZjvZyjVQAuDjJPV6T8Yp",
+      "receipt_id": "3ng34nUBtvEvsJozv3MkokWw9ARtSQAJ3nU5feipYoqk",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+    }
+  ],
+  "delivered_principal": "17000000000000000000000000",
+  "overspend": "12000000000000000000000000",
+  "budget_exceeded_on_chain": true,
+  "admissions_per_block": {
+    "97": 1,
+    "105": 8
+  },
+  "stale_settled_seen": [
+    "0",
+    "1000000000000000000000000"
+  ],
+  "fixture_view_at_q": {
+    "fixture": "vulnerable-settled-only",
+    "budget": "5000000000000000000000000",
+    "settled": "17000000000000000000000000",
+    "admitted": 9,
+    "seq": "9"
+  },
+  "issues": [],
+  "metrics": {
+    "rpc_count": 298,
+    "response_bytes": 1119759,
+    "elapsed_seconds": 0.2034
+  },
+  "capture_sha256": "5558f1d458e47c81d266d8cb20b466b96f41c59286ede8669564c765f1439de7"
+}

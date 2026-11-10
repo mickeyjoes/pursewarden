@@ -1,0 +1,108 @@
+{"t": 1794325381.3874934, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 275}
+{"t": 1794325381.3936105, "bytes": 73, "method": "block", "decision": "forward", "response_bytes": 2639}
+{"t": 1794325381.397607, "bytes": 618, "method": "send_tx", "decision": "forward", "response_bytes": 73, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"3\"}"}
+{"t": 1794325381.447114, "bytes": 193, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 13609}
+{"t": 1794325382.3428748, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794325382.3468664, "bytes": 73, "method": "block", "decision": "forward", "response_bytes": 2684}
+{"t": 1794325382.3520184, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794325382.3552392, "bytes": 73, "method": "block", "decision": "forward", "response_bytes": 2684}
+{"t": 1794325382.3596542, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 276}
+{"t": 1794325382.362793, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3666654, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794325382.3695292, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3734066, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794325382.3760734, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3796682, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794325382.3819344, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3851042, "bytes": 211, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794325382.3873057, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3903842, "bytes": 212, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 277}
+{"t": 1794325382.3925421, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325382.3958418, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"21\"}"}
+{"t": 1794325382.3975224, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"22\"}"}
+{"t": 1794325382.3965213, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"23\"}"}
+{"t": 1794325382.3987768, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"25\"}"}
+{"t": 1794325382.3982527, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"24\"}"}
+{"t": 1794325382.399782, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"26\"}"}
+{"t": 1794325382.402941, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"27\"}"}
+{"t": 1794325382.402312, "bytes": 615, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"28\"}"}
+{"t": 1794325382.4069583, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 7035}
+{"t": 1794325383.1090193, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6884}
+{"t": 1794325383.1148179, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 7036}
+{"t": 1794325383.1200724, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 6890}
+{"t": 1794325383.1252596, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 14860}
+{"t": 1794325383.3517668, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 7039}
+{"t": 1794325383.3565621, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 7038}
+{"t": 1794325383.360874, "bytes": 194, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 14752}
+{"t": 1794325383.370978, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325383.374141, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2687}
+{"t": 1794325383.3780978, "bytes": 627, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"39\"}"}
+{"t": 1794325383.470018, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 13698}
+{"t": 1794325384.3749619, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.3784037, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.382426, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.3851295, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.3887978, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.3915527, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.395436, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.39815, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.4017909, "bytes": 215, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.4042952, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.4077997, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.4104862, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.4145615, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.4169312, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.4209762, "bytes": 216, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 280}
+{"t": 1794325384.4229033, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2685}
+{"t": 1794325384.4250705, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"60\"}"}
+{"t": 1794325384.425419, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"57\"}"}
+{"t": 1794325384.4260318, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"58\"}"}
+{"t": 1794325384.4271257, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"59\"}"}
+{"t": 1794325384.4284325, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"62\"}"}
+{"t": 1794325384.4291174, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"63\"}"}
+{"t": 1794325384.42771, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"61\"}"}
+{"t": 1794325384.4296842, "bytes": 623, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"64\"}"}
+{"t": 1794325384.4324055, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15314}
+{"t": 1794325385.3838725, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15301}
+{"t": 1794325385.3909326, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15404}
+{"t": 1794325385.3977923, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15317}
+{"t": 1794325385.4037845, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15308}
+{"t": 1794325385.4095428, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15303}
+{"t": 1794325385.4150572, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15308}
+{"t": 1794325385.4205446, "bytes": 198, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 15310}
+{"t": 1794325385.4323905, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 282}
+{"t": 1794325385.4351764, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2688}
+{"t": 1794325385.438941, "bytes": 551, "method": "send_tx", "decision": "forward", "response_bytes": 74, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"INCLUDED\"},\"id\":\"75\"}"}
+{"t": 1794325385.501055, "bytes": 199, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 11560}
+{"t": 1794325386.3851223, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.388965, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.3936505, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.3968754, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.400906, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.403616, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.4073749, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.4101295, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.413874, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.4166074, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.4196997, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.4219377, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.4250839, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.427336, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.4304068, "bytes": 217, "method": "query", "request_type": "view_access_key", "decision": "forward", "response_bytes": 283}
+{"t": 1794325386.432476, "bytes": 74, "method": "block", "decision": "forward", "response_bytes": 2690}
+{"t": 1794325386.4363554, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"94\"}"}
+{"t": 1794325386.4357836, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"95\"}"}
+{"t": 1794325386.4369931, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"93\"}"}
+{"t": 1794325386.4381654, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"96\"}"}
+{"t": 1794325386.4375978, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"97\"}"}
+{"t": 1794325386.4411788, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"99\"}"}
+{"t": 1794325386.4398649, "bytes": 547, "method": "send_tx", "decision": "forward", "response_bytes": 70, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"98\"}"}
+{"t": 1794325386.4425864, "bytes": 548, "method": "send_tx", "decision": "forward", "response_bytes": 71, "response": "{\"jsonrpc\":\"2.0\",\"result\":{\"final_execution_status\":\"NONE\"},\"id\":\"100\"}"}
+{"t": 1794325386.446589, "bytes": 199, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 13174}
+{"t": 1794325387.4047248, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12811}
+{"t": 1794325387.4107933, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12800}
+{"t": 1794325387.4164753, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12811}
+{"t": 1794325387.4220955, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12802}
+{"t": 1794325387.427395, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12808}
+{"t": 1794325387.431964, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12806}
+{"t": 1794325387.436405, "bytes": 200, "method": "EXPERIMENTAL_tx_status", "decision": "forward", "response_bytes": 12813}

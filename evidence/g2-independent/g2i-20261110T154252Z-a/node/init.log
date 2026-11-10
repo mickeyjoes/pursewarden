@@ -1,0 +1,5 @@
+2026-11-10T15:42:52.410019Z  INFO neard: version="2.13.4" build="2.13.4" commit="44f7ae6cd7ef08bab604e20a473bf77e35d4c993" latest_protocol=86
+2026-11-10T15:42:52.410308Z  INFO near: using key for account public_key=ed25519:6EsdrtnrKXSgX1cC3Cc7xoupzjBw44rpfBwA6qjgxxTv account_id=node
+2026-11-10T15:42:52.410431Z  INFO near: using key for account public_key=ed25519:Heq9Bwzeh3tLC7wQASXCmo5WmXVAFv46NAoRzR3WS7mw account_id=test.near
+2026-11-10T15:42:52.410707Z  INFO config: validating genesis config and records, this could take a few minutes
+2026-11-10T15:42:52.410948Z  INFO near: generated node key, validator key, genesis file dir=~/.local/share/near-agent-vault-lab/g2-independent/g2i-20261110T154252Z-a/reviewer/node

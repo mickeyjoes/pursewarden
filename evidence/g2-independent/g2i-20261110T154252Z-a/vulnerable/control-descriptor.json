@@ -1,0 +1,26 @@
+{
+  "network": "sandbox",
+  "chain_id": "test-chain-OPkoc",
+  "genesis_block_hash": "52azbRmkZZR6RtLa618fmXG3bBGdPFWdJFUqi5tKxbBC",
+  "genesis_rpc_sha256": "2c66a1a8511969e198bb103a4ee73d5aa599869a4fa1b39ea39aa0aaae48ca6d",
+  "node_version": {
+    "build": "2.13.4",
+    "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+    "rustc_version": "1.93.0",
+    "version": "2.13.4"
+  },
+  "protocol_config_sha256": "d34354d6ac602486b998209e22898de54f5c2fe9e095a0756ee208b74089dd7b",
+  "h0_hash": "a8ZTNT92zNpoGwEPZEug7hJnWj2HGb2W34ykeoDGQyt",
+  "h0_height": 14,
+  "q_hash": "Hw6hyh4VNcCNMSokACx8vxykC7FKzFV6rHJW9F7AvAdG",
+  "q_height": 140,
+  "max_blocks": 10000,
+  "max_roots": 1000,
+  "shard_ids": [
+    0
+  ],
+  "schema": "near-g2-control/v1",
+  "vault": "vulnerable.owner.test.near",
+  "budget": "5000000000000000000000000",
+  "wasm_sha256": "d2eef2fd1b429fbd6216ab1f736e76c4c0e871de2c2b12f01ae23801fd6cf3d4"
+}
