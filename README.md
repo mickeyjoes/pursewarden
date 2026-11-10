@@ -105,7 +105,7 @@ git diff --exit-code artifacts/             # the rebuilt WASM equals the commit
 - The artifact SHA-256 is `c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768`.
 - The capability gate passes: there are no key, deploy, delete or stake host imports, and exactly 8 callable exports.
 
-A byte-identical rebuild has been shown from two checkout paths on one machine. **Cross-machine reproduction has not been tested yet.**
+A byte-identical rebuild has been shown from three checkout paths on one machine, and verified on a second machine: GitHub Actions `ci` run 42850602121 (ubuntu-24.04, fresh Rust 1.93.0 and cargo-near 0.22.0, different paths) rebuilt `c7c77263…dd768` byte-identically and passed the capability gate. The `ci` workflow repeats this on every push.
 
 ### 5. Run a fresh independent G1 experiment yourself (about 5 min)
 

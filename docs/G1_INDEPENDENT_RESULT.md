@@ -139,7 +139,7 @@ The previously committed `5b05246b` artifact embeds `/home/<user>/.rustup/toolch
 - has the same 24 imports, the same 8 callable exports, and identical globals and section IDs as `5b05246b`;
 - rebuilds byte-identically from a second checkout path.
 
-`5b05246b` is kept in `artifacts/legacy/` because `evidence/g1/g1-20261029a` refers to it. Cross-machine rebuild has **not been tested**.
+`5b05246b` is kept in `artifacts/legacy/` because `evidence/g1/g1-20261029a` refers to it. Cross-machine rebuild (added 2026-11-10): verified on a second machine: GitHub Actions `ci` run 42850602121 (ubuntu-24.04, fresh Rust 1.93.0 and cargo-near 0.22.0, different paths) rebuilt `c7c77263…dd768` byte-identically and passed the capability gate.
 
 ## Tests
 
@@ -158,4 +158,4 @@ The previously committed `5b05246b` artifact embeds `/home/<user>/.rustup/toolch
 
 ## Still open
 
-R3 late-failure atomicity (FAULT builds), R4 forced callback failure on chain, K = 64 storage, InsufficientLiquidity, executed expiry, G2 concurrency comparisons with a native-pending witness, testnet, and cross-machine artifact rebuild. None of these blocks the G1 claim as scoped. Each one blocks a stronger claim.
+R3 late-failure atomicity (FAULT builds), R4 forced callback failure on chain, K = 64 storage, InsufficientLiquidity, executed expiry, G2 concurrency comparisons with a native-pending witness and testnet. (Cross-machine artifact rebuild has since passed in CI.) None of these blocks the G1 claim as scoped. Each one blocks a stronger claim.
