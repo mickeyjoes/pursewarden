@@ -1,0 +1,5 @@
+2026-11-10T14:33:31.434982Z  INFO neard: version="2.13.4" build="2.13.4" commit="44f7ae6cd7ef08bab604e20a473bf77e35d4c993" latest_protocol=86
+2026-11-10T14:33:31.435192Z  INFO near: using key for account public_key=ed25519:A2b3kDNAX7mfBWf85tSWpdCQVuY4pxvhDNvD6rxvWnDH account_id=node
+2026-11-10T14:33:31.435252Z  INFO near: using key for account public_key=ed25519:CF3AW2WUVqYbtmHLksAz4PB5iX1p8M8L7fxNwKTycDZc account_id=test.near
+2026-11-10T14:33:31.435419Z  INFO config: validating genesis config and records, this could take a few minutes
+2026-11-10T14:33:31.435557Z  INFO near: generated node key, validator key, genesis file dir=/tmp/near-codex-review-tools/g1-independent/review-codex-20261110-b/reviewer/node

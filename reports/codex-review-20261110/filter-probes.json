@@ -1,0 +1,102 @@
+{
+  "batch": [
+    400,
+    {
+      "error": "single JSON-RPC object required"
+    }
+  ],
+  "admin": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "sandbox_patch_state",
+          "reason": "method not allowed for runner"
+        }
+      }
+    }
+  ],
+  "method_case_variant": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "SANDBOX_PATCH_STATE",
+          "reason": "method not allowed for runner"
+        }
+      }
+    }
+  ],
+  "method_whitespace": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "sandbox_patch_state ",
+          "reason": "method not allowed for runner"
+        }
+      }
+    }
+  ],
+  "query_unknown_type": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "query",
+          "reason": "query type not allowed"
+        }
+      }
+    }
+  ],
+  "query_array_params": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "query",
+          "reason": "query type not allowed"
+        }
+      }
+    }
+  ],
+  "valid_read": [
+    200,
+    {
+      "jsonrpc": "2.0",
+      "id": null,
+      "result": {
+        "method": "query"
+      }
+    }
+  ],
+  "oversized_body": [
+    413,
+    {
+      "error": "bad length"
+    }
+  ],
+  "forwarded_methods": [
+    "query"
+  ]
+}

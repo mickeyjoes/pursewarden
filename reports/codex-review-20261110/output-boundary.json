@@ -1,0 +1,8 @@
+{
+  "production_bwrap_used": true,
+  "private_path_absent_inside_runner": true,
+  "runner_planted_symlink": true,
+  "reviewer_copy_disclosed_dummy_private_file": true,
+  "used_real_keys": false,
+  "base": "/tmp/near-output-boundary-1b4swds2"
+}

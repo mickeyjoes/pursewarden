@@ -1,0 +1,31 @@
+{
+  "schema": "g1-independent/retention-compare/v1",
+  "run_id": "review-codex-20261110-b",
+  "excluded": [
+    "final_head (live head)",
+    "status except chain_id, genesis_hash, version, protocol_version"
+  ],
+  "fields_identical": {
+    "blocks": true,
+    "chunks": true,
+    "descriptor_sha256": true,
+    "genesis": true,
+    "genesis_block": true,
+    "graphs": true,
+    "history": true,
+    "initial_absence": true,
+    "mode": true,
+    "protocol": true,
+    "queries": true,
+    "root_blocks": true,
+    "schema": true,
+    "status": true
+  },
+  "all_identical": true,
+  "graphs_compared": 10,
+  "graphs_identical": 10,
+  "first_final_head": 111,
+  "later_final_head": 2111,
+  "first_capture_sha256": "199d0afdf670ed86802ea44b0b26d67bd6d7319432adf51565c4e9bf36d158e2",
+  "later_capture_sha256": "3b65feddf915b3634c46de50ee2ffb82d1de86c8dcab35a9ea907527c5d86034"
+}
