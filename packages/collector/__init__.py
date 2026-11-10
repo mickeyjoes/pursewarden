@@ -75,6 +75,15 @@ def hash_id(value):
     return value
 
 
+def b58decode32(value):
+    """Decode a canonical base58 32-byte hash (validated by hash_id)."""
+    hash_id(value)
+    n = 0
+    for c in value:
+        n = n * 58 + ALPHABET.index(c)
+    return n.to_bytes(32, "big")
+
+
 def decimal(value, bits=128):
     require(isinstance(value, str) and re.fullmatch(r"0|[1-9][0-9]*", value)
             and len(value) <= (20 if bits == 64 else 39), "INVALID_DECIMAL", repr(value))
@@ -186,6 +195,12 @@ def validate_descriptor(d):
     for name in ("wasm_sha256", "node_binary_sha256", "node_config_sha256", "genesis_file_sha256", "genesis_rpc_sha256", "protocol_config_sha256"):
         require(isinstance(d[name], str) and re.fullmatch(r"[0-9a-f]{64}", d[name]),
                 "DIGEST_REQUIRED", name)
+    # Full ten-field policy identity (SPEC-V1.1 section 3): the verifier recomputes the hash.
+    require(isinstance(d["chain_id"], str) and 0 < len(d["chain_id"].encode()) <= 64, "CHAIN_ID", d["chain_id"])
+    decimal(d["expires_at_ns"], 64)
+    require(type(d["max_accepted_requests"]) is int and 1 <= d["max_accepted_requests"] <= 64,
+            "RECORD_QUOTA", d["max_accepted_requests"])
+    require(d.get("asset", "NativeNear") == "NativeNear", "ASSET", d.get("asset"))
     for recipient in d["recipients"]:
         account(recipient)
         require("." in recipient and recipient not in {d["vault"], d["agent"], d["owner"]},
@@ -254,26 +269,30 @@ def collect(source, d):
     gblock = source.call("block", {"block_id": genesis["genesis_height"]})
     require(gblock["header"]["hash"] == d["genesis_block_hash"], "WRONG_GENESIS", "block hash")
     final = source.call("block", {"finality": "final"})
-    # Walk finalized head to Q, then Q to H0; skipped heights are legal.
-    blocks, cursor, seen, found_q = [], final, set(), False
+    # Bounded finality strategy: Q must be at or below the node's final head AND be the block the
+    # node serves for Q's height on its canonical chain. This avoids spending the block budget on
+    # head -> Q when acquisition happens later than Q. Then walk Q -> H0 by parent hashes
+    # (skipped heights are legal).
+    require(final["header"]["height"] >= d["q_height"], "Q_NOT_FINAL", final["header"]["height"], "INCONCLUSIVE")
+    at_q_height = source.call("block", {"block_id": d["q_height"]})
+    require(at_q_height["header"]["hash"] == d["q_hash"], "Q_NOT_CANONICAL",
+            {"served": at_q_height["header"]["hash"], "expected": d["q_hash"]})
+    blocks, cursor, seen = [], at_q_height, set()
     for _ in range(d["max_blocks"]):
         h = cursor["header"]
         bh = hash_id(h["hash"])
         require(bh not in seen, "BLOCK_CYCLE", bh)
         seen.add(bh)
-        if bh == d["q_hash"]:
-            found_q = True
-        if found_q:
-            blocks.append(cursor)
+        blocks.append(cursor)
         if bh == d["h0_hash"]:
             break
+        require(h["height"] > d["h0_height"], "H0_NOT_ANCESTOR_OF_Q", bh)
         parent = source.call("block", {"block_id": hash_id(h["prev_hash"])})
         require(parent["header"]["hash"] == h["prev_hash"]
                 and parent["header"]["height"] < h["height"], "BLOCK_PARENT", bh)
         cursor = parent
     else:
         raise EvidenceError("INTERVAL_BOUND", "H0 not reached")
-    require(found_q and blocks, "Q_NOT_FINAL_ANCESTOR", d["q_hash"])
     blocks.reverse()
     require(blocks[0]["header"]["height"] == d["h0_height"]
             and blocks[-1]["header"]["height"] == d["q_height"], "HEIGHT_INTERVAL", "anchor mismatch")
@@ -304,8 +323,12 @@ def collect(source, d):
             ch = hash_id(header["chunk_hash"])
             require(ch not in chunks, "REPEATED_NEW_CHUNK", ch)
             chunk = source.call("chunk", {"chunk_id": ch})
-            for field in ("chunk_hash", "height_included", "shard_id"):
-                require(chunk["header"][field] == header[field], "CHUNK_HEADER", field)
+            for field in ("chunk_hash", "shard_id", "height_created"):
+                require(chunk["header"].get(field) == header.get(field), "CHUNK_HEADER", field)
+            # nearcore 2.13.4 serves height_included = 0 for a chunk fetched by hash; the inclusion
+            # height is bound by the block's own chunk header above. Any other value must match.
+            require(chunk["header"]["height_included"] in (0, header["height_included"]),
+                    "CHUNK_HEADER", "height_included")
             chunks[ch] = chunk
             for tx in chunk["transactions"]:
                 txid = hash_id(tx["hash"])

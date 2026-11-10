@@ -1,0 +1,102 @@
+{
+  "uid": 1000,
+  "home_env": "/runner",
+  "visible_root_entries": [
+    "bin",
+    "dev",
+    "lib",
+    "lib64",
+    "proc",
+    "runner",
+    "runner-bin",
+    "runner-pkg",
+    "runner-scripts",
+    "tmp",
+    "usr"
+  ],
+  "visible_process_ids": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "direct_node_rpc_127.0.0.1": "refused: ConnectionRefusedError: [Errno 111] Connection refused",
+  "direct_node_rpc_localhost_ipv6": "refused: gaierror: [Errno -9] Address family for hostname not supported",
+  "external_network_1.1.1.1:443": "refused: OSError: [Errno 101] Network is unreachable",
+  "forbidden_paths_exist": {
+    "~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node": false,
+    "~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer": false,
+    "~": false,
+    "~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/owner.key.json": false,
+    "~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node/validator_key.json": false,
+    "~/Dev/Hackathons/NEAR/near-agent-vault-integration": false
+  },
+  "admin_methods_via_filter": {
+    "sandbox_patch_state": {
+      "denied_by_filter": true,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "sandbox_patch_state",
+          "reason": "method not allowed for runner"
+        }
+      },
+      "has_result": false
+    },
+    "sandbox_fast_forward": {
+      "denied_by_filter": true,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "sandbox_fast_forward",
+          "reason": "method not allowed for runner"
+        }
+      },
+      "has_result": false
+    },
+    "adv_produce_blocks": {
+      "denied_by_filter": true,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "adv_produce_blocks",
+          "reason": "method not allowed for runner"
+        }
+      },
+      "has_result": false
+    },
+    "client_config": {
+      "denied_by_filter": true,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "client_config",
+          "reason": "method not allowed for runner"
+        }
+      },
+      "has_result": false
+    },
+    "network_info": {
+      "denied_by_filter": true,
+      "error": {
+        "code": -32601,
+        "message": "denied by reviewer RPC filter",
+        "data": {
+          "method": "network_info",
+          "reason": "method not allowed for runner"
+        }
+      },
+      "has_result": false
+    },
+    "query_view_access_key_list_allowed": {
+      "denied_by_filter": false,
+      "error": null,
+      "has_result": true
+    }
+  },
+  "isolation_checks": "PASS"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "near-g1-result/v1",
+  "mode": "LIVE",
+  "verdicts": {
+    "safety": "INCONCLUSIVE",
+    "settlement": "INCONCLUSIVE",
+    "evidence": "FAIL",
+    "scenario_coverage": "INCONCLUSIVE"
+  },
+  "chain_evidence_checks": "INCONCLUSIVE",
+  "issues": [
+    {
+      "code": "CHUNK_HEADER",
+      "detail": "height_included"
+    }
+  ],
+  "recovery": null,
+  "limitations": [
+    "Trusted-node observations from the reviewer-selected endpoint, not consensus/light-client inclusion proofs.",
+    "Binary file hash is recorded; RPC process-to-binary correspondence is not cryptographically authenticated.",
+    "Runner isolation, ingress closure and retention are run-level properties recorded by the run tooling, not by this verifier.",
+    "Bounded adapter: one epoch, unchanged shard layout, sandbox network only (public networks are inspection-only).",
+    "No native-pending witness; simultaneous RPC sends cannot establish one."
+  ],
+  "local_provenance": {
+    "wasm": {
+      "sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+      "bytes": 154346
+    },
+    "node_binary": {
+      "sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+      "bytes": 93742440
+    },
+    "node_config": {
+      "sha256": "53b8465ff20856fce153607c77e47d193b435ffb28d06cf102dbdc0ba929e65a",
+      "bytes": 7670
+    },
+    "genesis_file": {
+      "sha256": "88688c6fd40b3032b6130d101dcdbf804be83e529949b039dfc1ebb2ceafe676",
+      "bytes": 3041
+    }
+  },
+  "metrics": {
+    "rpc_count": 99,
+    "response_bytes": 266090,
+    "elapsed_seconds": 0.1799
+  }
+}

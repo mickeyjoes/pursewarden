@@ -30,8 +30,8 @@ RPC_ADDR=${RPC_ADDR:-127.0.0.1:3130}
 NET_ADDR=${NET_ADDR:-127.0.0.1:24667}
 EPOCH_LENGTH=${EPOCH_LENGTH:-100000}
 
-HOME_DIR=$REPO/.sandbox/$RUN_ID
-EVID=$REPO/evidence/g1/$RUN_ID/node
+HOME_DIR=${NODE_HOME:-$REPO/.sandbox/$RUN_ID}
+EVID=${NODE_EVIDENCE_DIR:-$REPO/evidence/g1/$RUN_ID/node}
 [ -e "$HOME_DIR" ] && { echo "refusing to reuse existing node home $HOME_DIR (fresh node required)" >&2; exit 1; }
 
 if [ ! -x "$BIN" ]; then

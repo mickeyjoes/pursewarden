@@ -1,0 +1,65 @@
+{
+  "schema": "g1-independent/run/v1",
+  "run_id": "g1i-dev-02",
+  "network": "SANDBOX (local)",
+  "repo_commit": "670dbf61799799a8ce8ded2b5287d30f22d0bcec",
+  "repo_dirty": true,
+  "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "actor_sha256": "59bf4681a37ff02c0e8e4950c8370a00dc9f69f7497f37c5e44f27cc24f4f849",
+  "node_binary_sha256": "4e89fbc0f2958634e84af44634f90e87c246288fa11b067d2121ce1394cba2c2",
+  "phases": {},
+  "node": {
+    "chain_id": "test-chain-uEeId",
+    "genesis_hash": "2jrA2REqBEYv3WJg9k1iFwbteQqYCtxzhVQQtm3nvrkF",
+    "genesis_block_hash": "2jrA2REqBEYv3WJg9k1iFwbteQqYCtxzhVQQtm3nvrkF",
+    "version": {
+      "build": "2.13.4",
+      "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+      "rustc_version": "1.93.0",
+      "version": "2.13.4"
+    },
+    "protocol_version": 86,
+    "rpc": "http://127.0.0.1:3230"
+  },
+  "isolation": {
+    "checks": "PASS",
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused",
+    "forbidden_paths_visible": [],
+    "admin_methods_denied": {
+      "sandbox_patch_state": true,
+      "sandbox_fast_forward": true,
+      "adv_produce_blocks": true,
+      "client_config": true,
+      "network_info": true,
+      "query_view_access_key_list_allowed": false
+    },
+    "runner_methods_forwarded": [
+      "EXPERIMENTAL_tx_status",
+      "block",
+      "query",
+      "send_tx"
+    ],
+    "runner_methods_denied": [
+      "adv_produce_blocks",
+      "client_config",
+      "network_info",
+      "sandbox_fast_forward",
+      "sandbox_patch_state"
+    ]
+  },
+  "elapsed_seconds": 15.9,
+  "log": [
+    "2026-11-10T13:48:38Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/scripts/sandbox-setup/start-node.sh g1i-dev-02",
+    "2026-11-10T13:48:40Z node test-chain-uEeId genesis 2jrA2REqBEYv3WJg9k1iFwbteQqYCtxzhVQQtm3nvrkF",
+    "2026-11-10T13:48:40Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-prepare --rpc http://127.0.0.1:3230 --node-home ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-dev-02/reviewer/prepare.json",
+    "2026-11-10T13:48:42Z H0 21 GC3r7cG8AfiYJ7iGfpgqgRDJFDKfiwmraJNnqnLL4hw7 (before any vault/agent construction)",
+    "2026-11-10T13:48:42Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-construct --rpc http://127.0.0.1:3230 --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer --runner-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/runner --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-integration/artifacts/near_agent_vault.wasm --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-dev-02/reviewer/construct.json",
+    "2026-11-10T13:48:44Z filter proxy submit pid 1148261",
+    "2026-11-10T13:48:44Z $ bwrap --unshare-all --die-with-parent --new-session --clearenv --setenv HOME /runner --setenv PATH /usr/bin:/bin --ro-bind /usr /usr --symlink usr/lib /lib --symlink usr/lib64 /lib64 --symlink usr/bin /bin --proc /proc --dev /dev --tmpfs /tmp --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor /runner-bin/g1_actor --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/scripts/g1-independent /runner-scripts --ro-bind ~/Dev/Hackathons/NEAR/near-agent-vault-integration/packages /runner-pkg/packages --bind ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/runner /runner --chdir /runner /bin/sh -ec python3 -I /runner-scripts/sandbox_bridge.py /runner/rpc.sock 3030 >/tmp/bridge.log 2>&1 & sleep 0.5; python3 -I /runner-scripts/isolation_probe.py /runner/out/isolation.json 3230 ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer ~ ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/owner.key.json ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node/validator_key.json ~/Dev/Hackathons/NEAR/near-agent-vault-integration; /runner-bin/g1_actor runner-attack --rpc http://127.0.0.1:3030 --runner-dir /runner --out /runner/out/runner-log.json",
+    "2026-11-10T13:48:50Z filter proxy closed (runner ingress closed)",
+    "2026-11-10T13:48:50Z $ ~/Dev/Hackathons/NEAR/near-agent-vault-integration/target/debug/g1_actor reviewer-freeze --rpc http://127.0.0.1:3230 --reviewer-dir ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer --out ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-dev-02/reviewer/freeze.json",
+    "2026-11-10T13:48:54Z Q 110 8x2UzTx78Gk9xqQVGPn1oUBkpCbsiVVYZAp8wW1HQc8S",
+    "2026-11-10T13:48:54Z $ /usr/bin/python3 -E -s -m packages.verifier --network sandbox --rpc http://127.0.0.1:3230 --descriptor ~/Dev/Hackathons/NEAR/near-agent-vault-integration/evidence/g1-independent/g1i-dev-02/reviewer-descriptor.json --wasm ~/Dev/Hackathons/NEAR/near-agent-vault-integration/artifacts/near_agent_vault.wasm --node-binary ~/.local/share/near-agent-vault-lab/sandbox-bin/2.13.4/extract/Linux-x86_64/near-sandbox --node-config ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node/config.json --genesis-file ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node/genesis.json --out ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/independent",
+    "2026-11-10T13:48:54Z node 1143529 stopped; history kept at ~/.local/share/near-agent-vault-lab/g1-independent/g1i-dev-02/reviewer/node"
+  ]
+}
