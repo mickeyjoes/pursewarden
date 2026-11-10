@@ -1,0 +1,12 @@
+[smoke] gas price 100000000; worst-case owner spend 3428990000000000000000000 yocto < cap 3500000000000000000000000
+[smoke] create_payee 2A8oQYdwSaz3eKdUGigFxgpzntPKTNXFxmYTtc6WYBQ7: FINAL
+[smoke] create_agent 24LFJWbvUHwQXqU1f5UyaD3umxDCggqzXdZKypp1ipP5: FINAL
+[smoke] create_vault BQfmcRW99TYjL2L96eszJ4boAN4jkhxsFJDcA2DF2YVw: FINAL
+[smoke] pay_1_payee E5SFPvQgwYu7utMH49S3cPE1PVk7PSWP3zgau9cCAhG1: FINAL
+[smoke] pay_2_missing 8neZRYBVKKx83JmEUHKN9WcnuiqDPNQBN3iydccoUBzo: FINAL
+[smoke] replay_1 CWVnny9d3xxMLFf7cMurjstFZxYQ3XGSYh6MYDzv1Ljr: FINAL
+[smoke] over_cap F1nMCJX9o7x1rpJY6bJPwsdNGNfi2HDQbXnJ9sL4LkBL: FINAL
+[smoke] exfiltrate 3NMC6E5UVxmyFFe46AEisnHbMZmrWzTj7d2ruBreFkUk: FINAL
+[smoke] budget_exceeded 94tmQWg9VfGpfbU2cFgUNg8wst4MRW1igb7Uk5tX7Q14: FINAL
+[smoke] freeze 69SHdQWoNtTBu7ACq9tSYFwkFsgQzirqPgbb4LaAYgNR: FINAL
+[smoke] wrote evidence/testnet-smoke/tn-20261110T195542Z/run.json

@@ -1,0 +1,21 @@
+{
+  "label": "TESTNET SMOKE INSPECTION: runner-listed transactions re-read from the node; not an independent completeness proof",
+  "result": "PASS",
+  "cut": {
+    "q_height": 277113571,
+    "q_hash": "HDzAuuMEUe9ayUCw2vaB537oE9hLeq2bf8eWun88txRE",
+    "code_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+    "vault_keys": 0,
+    "policy_hash": "fAFXFPi76a5wsebUX5maGCFUyMc6YsY9EneG3rQZhzL",
+    "charged": "800000000000000000000000",
+    "accepted_count": 2,
+    "seq": 9,
+    "frozen": true
+  },
+  "ledger": {
+    "C": "800000000000000000000000",
+    "sum_records": "800000000000000000000000",
+    "headroom": "200000000000000000000000"
+  },
+  "issues": []
+}
