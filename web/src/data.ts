@@ -39,7 +39,21 @@ export interface Run {
   replay_check: { capture_sha256: string; rpc_records: number };
   sources: Record<string, string>;
 }
-export interface Bundle { schema: string; note: string; runs: Run[] }
+export interface G2Request { request_id: string; decision: "Admitted" | "Denied"; reason?: string; seq: number; height: number;
+  transfer_height?: number; amount: string; settlement?: string; charged_at_decision?: string; tx_hash: string }
+export interface G2Target { vault: string; budget: string; max_per_request: string; max_accepted_requests: number; agent_keys: number;
+  computed_if_live: Record<string, Verdict>; verdicts_live: Record<string, Verdict>; ledger: Run["ledger"];
+  requests: G2Request[]; pending_witness: { request_id: string; denial_height: number; settled_before_denial: string;
+    charged_at_decision: string; settled_only_check_would_admit: boolean; witness: boolean;
+    pending_admitted_transfers: { request_id: string; transfer_execution_height: number }[] }[];
+  replay_capture_sha256: string; rpc_records: number }
+export interface G2Control { label: string; vault: string; budget: string; admissions: number; denials: number;
+  delivered_principal: string; overspend: string; budget_exceeded_on_chain: boolean; admissions_per_block: Record<string, number>;
+  stale_settled_seen: string[]; transfers: { amount: string; outcome: string; parent_height: number; execution_height: number }[] }
+export interface G2Run { run_id: string; mode: "REPLAY"; network: "SANDBOX"; repo_commit: string; node: { chain_id: string };
+  isolation: { checks: Verdict }; fixture_wasm_sha256: string; protected: G2Target; generous: G2Target; vulnerable: G2Control;
+  sources: Record<string, string> }
+export interface Bundle { schema: string; note: string; runs: Run[]; g2_runs: G2Run[] }
 
 export const REPO_URL = "https://github.com/mickeyjoes/near-agent-vault-lab";
 export const YOCTO = 10n ** 24n;

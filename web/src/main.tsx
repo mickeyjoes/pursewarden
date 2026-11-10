@@ -4,11 +4,11 @@ import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
 import "./styles.css";
 import { Moon, Sun } from "lucide-react";
-import { ProvenanceBar } from "./components";
+import { ProvenanceBar, provOf } from "./components";
 import { loadBundle, REPO_URL, type Bundle } from "./data";
-import { Docs, Lab, Landing, Verify } from "./pages";
+import { Burst, Docs, Lab, Landing, Verify } from "./pages";
 
-const ROUTES = { "/": "Overview", "/lab": "Attack Lab", "/verify": "Verifier", "/docs": "Reproduce" } as const;
+const ROUTES = { "/": "Overview", "/lab": "Attack Lab", "/burst": "Burst (G2)", "/verify": "Verifier", "/docs": "Reproduce" } as const;
 type Route = keyof typeof ROUTES;
 
 function useRoute(): Route {
@@ -59,12 +59,16 @@ function App() {
           <ThemeToggle />
         </div>
       </header>
-      <ProvenanceBar run={bundle?.runs[0] ?? null} />
+      <ProvenanceBar info={!bundle ? null : route === "/burst" && bundle.g2_runs?.[0]
+        ? { run_id: bundle.g2_runs[0].run_id, chain_id: bundle.g2_runs[0].node.chain_id, version: "2.13.4",
+            digest: bundle.g2_runs[0].protected.replay_capture_sha256, digestTitle: "SHA-256 of the protected-vault capture rebuilt by replay" }
+        : provOf(bundle.runs[0])} />
       <main id="content" tabIndex={-1}>
         {err && <div className="callout bad" style={{ marginTop: 32 }}>Could not load evidence bundle: {err}</div>}
         {!bundle && !err && <p className="muted" style={{ paddingTop: 48 }}>Loading recorded evidence…</p>}
         {bundle && route === "/" && <Landing bundle={bundle} />}
         {bundle && route === "/lab" && <Lab bundle={bundle} />}
+        {bundle && route === "/burst" && <Burst bundle={bundle} />}
         {bundle && route === "/verify" && <Verify bundle={bundle} />}
         {bundle && route === "/docs" && <Docs bundle={bundle} />}
       </main>

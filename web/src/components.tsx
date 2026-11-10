@@ -12,7 +12,15 @@ export function VerdictChip({ v, label }: { v: Verdict; label?: string }) {
   );
 }
 
-export function ProvenanceBar({ run }: { run: Run | null }) {
+export interface ProvInfo { run_id: string; chain_id: string; version?: string; window?: string; digest?: string; digestTitle?: string }
+
+export function provOf(run: Run): ProvInfo {
+  return { run_id: run.run_id, chain_id: run.node.chain_id, version: run.node.version.version,
+    window: `H0 #${run.window.h0.height} → Q #${run.window.q.height}`, digest: run.replay_check.capture_sha256,
+    digestTitle: `SHA-256 of the capture rebuilt by replaying ${run.replay_check.rpc_records} recorded RPC responses` };
+}
+
+export function ProvenanceBar({ info }: { info: ProvInfo | null }) {
   return (
     <div className="provenance" role="region" aria-label="Data provenance">
       <div className="provenance-inner">
@@ -22,13 +30,13 @@ export function ProvenanceBar({ run }: { run: Run | null }) {
         <span className="chip net" title="Local reviewer-owned nearcore sandbox. Not testnet or mainnet.">
           <Server aria-hidden /> SANDBOX
         </span>
-        {run ? (
+        {info ? (
           <>
-            <span>run <code>{run.run_id}</code></span>
-            <span>chain <code>{run.node.chain_id}</code></span>
-            <span>nearcore {run.node.version.version}</span>
-            <span>window H0 #{run.window.h0.height} → Q #{run.window.q.height}</span>
-            <span title={`SHA-256 of the capture rebuilt by replaying ${run.replay_check.rpc_records} recorded RPC responses: ${run.replay_check.capture_sha256}`}>replay digest <code>{short(run.replay_check.capture_sha256, 5)}</code></span>
+            <span>run <code>{info.run_id}</code></span>
+            <span>chain <code>{info.chain_id}</code></span>
+            {info.version && <span>nearcore {info.version}</span>}
+            {info.window && <span>window {info.window}</span>}
+            {info.digest && <span title={`${info.digestTitle}: ${info.digest}`}>replay digest <code>{short(info.digest, 5)}</code></span>}
           </>
         ) : (
           <span>loading evidence…</span>

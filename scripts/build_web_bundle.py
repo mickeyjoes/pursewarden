@@ -17,7 +17,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 from packages.collector import b58, canonical, collect, decode64, digest, loads  # noqa: E402
-from packages.verifier import analyze  # noqa: E402
+from packages.verifier import analyze, verify  # noqa: E402
+from packages.verifier.control import run_control  # noqa: E402
 from packages.verifier.forge import ReplayNode, load_rpc_records  # noqa: E402
 
 NEAR = 10**24
@@ -223,6 +224,50 @@ def build_run(run_dir):
     }
 
 
+def g2_target(run_dir, name):
+    """Replay one protected G2 target through the verifier; return burst-level facts."""
+    d = read(run_dir / name / "reviewer-descriptor.json")
+    records = load_rpc_records(run_dir / name / "rpc.jsonl.gz")
+    res, capture = verify(ReplayNode(records), d)
+    assert res["chain_evidence_checks"] == "PASS", res["issues"]
+    rec = res["recovery"]
+    h = {b["header"]["hash"]: b["header"]["height"] for b in capture["blocks"]}
+    reqs = []
+    for p in rec["payments"]:
+        reqs.append({"request_id": p["request_id"], "decision": "Admitted", "seq": int(p["admission_seq"]),
+                     "height": h[p["admission_block"]], "transfer_height": h[p["execution_block"]],
+                     "amount": p["amount"], "settlement": p["class"], "tx_hash": p["tx_hash"]})
+    for x in rec["denials"]:
+        reqs.append({"request_id": x["request_id"], "decision": "Denied", "reason": x["reason"], "seq": int(x["seq"]),
+                     "height": h[x["block_hash"]], "amount": x["amount"], "charged_at_decision": x["charged_at_decision"],
+                     "tx_hash": x["tx_hash"]})
+    reqs.sort(key=lambda r: r["seq"])
+    return {"vault": d["vault"], "budget": d["budget"], "max_per_request": d["max_per_request"],
+            "max_accepted_requests": d["max_accepted_requests"], "agent_keys": d["agent_key_count"],
+            "computed_if_live": res["computed_if_live"], "verdicts_live": read(run_dir / name / "result.json")["verdicts"],
+            "ledger": rec["ledger"], "requests": reqs, "pending_witness": rec["pending_witness"],
+            "replay_capture_sha256": digest(capture), "rpc_records": len(records)}
+
+
+def g2_control(run_dir):
+    d = read(run_dir / "vulnerable/control-descriptor.json")
+    res, _ = run_control(ReplayNode(load_rpc_records(run_dir / "vulnerable/rpc.jsonl.gz")), d)
+    assert not res["issues"], res["issues"]
+    return {k: res[k] for k in ("label", "vault", "budget", "admissions", "denials", "delivered_principal", "overspend",
+                                "budget_exceeded_on_chain", "admissions_per_block", "stale_settled_seen", "transfers")}
+
+
+def build_g2(run_dir):
+    s = read(run_dir / "run-summary.json")
+    return {"run_id": run_dir.name, "mode": "REPLAY", "network": "SANDBOX", "repo_commit": s["repo_commit"],
+            "node": s["node"], "isolation": s["isolation"], "elapsed_seconds": s["elapsed_seconds"],
+            "fixture_wasm_sha256": s["fixture_wasm_sha256"], "wasm_sha256": s["wasm_sha256"],
+            "protected": g2_target(run_dir, "protected"), "generous": g2_target(run_dir, "generous"),
+            "vulnerable": g2_control(run_dir),
+            "sources": {"summary": f"evidence/g2-independent/{run_dir.name}/run-summary.json",
+                        "fixture_source": "fixtures/vulnerable-settled-only/src/lib.rs"}}
+
+
 def main():
     root = REPO / "evidence/g1-independent"
     # Newest first: the most recent run (on the latest tooling) is the default view.
@@ -231,7 +276,9 @@ def main():
     bundle = {"schema": "pursewarden-bundle/v1",
               "note": "Every chain fact below was re-derived by replaying committed raw RPC responses through "
                       "the verifier (packages/verifier). Provenance: REPLAY of local SANDBOX runs.",
-              "runs": [build_run(root / n) for n in names]}
+              "runs": [build_run(root / n) for n in names],
+              "g2_runs": [build_g2(p) for p in sorted((REPO / "evidence/g2-independent").glob("g2i-*"), reverse=True)
+                          if "-dev-" not in p.name and (p / "run-summary.json").exists()]}
     out = REPO / "web/public/bundle.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(bundle, indent=1, sort_keys=False) + "\n"

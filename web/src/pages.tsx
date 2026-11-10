@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { AlertTriangle, ArrowRight, Ban, Check, EyeOff, FileSearch, KeyRound, Lock, ShieldOff, Wallet, X } from "lucide-react";
 import { AuthorityBar, DecisionLabel, Drawer, VerdictChip } from "./components";
-import { near, REPO_URL, short, REASON_TEXT, type Bundle, type Run, type TimelineItem } from "./data";
+import { near, REPO_URL, short, REASON_TEXT, type Bundle, type G2Target, type Run, type TimelineItem } from "./data";
 
 /* ------------------------------------------------------------------ Landing */
 export function Landing({ bundle }: { bundle: Bundle }) {
@@ -65,9 +65,11 @@ export function Landing({ bundle }: { bundle: Bundle }) {
           <div><span className="n">01</span><h3>A normal payment</h3><p>1 NEAR to an allowlisted account. Admitted, delivered. C = 1.</p></div>
           <div><span className="n">02</span><h3>A failed payment still counts</h3><p>2 NEAR to an allowlisted account that doesn't exist. The transfer fails and the 2 NEAR is refunded. C = 3 anyway.</p></div>
           <div><span className="n">03</span><h3>The agent attacks</h3><p>A replay, a cap overrun, an exfiltration, reuse of the refund, malformed input and four key abuses. All are stopped.</p></div>
-          <div><span className="n">04</span><h3>The runner lies</h3><p>Its evidence bundle silently drops the failed payment. The verifier finds the missing transaction on its own.</p></div>
+          <div><span className="n">04</span><h3>A dishonest report is caught</h3><p>A test plays a lying operator whose evidence bundle silently drops the failed payment. The verifier finds the missing transaction on its own.</p></div>
         </div>
       </section>
+
+      {bundle.g2_runs?.[0] && <BurstTeaser bundle={bundle} />}
 
       <section className="section claims" aria-labelledby="claims">
         <div className="eyebrow">Claims ledger</div>
@@ -78,7 +80,8 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <li>A failed transfer is charged (F) even though its principal is refunded.</li>
             <li>Denied requests (replay, cap, allowlist, quota) make no transfer, don't increase C and don't use up an admission slot; each denial advances the audit sequence. Malformed input commits no vault data.</li>
             <li>The vault has zero access keys from creation to cut; its code is deployed once.</li>
-            <li>An independent collector recovers an omitted transaction root from its own node.</li></ul></div>
+            <li>An independent collector recovers an omitted transaction root from its own node.</li>
+            <li>Under a burst of eight concurrent requests, admissions stop exactly at B, even while earlier transfers are still pending.</li></ul></div>
           <div className="card"><h3><AlertTriangle aria-hidden style={{ color: "var(--pending)" }} /> Assumed</h3><ul>
             <li>The NEAR runtime executes receipts as specified.</li>
             <li>The owner sets an honest mandate and an allowlist they trust.</li>
@@ -88,7 +91,7 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <li>Prompt-injection defence: an agent can still waste its budget on allowlisted payees.</li>
             <li>Testnet or mainnet enforcement, or production custody.</li>
             <li>Audit, formal verification, recurring budgets, tokens other than NEAR.</li>
-            <li>Concurrency comparisons against other designs (not run).</li>
+            <li>Comparisons against other projects. Our vulnerable control is our own deliberately broken fixture.</li>
             <li>Organisational independence: one team wrote the vault, runner and verifier.</li></ul></div>
         </div>
       </section>
@@ -156,7 +159,9 @@ export function Lab({ bundle }: { bundle: Bundle }) {
                   <tr><td><strong>S</strong> settled</td><td className="mono">{near(run.ledger.S)}</td><td className="muted">Native transfers that succeeded</td></tr>
                   <tr><td><strong>F</strong> failed</td><td className="mono">{near(run.ledger.F)}</td><td className="muted">Native transfers that failed. Principal refunded, budget still charged.</td></tr>
                   <tr><td><strong>U</strong> unresolved</td><td className="mono">{near(run.ledger.U)}</td><td className="muted">Transfers with no final outcome at Q</td></tr>
-                  <tr><td><strong>B − C</strong></td><td className="mono">{near(run.ledger.headroom)}</td><td className="muted">Remaining authority</td></tr>
+                  <tr><td><strong>B − C</strong></td><td className="mono">{near(run.ledger.headroom)}</td><td className="muted">Unused budget</td></tr>
+                  <tr><td><strong>Spendable now</strong></td><td className="mono">{near(spendable(run))}</td>
+                    <td className="muted">{spendableWhy(run)}</td></tr>
                 </tbody>
               </table>
             </div>
@@ -230,6 +235,20 @@ export function Lab({ bundle }: { bundle: Bundle }) {
 
 const runLabel = (id: string) => id.split("-").pop()!.toUpperCase();
 
+/** Unused budget is not the same as spendable authority: K slots and the freeze also bind. */
+function spendable(run: Run): string {
+  const slotsLeft = run.policy.max_accepted_requests - run.ledger.accepted_count;
+  if (slotsLeft <= 0) return "0";
+  const h = BigInt(run.ledger.headroom), m = BigInt(run.policy.max_per_request);
+  return (h < m * BigInt(slotsLeft) ? h : m * BigInt(slotsLeft)).toString();
+}
+function spendableWhy(run: Run): string {
+  const used = `${run.ledger.accepted_count} of K = ${run.policy.max_accepted_requests} payment slots used`;
+  return run.ledger.accepted_count >= run.policy.max_accepted_requests
+    ? `${used}, so the remaining ${near(run.ledger.headroom)} NEAR of budget cannot be spent. The vault is also frozen at Q.`
+    : `${used}.`;
+}
+
 function effects(t: TimelineItem): string {
   if (t.decision === "Admitted") {
     return t.settlement === "S"
@@ -271,8 +290,10 @@ export function Verify({ bundle }: { bundle: Bundle }) {
           </div>
         </div>
         <p className="lede" style={{ marginTop: 12 }}>
-          The agent's operator hands over an evidence bundle that looks complete and has valid checksums. It silently leaves out the
-          failed 2 NEAR payment: the transaction, every receipt, the refund, the retained record and the history rows.
+          Suppose the operator running the agent hands over an evidence bundle that looks complete and has valid checksums, but
+          silently leaves out the failed 2 NEAR payment: the transaction, every receipt, the refund, the retained record and the
+          history rows. Here the test orchestrator plays that dishonest operator on purpose. It builds the forged bundle from the
+          runner's genuine one. It is a test of the verifier, not an observed AI attack.
           The reviewer's collector is <strong>never given that transaction hash</strong>. It walks every block and chunk from H0 to Q on its own node.
         </p>
       </section>
@@ -323,7 +344,7 @@ export function Verify({ bundle }: { bundle: Bundle }) {
 
       <section className="section" style={{ paddingTop: 40 }} aria-labelledby="mut">
         <h2 id="mut" style={{ fontSize: 20, marginBottom: 6 }}>{run.mutations.filter((m) => m.rejected).length} of {run.mutations.length} tamperings rejected</h2>
-        <p className="muted" style={{ marginBottom: 14, fontSize: 14 }}>Each row edits the genuine recorded RPC responses, replays them and requires the verifier to refuse a complete PASS.</p>
+        <p className="muted" style={{ marginBottom: 14, fontSize: 14 }}>Each row is a deliberate tampering generated by the test suite (<code>packages/verifier/forge.py</code>). It edits the genuine recorded RPC responses, replays them, and requires the verifier to refuse a complete PASS. These are regression tests, not observed attacks.</p>
         <div className="card" style={{ padding: 0 }}>
           <div className="table-wrap"><table>
             <thead><tr><th>Tampering</th><th>Result</th><th>Verifier finding</th></tr></thead>
@@ -386,6 +407,162 @@ export function Docs({ bundle }: { bundle: Bundle }) {
           not that NEAR consensus included it.</div>
       </div>
       <p className="muted" style={{ marginTop: 24 }}>Full documentation, the threat model and the limits are in the <a href={REPO_URL}>repository README</a>.</p>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ Burst (G2) */
+export function Burst({ bundle }: { bundle: Bundle }) {
+  const [ri, setRi] = useState(0);
+  if (!bundle.g2_runs?.length) return <p className="muted" style={{ paddingTop: 48 }}>No G2 run recorded.</p>;
+  const g = bundle.g2_runs[ri];
+  const P = g.protected, V = g.vulnerable, G = g.generous;
+  const burstOf = (t: G2Target) => t.requests.filter((r) => r.request_id !== "1");
+  const pAdm = burstOf(P).filter((r) => r.decision === "Admitted").length;
+  const gAdm = burstOf(G).filter((r) => r.decision === "Admitted").length;
+  const vBurst = V.admissions - 1;  // all fixture admissions minus the initial 1 NEAR payment
+  const witnesses = P.pending_witness.filter((w) => w.witness).length;
+  const w0 = P.pending_witness[0];
+  const burstBlock = burstOf(P)[0]?.height;
+  const transferBlock = burstOf(P).find((r) => r.transfer_height)?.transfer_height;
+  const vBlocks = Object.entries(V.admissions_per_block).map(([h, n]) => [Number(h), n] as const).sort((a, b) => a[0] - b[0]);
+  return (
+    <>
+      <section className="section" style={{ paddingTop: 40 }}>
+        <div className="toolbar">
+          <div>
+            <div className="eyebrow">G2 · concurrency</div>
+            <h1 style={{ fontSize: 34 }}>Eight requests at once. One budget.</h1>
+          </div>
+          <div className="tabs" role="group" aria-label="Select recorded G2 run">
+            {bundle.g2_runs.map((r, i) => (
+              <button key={r.run_id} aria-pressed={i === ri} onClick={() => setRi(i)}>Run {runLabel(r.run_id)} · {r.node.chain_id}</button>
+            ))}
+          </div>
+        </div>
+        <p className="lede" style={{ marginTop: 12 }}>
+          After one normal 1 NEAR payment, a compromised agent fires <strong>eight 2 NEAR payment requests in parallel</strong>,
+          each signed with a different authorized key. The same workload runs against three targets on one fresh local chain.
+          Every number below is rebuilt from the reviewer's own capture of that chain.
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
+          <span className="chip replay">REPLAY</span><span className="chip net">SANDBOX</span>
+          <VerdictChip v={g.isolation.checks} label="runner isolation" />
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 28 }}>
+        <div className="grid3">
+          <BurstCard title="Protected vault" tag={<span className="chip pass"><Check aria-hidden /> C ≤ B</span>}
+            admitted={pAdm} spent={P.ledger.C} budget={P.budget} spentLabel="charged C"
+            note={`${8 - pAdm} denied BudgetExceeded. C = ${near(P.ledger.C)} NEAR = B.`} />
+          <BurstCard title="Vulnerable teaching fixture" tag={<span className="chip fail"><X aria-hidden /> overspent</span>}
+            admitted={vBurst} spent={V.delivered_principal} budget={V.budget} spentLabel="delivered"
+            note={`${near(V.overspend)} NEAR over budget. It checks only settled spend: our own deliberately broken contract, sandbox only.`} />
+          <BurstCard title="Generous control" tag={<span className="chip info">B = {near(G.budget)}</span>}
+            admitted={gAdm} spent={G.ledger.C} budget={G.budget} spentLabel="charged C"
+            note="Same vault code with a large budget: all eight admitted. The harness does admit when the budget allows." />
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 36 }} aria-labelledby="blocks">
+        <h2 id="blocks" style={{ fontSize: 20, marginBottom: 6 }}>Protected vault, block by block</h2>
+        <p className="muted" style={{ fontSize: 14, marginBottom: 14 }}>
+          NEAR executes the vault's receipts one at a time. A transfer the vault schedules runs one block later.
+        </p>
+        <div className="blocks">
+          {[...new Set(P.requests.flatMap((r) => [r.height, r.transfer_height]).filter(Boolean) as number[])].sort((a, b) => a - b).map((h) => (
+            <div key={h} className={`block ${h === burstBlock ? "hot" : ""}`}>
+              <div className="bh">block #{h}</div>
+              {P.requests.filter((r) => r.height === h).map((r) => (
+                <div key={`d${r.request_id}`} className={`ev ${r.decision === "Admitted" ? "adm" : "den"}`}>
+                  <span className="mono">id {r.request_id}</span>
+                  <span>{r.decision === "Admitted" ? <><Check size={13} aria-hidden /> admitted</> : <><X size={13} aria-hidden /> {r.reason}</>}</span>
+                  <span className="subtle">{r.decision === "Denied" ? `C ${near(r.charged_at_decision ?? "0")} + 2 > ${near(P.budget)}` : `seq ${r.seq}`}</span>
+                </div>
+              ))}
+              {P.requests.filter((r) => r.transfer_height === h).map((r) => (
+                <div key={`t${r.request_id}`} className="ev xfer">
+                  <span className="mono">id {r.request_id}</span><span>transfer {near(r.amount)} NEAR executes</span><span className="subtle">{r.settlement === "S" ? "delivered" : "failed"}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        {w0 && (
+          <div className="callout ok" style={{ marginTop: 16 }}>
+            <Check aria-hidden />
+            <div>
+              <strong>Native-pending witness ({witnesses} of {P.pending_witness.length} denials).</strong> Every BudgetExceeded denial executed in
+              block #{burstBlock}, while the two admitted transfers were still unexecuted: they ran in block #{transferBlock}.
+              At that moment only {near(w0.settled_before_denial)} NEAR had settled. A check that counts only settled spend would have
+              admitted all of them. The vault counts admitted principal instead, so C was already {near(w0.charged_at_decision)} NEAR.
+            </div>
+          </div>
+        )}
+      </section>
+
+      <section className="section" style={{ paddingTop: 36 }} aria-labelledby="vuln">
+        <h2 id="vuln" style={{ fontSize: 20, marginBottom: 6 }}>What a settled-only check does under the same burst</h2>
+        <div className="blocks">
+          {[...new Set([...vBlocks.map(([h]) => h), ...V.transfers.map((t) => t.execution_height)])].sort((a, b) => a - b).map((h) => {
+            const n = vBlocks.find(([bh]) => bh === h)?.[1] ?? 0;
+            const ts = V.transfers.filter((t) => t.execution_height === h);
+            return (
+              <div key={h} className={`block ${n > 1 ? "hot bad" : ""}`}>
+                <div className="bh">block #{h}</div>
+                {n > 0 && <div className="ev adm"><span className="mono">{n}×</span><span>admitted</span>
+                  <span className="subtle">settled seen: {n > 1 ? near(V.stale_settled_seen[V.stale_settled_seen.length - 1]) : "0"} NEAR</span></div>}
+                {ts.length > 0 && <div className="ev xfer"><span className="mono">{ts.length}×</span><span>transfers delivered</span>
+                  <span className="subtle">{near(ts.reduce((a, t) => a + BigInt(t.amount), 0n))} NEAR</span></div>}
+              </div>
+            );
+          })}
+        </div>
+        <p className="subtle" style={{ fontSize: 12.5, marginTop: 12 }}>
+          The fixture (<code>{g.sources.fixture_source}</code>, sha256 {short(g.fixture_wasm_sha256, 6)}) is a project-owned teaching contract
+          used only as a negative control on the local sandbox. It does not represent any other project. Its outflows come from the
+          reviewer's chunk scan and the native transfer outcomes, not from its own state.
+        </p>
+      </section>
+    </>
+  );
+}
+
+function BurstCard({ title, tag, admitted, spent, budget, spentLabel, note }:
+  { title: string; tag: ReactNode; admitted: number; spent: string; budget: string; spentLabel: string; note: string }) {
+  const B = BigInt(budget), S = BigInt(spent);
+  const scale = S > B ? S : B;
+  const pct = (x: bigint) => Number((x * 10000n) / scale) / 100;
+  return (
+    <div className="card">
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}><h3 style={{ margin: 0 }}>{title}</h3><span style={{ marginLeft: "auto" }}>{tag}</span></div>
+      <div className="stat"><span className="v">{admitted} of 8</span><span className="l">burst requests admitted</span></div>
+      <div className="bar" style={{ marginTop: 14, height: 26 }} role="img"
+        aria-label={`${spentLabel} ${near(spent)} NEAR against budget ${near(budget)} NEAR`}>
+        <div className={`seg ${S > B ? "over" : "s"}`} style={{ width: `${pct(S > B ? B : S)}%` }}>{near(S > B ? B : S)}</div>
+        {S > B && <div className="seg overflow" style={{ width: `${pct(S - B)}%` }}>+{near(S - B)}</div>}
+      </div>
+      <div className="legend"><span>{spentLabel} {near(spent)} NEAR · budget {near(budget)} NEAR</span></div>
+      <p className="muted" style={{ fontSize: 13.5, marginTop: 10 }}>{note}</p>
+    </div>
+  );
+}
+
+function BurstTeaser({ bundle }: { bundle: Bundle }) {
+  const g = bundle.g2_runs[0];
+  const adm = g.protected.requests.filter((r) => r.request_id !== "1" && r.decision === "Admitted").length;
+  const w = g.protected.pending_witness.filter((x) => x.witness).length;
+  return (
+    <section className="section" aria-labelledby="burst-teaser">
+      <div className="eyebrow">Concurrency (G2)</div>
+      <h2 id="burst-teaser" style={{ fontSize: 30, marginBottom: 24 }}>Eight requests at once, one budget</h2>
+      <div className="grid3">
+        <div className="card"><div className="stat"><span className="v">{adm} of 8</span><span className="l">admitted by the protected vault: C = {near(g.protected.ledger.C)} NEAR = B</span></div></div>
+        <div className="card"><div className="stat"><span className="v">{w} of {g.protected.pending_witness.length}</span><span className="l">denials executed while admitted transfers were still pending</span></div></div>
+        <div className="card"><div className="stat"><span className="v" style={{ color: "var(--deny)" }}>+{near(g.vulnerable.overspend)} N</span><span className="l">overspent by our settled-only teaching fixture under the same burst</span></div></div>
+      </div>
+      <div className="cta"><a className="btn" href="#/burst">See the burst block by block <ArrowRight aria-hidden /></a></div>
     </section>
   );
 }

@@ -3742,5 +3742,1069 @@
     "retention": "evidence/g1-independent/g1i-20261110T135044Z-a/retention-compare.json"
    }
   }
+ ],
+ "g2_runs": [
+  {
+   "run_id": "g2i-20261110T154313Z-b",
+   "mode": "REPLAY",
+   "network": "SANDBOX",
+   "repo_commit": "acd6ba614d5f844ac177472338753d43f8927e05",
+   "node": {
+    "chain_id": "test-chain-G0vKO",
+    "genesis_block_hash": "2vAPYffinoUUrNeKDs3w2WYsRB9VALRNdpiP697uPK52",
+    "version": {
+     "build": "2.13.4",
+     "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+     "rustc_version": "1.93.0",
+     "version": "2.13.4"
+    },
+    "protocol_version": 86
+   },
+   "isolation": {
+    "checks": "PASS",
+    "socket_dir_writable": false,
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused"
+   },
+   "elapsed_seconds": 21.8,
+   "fixture_wasm_sha256": "d2eef2fd1b429fbd6216ab1f736e76c4c0e871de2c2b12f01ae23801fd6cf3d4",
+   "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+   "protected": {
+    "vault": "vault.owner.test.near",
+    "budget": "5000000000000000000000000",
+    "max_per_request": "2000000000000000000000000",
+    "max_accepted_requests": 9,
+    "agent_keys": 9,
+    "computed_if_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "verdicts_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "ledger": {
+     "C": "5000000000000000000000000",
+     "S": "5000000000000000000000000",
+     "F": "0",
+     "U": "0",
+     "headroom": "0",
+     "accepted_count": 3
+    },
+    "requests": [
+     {
+      "request_id": "1",
+      "decision": "Admitted",
+      "seq": 1,
+      "height": 66,
+      "transfer_height": 67,
+      "amount": "1000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "ByFvt6s53ykMmdpWwd3gxzN1uNe4A7mYPWRcJAQU45nK"
+     },
+     {
+      "request_id": "8",
+      "decision": "Admitted",
+      "seq": 3,
+      "height": 74,
+      "transfer_height": 75,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "4X7wrfRsLT7CDCwXNv9BThViQ3vAwpREsqM1HgRpaebc"
+     },
+     {
+      "request_id": "7",
+      "decision": "Admitted",
+      "seq": 4,
+      "height": 74,
+      "transfer_height": 75,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "4bdf8VHmQTryJkJ1Xnjy2duDb1Ko9EHHnbRU3HwsPqqE"
+     },
+     {
+      "request_id": "9",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 5,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "4xZBXzwffZqQxAnmbappx3m4HD5Jv16h2DkeGxVtjZuJ"
+     },
+     {
+      "request_id": "4",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 6,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "2KWFHNY9oHcYgikut42vmw9cgxsZpjLgpcDFU6NJMpj3"
+     },
+     {
+      "request_id": "6",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 7,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "Dq6ynGtR9k2WQphYSQoqRjiRM7ttvgbFuXsihN8Jxgm"
+     },
+     {
+      "request_id": "3",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 8,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "7Q2LrcAhSHiRvzP6yv8GFPQoMdd6uEh1uKUk5A8bE638"
+     },
+     {
+      "request_id": "5",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 9,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "3PRyGazPCCCpY8Wcc6yvqo5wBStvC3sS9q2aCKomJfLQ"
+     },
+     {
+      "request_id": "2",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 10,
+      "height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "7fPXR5oPTxnwnoWU6yYMc61W1XE3iPtxouVhKp12BZH"
+     }
+    ],
+    "pending_witness": [
+     {
+      "request_id": "4",
+      "denial_seq": "6",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "5",
+      "denial_seq": "9",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "9",
+      "denial_seq": "5",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "3",
+      "denial_seq": "8",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "2",
+      "denial_seq": "10",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "6",
+      "denial_seq": "7",
+      "denial_height": 74,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       },
+       {
+        "request_id": "7",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 74,
+        "transfer_execution_height": 75
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     }
+    ],
+    "replay_capture_sha256": "0c1ad09a320a07450293e1f1c728103207d5e83b0a5cff950795004cd55669fa",
+    "rpc_records": 809
+   },
+   "generous": {
+    "vault": "generous.owner.test.near",
+    "budget": "100000000000000000000000000",
+    "max_per_request": "2000000000000000000000000",
+    "max_accepted_requests": 9,
+    "agent_keys": 9,
+    "computed_if_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "verdicts_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "ledger": {
+     "C": "17000000000000000000000000",
+     "S": "17000000000000000000000000",
+     "F": "0",
+     "U": "0",
+     "headroom": "83000000000000000000000000",
+     "accepted_count": 9
+    },
+    "requests": [
+     {
+      "request_id": "1",
+      "decision": "Admitted",
+      "seq": 1,
+      "height": 82,
+      "transfer_height": 83,
+      "amount": "1000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "BMaVV9VZBC77x5sQdrAgNb5Hqr1YWvHGHrXYyUg86KuN"
+     },
+     {
+      "request_id": "2",
+      "decision": "Admitted",
+      "seq": 3,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "J4pPezMkBVhratgQcQZqeHk4EuRGtrSafUnaCF5EoVwo"
+     },
+     {
+      "request_id": "3",
+      "decision": "Admitted",
+      "seq": 4,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "oqcQER3EwJdcDoK3ZnWs7EsUkGVTndDwe7JR4xwY2wN"
+     },
+     {
+      "request_id": "6",
+      "decision": "Admitted",
+      "seq": 5,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "5QCetZP6yTNuViKgyaReuYHBhytSE4HKL9qp35W8piCq"
+     },
+     {
+      "request_id": "4",
+      "decision": "Admitted",
+      "seq": 6,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "8BfRDp32Jnr2yfMjzbvwVxQaCsLrr7B6Vsutu7nA3RCr"
+     },
+     {
+      "request_id": "7",
+      "decision": "Admitted",
+      "seq": 7,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "7VwkerTXeVZ5tbe2kfSMnDJ6ar2B4jdWBkNpawgaKKEU"
+     },
+     {
+      "request_id": "8",
+      "decision": "Admitted",
+      "seq": 8,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "8NZVePfXvu6ehGxBck1xuGmTbAQ4QVRngJQyJpFn7faV"
+     },
+     {
+      "request_id": "9",
+      "decision": "Admitted",
+      "seq": 9,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "FMPGextuhd1NF2CP21oiqh6Suim9jRs9LRFdUknhTfc5"
+     },
+     {
+      "request_id": "5",
+      "decision": "Admitted",
+      "seq": 10,
+      "height": 90,
+      "transfer_height": 91,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "FGmMnSiY16H51K76MfyRvAfeqSW2p9hL7mZhXCi48Sue"
+     }
+    ],
+    "pending_witness": [],
+    "replay_capture_sha256": "919a4ad1a8866cce1f630e8fe7ded3cd4be6d5117527ec27143c013177d3bf7a",
+    "rpc_records": 809
+   },
+   "vulnerable": {
+    "label": "CONTROL (vulnerable teaching fixture)",
+    "vault": "vulnerable.owner.test.near",
+    "budget": "5000000000000000000000000",
+    "admissions": 9,
+    "denials": 0,
+    "delivered_principal": "17000000000000000000000000",
+    "overspend": "12000000000000000000000000",
+    "budget_exceeded_on_chain": true,
+    "admissions_per_block": {
+     "98": 1,
+     "106": 8
+    },
+    "stale_settled_seen": [
+     "0",
+     "1000000000000000000000000"
+    ],
+    "transfers": [
+     {
+      "tx_hash": "3jaFB3z3y2x6gboQbirqJ9vJJ9G9GQhyUPnp9gpV6fa2",
+      "receipt_id": "5HGw4EdJBkbRQRk9qzk4v7q3f9MjFqfEaKt2128Lnito",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "5AUg6ubVmCGRYk7ASDy9TWomoAvs2BJFtmUiQZ1Td9ev",
+      "receipt_id": "CnAvKKEiC8tVubr5Fv725NYixWEtvvXR1E2c4ab2dDDG",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "6ihGicgTRehWstwizSnampGhvbEudf2jDpa3y9hyXpeP",
+      "receipt_id": "GPQpePGNbxb8YVtEAeVsvEECNfR3wkjs22EYLbar1U91",
+      "recipient": "alice.test.near",
+      "amount": "1000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 99,
+      "parent_height": 98
+     },
+     {
+      "tx_hash": "7RfXoj6ZvKwSDvTroe3KXt3MG932pTJB3A59Vuco1fgx",
+      "receipt_id": "5To7gPwUwRK8FUfApgGiY7eDMsB8qjLnGHjtCsMG3A1k",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "AcBcWPPNLSfcgJMS9yughnNxxqTJyfzZcFEq43R5Ri8g",
+      "receipt_id": "5MKrCvfxU31Kgk49d4Bt7QdLMrGk1odPtAR8xn5fxn93",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "CCcsGb76kqnADmmXn4WZqAZCg7t1DZouxZ3sE6evUey",
+      "receipt_id": "G2a5uC4UcDUasCgBJepkdQKGMXBLhFVomX6kiLt6yryz",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "Co2KyfYdgnXDrdMiVNnU7VnaqNgsAVzky1P8ta3wN1gF",
+      "receipt_id": "GHxmeSezStcKAm2Ya88Vn8mfEnrTnrkQZmsVTVf3EkKv",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "Dpgx2y6sNErycBFtrh1ixXjgS2FgF3WmhWzAcikvRBon",
+      "receipt_id": "82qiBXW7cw451NHDQdhi7tgnwdHfdFT4GYFwm9xALMKL",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     },
+     {
+      "tx_hash": "GjXNbaCSbXy1WaQKPQYw75meXFHoh3yEqYNRTsGBEnyV",
+      "receipt_id": "9WUjtVZGQqnHxWXAMY3vSzX31XCeHHdBe8DPZkGZ9B84",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 107,
+      "parent_height": 106
+     }
+    ]
+   },
+   "sources": {
+    "summary": "evidence/g2-independent/g2i-20261110T154313Z-b/run-summary.json",
+    "fixture_source": "fixtures/vulnerable-settled-only/src/lib.rs"
+   }
+  },
+  {
+   "run_id": "g2i-20261110T154252Z-a",
+   "mode": "REPLAY",
+   "network": "SANDBOX",
+   "repo_commit": "acd6ba614d5f844ac177472338753d43f8927e05",
+   "node": {
+    "chain_id": "test-chain-OPkoc",
+    "genesis_block_hash": "52azbRmkZZR6RtLa618fmXG3bBGdPFWdJFUqi5tKxbBC",
+    "version": {
+     "build": "2.13.4",
+     "commit": "44f7ae6cd7ef08bab604e20a473bf77e35d4c993",
+     "rustc_version": "1.93.0",
+     "version": "2.13.4"
+    },
+    "protocol_version": 86
+   },
+   "isolation": {
+    "checks": "PASS",
+    "socket_dir_writable": false,
+    "direct_node_rpc": "refused: ConnectionRefusedError: [Errno 111] Connection refused"
+   },
+   "elapsed_seconds": 21.5,
+   "fixture_wasm_sha256": "d2eef2fd1b429fbd6216ab1f736e76c4c0e871de2c2b12f01ae23801fd6cf3d4",
+   "wasm_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+   "protected": {
+    "vault": "vault.owner.test.near",
+    "budget": "5000000000000000000000000",
+    "max_per_request": "2000000000000000000000000",
+    "max_accepted_requests": 9,
+    "agent_keys": 9,
+    "computed_if_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "verdicts_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "ledger": {
+     "C": "5000000000000000000000000",
+     "S": "5000000000000000000000000",
+     "F": "0",
+     "U": "0",
+     "headroom": "0",
+     "accepted_count": 3
+    },
+    "requests": [
+     {
+      "request_id": "1",
+      "decision": "Admitted",
+      "seq": 1,
+      "height": 65,
+      "transfer_height": 66,
+      "amount": "1000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "AJRBEsXnUxunGFioskcBNwXacaFhKqPR4939q1gt7zUa"
+     },
+     {
+      "request_id": "5",
+      "decision": "Admitted",
+      "seq": 3,
+      "height": 73,
+      "transfer_height": 74,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "ENpBuymgBPeWL4Cnb6aKtLsAQTymKCSQePhSZJW3gAA9"
+     },
+     {
+      "request_id": "8",
+      "decision": "Admitted",
+      "seq": 4,
+      "height": 73,
+      "transfer_height": 74,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "9g3tcKQHEuozX3RuRnD1UjSvtpUsW3tRBzqx5XtkFJYJ"
+     },
+     {
+      "request_id": "7",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 5,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "H8zH6Leh937Dgg17DWSt1RH53wAxrLa2HTW74SBB5nrL"
+     },
+     {
+      "request_id": "4",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 6,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "3M8mjeBHqUtHLotxcgwfLxt6uPHHDWEorpdVyj6V8xmm"
+     },
+     {
+      "request_id": "9",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 7,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "HkLVXpNXJSpWGLoHzJ5TdHeee45XsELVgZc923a5KGww"
+     },
+     {
+      "request_id": "2",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 8,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "B3gWo3XPSPqDoLMKFdnudZJC1Je1pMeh2ip7vpg9D4BU"
+     },
+     {
+      "request_id": "3",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 9,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "Hko45b9k4G2xnCeanbAjAhzSSmEfuYyqh9FsVJniZC3h"
+     },
+     {
+      "request_id": "6",
+      "decision": "Denied",
+      "reason": "BudgetExceeded",
+      "seq": 10,
+      "height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "tx_hash": "78j3BbvhDq65RY39DodxBDCUEdViFwc9hiZz5pveThqj"
+     }
+    ],
+    "pending_witness": [
+     {
+      "request_id": "4",
+      "denial_seq": "6",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "6",
+      "denial_seq": "10",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "2",
+      "denial_seq": "8",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "7",
+      "denial_seq": "5",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "9",
+      "denial_seq": "7",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     },
+     {
+      "request_id": "3",
+      "denial_seq": "9",
+      "denial_height": 73,
+      "amount": "2000000000000000000000000",
+      "charged_at_decision": "5000000000000000000000000",
+      "pending_admitted_transfers": [
+       {
+        "request_id": "8",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "4",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       },
+       {
+        "request_id": "5",
+        "amount": "2000000000000000000000000",
+        "admission_seq": "3",
+        "admission_height": 73,
+        "transfer_execution_height": 74
+       }
+      ],
+      "settled_before_denial": "1000000000000000000000000",
+      "settled_only_check_would_admit": true,
+      "witness": true
+     }
+    ],
+    "replay_capture_sha256": "1ef83353c7e8c3cac66b776c3696827786e8b3d295a5440b36b5cb868b845e3a",
+    "rpc_records": 809
+   },
+   "generous": {
+    "vault": "generous.owner.test.near",
+    "budget": "100000000000000000000000000",
+    "max_per_request": "2000000000000000000000000",
+    "max_accepted_requests": 9,
+    "agent_keys": 9,
+    "computed_if_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "verdicts_live": {
+     "safety": "PASS",
+     "settlement": "PASS",
+     "evidence": "PASS",
+     "scenario_coverage": "PASS"
+    },
+    "ledger": {
+     "C": "17000000000000000000000000",
+     "S": "17000000000000000000000000",
+     "F": "0",
+     "U": "0",
+     "headroom": "83000000000000000000000000",
+     "accepted_count": 9
+    },
+    "requests": [
+     {
+      "request_id": "1",
+      "decision": "Admitted",
+      "seq": 1,
+      "height": 81,
+      "transfer_height": 82,
+      "amount": "1000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "HSDcbiMcaYRpREFk8PYumFVLKXawhwJFg4SnkUqTFzsv"
+     },
+     {
+      "request_id": "4",
+      "decision": "Admitted",
+      "seq": 3,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "Cw93EEChf7DJRK9tHXN13TpgQMhrXA7KeTvJNyCZJC6u"
+     },
+     {
+      "request_id": "9",
+      "decision": "Admitted",
+      "seq": 4,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "5iR9hRfftwN9zsAwB9WCSnNJcjSrwtS5Heyc9NpJkgVW"
+     },
+     {
+      "request_id": "7",
+      "decision": "Admitted",
+      "seq": 5,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "5csbd6jPWoV32HQjDZaMGMBEZbni24YqUMNBkcfoi2px"
+     },
+     {
+      "request_id": "8",
+      "decision": "Admitted",
+      "seq": 6,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "CDD8hGbK1w33WiMxcnmEBueRfJtPhfuP1n3opLHdk5TH"
+     },
+     {
+      "request_id": "3",
+      "decision": "Admitted",
+      "seq": 7,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "J5e2tvPZJPr6ZVUBAtGMU6hzYxoWAb9K2dFnxzhuos61"
+     },
+     {
+      "request_id": "5",
+      "decision": "Admitted",
+      "seq": 8,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "4RirMtzjukktLG1dd68H51a5j7JHKp7R6PdVwWTVebk2"
+     },
+     {
+      "request_id": "6",
+      "decision": "Admitted",
+      "seq": 9,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "GhtE9mjsFip7T8TVYDp3VGqgjL7Ha6rsXVfhQ6DPKyuu"
+     },
+     {
+      "request_id": "2",
+      "decision": "Admitted",
+      "seq": 10,
+      "height": 89,
+      "transfer_height": 90,
+      "amount": "2000000000000000000000000",
+      "settlement": "S",
+      "tx_hash": "6w2NN4GkQALH6XAnNiNohH7cv9Skr19q3Q5AZU8YYddV"
+     }
+    ],
+    "pending_witness": [],
+    "replay_capture_sha256": "03e6abeac683016fd4b5ed8aa09985d47194ef5464405cb55f1862cb3e04b261",
+    "rpc_records": 809
+   },
+   "vulnerable": {
+    "label": "CONTROL (vulnerable teaching fixture)",
+    "vault": "vulnerable.owner.test.near",
+    "budget": "5000000000000000000000000",
+    "admissions": 9,
+    "denials": 0,
+    "delivered_principal": "17000000000000000000000000",
+    "overspend": "12000000000000000000000000",
+    "budget_exceeded_on_chain": true,
+    "admissions_per_block": {
+     "97": 1,
+     "105": 8
+    },
+    "stale_settled_seen": [
+     "0",
+     "1000000000000000000000000"
+    ],
+    "transfers": [
+     {
+      "tx_hash": "5FJWmqdceBc65vt1BBgpoM21GzhJL7cFPJbwFkeG5Kvb",
+      "receipt_id": "A7yKvK8vCXzGC23iqbMm5H1kfGMC25QchFNkGUYx1vm1",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "5XNUNeDtQ5fRBcFXc952e4JjoCDKwA9ZetdHueYLDLKT",
+      "receipt_id": "5e22vybJ6EszsZEDigLcWMuwqfTTpgqheG9GjT2ZSF9u",
+      "recipient": "alice.test.near",
+      "amount": "1000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 98,
+      "parent_height": 97
+     },
+     {
+      "tx_hash": "9dMndRtUcCSFTNAaGU7eCag1qZDsbKkuXsZafiynVoL1",
+      "receipt_id": "EsA6JsbjLekmocqdWpsS7V8etgTBpDAfP363dPZfmtTv",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "CiK529oZqaAFTThumQyhHBRziUcSbz8aPfNTRva4e8vb",
+      "receipt_id": "76PHEcvf2LSso2WAXKsGxAbuE5LvBQxNWk5Ck9LB5tCo",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "EY5viDcJLY32vWSioHgQjnDP28ChrxoENFi9mH5RKZYh",
+      "receipt_id": "3F5o6GiFqqbQAA9CqkH1PERYQ8Hr4pCvZisyPGJJ7HQi",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "EbqB8yykNaTFPEyWjYJgphcToqayEvTkNy1yFaFwncza",
+      "receipt_id": "A4ogTsHskwHVtuAiGBRofA6zE15pc9tDpYFQrY6AGmwa",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "HnjAZ4fvumBifWHEobdsQGrNFTUpjimecjmioU4A1GeD",
+      "receipt_id": "2k3jwadPGFGHs6bvN55Rse7uqT9Qrc2Ej1EJDG3pV1hL",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "HqM8gHcMBv8UT1v2jZjjW5rxLgRc4VFjQDdNEzzvUPut",
+      "receipt_id": "4wHztxxLhBmfCipGhC7XVYvCMjY9Ud58vUubQzd33bw7",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     },
+     {
+      "tx_hash": "WH6XNQqeTzmv8fq1AqZc7bvZjvZyjVQAuDjJPV6T8Yp",
+      "receipt_id": "3ng34nUBtvEvsJozv3MkokWw9ARtSQAJ3nU5feipYoqk",
+      "recipient": "alice.test.near",
+      "amount": "2000000000000000000000000",
+      "outcome": "SuccessValue",
+      "execution_height": 106,
+      "parent_height": 105
+     }
+    ]
+   },
+   "sources": {
+    "summary": "evidence/g2-independent/g2i-20261110T154252Z-a/run-summary.json",
+    "fixture_source": "fixtures/vulnerable-settled-only/src/lib.rs"
+   }
+  }
  ]
 }
