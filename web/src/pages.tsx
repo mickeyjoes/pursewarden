@@ -91,9 +91,13 @@ export function Landing({ bundle }: { bundle: Bundle }) {
             <li>The NEAR runtime executes receipts as specified.</li>
             <li>The owner sets an honest mandate and an allowlist they trust.</li>
             <li>The reviewer's node reports the chain truthfully. The verifier checks consistency, not consensus proofs.</li>
-            <li>The deployed bytes match the reviewed source (checked by hash and by a reproducible rebuild).</li></ul></div>
+            <li>The deployed bytes match the reviewed source (checked by hash and by a reproducible rebuild).</li>
+            <li>The vault's name was never used by an earlier, deleted account, which could leave a delayed key. RPC cannot check this; for our
+              testnet vault the recorded account history shows no earlier account.</li></ul></div>
           <div className="card"><h3><Ban aria-hidden style={{ color: "var(--deny)" }} /> Not claimed</h3><ul>
             <li>Prompt-injection defence: an agent can still waste its budget on allowlisted payees.</li>
+            <li>That the vault stopped a real model. In our optional real-LLM demo the model resisted the injections itself; the on-chain
+              denials there come from a scripted compromised agent.</li>
             <li>Mainnet enforcement or production custody. On testnet, only the narrow smoke test.</li>
             <li>Audit, formal verification, recurring budgets, tokens other than NEAR.</li>
             <li>Comparisons against other projects. Our vulnerable control is our own deliberately broken fixture.</li>
@@ -411,12 +415,20 @@ export function Docs({ bundle }: { bundle: Bundle }) {
       ].map(([t, c]) => (
         <div key={t} className="cmd" style={{ marginTop: 22 }}><h3 style={{ fontSize: 15 }}>{t}</h3><pre>{c}</pre></div>
       ))}
+      <div className="cmd" style={{ marginTop: 28 }}>
+        <h3 style={{ fontSize: 15 }}>Optional · Replay the real-LLM agent demo (local sandbox, under 1 s, offline)</h3>
+        <pre>{"python3 demo/llm-agent/show_run.py demo/llm-agent/evidence/llm-20261111T043717Z\npython3 demo/llm-agent/evidence_check.py demo/llm-agent/evidence/llm-20261111T043717Z"}</pre>
+        <p className="subtle" style={{ fontSize: 12.5, marginTop: 8 }}>A real model (Claude Opus 5.5) acts as a purchasing agent with only a
+          function-call key. In the 5 recorded sessions it <strong>resisted</strong> every injected or tampered invoice, so none of its own requests was
+          denied. The on-chain denials (look-alike recipient, over the cap, over budget) come from a separate <strong>scripted, compromised
+          control</strong>, which is not an LLM. Outside the G1/G2 evidence. <a href={`${REPO_URL}/blob/master/demo/llm-agent/README.md`}>Details</a>.</p>
+      </div>
       <div className="callout" style={{ marginTop: 28 }}>
         <Server aria-hidden />
         <div><strong>Where things ran.</strong> The attack lab, the concurrency burst (G2), the omission recovery and the independent
           verifier (G1) all come from fresh local NEAR sandboxes (nearcore 2.13.4). A separate, owner-approved 10-transaction smoke test ran on
           <strong> public NEAR testnet</strong> (protocol 88) after a rehearsal on a local copy of testnet's version: see <a href="#/testnet">Testnet</a>.
-          Nothing runs on mainnet.</div>
+          The optional real-LLM demo ran on its own fresh local sandbox. Nothing runs on mainnet.</div>
       </div>
       <div className="callout warn" style={{ marginTop: 12 }}>
         <AlertTriangle aria-hidden />

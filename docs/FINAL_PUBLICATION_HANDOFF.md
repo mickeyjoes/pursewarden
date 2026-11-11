@@ -38,7 +38,17 @@ Renamed `mickeyjoes/near-agent-vault-lab` → `mickeyjoes/pursewarden` while pri
 
 ## Owner steps remaining (each needs your go-ahead)
 
-0. Have branch `fix/final-audit-findings` independently reviewed (final review fixes: `docs/FINAL_AUDIT_RESPONSE.md`), then merge it into `master`. The merge redeploys Pages; check the live site afterwards. Record the video only after that, because beat 5 shows the updated live viewer.
+0. Publish the release candidate.
+   - **What it is.** Local branch `release/final-rc` merges, without rewriting them:
+     - `fix/final-audit-findings` (`9f894db`);
+     - the PW-01b disclosure;
+     - `demo/llm-agent` (`f54a227`, `d9c9f94`).
+   - **Steps.**
+     1. Push the branch.
+     2. Wait for green CI.
+     3. Fast-forward `master` to it.
+     4. Check the live site's hashes (`docs/DEPLOY.md`), because the push to `master` redeploys Pages.
+   - **Then the video.** Record it only after the deploy, because beat 5 shows the updated live viewer. The sequence and the reasons are in the release handoff.
 1. Record the 2-minute video on https://pursewarden.com (`docs/SUBMISSION.md` §4).
 2. Post it on X (`docs/SUBMISSION.md` §5). The post URL becomes `demoUrl`.
 3. Tag the final commit: `git tag -a hackathon-submission -m "NEAR HACKATHON 2026 submission" master && git push origin hackathon-submission`.

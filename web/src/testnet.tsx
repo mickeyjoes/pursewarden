@@ -205,7 +205,7 @@ function LiveViewer({ t }: { t: TestnetRun }) {
             Both endpoints this page uses are run by the same operator, so a fallback is not a second opinion. Zero keys now does not prove
             the vault was always keyless. That rests on its creation transaction above, which the inspector checks is exactly the approved
             four actions, and on the name never having been used by an earlier, deleted account, which this page cannot check (see the
-            account history below). Frozen and keyless, the charge, records and mandate can no longer change; the agent's keys can still send
+            account history above). Frozen and keyless, the charge, records and mandate can no longer change; the agent's keys can still send
             requests, which are denied and only advance the audit sequence. The expiry only marks the mandate as expired.
           </p>
         </>

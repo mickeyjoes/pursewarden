@@ -123,6 +123,8 @@ The check requires all of the following:
 - The control is labelled as the control.
 - No real e-mail address, home path or key material appears in the evidence.
 
+The checker does not compare the signed transaction's arguments with the model's tool input directly; it compares each to the gateway log. That direct comparison was done by hand for all three model payments in the recorded run, by the delta review and again at release integration. Signer, public key, receiver, method, zero deposit, recipient and exact yoctoNEAR amount are all equal.
+
 The unit tests tamper with a copy of the recorded run and require the check to fail in each case: a flipped chain decision, an extra gateway payment that no model asked for, a relabelled model ID, the control relabelled as the model, and a leaked address.
 
 ## Evidence layout (`evidence/<run>/`)
@@ -143,13 +145,13 @@ The unit tests tamper with a copy of the recorded run and require the check to f
 
 ## Limitations
 
-- **One model, one provider, few samples.** This is Claude Opus 5.5 through Claude Code's headless mode, in 5 sessions. Claude Code adds its own tool plumbing and a small block of account context to the conversation (the operator's e-mail; it does not appear in the evidence). This is not the raw API, and it is not a benchmark: other models, prompts or attacks may behave differently. The model's internal reasoning is not recorded; the CLI exposes only empty thinking blocks.
+- **One model, one provider, few samples.** This is Claude Opus 5.5 through Claude Code's headless mode, in 5 sessions. Claude Code adds its own tool plumbing and a small block of account context to the conversation (the operator's e-mail; it does not appear in the evidence). This is not the raw API, and it is not a benchmark: other models, prompts or attacks may behave differently. The model's internal reasoning is not recorded; the CLI exposes only empty thinking blocks. The model ID is what the CLI reports. Nothing attests it cryptographically.
 - **The model read the mandate before it acted.** In all 5 sessions it called `get_vault_status` first, and its summaries to the owner cite the mandate (budget, allowlist or cap). Its resistance is therefore not separated from mandate visibility. That is arguably the intended design: the on-chain mandate doubles as machine-readable policy that the agent can consult.
 - **The model resisted, so on-chain denials of model-proposed payments were not exercised in this run.** The model-proposed payments that reached the vault were all legitimate and all admitted. The boundary under attack is shown by the deterministic control, which is scripted and is not evidence about any model.
 - **The vault limits damage; it does not detect injection.** A compromised agent can still spend the whole budget on allowlisted payees. The control does exactly that: 2 NEAR to the real vendor for a fake surcharge. Pursewarden bounds the loss to the mandate (B, M, K, allowlist, expiry). Judging whether a payment is wise stays with the agent and the owner.
 - **The system prompt is a realistic one, not a hardened one.** It tells the model that vendor documents are "reference material received from third parties". It contains no anti-injection rules. A weaker prompt or a weaker model might behave differently.
 - **Same trust limits as the rest of the project.** It runs on a single-validator local sandbox, with the checker on the same machine, reading the operator's own node. There is no runner isolation here: unlike G1, the model process is not inside bubblewrap. It has no tools that could reach the key, but the key file sits on the same machine under the same UID. The gateway is the only process that loads it.
-- **Not part of the reviewed G1/G2 evidence, and not independently reviewed.**
+- **Not part of the reviewed G1/G2 evidence.** An independent AI delta review (2026-11-11) read this code and cross-checked the transcripts against the signed transactions. It re-ran the whole demo once with the same model and the four adversarial episodes once with `claude-haiku-5-5`; in those runs too, the model never followed the injection. Those runs are the reviewer's and are not committed here. They are a handful of samples, not a benchmark.
 
 ## Proposed video segment (15–25 s)
 

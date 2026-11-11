@@ -15,6 +15,10 @@ jobs:
       - name: Evidence tests (synthetic, runner boundary, G1/G2 and testnet replay of recorded RPC, creation-batch checks)
         # bubblewrap end-to-end tests skip themselves when unprivileged namespaces are unavailable.
         run: python3 -m unittest discover -s tests/evidence -t . -v
+      - name: Real-LLM demo appendix (recorded-run consistency check and its unit tests; offline, no model)
+        run: |
+          python3 demo/llm-agent/evidence_check.py demo/llm-agent/evidence/llm-20261111T043717Z > /dev/null
+          python3 -m unittest discover -s demo/llm-agent/tests -v
 
   web:
     name: Web bundle reproducibility and build
