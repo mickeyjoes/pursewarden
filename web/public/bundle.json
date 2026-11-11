@@ -4866,6 +4866,18 @@
     "expires_at_ns": "1794427035179574414",
     "policy_hash": "fAFXFPi76a5wsebUX5maGCFUyMc6YsY9EneG3rQZhzL"
    },
+   "construction": {
+    "tx_hash": "BQfmcRW99TYjL2L96eszJ4boAN4jkhxsFJDcA2DF2YVw",
+    "actions": [
+     "CreateAccount",
+     "Transfer",
+     "DeployContract",
+     "FunctionCall"
+    ],
+    "deployed_code_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+    "init_returned_policy_hash": "fAFXFPi76a5wsebUX5maGCFUyMc6YsY9EneG3rQZhzL",
+    "other_receipts": 1
+   },
    "cut": {
     "q_height": 277113571,
     "q_hash": "HDzAuuMEUe9ayUCw2vaB537oE9hLeq2bf8eWun88txRE",

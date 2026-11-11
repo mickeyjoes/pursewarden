@@ -11,8 +11,8 @@ jobs:
     name: Evidence regressions (Python stdlib)
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - name: 70 evidence tests (synthetic, runner boundary, G1/G2 replay of recorded RPC)
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Evidence tests (synthetic, runner boundary, G1/G2 and testnet replay of recorded RPC, creation-batch checks)
         # bubblewrap end-to-end tests skip themselves when unprivileged namespaces are unavailable.
         run: python3 -m unittest discover -s tests/evidence -t . -v
 
@@ -20,8 +20,8 @@ jobs:
     name: Web bundle reproducibility and build
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
       - name: Bundle regenerated from committed raw RPC equals the committed bundle
@@ -34,7 +34,7 @@ jobs:
     name: Contract tests and cross-machine artifact reproducibility
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Rust 1.93.0 (pinned by rust-toolchain.toml)
         run: rustup toolchain install 1.93.0 --target wasm32-unknown-unknown --profile minimal --component rustfmt,clippy
       - name: Contract unit tests (SPEC vectors, canonical parsing, storage bound)

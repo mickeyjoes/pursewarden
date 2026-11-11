@@ -127,6 +127,19 @@ def sandbox(script, ro=(), rw=()):
     return run(cmd)
 
 
+SOCKET_PATH_MAX = 107  # Linux sun_path is 108 bytes including the terminating NUL
+
+
+def require_short_socket_path(base):
+    """Fail before any work if the proxy socket path would be too long for AF_UNIX, instead of
+    dying mid-run with "AF_UNIX path too long" (final audit PW-07). Nothing else changes."""
+    longest = base / "sock-submit" / "rpc.sock"
+    n = len(os.fsencode(str(longest)))
+    if n > SOCKET_PATH_MAX:
+        sys.exit(f"socket path would be {n} bytes, over the Linux limit of {SOCKET_PATH_MAX}: {longest}\n"
+                 "Use a shorter run id, or set NEAR_VAULT_TOOLS to a shorter directory (see README steps 5-6).")
+
+
 def fresh_dir(base, name):
     d = base / name
     d.mkdir(mode=0o700)  # never reused: a runner can only ever have touched dirs it was given
@@ -180,6 +193,7 @@ def main():
     a = ap.parse_args()
     t0 = time.time()
     base = TOOLS / "g1-independent" / a.run_id
+    require_short_socket_path(base)
     rev, runner = base / "reviewer", base / "runner"
     node_home = rev / "node"
     pub = REPO / "evidence" / "g1-independent" / a.run_id

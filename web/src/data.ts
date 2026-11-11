@@ -62,6 +62,8 @@ export interface TestnetRun { run_id: string; mode: "REPLAY"; network: "TESTNET"
   node: { chain_id: string; version: string; protocol_version: number }; tool_commit: string; artifact_sha256: string;
   accounts: { owner: string; vault: string; agent: string; payee: string; missing: string; attacker: string };
   policy: { budget: string; max_per_request: string; max_accepted_requests: number; recipients: string[]; expires_at_ns: string; policy_hash: string };
+  /** The vault's creation transaction, checked by the inspector to be exactly the approved four-action batch. */
+  construction?: { tx_hash: string; actions: string[]; deployed_code_sha256: string; init_returned_policy_hash: string; other_receipts: number };
   cut: { q_height: number; q_hash: string; code_sha256: string; vault_keys: number; policy_hash: string; charged: string;
     accepted_count: number; seq: number; frozen: boolean };
   ledger: { C: string; sum_records: string; headroom: string; S: string; F: string; U: string };

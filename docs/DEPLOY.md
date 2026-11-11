@@ -32,14 +32,14 @@ With GitHub Actions deployments a `CNAME` file in the artifact is not needed; th
 
 ### Redeploy
 
-The `pages` workflow runs on manual dispatch, and on a push to `master` that changes `.github/workflows/pages.yml`. It refuses to build unless `web/public/bundle.json` regenerates byte-identically from the committed raw RPC.
+The `pages` workflow runs on manual dispatch, and on a push to `master` that changes `web/**`, `evidence/**`, `packages/**`, `scripts/build_web_bundle.py` or the workflow itself. It refuses to build unless `web/public/bundle.json` regenerates byte-identically from the committed raw RPC. Its actions are pinned by commit SHA. After a deploy, compare the live `bundle.json` and `assets/index-*.js` with a clean build of the same commit (SHA-256).
 
 ```bash
 gh workflow run pages -R mickeyjoes/pursewarden --ref master
 gh run watch -R mickeyjoes/pursewarden --exit-status "$(gh run list -R mickeyjoes/pursewarden --workflow pages --limit 1 --json databaseId --jq '.[0].databaseId')"
 ```
 
-Then open `https://pursewarden.com/#/tour/1` (provenance bar: REPLAY · SANDBOX) and `https://pursewarden.com/#/testnet` (TESTNET; "Read live from testnet" should report that every enforcement field matches). GitHub Pages caches HTML for up to 10 minutes (`cache-control: max-age=600`).
+Then open `https://pursewarden.com/#/tour/1` (provenance bar: REPLAY · SANDBOX) and `https://pursewarden.com/#/testnet` (TESTNET; "Read live from testnet" should report that all compared fields match, with the code hashed in the browser). GitHub Pages caches HTML for up to 10 minutes (`cache-control: max-age=600`).
 
 Keep the site online until at least 2026-11-18, ideally 2026-11-25 (hackathon FAQ Q-012).
 

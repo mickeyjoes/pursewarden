@@ -13,7 +13,7 @@
 | If you have… | Do | See |
 | --- | --- | --- |
 | 30 seconds | Open the [guided tour at pursewarden.com](https://pursewarden.com/#/tour/1), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
-| 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 75 tests … OK`, including replays of the real recorded chain data (sandbox and testnet) |
+| 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 87 tests … OK`, including replays of the real recorded chain data (sandbox and testnet) |
 | A browser | Open the [vault on testnet.nearblocks.io](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet), or [pursewarden.com/#/testnet](https://pursewarden.com/#/testnet) and click **Read live from testnet** | The same artifact `c7c77263…` deployed keyless on public testnet: 10 public transactions, 6 vault decisions, all as planned |
 | 5 minutes | `python3 scripts/g2-independent/run_g2.py my-g2` (after `cargo build … --bin g2_actor`; step 6) | A fresh local chain reproduces the concurrency result end to end |
 
@@ -81,7 +81,7 @@ No wallet, account or funds are needed for any step.
 python3 -m unittest discover -s tests/evidence -t .
 ```
 
-**See:** `Ran 75 tests … OK`.
+**See:** `Ran 87 tests … OK`.
 - 43 synthetic adversarial tests run against a fake RPC oracle.
 - 9 G2 tests replay the recorded concurrency runs:
   - the protected vault admits 2 of 8, with 6 pending-transfer witnesses;
@@ -93,7 +93,7 @@ python3 -m unittest discover -s tests/evidence -t .
   - the exact ledger: C = 3, S = 1, F = 2, U = 0 NEAR, headroom 2;
   - recovery of the omitted transaction root;
   - that 18 tamperings of the genuine responses are all rejected.
-- 5 tests replay the recorded **public testnet** inspection: it must reproduce the committed PASS exactly, while a flipped denial reason, an added vault key, a `mainnet` chain ID or a wrong artifact must not pass.
+- 17 tests replay the recorded **public testnet** inspection. It must reproduce every field of the committed PASS, while a flipped denial reason, an added vault key, a `mainnet` chain ID or a wrong artifact must not pass. 12 of them check the vault's creation transaction: a missing, duplicated or unavailable creation record, extra or altered actions in the creation batch, a delayed `AddKey` or yielded receipt from the vault, and the real creation graph recorded from an independent review's sandbox attack must all fail.
 
 ### 2. Re-run the verifier comparison by hand (under 1 s)
 
@@ -172,6 +172,8 @@ python3 scripts/g2-independent/run_g2.py my-g2 --rpc-port 3290 --net-port 24827
 - `generous`: nine admitted;
 - `vulnerable`: `"delivered_principal"` of 17 NEAR, `"overspend"` of 12 NEAR, and eight admissions in a single block.
 
+**Long home directory?** Steps 5 and 6 create a Unix socket at `<tools>/g1-independent/<run-id>/sock-submit/rpc.sock` (`g2-independent` for step 6), and Linux limits that path to 107 bytes. The scripts stop at once with a clear message if it would be longer. Use a shorter run id, or set `NEAR_VAULT_TOOLS=/tmp/pwt`; the sandbox binary is then downloaded and checked again into that directory.
+
 ### 7. Re-inspect the public testnet smoke (read-only, needs internet)
 
 ```bash
@@ -181,7 +183,7 @@ python3 -m packages.verifier inspect-smoke --network testnet --rpc http://127.0.
   --run evidence/testnet-smoke/tn-20261110T195542Z/run.json --wasm artifacts/near_agent_vault.wasm --out /tmp/reinspect
 ```
 
-**See:** `"result": "PASS"`, with code SHA-256 `c7c77263…`, `"vault_keys": 0`, C = 0.8 NEAR = the sum of records, and `"frozen": true`. Public nodes keep recent data only; after a few days, re-reading the transactions needs an archival RPC endpoint. The hosted page's **Testnet** view can also read the vault's current state live from your browser.
+**See:** `"result": "PASS"`, with code SHA-256 `c7c77263…`, `"vault_keys": 0`, C = 0.8 NEAR = the sum of records, `"frozen": true`, and a `construction` block showing that the creation transaction was exactly `CreateAccount, Transfer, DeployContract, FunctionCall(new)` with nothing scheduled but the owner's gas refund. Public nodes keep recent data only; after a few days, re-reading the transactions needs an archival RPC endpoint. The hosted page's **Testnet** view can also read the vault's current state live from your browser.
 
 ## What the recorded runs show
 
@@ -248,8 +250,12 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 - **Runner isolation** uses Linux namespaces (bubblewrap) on the same host and UID. That is not separate machines. An independent review found one isolation flaw (the reviewer followed runner-planted symlinks), which is fixed with regressions. The later evidence uses the fix.
 - **G2 scope:** single shard, single validator, requests to one vault. "Concurrent" means pre-signed and submitted in parallel. The vulnerable target is our own teaching fixture. The pending-transfer witness reports same-block settlement as ambiguous and never counts it (review finding W1, fixed).
 - **Testnet scope:** the public testnet smoke shows that the artifact deploys keyless and enforces its mandate for 10 runner-listed transactions, re-read from a public node. It is not an independent completeness proof (no reviewer-owned frontier), not a concurrency test and not an adversarial-runner test. Public nodes keep recent data only; re-reading it later needs an archival endpoint.
-- **Not executed:** late-failure atomicity (FAULT builds), forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry, multi-shard, any mainnet use.
-- **Product gaps:** no withdrawal or recovery path, NEAR native token only, a fixed one-shot budget (no recurring budgets), and no defence against an agent wasting its budget on allowlisted payees.
+- **Keyless needs the creation transaction, not just the current state.** Zero keys and a matching code hash at one block do not by themselves prove that a vault stays keyless. An extra deploy-and-call inside the creation batch can leave a postponed receipt, such as a delayed `AddKey`, that no state query shows. An independent review demonstrated this on a local sandbox: the earlier testnet inspector passed such a vault, which was then given a key and emptied about 200 blocks later. The creation receipt must be exactly the four-action batch, with no further receipt from the vault. The sandbox verifier always checked this. The testnet inspection now checks it too, and fails closed if the creation transaction is missing or not FINAL. Our testnet vault's creation transaction passes. Neither check can see an earlier account with the same name (created, deleted and re-created); only the name's parent account can create it. The website's live viewer reads current state only and points to the creation check.
+- **Not executed by us:** late-failure atomicity (FAULT builds), forced callback failure on chain, K = 64 storage, insufficient liquidity, executed expiry, multi-shard, any mainnet use. An independent AI review (2026-11-11) ran expiry, insufficient liquidity, a top-up and K = 64 on a local sandbox and reports that all behaved as designed. We have not re-run those.
+- **Funds in a vault are locked for good.** Nothing can leave except admitted payments: no unspent budget, refund or top-up can be withdrawn, during the mandate or after a freeze or expiry. The account can never be deleted, so its storage reserve is locked too. On testnet that is 1.56899 of the vault's 2.26899 NEAR (`reserve_total`), mostly for the 154 KB contract.
+- **A compromised agent can strand the budget without paying anyone much.** The smallest admissible payment is 1 yoctoNEAR, and every admitted payment uses one of the K slots for good. K payments of 1 yoctoNEAR to any allowlisted payee use up every slot, after which the remaining budget can never be spent. The agent pays only gas. The recorded G1 run shows the same mechanism with 2 NEAR left over (`RecordQuotaExhausted` with headroom 2). Freezing, the owner's only response, also strands the rest. So "it can't overspend" bounds what leaves the vault. It does not bound the owner's loss, which on any compromise can be the whole deposit.
+- **The allowlist binds account names, not parties.** Existence cannot be checked when the mandate is set. If an allowlisted name does not exist yet, or is deleted later, whoever can create that name can receive payments to it; a name directly under `near` or `testnet` can be registered by anyone. The testnet demo allowlists the non-existent `pw-missing.pursewarden.testnet` on purpose, to show a failed transfer. Only the owner can create that name, and the vault is frozen. Allowlist only accounts that exist and that you trust to stay.
+- **Product gaps:** no withdrawal or recovery path, NEAR native token only, a fixed one-shot budget (no recurring budgets), at most K payments per vault, and no defence against an agent wasting its budget on allowlisted payees.
 
 ## Related NEAR infrastructure (not integrated)
 
@@ -288,7 +294,7 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
   - All code was written on or after 2026-10-29, so all of it falls inside the window in which "code written since the announcement counts".
   - Research and specification documents from 2026-10-20 onward are not part of this repository.
   - The `integration/g1-recovery` history shows each step: contract (`c9da90c`), evidence collector (`90506c0`), integration and repair (`e1e5257` onward).
-- **AI-generated code.** Most of the code, tests and documentation were written by AI coding agents (Claude Code with Claude Opus, and OpenAI Codex) under the owner's direction, with separate agents for contract, evidence, review and recovery. An independent AI review (OpenAI Codex, 2026-11-10, `reports/G1_CODEX_REVIEW_2026-11-10.md`) found one flaw in the run tooling: the reviewer followed runner-planted symlinks when importing runner output. It also found inaccurate wording about denials. Both are fixed; see `docs/G1_INDEPENDENT_RESULT.md`.
+- **AI-generated code.** Most of the code, tests and documentation were written by AI coding agents (Claude Code with Claude Opus, and OpenAI Codex) under the owner's direction, with separate agents for contract, evidence, review and recovery. An independent AI review (OpenAI Codex, 2026-11-10, `reports/G1_CODEX_REVIEW_2026-11-10.md`) found one flaw in the run tooling: the reviewer followed runner-planted symlinks when importing runner output. It also found inaccurate wording about denials. Both are fixed; see `docs/G1_INDEPENDENT_RESULT.md`. A final independent AI review (Claude, 2026-11-11) found that the testnet inspector did not check the vault's creation batch, and it reported smaller wording, robustness and documentation issues. The responses are in `docs/FINAL_AUDIT_RESPONSE.md`.
 - **Libraries.**
   - Contract: `near-sdk` 5.29.1 is its only direct dependency (with its transitive `borsh` and `serde_json`). It is built with `cargo-near` 0.22.0 and `wasm-opt`.
   - Harness: `near-primitives`/`near-crypto` 0.37.4, `reqwest`, `tokio`, `anyhow`, `borsh`, `bs58`, `sha2`, `base64`.

@@ -123,6 +123,24 @@ def same_actions(receipt_actions, tx_actions):
     return canonical(receipt_actions) == canonical(tx_actions)
 
 
+def keyless_construction_actions(actions, wasm_sha256):
+    """The only accepted vault creation batch, in this order:
+    [CreateAccount, Transfer, DeployContract(reviewed artifact), FunctionCall(new, no deposit)].
+
+    Shared by the sandbox verifier and the smoke inspector. Any extra action matters even if the
+    final code and keys look right: an earlier DeployContract + FunctionCall in the same batch runs
+    other code as the new account and can leave a postponed receipt (for example a delayed AddKey)
+    that no state query shows (final audit PW-01). 2.13.4 and 2.14 receipt and transaction views
+    carry DeployContract.code as the 32-byte SHA-256 of the WASM."""
+    return (len(actions) == 4 and actions[0] == "CreateAccount"
+            and isinstance(actions[1], dict) and set(actions[1]) == {"Transfer"}
+            and isinstance(actions[2], dict) and set(actions[2]) == {"DeployContract"}
+            and isinstance(actions[3], dict) and set(actions[3]) == {"FunctionCall"}
+            and actions[3]["FunctionCall"]["method_name"] == "new"
+            and actions[3]["FunctionCall"]["deposit"] == "0"
+            and decode64(actions[2]["DeployContract"]["code"]).hex() == wasm_sha256)
+
+
 def transfer_amount(receipt):
     actions = action_body(receipt)["actions"]
     require(len(actions) == 1 and isinstance(actions[0], dict) and set(actions[0]) == {"Transfer"},
@@ -448,13 +466,8 @@ def analyze(capture, d):
                                  "block_hash": outcomes[rid]["block_hash"]})
                 continue
             if actions[0] == "CreateAccount":
-                # 2.13.4 receipt views carry DeployContract.code as the 32-byte SHA-256 of the WASM.
-                require(receipt["predecessor_id"] == d["owner"] and len(actions) == 4
-                        and set(actions[1]) == {"Transfer"} and set(actions[2]) == {"DeployContract"}
-                        and set(actions[3]) == {"FunctionCall"} and actions[3]["FunctionCall"]["method_name"] == "new"
-                        and actions[3]["FunctionCall"]["deposit"] == "0"
-                        and decode64(actions[2]["DeployContract"]["code"]).hex() == d["wasm_sha256"],
-                        "KEYLESS_CONSTRUCTION", rid)
+                require(receipt["predecessor_id"] == d["owner"]
+                        and keyless_construction_actions(actions, d["wasm_sha256"]), "KEYLESS_CONSTRUCTION", rid)
                 require(not vault_children, "CONSTRUCTION_DISPATCH", rid)
                 creation.append(outcomes[rid]["block_hash"])
                 events.extend(vault_events(outcomes[rid], d))
@@ -726,6 +739,10 @@ LIMITATIONS = [
     "Binary file hash is recorded; RPC process-to-binary correspondence is not cryptographically authenticated.",
     "Runner isolation, ingress closure and retention are run-level properties recorded by the run tooling, not by this verifier.",
     "Bounded adapter: one epoch, unchanged shard layout, sandbox network only (public networks are inspection-only).",
+    # Predates G2 and is copied verbatim into every committed result.json, including G2 runs that report
+    # six receipt-derived pending witnesses (pending_witness). It refers to RPC submission timing only:
+    # sending requests at the same moment proves nothing. Kept unchanged so the committed results still
+    # replay byte for byte; docs/G2_RESULT.md explains it (final audit PW-06).
     "No native-pending witness; simultaneous RPC sends cannot establish one.",
 ]
 
