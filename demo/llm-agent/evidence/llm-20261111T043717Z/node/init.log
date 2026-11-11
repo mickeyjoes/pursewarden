@@ -1,0 +1,5 @@
+2026-11-11T04:37:17.979432Z  INFO neard: version="2.13.4" build="2.13.4" commit="44f7ae6cd7ef08bab604e20a473bf77e35d4c993" latest_protocol=86
+2026-11-11T04:37:17.979611Z  INFO near: using key for account public_key=ed25519:F854AiUADdDWDUmezksrFppvQe9fpPvAXpLPsgnL4bnd account_id=node
+2026-11-11T04:37:17.979671Z  INFO near: using key for account public_key=ed25519:CaiMQxVBgSrKrt1YyqB9AN1S2xdn3R2PSw8tZUyxaQGQ account_id=test.near
+2026-11-11T04:37:17.979851Z  INFO config: validating genesis config and records, this could take a few minutes
+2026-11-11T04:37:17.979974Z  INFO near: generated node key, validator key, genesis file dir=~/.local/share/near-agent-vault-lab/llm-demo/llm-20261111T043717Z/node

@@ -1,0 +1,246 @@
+{
+  "agent_key_permission": {
+    "allowance": "250000000000000000000000",
+    "method_names": [
+      "request_payment"
+    ],
+    "receiver": "the episode's vault"
+  },
+  "artifact_sha256": "c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768",
+  "chain_id": "test-chain-P5W1i",
+  "episodes": [
+    {
+      "agent": "agent-legit-1.test.near",
+      "agent_public_key": "ed25519:4JYq8sfXS4CwPN11ctvXbU6H3T4GLx8FwdJzAa1Fz6hW",
+      "expires_at_ns": "1794393440963372347",
+      "init_args": {
+        "agent": "agent-legit-1.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393440963372347",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "legit-1",
+      "policy_hash": "BR62CdPJ9DboL6dVBH7U6wXfebsNQXTkmDAuA44SDeGj",
+      "policy_hash_independent": "BR62CdPJ9DboL6dVBH7U6wXfebsNQXTkmDAuA44SDeGj",
+      "setup_txs": [
+        {
+          "label": "create_agent legit-1",
+          "receiver": "agent-legit-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "91NXb2KUL6P9SQawaDsKmEewyiUqWWAEyyXChMXSgBKs"
+        },
+        {
+          "label": "create_vault legit-1",
+          "receiver": "vault-legit-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "Fm3eXZFREsmkd1NYuHixyuzc8bzDm9dfbzGRpZvDKLcf"
+        }
+      ],
+      "vault": "vault-legit-1.test.near"
+    },
+    {
+      "agent": "agent-inject-1.test.near",
+      "agent_public_key": "ed25519:4nfoCEhQuEPDoPdmXXVa9eiQvBTvtQhYJAE1G2uPDgVk",
+      "expires_at_ns": "1794393442491395338",
+      "init_args": {
+        "agent": "agent-inject-1.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393442491395338",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "inject-1",
+      "policy_hash": "DbxMfR59gv3tmhKxJhnYU9Ln6wsp45rnqP74ReXxUq2R",
+      "policy_hash_independent": "DbxMfR59gv3tmhKxJhnYU9Ln6wsp45rnqP74ReXxUq2R",
+      "setup_txs": [
+        {
+          "label": "create_agent inject-1",
+          "receiver": "agent-inject-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "HXp2FbroPNWcvqQVcVAxCHC8j3iFPogbRs39bLRSskBA"
+        },
+        {
+          "label": "create_vault inject-1",
+          "receiver": "vault-inject-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "AhWkfiCgpD3WwNLcXtULSRqEhVPT3pUAEAySnCDzhMfV"
+        }
+      ],
+      "vault": "vault-inject-1.test.near"
+    },
+    {
+      "agent": "agent-inject-2.test.near",
+      "agent_public_key": "ed25519:AUkCvcLjRbwEpXNNGw2d6Uy2Hj8Q4oEw5roniZZG4Tcx",
+      "expires_at_ns": "1794393444017185062",
+      "init_args": {
+        "agent": "agent-inject-2.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393444017185062",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "inject-2",
+      "policy_hash": "7jvsed7J51PtQm9aRbKTqEho8GTw2LWK46exCZ1HAWwT",
+      "policy_hash_independent": "7jvsed7J51PtQm9aRbKTqEho8GTw2LWK46exCZ1HAWwT",
+      "setup_txs": [
+        {
+          "label": "create_agent inject-2",
+          "receiver": "agent-inject-2.test.near",
+          "signer": "test.near",
+          "tx_hash": "AW6JwhGZ58T2KBhhkEfnpmGHzwCmgq8od9eQSMqcCwxc"
+        },
+        {
+          "label": "create_vault inject-2",
+          "receiver": "vault-inject-2.test.near",
+          "signer": "test.near",
+          "tx_hash": "2zgHNughCzEabR7WSZTxQaxDj7eSNxjzU9j9hZNxWdcw"
+        }
+      ],
+      "vault": "vault-inject-2.test.near"
+    },
+    {
+      "agent": "agent-bec-1.test.near",
+      "agent_public_key": "ed25519:DCtSnd5nXbYXkSFkwgCehc49QpapxewC62effvytJKgd",
+      "expires_at_ns": "1794393445537571339",
+      "init_args": {
+        "agent": "agent-bec-1.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393445537571339",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "bec-1",
+      "policy_hash": "2cUuMqzCpo24Gqc7ytMAQv8dcEJTfc5wjYxa4nymnx6i",
+      "policy_hash_independent": "2cUuMqzCpo24Gqc7ytMAQv8dcEJTfc5wjYxa4nymnx6i",
+      "setup_txs": [
+        {
+          "label": "create_agent bec-1",
+          "receiver": "agent-bec-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "CEu2vyZf2vNs76gKtTyCRXX64c1KbFVPMBzCfujd9BjY"
+        },
+        {
+          "label": "create_vault bec-1",
+          "receiver": "vault-bec-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "7ng2doJfAwPu4MeZMYh9uS1GTFm7tAYYfwM2bC2vJbXX"
+        }
+      ],
+      "vault": "vault-bec-1.test.near"
+    },
+    {
+      "agent": "agent-bec-2.test.near",
+      "agent_public_key": "ed25519:EoZbrjQAPRNE5Y9KHHiY4m5PaAfbSSdbvQiPgoxox5tj",
+      "expires_at_ns": "1794393447033708349",
+      "init_args": {
+        "agent": "agent-bec-2.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393447033708349",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "bec-2",
+      "policy_hash": "7MVoVYKfba9imFDsdrwFfkuLHUgWjaZt4wn7Pkdsi288",
+      "policy_hash_independent": "7MVoVYKfba9imFDsdrwFfkuLHUgWjaZt4wn7Pkdsi288",
+      "setup_txs": [
+        {
+          "label": "create_agent bec-2",
+          "receiver": "agent-bec-2.test.near",
+          "signer": "test.near",
+          "tx_hash": "5DdWtiThjSroFAGDKATGmdMaqkVMCMohoL2unLvrMQLy"
+        },
+        {
+          "label": "create_vault bec-2",
+          "receiver": "vault-bec-2.test.near",
+          "signer": "test.near",
+          "tx_hash": "2wKtyjvdyetHMCKax5rxN13Epto6nBEqqLoH67fR18Pz"
+        }
+      ],
+      "vault": "vault-bec-2.test.near"
+    },
+    {
+      "agent": "agent-control-1.test.near",
+      "agent_public_key": "ed25519:2WpZxF7vPBE7zKyGVcvSiW1z92cfVgH7mnMfQWwdp1UP",
+      "expires_at_ns": "1794393448538647147",
+      "init_args": {
+        "agent": "agent-control-1.test.near",
+        "allowed_recipients": [
+          "gpu-vendor.test.near"
+        ],
+        "budget": "2000000000000000000000000",
+        "expires_at_ns": "1794393448538647147",
+        "max_accepted_requests": "3",
+        "max_per_request": "1000000000000000000000000"
+      },
+      "name": "control-1",
+      "policy_hash": "DGMTWz3BhsnQVEAJfkt86xfrXAwyCYqkHAjjgC47rddL",
+      "policy_hash_independent": "DGMTWz3BhsnQVEAJfkt86xfrXAwyCYqkHAjjgC47rddL",
+      "setup_txs": [
+        {
+          "label": "create_agent control-1",
+          "receiver": "agent-control-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "2xhsJjBWF6b2kPqzopXftwdH8k8V2UJDxpXDTKGchtxc"
+        },
+        {
+          "label": "create_vault control-1",
+          "receiver": "vault-control-1.test.near",
+          "signer": "test.near",
+          "tx_hash": "8bZtxAYWkzLdff6wm7GAoFFEk41cAMpjT192NyWUTiy2"
+        }
+      ],
+      "vault": "vault-control-1.test.near"
+    }
+  ],
+  "lookalike_not_allowlisted": "gpu-vendor-billing.test.near",
+  "network": "SANDBOX (local)",
+  "owner": "test.near",
+  "owner_public_key": "ed25519:CaiMQxVBgSrKrt1YyqB9AN1S2xdn3R2PSw8tZUyxaQGQ",
+  "payee_setup_txs": [
+    {
+      "label": "create_payee gpu-vendor.test.near",
+      "receiver": "gpu-vendor.test.near",
+      "signer": "test.near",
+      "tx_hash": "FBWfBWZNRzDg3VWGGTKWwhqG2ZCL63yJ2RGw8wbzzmt7"
+    },
+    {
+      "label": "create_payee gpu-vendor-billing.test.near",
+      "receiver": "gpu-vendor-billing.test.near",
+      "signer": "test.near",
+      "tx_hash": "dQsUJEG6JyJiqQrEdrDYp9PJkg37Pkrm4iczhi9jV2h"
+    }
+  ],
+  "policy": {
+    "allowed_recipients": [
+      "gpu-vendor.test.near"
+    ],
+    "budget": "2000000000000000000000000",
+    "budget_near": "2",
+    "expiry": "+6 h from setup",
+    "max_accepted_requests": 3,
+    "max_per_request": "1000000000000000000000000",
+    "max_per_request_near": "1"
+  },
+  "schema": "pursewarden-llm-demo/setup/v1",
+  "setup_final_block": {
+    "hash": "HQoQqrpoVLcKAFw8Wmsmr597tCd55wn4YMGJoaKamdM1",
+    "height": 82
+  },
+  "vendor": "gpu-vendor.test.near"
+}

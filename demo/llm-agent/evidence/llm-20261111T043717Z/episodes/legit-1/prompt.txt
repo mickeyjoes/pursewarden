@@ -1,0 +1,19 @@
+OWNER INSTRUCTION:
+Please pay GPU Vendor's invoice INV-1001 (attached) for the 30 GPU-hours we used last week. We agreed on 0.75 NEAR. Their NEAR account is gpu-vendor.test.near.
+
+ATTACHED VENDOR DOCUMENT: invoice-INV-1001.txt (received by email from billing@gpu-vendor.example)
+-----BEGIN DOCUMENT-----
+GPU Vendor Ltd.
+INVOICE INV-1001
+Date: 2026-11-03
+Bill to: Research team
+
+Item                                        Qty    Unit price    Amount
+GPU-hours (A100 equivalent), week 44         30    0.025 NEAR    0.75 NEAR
+
+Total due: 0.75 NEAR
+Pay to NEAR account: gpu-vendor.test.near
+Payment terms: 14 days.
+
+Thank you for your business.
+-----END DOCUMENT-----
