@@ -203,8 +203,9 @@ function LiveViewer({ t }: { t: TestnetRun }) {
             {live.code_source === "browser" ? "The code hash is computed here from the bytes the node returned; every other value is the node's answer. "
               : "Your browser cannot hash here, so the code hash is the node's own report. "}
             Both endpoints this page uses are run by the same operator, so a fallback is not a second opinion. Zero keys now does not prove
-            the vault was always keyless; that rests on its creation transaction above, which the inspector checks is exactly the approved
-            four actions. Frozen and keyless, the charge, records and mandate can no longer change; the agent's keys can still send
+            the vault was always keyless. That rests on its creation transaction above, which the inspector checks is exactly the approved
+            four actions, and on the name never having been used by an earlier, deleted account, which this page cannot check (see the
+            account history below). Frozen and keyless, the charge, records and mandate can no longer change; the agent's keys can still send
             requests, which are denied and only advance the audit sequence. The expiry only marks the mandate as expired.
           </p>
         </>
@@ -238,7 +239,7 @@ export function Testnet({ bundle }: { bundle: Bundle }) {
         <div className="callout warn" style={{ marginTop: 20 }}>
           <AlertTriangle aria-hidden />
           <div><strong>What this does and doesn't show.</strong> It shows that artifact <code>c7c77263…</code> deploys keyless on public testnet
-            (its creation transaction is exactly the four approved actions) and enforces its mandate in these {t.steps.length} transactions. It is <strong>not</strong> an independent completeness proof: the
+            (its creation transaction is exactly the four approved actions, and its recorded history shows no earlier account of the same name) and enforces its mandate in these {t.steps.length} transactions. It is <strong>not</strong> an independent completeness proof: the
             transaction list comes from our runner, and a public node gives no reviewer-owned frontier. It is <strong>not</strong> a concurrency or
             adversarial-runner test either; those are the local sandbox results (<a href="#/burst">G2</a>, <a href="#/verify">G1</a>).
             Not mainnet. Not audited.</div>
@@ -258,7 +259,15 @@ export function Testnet({ bundle }: { bundle: Bundle }) {
                 aria-label="Open the vault's creation transaction in the testnet explorer"><code>{short(t.construction.tx_hash, 5)}</code> <ExternalLink size={12} aria-hidden /></a>{" "}
                 <span className="ok-mark"><Check aria-hidden /> exactly {t.construction.actions.join(", ").replace("FunctionCall", "new")}; nothing else scheduled</span>
                 <span className="subtle" style={{ display: "block", fontSize: 12.5 }}>Zero keys at one block is not enough on its own: an extra action in
-                  the creation batch could leave a delayed key. The inspector checks this transaction.</span></dd></>}
+                  the creation batch could leave a delayed key. The inspector checks this transaction. It cannot see an earlier, deleted
+                  account of the same name, which can leave one too (confirmed on a sandbox, review finding PW-01b). So a PASS alone does
+                  not prove that a vault someone else created stays keyless.</span></dd>
+              <dt>Account history</dt><dd>No earlier account of this name: the owner's only key has signed at most four transactions, all listed below,
+                and the vault's first transaction is its creation.{" "}
+                <a href={blob("evidence/testnet-smoke/account-history-20261111/README.md")} target="_blank" rel="noreferrer noopener">Recorded
+                  history <ExternalLink size={12} aria-hidden /></a>{" "}
+                <span className="subtle" style={{ display: "block", fontSize: 12.5 }}>One indexer and one RPC operator, not a proof; not part of
+                  the automated inspection.</span></dd></>}
               <dt>Policy hash</dt><dd><code title={t.policy.policy_hash}>{short(t.policy.policy_hash, 10)}</code>{" "}
                 <span className="ok-mark"><Check aria-hidden /> recomputed from raw state</span></dd>
               <dt>Status</dt><dd>{t.cut.frozen ? "Frozen by the owner" : "Active"}</dd>

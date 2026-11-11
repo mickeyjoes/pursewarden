@@ -23,8 +23,16 @@ What it does verify, at one final block Q chosen by the inspector:
 - the decisions and native transfer outcomes match the expected smoke scenario.
 
 What it cannot see: receipts left by an EARLIER account with the same name (created, deleted and
-re-created before this vault), and anything the node does not return. Both are trusted to the
-single RPC node and to the account's parent, which alone can create the name.
+re-created before this vault), and anything the node does not return. A PASS therefore covers the
+listed creation transaction and the state at Q. It is NOT proof that a vault created by someone
+else can never acquire a key. The independent delta review confirmed this on a sandbox
+(PW-01b). The name was created with a prelude that scheduled a delayed AddKey, deleted, then
+re-created with the exact approved batch. This inspector returned PASS, and about 200 blocks later
+a full-access key appeared. Standard RPC cannot list an account's earlier lives. Ruling them out
+needs the account's history (an indexer or an archival scan) or trust in the creator. Only the
+name's parent can create the name, and the parent is normally the vault's owner: the very party
+being checked. For the project's own testnet vault, see
+evidence/testnet-smoke/account-history-20261111/.
 """
 from packages.collector import EvidenceError, account, decode64, loads, require
 from packages.verifier import (action_body, failure_summary, graph_check, keyless_construction_actions, one_cut,
