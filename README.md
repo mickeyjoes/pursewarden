@@ -1,10 +1,10 @@
 # Pursewarden: fixed-budget NEAR vaults for AI agents
 
-**[▶ Live demo](https://mickeyjoes.github.io/pursewarden/)** · **[3-step guided tour](https://mickeyjoes.github.io/pursewarden/#/tour/1)** · **[Testnet contract `pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)** · **[Reproduce it yourself](#try-it-do-x--see-y)**
+**[▶ Live demo: pursewarden.com](https://pursewarden.com/)** · **[3-step guided tour](https://pursewarden.com/#/tour/1)** · **[Testnet contract `pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)** · **[Reproduce it yourself](#try-it-do-x--see-y)**
 
 > **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. A narrow, owner-approved smoke test also ran on **public NEAR testnet** ([`pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)). Nothing runs on mainnet. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
 
-[![Eight concurrent 2 NEAR payment requests against a 5 NEAR budget. The protected vault admits 2 of 8 and stops at C = 5 NEAR = B; our deliberately vulnerable settled-only fixture admits all 8 and delivers 17 NEAR (12 over budget); a generous 100 NEAR control admits all 8. Below, block by block: six BudgetExceeded denials execute in block 74 while the two admitted transfers are still pending and only run in block 75.](docs/media/g2-burst.png)](https://mickeyjoes.github.io/pursewarden/#/burst)
+[![Eight concurrent 2 NEAR payment requests against a 5 NEAR budget. The protected vault admits 2 of 8 and stops at C = 5 NEAR = B; our deliberately vulnerable settled-only fixture admits all 8 and delivers 17 NEAR (12 over budget); a generous 100 NEAR control admits all 8. Below, block by block: six BudgetExceeded denials execute in block 74 while the two admitted transfers are still pending and only run in block 75.](docs/media/g2-burst.png)](https://pursewarden.com/#/burst)
 
 <sub>G2 concurrency, replayed from a recorded local-sandbox run: eight 2 NEAR requests at once against a 5 NEAR budget. The protected vault stops at exactly 5 NEAR. A settled-only design (our own teaching fixture) pays out 17.</sub>
 
@@ -12,18 +12,18 @@
 
 | If you have… | Do | See |
 | --- | --- | --- |
-| 30 seconds | Open the [hosted guided tour](https://mickeyjoes.github.io/pursewarden/#/tour/1), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
+| 30 seconds | Open the [guided tour at pursewarden.com](https://pursewarden.com/#/tour/1), or run it locally (step 3 below) | Three steps: **5 vs 17 NEAR** under the same 8-request burst; **6 of 6** denials while transfers were still in flight; the verifier **finding a payment** that a dishonest operator hid |
 | 2 seconds of CPU | `python3 -m unittest discover -s tests/evidence -t .` | `Ran 75 tests … OK`, including replays of the real recorded chain data (sandbox and testnet) |
-| A browser | Open the [vault on testnet.nearblocks.io](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet), or the hosted page's `#/testnet` | The same artifact `c7c77263…` deployed keyless on public testnet: 10 public transactions, 6 vault decisions, all as planned |
+| A browser | Open the [vault on testnet.nearblocks.io](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet), or [pursewarden.com/#/testnet](https://pursewarden.com/#/testnet) and click **Read live from testnet** | The same artifact `c7c77263…` deployed keyless on public testnet: 10 public transactions, 6 vault decisions, all as planned |
 | 5 minutes | `python3 scripts/g2-independent/run_g2.py my-g2` (after `cargo build … --bin g2_actor`; step 6) | A fresh local chain reproduces the concurrency result end to end |
 
 ### Screenshots
 
 | | |
 | --- | --- |
-| [![Overview page: the headline "Your agent can spend. It can't overspend.", a recorded-run card showing a 5 NEAR budget, 3 NEAR charged, 2 payments admitted and 9 rejected probes with SAFETY PASS, and three result tiles: 5 vs 17 NEAR, 6 of 6 denials while transfers were in flight, 1 hidden payment found.](docs/media/overview.png)](https://mickeyjoes.github.io/pursewarden/) | [![G1 verifier page: the runner's presented bundle, with the failed 2 NEAR payment at block 55 struck out and evidence FAIL, beside the reviewer's independent capture, which recovered that transaction from its own chunk scan, with evidence PASS. A note confirms the recovered request: 2 NEAR to missing.test.near, transfer failed with AccountDoesNotExist, principal refunded, 7 receipts.](docs/media/g1-verifier.png)](https://mickeyjoes.github.io/pursewarden/#/verify) |
+| [![Overview page: the headline "Your agent can spend. It can't overspend.", a recorded-run card showing a 5 NEAR budget, 3 NEAR charged, 2 payments admitted and 9 rejected probes with SAFETY PASS, and three result tiles: 5 vs 17 NEAR, 6 of 6 denials while transfers were in flight, 1 hidden payment found.](docs/media/overview.png)](https://pursewarden.com/) | [![G1 verifier page: the runner's presented bundle, with the failed 2 NEAR payment at block 55 struck out and evidence FAIL, beside the reviewer's independent capture, which recovered that transaction from its own chunk scan, with evidence PASS. A note confirms the recovered request: 2 NEAR to missing.test.near, transfer failed with AccountDoesNotExist, principal refunded, 7 receipts.](docs/media/g1-verifier.png)](https://pursewarden.com/#/verify) |
 | **Overview.** The claim, the recorded G1 run and the headline results (local sandbox, replayed). | **G1 verifier.** A dishonest operator's bundle hides a failed payment. The verifier finds it on its own and fails the bundle. |
-| [![Public testnet proof page, labelled TESTNET: contract identity for pw-vault.pursewarden.testnet with code SHA-256 equal to the reviewed artifact, 0 access keys, a policy hash recomputed from raw state, frozen; the immutable mandate (budget 1 NEAR, 0.4 per request, 3 payments, two allowlisted recipients); a ledger of 0.4 delivered, 0.4 failed but charged, 0.2 headroom; and the 10 public transactions with explorer links: two admitted payments (one refunded), then DuplicateRequest, AboveMaxPerRequest, RecipientNotAllowed and BudgetExceeded denials, and a freeze.](docs/media/testnet-proof.png)](https://mickeyjoes.github.io/pursewarden/#/testnet) | **Public testnet proof.** The same artifact on NEAR testnet: 10 public transactions, every decision as planned, inspected from a public node. A narrow smoke test, not a completeness or concurrency result. |
+| [![Public testnet proof page, labelled TESTNET: contract identity for pw-vault.pursewarden.testnet with code SHA-256 equal to the reviewed artifact, 0 access keys, a policy hash recomputed from raw state, frozen; the immutable mandate (budget 1 NEAR, 0.4 per request, 3 payments, two allowlisted recipients); a ledger of 0.4 delivered, 0.4 failed but charged, 0.2 headroom; and the 10 public transactions with explorer links: two admitted payments (one refunded), then DuplicateRequest, AboveMaxPerRequest, RecipientNotAllowed and BudgetExceeded denials, and a freeze.](docs/media/testnet-proof.png)](https://pursewarden.com/#/testnet) | **Public testnet proof.** The same artifact on NEAR testnet: 10 public transactions, every decision as planned, inspected from a public node. A narrow smoke test, not a completeness or concurrency result. |
 
 **Where things ran**
 
@@ -119,7 +119,7 @@ Then open `http://127.0.0.1:4173/#/tour/1` for the three-step guided tour (← �
 - The attack trace: two admissions, then four denials (DuplicateRequest, AboveMaxPerRequest, RecipientNotAllowed, RecordQuotaExhausted), one malformed-input receipt failure, the owner freeze, and four key abuses rejected before reaching the chain.
 - Clicking a row opens its receipt tree.
 
-`#/burst` shows the concurrency comparison block by block. `#/verify` shows the forged bundle next to the independent capture. Every page is labelled **REPLAY · SANDBOX**. Hosting: [`docs/DEPLOY.md`](docs/DEPLOY.md).
+`#/burst` shows the concurrency comparison block by block. `#/verify` shows the forged bundle next to the independent capture. Every page is labelled **REPLAY · SANDBOX**, except `#/testnet`, which is labelled **TESTNET**. The same build is live at [pursewarden.com](https://pursewarden.com/); hosting details are in [`docs/DEPLOY.md`](docs/DEPLOY.md).
 
 `web/public/bundle.json` is regenerated from the committed raw RPC by `python3 scripts/build_web_bundle.py`.
 
@@ -274,7 +274,7 @@ Residual vault funds have **no** withdrawal path by design, so this is a researc
 | `evidence/testnet-smoke/` | **Public testnet**: read-only preflight, and the approved smoke run with raw RPC, inspection and explorer links |
 | `evidence/g1-independent/` | Three G1 evidence runs (A, B, and C after the review fix), the review runs, and retained development attempts |
 | `evidence/g2-independent/` | Two G2 evidence runs and one development attempt |
-| `.github/workflows/` | `ci` (evidence tests, web reproducibility, contract tests, cross-machine WASM rebuild); `pages` (manual Attack Lab deployment) |
+| `.github/workflows/` | `ci` (evidence tests, web reproducibility, contract tests, cross-machine WASM rebuild); `pages` (deploys the Attack Lab to [pursewarden.com](https://pursewarden.com/); manual, or when the workflow file changes) |
 | `evidence/g1/` | Agent A's original Oct 29 runner evidence. Its node history has since been pruned. |
 | `web/` | Attack Lab (Vite, React) |
 | `docs/` | Gate results (`G1_INDEPENDENT_RESULT.md`, `G2_RESULT.md`), `DEPLOY.md`, `TESTNET_SMOKE_PLAN.md`, review handoffs, `SUBMISSION.md`, `RELEASE_CHECKLIST.md` |

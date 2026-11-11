@@ -9,11 +9,24 @@
          cannot set response headers, so the policy is declared here. -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://rpc.testnet.near.org https://test.rpc.fastnear.com; manifest-src 'self'; base-uri 'none'; form-action 'none'" />
     <meta name="referrer" content="no-referrer" />
+    <link rel="canonical" href="https://pursewarden.com/" />
+    <!-- Link previews. og.png is an unedited 1200x630 capture of this site's tour step 1 (served from web/public). -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pursewarden" />
+    <meta property="og:url" content="https://pursewarden.com/" />
     <meta property="og:title" content="Pursewarden: your AI agent can spend, it can't overspend" />
     <meta property="og:description" content="Keyless NEAR vault with a fixed budget, adversarially tested on a local sandbox: 8 concurrent requests vs a 5 NEAR budget, an independent verifier that catches a hidden payment, and a public-testnet smoke test. Experimental, not audited." />
-    <meta name="twitter:card" content="summary" />
-    <title>Pursewarden · Attack Lab</title>
+    <meta property="og:image" content="https://pursewarden.com/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pursewarden guided tour, step 1, labelled REPLAY · SANDBOX: eight concurrent 2 NEAR requests against a 5 NEAR budget. The Pursewarden vault admits 2 of 8 and stops at 5 NEAR; our deliberately broken teaching fixture admits 8 of 8 and delivers 17 NEAR, 12 over budget." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pursewarden: your AI agent can spend, it can't overspend" />
+    <meta name="twitter:description" content="Keyless NEAR vault with a fixed budget: 8 concurrent requests vs 5 NEAR, an independent verifier that catches a hidden payment, and a public-testnet smoke test. Not audited." />
+    <meta name="twitter:image" content="https://pursewarden.com/og.png" />
+    <meta name="twitter:image:alt" content="Pursewarden guided tour, step 1: the vault admits 2 of 8 requests and stops at its 5 NEAR budget; a deliberately broken teaching fixture delivers 17 NEAR." />
+    <title>Pursewarden · fixed-budget NEAR vaults for AI agents</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='6' width='24' height='20' rx='4' fill='none' stroke='%236E9BFF' stroke-width='2.5'/%3E%3Cpath d='M10 14h12M10 19h7' stroke='%234ED8AB' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
   </head>
   <body>

@@ -1,6 +1,6 @@
-# Manual-only deployment of the read-only Attack Lab to GitHub Pages.
-# Nothing runs automatically: an owner triggers it after the repository is public and
-# Settings -> Pages -> Source is set to "GitHub Actions".
+# Deploys the read-only Attack Lab to GitHub Pages (custom domain https://pursewarden.com).
+# Runs on manual dispatch, or on a push to master that changes this file.
+# Settings -> Pages -> Source is "GitHub Actions"; the custom domain lives in that setting.
 name: pages
 on:
   workflow_dispatch:

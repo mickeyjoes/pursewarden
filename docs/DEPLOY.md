@@ -1,4 +1,4 @@
-# Hosting the Attack Lab (GitHub Pages)
+# Hosting the Attack Lab (GitHub Pages, https://pursewarden.com)
 
 The site is a static, read-only build of `web/`. It has no backend, wallet or keys. All recorded data comes from `web/public/bundle.json`, which `scripts/build_web_bundle.py` regenerates by replaying the committed raw RPC captures through the verifier. The `pages` workflow re-checks that before it builds.
 
@@ -10,48 +10,42 @@ Security note: GitHub Pages cannot set response headers. `web/index.html` theref
 - no inline scripts, no forms, no `base` changes;
 - `Referrer-Policy: no-referrer`.
 
-No CSP violations were observed on any route, including the live viewer (headless Chrome, 2026-11-10: 72 route checks at a root and a sub-path, desktop and mobile, dark and light).
+No CSP violations were observed on any route, including the live viewer. Production check of `https://pursewarden.com` (headless Chrome, 2026-11-11): 36 route views (9 routes × desktop and mobile × dark and light), with 0 console errors, 0 CSP violations, 0 failed requests and 0 horizontal overflow. Earlier pre-release check (2026-11-10): 72 route checks at a domain root and a sub-path.
 
-## Option A: default URL (no domain needed)
+## Production: https://pursewarden.com
 
-Requires the repository to be **public**, because Pages on private repositories needs a paid plan.
+Live since 2026-11-11. Configuration as verified on 2026-11-11:
 
-1. GitHub → repository → Settings → Pages → Build and deployment → Source: **GitHub Actions**. Or: `gh api -X POST repos/mickeyjoes/pursewarden/pages -f build_type=workflow`.
-2. Actions → `pages` → **Run workflow** on `master`. Or from a terminal:
+| Item | Value |
+| --- | --- |
+| Pages source | GitHub Actions (`build_type: workflow`), workflow `pages` |
+| Custom domain | `pursewarden.com`, verified on the GitHub account (`protected_domain_state: verified`) |
+| Certificate | Let's Encrypt, `pursewarden.com` and `www.pursewarden.com`, issued by GitHub, valid to 2027-02-09 (GitHub renews it) |
+| HTTPS | Enforced. `http://` returns 301 to `https://pursewarden.com/` |
+| DNS | Apex: four `A` records to GitHub Pages (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`). `www`: `CNAME` to `mickeyjoes.github.io.` Not proxied: responses come straight from GitHub (`server: GitHub.com`). |
+| Redirects | `https://www.pursewarden.com/…` and `http://www…` return 301 to `https://pursewarden.com/…` (path kept). `https://mickeyjoes.github.io/pursewarden/` returns 301 to `https://pursewarden.com/`. |
+| Deployed bytes | Every file served (HTML, JS, CSS, fonts, `bundle.json`) is byte-identical to a local `npm run build` of the deployed commit. |
 
-   ```bash
-   gh workflow run pages -R mickeyjoes/pursewarden --ref master
-   gh run watch -R mickeyjoes/pursewarden "$(gh run list -R mickeyjoes/pursewarden --workflow pages --limit 1 --json databaseId --jq '.[0].databaseId')"
-   ```
+Optional, owner DNS decision: GitHub also publishes IPv6 addresses for the apex (`AAAA` `2606:50c0:8000::153`, `8001::153`, `8002::153`, `8003::153`). None are set now, and IPv4 works for everyone.
 
-3. Open `https://mickeyjoes.github.io/pursewarden/`. Check that the tour loads (`#/tour/1`) with REPLAY · SANDBOX in the provenance bar, and that `#/testnet` shows TESTNET and its "Read live from testnet" button returns matching values.
+With GitHub Actions deployments a `CNAME` file in the artifact is not needed; the repository's Pages setting holds the domain. If the domain is ever removed, the same build works at `https://mickeyjoes.github.io/pursewarden/` without a rebuild (relative asset paths, hash routes).
 
-Keep it online until at least 2026-11-18, ideally 2026-11-25 (hackathon FAQ Q-012).
+### Redeploy
 
-## Option B: custom domain `pursewarden.com` (owner decision)
+The `pages` workflow runs on manual dispatch, and on a push to `master` that changes `.github/workflows/pages.yml`. It refuses to build unless `web/public/bundle.json` regenerates byte-identically from the committed raw RPC.
 
-**Status on 2026-11-10: `pursewarden.com` is not registered.** DNS returns NXDOMAIN and the Verisign RDAP lookup returns 404. The brand is also provisional, because trademark clearance is incomplete. Registering the domain is an owner purchase. Nothing here registers or changes DNS.
+```bash
+gh workflow run pages -R mickeyjoes/pursewarden --ref master
+gh run watch -R mickeyjoes/pursewarden --exit-status "$(gh run list -R mickeyjoes/pursewarden --workflow pages --limit 1 --json databaseId --jq '.[0].databaseId')"
+```
 
-If you register it:
+Then open `https://pursewarden.com/#/tour/1` (provenance bar: REPLAY · SANDBOX) and `https://pursewarden.com/#/testnet` (TESTNET; "Read live from testnet" should report that every enforcement field matches). GitHub Pages caches HTML for up to 10 minutes (`cache-control: max-age=600`).
 
-1. **Verify the domain for your GitHub account first.** Profile Settings → Pages → Add a domain, then publish the TXT record GitHub shows. This prevents someone else's Pages site from claiming it.
-2. DNS at your registrar:
+Keep the site online until at least 2026-11-18, ideally 2026-11-25 (hackathon FAQ Q-012).
 
-   | Type | Host | Value |
-   | --- | --- | --- |
-   | A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
-   | AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
-   | CNAME | `www` | `mickeyjoes.github.io.` |
+### Link previews
 
-3. Set the custom domain on the repository (Settings → Pages → Custom domain), or:
-
-   ```bash
-   gh api -X PUT repos/mickeyjoes/pursewarden/pages -f cname=pursewarden.com
-   ```
-
-   With GitHub Actions deployments a `CNAME` file in the artifact is ignored and not needed. The repository setting is what counts.
-4. After the certificate is issued, tick **Enforce HTTPS**. Then re-run the `pages` workflow and check `https://pursewarden.com/#/tour/1`.
-5. If you use the domain, set `og:url`/`og:image` in `web/index.html` to absolute `https://pursewarden.com/…` URLs. They are omitted now on purpose, because they need a final origin.
+`web/index.html` declares `canonical`, `og:*` and Twitter Card (`summary_large_image`) metadata with absolute `https://pursewarden.com/` URLs. The preview image `web/public/og.png` is deployed at `https://pursewarden.com/og.png`. It is an unedited capture of the production page `#/tour/1`: viewport 1200×630 at 2× in dark mode, downscaled to 1200×630 with Lanczos, saved as a 256-colour PNG with no metadata. Its provenance bar (REPLAY · SANDBOX) stays visible. Re-capture it only if that page changes. Social networks cache previews per URL, so after a change post a URL they have not seen yet, or use the network's own refresh tool.
 
 ## Local preview (identical artifact)
 

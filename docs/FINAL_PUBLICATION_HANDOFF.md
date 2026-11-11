@@ -1,86 +1,49 @@
 # Final publication handoff
 
-**Verdict: READY for publication.** The repository is still **PRIVATE**. GitHub Pages is not enabled. Nothing has been published, posted or submitted.
+**Status (2026-11-11): PUBLIC and LIVE.** The repository is public at **https://github.com/mickeyjoes/pursewarden**. The Attack Lab is live at **https://pursewarden.com**. Nothing has been posted on X or submitted, and the `hackathon-submission` tag does not exist yet.
 
-## Repository
-
-| | |
-| --- | --- |
-| URL | **https://github.com/mickeyjoes/pursewarden** (renamed from `mickeyjoes/near-agent-vault-lab` on 2026-11-10, while private) |
-| Old URL | Redirects. Verified for git (`git ls-remote` on the old URL returns the identical 10 refs), the repo API, a CI run URL and file contents. |
-| History | Preserved. The 10 refs (8 branches, 2 tags) were identical before and after the rename. No rewrite or force-push. |
-| `master` | `release/testnet-proof` fast-forwarded to this commit; the final SHA is in the owner report |
-| Local | `origin` = `https://github.com/mickeyjoes/pursewarden.git`, shared by all worktrees. All worktrees are clean. Local directory names are unchanged. |
-
-**Deliberately unchanged** (renaming them would alter the protected artifact or recorded evidence):
-- the WASM's embedded NEP-330 source link `https://github.com/mickeyjoes/near-agent-vault-lab` (redirects);
-- the policy and request domain separators `near-agent-vault-lab/{mandate,request}/v1\0`;
-- the event standard `near-agent-vault-lab`;
-- the local tools path `~/.local/share/near-agent-vault-lab`;
-- every file under `evidence/` and `reports/`;
-- the legacy `license = "UNLICENSED"` fields in the frozen contract and fixture manifests (explained in the README License section).
-
-## Verification (this release)
+## Production website (verified 2026-11-11)
 
 | Check | Result |
 | --- | --- |
-| GitHub CI, `3501c71` (run 42909497375, first run under the new name) | All 3 jobs success: evidence regressions, web bundle reproducibility and build, contract tests plus **cross-machine WASM rebuild = `c7c77263…`** |
-| Earlier CI | `a87eee2`: runs 42894171563 and 42898838670, green |
-| Evidence tests | 75 OK, including 5 public-testnet replay regressions |
-| Web bundle | Byte-identical rebuild from committed raw RPC |
-| UI | 72 route checks (domain root and `/pursewarden/` sub-path × desktop and mobile × dark and light): 0 horizontal overflow, 0 console errors, 0 CSP violations. Live testnet viewer: every enforcement field matches the recorded inspection. Tour keyboard navigation OK. |
-| Links | 65 repo-relative links and paths resolve; 14 nearblocks links resolve via the explorer API |
-| Secrets and privacy | Full history on all refs (926 blobs): 0 matches against 286 real secrets from local key files, and 0 credential patterns. Screenshots carry no metadata. The commit email and historical home paths in early evidence are known and accepted by the owner. |
-| Artifact | `c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768` (unchanged) |
+| Routes | Overview, 3-step tour, Attack Lab, Burst (G2), Verifier, Testnet, Reproduce: 9 routes × desktop (1280×900) and mobile (390×844) × dark and light = **36 route views**. 0 console errors or warnings, 0 CSP violations, 0 failed requests or HTTP errors, 0 horizontal overflow, 0 images without alt text. |
+| Navigation and keyboard | The first Tab reaches "Skip to content", and every focusable element shows a visible focus ring. Enter on a nav link navigates. The tour responds to → → ← Esc (`/tour/2`, `/tour/3`, `/tour/2`, `/`). The theme toggle switches and persists across a reload. |
+| Provenance labels | `#/testnet` shows REPLAY · TESTNET and never SANDBOX. The tour and `#/burst` show SANDBOX. |
+| Live testnet viewer | "Read live from testnet" through the production CSP: code SHA-256, 0 access keys, policy hash, C = 0.80, headroom 0.20, 2 admitted, sequence 9 and frozen all equal the recorded inspection. It queried `rpc.testnet.near.org` only. |
+| HTTPS | Let's Encrypt certificate for `pursewarden.com` and `www.pursewarden.com`, valid to 2027-02-09. HTTPS enforced; `http://` returns 301 to `https://`. |
+| `www` | `https://www.pursewarden.com/…` and `http://www…` return 301 to `https://pursewarden.com/…`, path kept. |
+| Old URL | `https://mickeyjoes.github.io/pursewarden/` returns 301 to `https://pursewarden.com/`. |
+| DNS | Apex: four GitHub Pages `A` records; `www`: `CNAME` to `mickeyjoes.github.io.`. Served directly by GitHub. IPv6 `AAAA` records are optional and not set. |
+| Assets | All 15 deployed files (HTML, JS, CSS, 11 fonts, `bundle.json`) are byte-identical to a local build of `ae69b91`, with correct content types. |
+| Outbound links | All 12 GitHub links on the site return 200 now that the repository is public. The four testnet accounts exist on chain, and the live viewer confirms the vault's code matches the artifact. A nearblocks API lookup of the freeze transaction returns 200; all 14 explorer links were checked on 2026-11-10. |
 
-## Screenshots (`docs/media/`, real captures of the built site, 1440 px, 256-colour PNG)
+## Changes in this round
 
-| File | Shows | Size |
-| --- | --- | --- |
-| `g2-burst.png` | **README hero.** G2: 2 of 8 admitted vs 17 NEAR delivered by the settled-only fixture; block-by-block witness | 77 KB |
-| `overview.png` | Landing hero, recorded-run card, headline results | 63 KB |
-| `g1-verifier.png` | Forged bundle (payment hidden, evidence FAIL) vs the verifier's own capture (recovered, PASS) | 63 KB |
-| `testnet-proof.png` | TESTNET identity, mandate, ledger, 10 public transactions | 122 KB |
+- **Domain first.** The README, `docs/SUBMISSION.md`, `docs/DEPLOY.md` and `docs/RELEASE_CHECKLIST.md` now point at https://pursewarden.com. Source links still point at https://github.com/mickeyjoes/pursewarden. The stale "domain not registered" and "Pages not enabled" text is gone. `docs/DEPLOY.md` now records the verified production configuration.
+- **Link previews.** `web/index.html` has `canonical`, `og:url`, `og:site_name`, `og:image` (with type, size and alt) and Twitter `summary_large_image` metadata, all with absolute `https://pursewarden.com/` URLs. The `<title>` before hydration is now descriptive.
+- **Preview image** `web/public/og.png` (1200×630, 67 KB, 256-colour PNG, no metadata). It is an unedited capture of the production tour step 1: 5 NEAR vs 17 NEAR, with the REPLAY · SANDBOX label visible. It deploys at `https://pursewarden.com/og.png`.
+- **Video plan.** `docs/SUBMISSION.md` §4 has a 2:00 shot list on the live site covering all six required beats, with capture settings, exact narration, burned-in captions, a title and a description. The X drafts in §5 come as a 278-character version plus a reply, and a long version.
+- **Workflow comment.** The `pages` workflow header now describes its triggers accurately: manual dispatch, or a push to `master` that changes the workflow file.
 
-## README changes
+## Unchanged on purpose
 
-- A quick-link bar under the title: live demo, 3-step guided tour, testnet contract on nearblocks, and "Reproduce it yourself".
-- The G2 screenshot as the hero, with full alt text and a caption.
-- A screenshots gallery (Overview, G1 Verifier, Public Testnet Proof).
-- All GitHub and Pages URLs now use `mickeyjoes/pursewarden`.
-- The License section lists third-party licenses and explains the legacy manifest fields.
-- The `reports/` row notes that the reports' old URLs redirect.
-- Also fixed: the landing-page qualifier rendered its "public testnet" link as a separate column.
+- The contract, the protected artifact `c7c772635acea0938bd88450d02bcdb9215d9aa65fc407b4070459cd225dd768` and its embedded NEP-330 link (`…/near-agent-vault-lab`, which redirects).
+- The domain separators `near-agent-vault-lab/{mandate,request}/v1\0` and the event standard.
+- All G1, G2 and testnet evidence under `evidence/`, the review reports under `reports/`, and the deployed testnet accounts.
+- The legacy `license = "UNLICENSED"` fields in the frozen contract and fixture manifests (explained in the README License section).
 
-`docs/SUBMISSION.md` has:
-- a refreshed owner checklist;
-- a production-ready **2:00 storyboard** (G2 concurrency → G1 hidden-payment recovery → public testnet, with captions, voice-over and a do-not-say list);
-- the real repository URL in the X draft;
-- an idea text of 1,662 characters.
+## Repository rename (2026-11-10, recorded)
 
-Payload placeholders (name, email, team size, mainnet payout account, demo post URL, request ID) are deliberately left for the owner.
+Renamed `mickeyjoes/near-agent-vault-lab` → `mickeyjoes/pursewarden` while private. The 10 refs (8 branches, 2 tags) were identical before and after the rename, and old git, API, CI-run and file URLs redirect. The CI cross-machine rebuild under the new name still produced `c7c77263…`.
 
-## Recommended demo URL
+## Owner steps remaining (each needs your go-ahead)
 
-**https://mickeyjoes.github.io/pursewarden/#/tour/1** (the guided tour). The testnet page is `#/testnet`. It goes live only after Pages is enabled and the `pages` workflow runs; until then the README's demo links return 404.
+1. Record the 2-minute video on https://pursewarden.com (`docs/SUBMISSION.md` §4).
+2. Post it on X (`docs/SUBMISSION.md` §5). The post URL becomes `demoUrl`.
+3. Tag the final commit: `git tag -a hackathon-submission -m "NEAR HACKATHON 2026 submission" master && git push origin hackathon-submission`.
+4. Submit once before **2026-11-14 23:59 UTC** (`docs/SUBMISSION.md` §6), with your own details and a **mainnet** payout account.
+5. Keep the site up until at least 2026-11-18, ideally 2026-11-25.
 
-## Next owner steps (each needs your explicit go-ahead)
-
-Do steps 1–3 in one sitting, so the README's demo links work as soon as the repository is public.
-
-```bash
-# 1. Publish the repository (all branches and tags become public)
-gh repo edit mickeyjoes/pursewarden --visibility public --accept-visibility-change-consequences
-# 2. Enable Pages with GitHub Actions as the source (or Settings → Pages → Source: GitHub Actions)
-gh api -X POST repos/mickeyjoes/pursewarden/pages -f build_type=workflow
-# 3. Deploy (manual workflow) and watch it
-gh workflow run pages -R mickeyjoes/pursewarden --ref master
-gh run watch "$(gh run list -R mickeyjoes/pursewarden --workflow pages --limit 1 --json databaseId -q '.[0].databaseId')" -R mickeyjoes/pursewarden --exit-status
-#    then open https://mickeyjoes.github.io/pursewarden/#/tour/1 and #/testnet
-```
-
-4. Record the 2:00 video (`docs/SUBMISSION.md` §4). Post on X with @NEARProtocol and #NEARHackathon (§5).
-5. Tag the final commit: `git tag -a hackathon-submission -m "NEAR HACKATHON 2026 submission" master && git push origin hackathon-submission`.
-6. Submit once before **2026-11-14 23:59 UTC** (§6) with your own details and a **mainnet** payout account.
-
-No DNS change is needed. `pursewarden.com` is unregistered; see `docs/DEPLOY.md` §B if you buy it.
+Optional:
+- Upload `web/public/og.png` as the repository's social preview (Settings → General → Social preview), so that shared GitHub links show the same image. GitHub has no API for this.
+- Add the IPv6 `AAAA` records listed in `docs/DEPLOY.md`.

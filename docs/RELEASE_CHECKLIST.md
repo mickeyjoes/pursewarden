@@ -18,13 +18,15 @@ Items marked ✅ are done and verified. Items marked ☐ are owner actions that 
 
 ## Publication (owner)
 
-1. ☐ **Make the repository public:** `gh repo edit mickeyjoes/pursewarden --visibility public --accept-visibility-change-consequences`.
-2. ☐ **Enable Pages:** Settings → Pages → Source: GitHub Actions (or `gh api -X POST repos/mickeyjoes/pursewarden/pages -f build_type=workflow`). Then `gh workflow run pages -R mickeyjoes/pursewarden --ref master` and check `https://mickeyjoes.github.io/pursewarden/#/tour/1`. The custom domain `pursewarden.com` is not registered; see `docs/DEPLOY.md` §B if you buy it.
-3. ✅ **Testnet smoke**: done with owner approval (see Engineering).
-4. ☐ **Record the 2-minute video** (`docs/SUBMISSION.md` §4) from the hosted site or a local preview.
-5. ☐ **Post on X** with the video. It must say "built at NEAR HACKATHON" and tag @NEARProtocol and #NEARHackathon (`docs/SUBMISSION.md` §5).
-6. ☐ **Tag the final commit:** `git tag -a hackathon-submission -m "NEAR HACKATHON 2026 submission" master && git push origin hackathon-submission`.
-7. ☐ **Submit once** (`docs/SUBMISSION.md` §6) with your name, email, team size and **mainnet** payout account, after reading the consent notice.
+1. ✅ **Repository public** (owner, 2026-11-11): `https://github.com/mickeyjoes/pursewarden`.
+2. ✅ **Hosted demo live at https://pursewarden.com** (owner, 2026-11-11): Pages via GitHub Actions, custom domain verified, HTTPS enforced. `www`, `http://` and the old `mickeyjoes.github.io/pursewarden/` URL redirect to it.
+3. ✅ **Post-launch production check** (2026-11-11): 36 route views (desktop and mobile × dark and light), with 0 console errors, 0 CSP violations, 0 failed requests and 0 overflow. Keyboard navigation works, the theme toggle persists, and the live testnet viewer matches the recorded inspection. Every deployed file is byte-identical to a local build. Link-preview metadata and `og.png` were added; see `docs/DEPLOY.md`.
+4. ✅ **Testnet smoke**: done with owner approval (see Engineering).
+5. ☐ **Record the 2-minute video** on the live site (`docs/SUBMISSION.md` §4).
+6. ☐ **Post on X** with the video. It must say "built at NEAR HACKATHON" and tag @NEARProtocol and #NEARHackathon (`docs/SUBMISSION.md` §5).
+7. ☐ **Tag the final commit:** `git tag -a hackathon-submission -m "NEAR HACKATHON 2026 submission" master && git push origin hackathon-submission`.
+8. ☐ **Submit once** (`docs/SUBMISSION.md` §6) with your name, email, team size and **mainnet** payout account, after reading the consent notice.
+9. ☐ Keep `pursewarden.com` up until at least 2026-11-18, ideally 2026-11-25, and keep the repository public through judging.
 
 ## Do not
 
