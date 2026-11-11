@@ -1,0 +1,27 @@
+[package]
+name = "pw-llm-gateway"
+description = "Pursewarden LLM-agent demo: keyless-to-the-model payment gateway for a local NEAR sandbox."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+publish = false
+license = "MIT"
+
+# Stand-alone workspace with its own lockfile, so the reviewed root workspace (contract and
+# harness) and its Cargo.lock stay untouched. The harness crate is reused read-only by path.
+[workspace]
+
+[[bin]]
+name = "pw_llm_gateway"
+path = "src/main.rs"
+
+[dependencies]
+g1-sandbox-tests = { path = "../../../tests/sandbox" }
+near-primitives = "=0.37.4"
+near-crypto = "=0.37.4"
+anyhow = "1"
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "net", "io-util"] }
+
+[dev-dependencies]
+base64 = "0.22"
