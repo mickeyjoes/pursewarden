@@ -11,7 +11,7 @@ Items marked ✅ are done and verified. Items marked ☐ are owner actions that 
   - **PW-01.** The testnet inspector did not check the creation batch. Fixed for that attack.
   - **PW-01b.** A same-name re-creation variant was confirmed by the delta review. It is disclosed, not fixed.
   - **PW-02 to PW-09.** Addressed. See `docs/FINAL_AUDIT_RESPONSE.md`.
-  - **Release candidate.** Integrated with the real-LLM demo (`demo/llm-agent/`, optional appendix) on local branch `release/final-rc`.
+  - **Release candidate.** Integrated with the real-LLM demo (`demo/llm-agent/`, optional appendix) on branch `release/final-rc2` (demo transcripts redacted of account identifiers).
   - **To publish.** Push it, wait for green CI, then fast-forward `master`. That push redeploys Pages; then confirm that the live `bundle.json` and JS hashes equal a clean build.
 - ✅ Testnet smoke plan rehearsed on a local protocol-88 sandbox (testnet's nearcore): PASS.
 - ✅ **Public testnet smoke executed with owner approval: PASS** (`tn-20261110T195542Z`, `pw-vault.pursewarden.testnet`). Explorer links are in the README. Owner spend 3.2925 testnet NEAR (cap 3.5).

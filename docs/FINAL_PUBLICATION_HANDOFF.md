@@ -39,10 +39,10 @@ Renamed `mickeyjoes/near-agent-vault-lab` → `mickeyjoes/pursewarden` while pri
 ## Owner steps remaining (each needs your go-ahead)
 
 0. Publish the release candidate.
-   - **What it is.** Local branch `release/final-rc` merges, without rewriting them:
+   - **What it is.** Local branch `release/final-rc2` merges:
      - `fix/final-audit-findings` (`9f894db`);
      - the PW-01b disclosure;
-     - `demo/llm-agent` (`f54a227`, `d9c9f94`).
+     - `demo/llm-agent`: Agent B's `f54a227`, plus `5f481be`. `5f481be` is Agent B's `d9c9f94` with the transcripts' account identifiers redacted before publication (`demo/llm-agent/evidence/llm-20261111T043717Z/REDACTION.md`).
    - **Steps.**
      1. Push the branch.
      2. Wait for green CI.
