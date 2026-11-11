@@ -57,6 +57,7 @@ def main():
     g1.ACTOR = G2_ACTOR  # the sandbox binds this binary at /runner-bin/g1_actor
     t0 = time.time()
     base = g1.TOOLS / "g2-independent" / a.run_id
+    g1.require_short_socket_path(base)
     rev, runner = base / "reviewer", base / "runner"
     node_home = rev / "node"
     pub = REPO / "evidence" / "g2-independent" / a.run_id

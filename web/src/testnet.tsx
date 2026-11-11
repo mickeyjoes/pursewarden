@@ -3,8 +3,11 @@ import { AlertTriangle, ArrowRight, Check, ExternalLink, Globe, History, Refresh
 import { b58ToHex, near, nsToUtc, REASON_TEXT, REPO_URL, short, type Bundle, type TestnetRun, type TestnetStep } from "./data";
 
 const blob = (p: string) => `${REPO_URL}/blob/master/${p}`;
-/** Public testnet RPC endpoints, also allowed by the page's Content-Security-Policy (connect-src). */
-const RPCS = ["https://rpc.testnet.near.org", "https://test.rpc.fastnear.com"];
+/** Public testnet RPC endpoints, also allowed by the page's Content-Security-Policy (connect-src). The faster one is
+ *  asked first. Both are run by the same operator (rpc.testnet.near.org is a CNAME to FastNear), so the second is a
+ *  fallback for availability, not a second opinion. */
+const RPCS = ["https://test.rpc.fastnear.com", "https://rpc.testnet.near.org"];
+const PER_ENDPOINT_MS = 10000;
 const N = (y: string) => `${near(y)} NEAR`;
 /** Rounded display for amounts no check depends on (spend and gas). */
 const approx = (y: string, d = 4) => (Number(BigInt(y) / 10n ** 16n) / 1e8).toFixed(d);
@@ -35,17 +38,86 @@ function Observed({ s }: { s: TestnetStep }) {
     </span></span>;
 }
 
-interface Live { endpoint: string; skipped: string[]; height: number; hash: string; at: string; code_sha256: string; amount: string; keys: number;
-  m: { charged: string; headroom: string; accepted_count: number; frozen: boolean; expired: boolean; policy_hash: string; seq: string } }
+interface Mandate { charged: string; headroom: string; accepted_count: number; frozen: boolean; expired: boolean; policy_hash: string;
+  seq: string; budget: string; max_per_request: string; max_accepted_requests: number; allowed_recipients: string[]; expires_at_ns: string;
+  owner: string; agent: string; vault: string; chain_id: string }
+interface Live { endpoint: string; skipped: string[]; height: number; hash: string; at: string; amount: string; keys: number;
+  /** "browser": SHA-256 of the code bytes the node returned, computed here. "node": the node's own code_hash. */
+  code_sha256: string; code_source: "browser" | "node"; m: Mandate }
 
-async function rpc(url: string, method: string, params: unknown, signal: AbortSignal) {
+/** Anything the node returns is checked before it is shown; a malformed answer becomes an error message, never a blank page. */
+function need(ok: unknown, what: string): asserts ok {
+  if (!ok) throw new Error(`unexpected answer from the node: ${what}`);
+}
+const isDec = (x: unknown): x is string => typeof x === "string" && /^(0|[1-9][0-9]{0,38})$/.test(x);
+const isB58 = (x: unknown): x is string => typeof x === "string" && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(x);
+const isAcct = (x: unknown): x is string => typeof x === "string" && x.length >= 2 && x.length <= 64;
+const obj = (x: unknown): Record<string, unknown> => { need(x !== null && typeof x === "object" && !Array.isArray(x), "not an object"); return x as Record<string, unknown>; };
+
+async function rpc(url: string, method: string, params: unknown, signal: AbortSignal): Promise<Record<string, unknown>> {
   const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, signal, credentials: "omit",
     referrerPolicy: "no-referrer", body: JSON.stringify({ jsonrpc: "2.0", id: "pursewarden", method, params }) });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  const j = await r.json();
-  if (j.error) throw new Error(j.error.cause?.name ?? j.error.name ?? "RPC error");
-  if (j.result?.error) throw new Error(String(j.result.error));
-  return j.result;
+  let j: Record<string, unknown>;
+  try { j = obj(await r.json()); } catch { throw new Error(`unexpected answer from the node: ${method} is not JSON`); }
+  if (j.error) {
+    const e = j.error as { cause?: { name?: unknown }; name?: unknown };
+    throw new Error(String(e?.cause?.name ?? e?.name ?? "RPC error").slice(0, 80));
+  }
+  const res = obj(j.result);
+  if (res.error) throw new Error(String(res.error).slice(0, 120));
+  return res;
+}
+
+function parseMandate(call: Record<string, unknown>): Mandate {
+  const bytes = call.result;
+  need(Array.isArray(bytes) && bytes.length < 65536 && bytes.every((b) => Number.isInteger(b) && b >= 0 && b < 256), "get_mandate bytes");
+  let m: Record<string, unknown>;
+  try { m = obj(JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(new Uint8Array(bytes as number[])))); }
+  catch { throw new Error("unexpected answer from the node: get_mandate is not JSON"); }
+  for (const k of ["charged", "headroom", "budget", "max_per_request", "seq", "expires_at_ns"]) need(isDec(m[k]), `get_mandate.${k}`);
+  for (const k of ["owner", "agent", "vault"]) need(isAcct(m[k]), `get_mandate.${k}`);
+  need(isB58(m.policy_hash), "get_mandate.policy_hash");
+  need(typeof m.chain_id === "string" && m.chain_id.length <= 64, "get_mandate.chain_id");
+  need(Number.isSafeInteger(m.accepted_count) && Number.isSafeInteger(m.max_accepted_requests), "get_mandate counts");
+  need(typeof m.frozen === "boolean" && typeof m.expired === "boolean", "get_mandate flags");
+  need(Array.isArray(m.allowed_recipients) && m.allowed_recipients.length <= 64 && m.allowed_recipients.every(isAcct), "get_mandate.allowed_recipients");
+  return m as unknown as Mandate;
+}
+
+const toHex = (buf: ArrayBuffer) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+
+async function readOnce(url: string, t: TestnetRun, signal: AbortSignal): Promise<Omit<Live, "skipped">> {
+  const b = await rpc(url, "block", { finality: "final" }, signal);
+  const header = obj(b.header);
+  need(isB58(header.hash) && Number.isSafeInteger(header.height), "block header");
+  const hash = header.hash as string;
+  // Every read is pinned to the same final block, and each answer must say so.
+  const at = { block_id: hash };
+  const v = t.accounts.vault;
+  const subtle = globalThis.crypto?.subtle;
+  const [acc, keys, call, code] = await Promise.all([
+    rpc(url, "query", { request_type: "view_account", account_id: v, ...at }, signal),
+    rpc(url, "query", { request_type: "view_access_key_list", account_id: v, ...at }, signal),
+    rpc(url, "query", { request_type: "call_function", account_id: v, method_name: "get_mandate", args_base64: "e30=", ...at }, signal),
+    subtle ? rpc(url, "query", { request_type: "view_code", account_id: v, ...at }, signal) : Promise.resolve(null)]);
+  for (const [name, r] of [["view_account", acc], ["view_access_key_list", keys], ["get_mandate", call], ["view_code", code]] as const)
+    if (r) need(r.block_hash === hash, `${name} answered for a different block`);
+  need(isB58(acc.code_hash) && isDec(acc.amount), "view_account");
+  need(Array.isArray(keys.keys), "view_access_key_list");
+  const m = parseMandate(call);
+  let code_sha256 = b58ToHex(acc.code_hash as string);
+  let code_source: Live["code_source"] = "node";
+  if (subtle && code) {
+    need(typeof code.code_base64 === "string" && code.code_base64.length < 8_000_000, "view_code");
+    let bytes: Uint8Array;
+    try { bytes = Uint8Array.from(atob(code.code_base64 as string), (c) => c.charCodeAt(0)); }
+    catch { throw new Error("unexpected answer from the node: view_code is not base64"); }
+    code_sha256 = toHex(await subtle.digest("SHA-256", bytes));
+    code_source = "browser";
+  }
+  return { endpoint: url, height: header.height as number, hash, at: new Date().toISOString().slice(11, 19) + " UTC",
+    code_sha256, code_source, amount: acc.amount as string, keys: (keys.keys as unknown[]).length, m };
 }
 
 async function readLive(t: TestnetRun): Promise<Live> {
@@ -53,23 +125,11 @@ async function readLive(t: TestnetRun): Promise<Live> {
   const skipped: string[] = [];
   for (const url of RPCS) {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 15000);
+    const timer = setTimeout(() => ctrl.abort(), PER_ENDPOINT_MS);
     try {
-      const b = await rpc(url, "block", { finality: "final" }, ctrl.signal);
-      const at = { block_id: b.header.hash as string };
-      const v = t.accounts.vault;
-      // All three reads are pinned to the same final block.
-      const [acc, keys, call] = await Promise.all([
-        rpc(url, "query", { request_type: "view_account", account_id: v, ...at }, ctrl.signal),
-        rpc(url, "query", { request_type: "view_access_key_list", account_id: v, ...at }, ctrl.signal),
-        rpc(url, "query", { request_type: "call_function", account_id: v, method_name: "get_mandate", args_base64: "e30=", ...at }, ctrl.signal)]);
-      const m = JSON.parse(new TextDecoder().decode(new Uint8Array(call.result)));
-      return { endpoint: url, skipped, height: b.header.height, hash: b.header.hash, at: new Date().toISOString().slice(11, 19) + " UTC",
-        code_sha256: b58ToHex(acc.code_hash), amount: acc.amount, keys: keys.keys.length,
-        m: { charged: m.charged, headroom: m.headroom, accepted_count: m.accepted_count, frozen: m.frozen, expired: m.expired,
-          policy_hash: m.policy_hash, seq: m.seq } };
+      return { ...(await readOnce(url, t, ctrl.signal)), skipped };
     } catch (e) {
-      last = e;
+      last = ctrl.signal.aborted ? new Error(`no answer within ${PER_ENDPOINT_MS / 1000} s`) : e;
       skipped.push(url.replace("https://", ""));
     } finally {
       clearTimeout(timer);
@@ -77,6 +137,8 @@ async function readLive(t: TestnetRun): Promise<Live> {
   }
   throw last instanceof Error ? last : new Error("unreachable");
 }
+
+const sameList = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
 
 function LiveViewer({ t }: { t: TestnetRun }) {
   const [live, setLive] = useState<Live | null>(null);
@@ -86,10 +148,19 @@ function LiveViewer({ t }: { t: TestnetRun }) {
     setBusy(true); setErr(null);
     readLive(t).then((l) => setLive(l), (e) => setErr(e instanceof Error ? e.message : String(e))).finally(() => setBusy(false));
   };
+  const terms: [string, boolean][] = live ? [
+    ["B", live.m.budget === t.policy.budget], ["M", live.m.max_per_request === t.policy.max_per_request],
+    ["K", live.m.max_accepted_requests === t.policy.max_accepted_requests],
+    ["allowlist", sameList(live.m.allowed_recipients, t.policy.recipients)], ["expiry", live.m.expires_at_ns === t.policy.expires_at_ns],
+    ["owner", live.m.owner === t.accounts.owner], ["agent", live.m.agent === t.accounts.agent], ["vault", live.m.vault === t.accounts.vault],
+    ["chain", live.m.chain_id === t.node.chain_id]] : [];
+  const termsOk = terms.filter(([, ok]) => ok).length;
   const rows: [string, string, string, boolean | null][] = live ? [
-    ["Code SHA-256", short(live.code_sha256, 8), short(t.artifact_sha256, 8), live.code_sha256 === t.artifact_sha256],
+    [live.code_source === "browser" ? "Code SHA-256 (hashed in your browser)" : "Code hash (as reported by the node)",
+      short(live.code_sha256, 8), short(t.artifact_sha256, 8), live.code_sha256 === t.artifact_sha256],
     ["Vault access keys", String(live.keys), String(t.cut.vault_keys), live.keys === t.cut.vault_keys],
     ["Policy hash", short(live.m.policy_hash, 8), short(t.policy.policy_hash, 8), live.m.policy_hash === t.policy.policy_hash],
+    ["Mandate terms", `${termsOk} of ${terms.length} equal`, terms.map(([k]) => k).join(", "), termsOk === terms.length],
     ["Charged C", N(live.m.charged), N(t.ledger.C), live.m.charged === t.ledger.C],
     ["Headroom B − C", N(live.m.headroom), N(t.ledger.headroom), live.m.headroom === t.ledger.headroom],
     ["Admitted payments", String(live.m.accepted_count), String(t.cut.accepted_count), live.m.accepted_count === t.cut.accepted_count],
@@ -109,8 +180,8 @@ function LiveViewer({ t }: { t: TestnetRun }) {
         </button>
       </div>
       <p id="live-note" className="muted" style={{ fontSize: 13.5, marginTop: 0 }}>
-        Your browser asks a public testnet RPC node for the vault's current state and compares it with the recorded inspection.
-        Read-only: no wallet, no signing, nothing sent from this page except these queries.
+        Your browser asks a public testnet RPC node for the vault's current state, hashes the deployed code itself, and compares
+        the answers with the recorded inspection. Read-only: no wallet, no signing, nothing sent from this page except these queries.
       </p>
       {err && <div className="callout bad" style={{ marginTop: 8 }}><AlertTriangle aria-hidden /><div>
         Could not read public testnet ({err}). The recorded evidence on this page does not depend on this check.</div></div>}
@@ -124,10 +195,17 @@ function LiveViewer({ t }: { t: TestnetRun }) {
                   : <span className="bad-mark"><X aria-hidden /> differs</span>}</td></tr>))}</tbody>
           </table></div>
           <p className="subtle" style={{ fontSize: 12.5, marginTop: 10 }}>
-            {same ? "Every enforcement field matches the recorded inspection." : "Some fields differ from the recorded inspection."}{" "}
-            Read at {live.at} from <code>{live.endpoint.replace("https://", "")}</code>
-            {live.skipped.length > 0 && <> (after <code>{live.skipped.join(", ")}</code> did not answer in time)</>}, final block <code>{short(live.hash, 6)}</code>.
-            The vault is frozen and keyless, so nothing should change; the expiry only marks the mandate as expired.
+            {same ? `All ${rows.filter((r) => r[3] !== null).length} compared fields match the recorded inspection` : "Some fields differ from the recorded inspection"},
+            as reported by <code>{live.endpoint.replace("https://", "")}</code>
+            {live.skipped.length > 0 && <> (after <code>{live.skipped.join(", ")}</code> did not answer)</>} for final block <code>{short(live.hash, 6)}</code>, read at {live.at}.
+          </p>
+          <p className="subtle" style={{ fontSize: 12.5, marginTop: 6 }}>
+            {live.code_source === "browser" ? "The code hash is computed here from the bytes the node returned; every other value is the node's answer. "
+              : "Your browser cannot hash here, so the code hash is the node's own report. "}
+            Both endpoints this page uses are run by the same operator, so a fallback is not a second opinion. Zero keys now does not prove
+            the vault was always keyless; that rests on its creation transaction above, which the inspector checks is exactly the approved
+            four actions. Frozen and keyless, the charge, records and mandate can no longer change; the agent's keys can still send
+            requests, which are denied and only advance the audit sequence. The expiry only marks the mandate as expired.
           </p>
         </>
       )}
@@ -160,7 +238,7 @@ export function Testnet({ bundle }: { bundle: Bundle }) {
         <div className="callout warn" style={{ marginTop: 20 }}>
           <AlertTriangle aria-hidden />
           <div><strong>What this does and doesn't show.</strong> It shows that artifact <code>c7c77263…</code> deploys keyless on public testnet
-            and enforces its mandate in these {t.steps.length} transactions. It is <strong>not</strong> an independent completeness proof: the
+            (its creation transaction is exactly the four approved actions) and enforces its mandate in these {t.steps.length} transactions. It is <strong>not</strong> an independent completeness proof: the
             transaction list comes from our runner, and a public node gives no reviewer-owned frontier. It is <strong>not</strong> a concurrency or
             adversarial-runner test either; those are the local sandbox results (<a href="#/burst">G2</a>, <a href="#/verify">G1</a>).
             Not mainnet. Not audited.</div>
@@ -175,7 +253,12 @@ export function Testnet({ bundle }: { bundle: Bundle }) {
               <dt>Vault</dt><dd><a href={acct(t.accounts.vault)} target="_blank" rel="noreferrer noopener"><code>{t.accounts.vault}</code> <ExternalLink size={12} aria-hidden /></a></dd>
               <dt>Code SHA-256</dt><dd><code title={t.cut.code_sha256}>{short(t.cut.code_sha256, 10)}</code>{" "}
                 {t.cut.code_sha256 === t.artifact_sha256 && <span className="ok-mark"><Check aria-hidden /> = reviewed artifact</span>}</dd>
-              <dt>Access keys</dt><dd><strong>{t.cut.vault_keys}</strong> <span className="subtle">(keyless from creation)</span></dd>
+              <dt>Access keys</dt><dd><strong>{t.cut.vault_keys}</strong> <span className="subtle">at the inspected block</span></dd>
+              {t.construction && <><dt>Created by</dt><dd><a href={ex(t.construction.tx_hash)} target="_blank" rel="noreferrer noopener"
+                aria-label="Open the vault's creation transaction in the testnet explorer"><code>{short(t.construction.tx_hash, 5)}</code> <ExternalLink size={12} aria-hidden /></a>{" "}
+                <span className="ok-mark"><Check aria-hidden /> exactly {t.construction.actions.join(", ").replace("FunctionCall", "new")}; nothing else scheduled</span>
+                <span className="subtle" style={{ display: "block", fontSize: 12.5 }}>Zero keys at one block is not enough on its own: an extra action in
+                  the creation batch could leave a delayed key. The inspector checks this transaction.</span></dd></>}
               <dt>Policy hash</dt><dd><code title={t.policy.policy_hash}>{short(t.policy.policy_hash, 10)}</code>{" "}
                 <span className="ok-mark"><Check aria-hidden /> recomputed from raw state</span></dd>
               <dt>Status</dt><dd>{t.cut.frozen ? "Frozen by the owner" : "Active"}</dd>

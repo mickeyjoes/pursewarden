@@ -5,8 +5,9 @@ Items marked ✅ are done and verified. Items marked ☐ are owner actions that 
 ## Engineering
 
 - ✅ CI green on every pushed release commit, including the **cross-machine WASM rebuild = `c7c77263…`**: `d2dc2d2`, `7b69c0a`, `a87eee2` (runs 42894171563 and 42898838670). The current commit's run is in the handoff.
-- ✅ 75 evidence tests pass locally (including 5 replays of the public-testnet inspection). 12 contract tests pass. The web bundle regenerates byte-identically from committed raw RPC.
+- ✅ 87 evidence tests pass locally (including 17 on the public-testnet inspection, 12 of them creation-batch regressions). 12 contract tests pass. The web bundle regenerates byte-identically from committed raw RPC.
 - ✅ Independent reviews addressed: C1 (runner symlink import) fixed in `71a679c`; W1 (witness same-block ambiguity) fixed in `71dfc47`. Both review reports are committed under `reports/`.
+- ☐ Final independent review (2026-11-11): PW-01 (testnet inspector did not check the creation batch) and PW-02 to PW-09 addressed on branch `fix/final-audit-findings`; see `docs/FINAL_AUDIT_RESPONSE.md`. Merge to `master` only after that branch is independently reviewed. The merge redeploys Pages (web, evidence and verifier changes now trigger it); then confirm the live `bundle.json` and JS hashes match a clean build.
 - ✅ Testnet smoke plan rehearsed on a local protocol-88 sandbox (testnet's nearcore): PASS.
 - ✅ **Public testnet smoke executed with owner approval: PASS** (`tn-20261110T195542Z`, `pw-vault.pursewarden.testnet`). Explorer links are in the README. Owner spend 3.2925 testnet NEAR (cap 3.5).
 - ✅ Testnet page (`#/testnet`) with recorded proof and a click-to-read live viewer; the live read matches the recorded inspection.

@@ -271,15 +271,16 @@ def build_g2(run_dir):
 
 def build_testnet(run_dir):
     """Public testnet smoke: re-derive the inspection by replaying its committed raw RPC records."""
-    from packages.verifier.inspect_smoke import inspect
+    from packages.verifier.inspect_smoke import inspect, replays_committed
     run = read(run_dir / "run.json")
     prov = read(run_dir / "provenance.json")
     records = load_rpc_records(run_dir / "inspection/rpc")
     node = ReplayNode(records)
     res = inspect(node, run, prov["artifact_sha256"])
-    committed = read(run_dir / "inspection/inspection.json")
-    committed.pop("metrics", None)
-    assert res == committed, "testnet inspection does not replay to the committed result"
+    # The committed v1 inspection predates the creation-batch check; the replay must reproduce all of
+    # its fields and may only add `construction`, re-derived from the same committed RPC responses.
+    assert replays_committed(res, read(run_dir / "inspection/inspection.json")), \
+        "testnet inspection does not replay to the committed result"
     assert res["result"] == "PASS" and not res["issues"], res["issues"]
     status = node.call("status", {})
     after = read(run_dir / "after.json")["_summary"]
@@ -310,6 +311,8 @@ def build_testnet(run_dir):
             "policy": {"budget": run["budget"], "max_per_request": run["max_per_request"],
                        "max_accepted_requests": run["max_accepted_requests"], "recipients": run["recipients"],
                        "expires_at_ns": run["expires_at_ns"], "policy_hash": run["policy_hash"]},
+            "construction": {k: res["construction"][k] for k in ("tx_hash", "actions", "deployed_code_sha256",
+                                                                   "init_returned_policy_hash", "other_receipts")},
             "cut": res["cut"], "ledger": dict(res["ledger"], S=mandate["cb_succeeded_amount"], F=mandate["cb_failed_amount"],
                                               U=mandate["callback_unconfirmed"]),
             "agent_keys": len(run["agent_public_keys"]), "steps": steps, "rpc_records": len(records),

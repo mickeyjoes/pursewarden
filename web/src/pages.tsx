@@ -395,10 +395,11 @@ export function Docs({ bundle }: { bundle: Bundle }) {
     <section className="section" style={{ paddingTop: 40, maxWidth: 860 }}>
       <div className="eyebrow">Reproduce</div>
       <h1 style={{ fontSize: 34, marginBottom: 12 }}>Check it yourself</h1>
-      <p className="lede">Three paths, from cheapest to strongest. None of them needs a wallet or funds. Everything runs on your machine.</p>
+      <p className="lede">Five ways to check, from cheapest to strongest. None of them needs a wallet or funds. The first four run entirely on
+        your machine; the fifth reads public testnet.</p>
       {[
         ["1 · Re-verify the recorded runs (seconds, Python 3 stdlib only)",
-          "python3 -m unittest discover -s tests/evidence -t .   # 70 tests: synthetic, runner-boundary, G1/G2 replay of real recorded RPC"],
+          "python3 -m unittest discover -s tests/evidence -t .   # 87 tests: synthetic, runner boundary, G1/G2 and testnet replay of real recorded RPC, creation-batch checks"],
         ["2 · Rebuild the contract and compare bytes",
           `scripts/build-contract.sh   # expect sha256 ${run.artifact.wasm_sha256}\ngit diff --exit-code artifacts/`],
         ["3 · Run a fresh independent G1 experiment (~5 min, Linux + bubblewrap)",

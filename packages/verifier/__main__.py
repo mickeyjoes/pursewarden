@@ -190,6 +190,9 @@ def inspect_smoke_cmd(argv):
         result = inspect(source, run, hashlib.sha256(Path(a.wasm).read_bytes()).hexdigest())
     except EvidenceError as exc:
         result = {"result": "FAIL" if exc.verdict == "FAIL" else "INCONCLUSIVE", "issues": [{"code": exc.code, "detail": exc.detail}]}
+    except (TypeError, KeyError, IndexError, ValueError, RecursionError, OverflowError) as exc:
+        # A malformed node answer or run file is never a PASS.
+        result = {"result": "INCONCLUSIVE", "issues": [{"code": "MALFORMED_INPUT", "detail": f"{type(exc).__name__}: {exc}"}]}
     result["metrics"] = source.metrics()
     (out / "inspection.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({k: result.get(k) for k in ("label", "result", "cut", "ledger", "issues")}, indent=2))
