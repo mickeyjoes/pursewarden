@@ -4,6 +4,8 @@
 
 > **Status: experimental hackathon prototype (NEAR HACKATHON 2026, track `security`).** All adversarial evidence comes from a **local NEAR sandbox**. A narrow, owner-approved smoke test also ran on **public NEAR testnet** ([`pw-vault.pursewarden.testnet`](https://testnet.nearblocks.io/address/pw-vault.pursewarden.testnet)). Nothing runs on mainnet. Not audited. Do not use it for real custody. "Pursewarden" is a provisional name.
 
+Our other independent NEAR Hackathon 2026 project is [PrivateTriage](https://github.com/mickeyjoes/near-private-triage), a confidential vulnerability-triage application using NEAR AI Cloud attestation (Privacy & Private AI track).
+
 [![Eight concurrent 2 NEAR payment requests against a 5 NEAR budget. The protected vault admits 2 of 8 and stops at C = 5 NEAR = B; our deliberately vulnerable settled-only fixture admits all 8 and delivers 17 NEAR (12 over budget); a generous 100 NEAR control admits all 8. Below, block by block: six BudgetExceeded denials execute in block 74 while the two admitted transfers are still pending and only run in block 75.](docs/media/g2-burst.png)](https://pursewarden.com/#/burst)
 
 <sub>G2 concurrency, replayed from a recorded local-sandbox run: eight 2 NEAR requests at once against a 5 NEAR budget. The protected vault stops at exactly 5 NEAR. A settled-only design (our own teaching fixture) pays out 17.</sub>
